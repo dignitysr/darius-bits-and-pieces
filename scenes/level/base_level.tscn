@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0nclxadp8xws"]
+
+[ext_resource type="Script" uid="uid://c3d6hdxo3ibrw" path="res://scenes/level/parts_manager.gd" id="1_ebx1s"]
+[ext_resource type="Resource" uid="uid://b3hvljlpew5e4" path="res://scenes/level/parts/parts_list.tres" id="2_upopr"]
+
+[node name="BaseLevel" type="Node2D"]
+
+[node name="PartsManager" type="Node" parent="."]
+script = ExtResource("1_ebx1s")
+parts_list = ExtResource("2_upopr")

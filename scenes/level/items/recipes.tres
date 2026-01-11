@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Recipes" load_steps=2 format=3 uid="uid://c57gvffr23thc"]
+
+[ext_resource type="Script" uid="uid://b7cxwhqxoa3ua" path="res://scenes/level/items/recipes.gd" id="1_nlpro"]
+
+[resource]
+script = ExtResource("1_nlpro")
+recipes = Dictionary[String, Dictionary]({
+"mailbox": {
+"paper": 3,
+"scrap": 2
+}
+})
+metadata/_custom_type_script = "uid://b7cxwhqxoa3ua"

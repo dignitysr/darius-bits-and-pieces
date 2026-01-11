@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PartResource" load_steps=2 format=3 uid="uid://bxxp2orfrjpqe"]
+
+[ext_resource type="Script" uid="uid://dq1gpa3p1xpu5" path="res://scenes/level/parts/part.gd" id="1_v8mxl"]
+
+[resource]
+script = ExtResource("1_v8mxl")
+part_name = "Paper"
+recipes = Dictionary[String, int]({
+"mailbox": 3
+})
+metadata/_custom_type_script = "uid://dq1gpa3p1xpu5"
