@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://cqhan3bhxm6h6"]
+[gd_scene load_steps=18 format=3 uid="uid://cqhan3bhxm6h6"]
 
 [ext_resource type="Script" uid="uid://dsh2si3vgye6m" path="res://scenes/player/classes/character.gd" id="1_gmlin"]
-[ext_resource type="Texture2D" uid="uid://bd1dfblwwkpdr" path="res://scenes/player/assets/jump_sheet.png" id="2_5gtgg"]
-[ext_resource type="Texture2D" uid="uid://dsrtnvbpgyuwa" path="res://scenes/player/assets/walk_sheet.png" id="2_lvxji"]
+[ext_resource type="Texture2D" uid="uid://djal0tc847s5a" path="res://scenes/player/assets/new_sheet.png" id="2_qek5x"]
 [ext_resource type="Script" uid="uid://dxostdknl0om5" path="res://scenes/player/classes/animator.gd" id="3_p47bc"]
 [ext_resource type="Script" uid="uid://dqo7g8nnhmo30" path="res://scenes/player/states/ground.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://cp02xg1rj5qa7" path="res://scenes/player/states/air.gd" id="5_75vfm"]
@@ -10,39 +9,39 @@
 [ext_resource type="Script" uid="uid://cf38apg2cgbbb" path="res://scenes/player/states/jump.gd" id="5_qek5x"]
 [ext_resource type="Script" uid="uid://cgvo2naoyxku4" path="res://scenes/player/states/none.gd" id="6_0owmy"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
-atlas = ExtResource("2_5gtgg")
-region = Rect2(14, 0, 13, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
-atlas = ExtResource("2_lvxji")
-region = Rect2(0, 0, 13, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fm80t"]
-atlas = ExtResource("2_5gtgg")
-region = Rect2(0, 0, 13, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
-atlas = ExtResource("2_lvxji")
-region = Rect2(0, 0, 13, 17)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
-atlas = ExtResource("2_lvxji")
-region = Rect2(13, 0, 13, 17)
+atlas = ExtResource("2_qek5x")
+region = Rect2(88, 0, 16, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gtgg"]
-atlas = ExtResource("2_lvxji")
-region = Rect2(26, 0, 13, 17)
+atlas = ExtResource("2_qek5x")
+region = Rect2(40, 0, 16, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
-atlas = ExtResource("2_lvxji")
-region = Rect2(39, 0, 13, 17)
+atlas = ExtResource("2_qek5x")
+region = Rect2(72, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
+atlas = ExtResource("2_qek5x")
+region = Rect2(8, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm80t"]
+atlas = ExtResource("2_qek5x")
+region = Rect2(24, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx1jg"]
+atlas = ExtResource("2_qek5x")
+region = Rect2(40, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugbui"]
+atlas = ExtResource("2_qek5x")
+region = Rect2(56, 0, 16, 17)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_je7p5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_je7p5")
+"texture": SubResource("AtlasTexture_qek5x")
 }],
 "loop": true,
 "name": &"fall",
@@ -50,7 +49,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_75vfm")
+"texture": SubResource("AtlasTexture_5gtgg")
 }],
 "loop": true,
 "name": &"idle",
@@ -58,7 +57,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fm80t")
+"texture": SubResource("AtlasTexture_h17s1")
 }],
 "loop": true,
 "name": &"jump",
@@ -66,16 +65,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0owmy")
+"texture": SubResource("AtlasTexture_je7p5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qek5x")
+"texture": SubResource("AtlasTexture_fm80t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5gtgg")
+"texture": SubResource("AtlasTexture_gx1jg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_h17s1")
+"texture": SubResource("AtlasTexture_ugbui")
 }],
 "loop": true,
 "name": &"walk",
@@ -83,7 +82,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fm80t"]
-size = Vector2(9, 15.5)
+size = Vector2(11, 15.5)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_gmlin")
@@ -118,10 +117,9 @@ move_speed = 2.0
 ground_state = NodePath("../Ground")
 accel_div = 25.0
 accel_damp = 50.0
-accel_add = 1.0
+accel_add = 0.26
 friction_div = 6.0
 unrotate_speed = 2.0
-animation = "jump"
 
 [node name="None" type="Node" parent="PhysicsStates"]
 script = ExtResource("6_0owmy")

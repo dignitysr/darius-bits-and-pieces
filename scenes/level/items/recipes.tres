@@ -5,6 +5,10 @@
 [resource]
 script = ExtResource("1_nlpro")
 recipes = Dictionary[String, Dictionary]({
+"dignity is the best": {
+"paper": 4,
+"scrap": 3
+},
 "mailbox": {
 "paper": 3,
 "scrap": 2

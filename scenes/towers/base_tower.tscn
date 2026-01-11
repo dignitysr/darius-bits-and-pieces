@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5j3fw6p1qo80"]
+
+[ext_resource type="Script" uid="uid://kxbqff21a7wi" path="res://scenes/towers/base_tower.gd" id="1_jksl4"]
+[ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/dithering.gdshader" id="2_1ilgo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rtahd"]
+shader = ExtResource("2_1ilgo")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jksl4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7fa6h"]
+radius = 13.61
+
+[node name="BaseTower" type="CharacterBody2D"]
+script = ExtResource("1_jksl4")
+
+[node name="Animator" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_rtahd")
+
+[node name="PickupDetection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupDetection"]
+shape = SubResource("CircleShape2D_jksl4")
+
+[node name="EnemyDetection" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetection"]
+shape = SubResource("CircleShape2D_7fa6h")
+
+[node name="PathPlayer" type="AnimationPlayer" parent="."]

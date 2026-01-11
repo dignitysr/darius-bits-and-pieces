@@ -26,7 +26,6 @@ var action: ActionState
 var container_override: PhysicsState
 var override_frames: int
 
-
 func set_state(type: String, state: CharacterState) -> void:
 	var old_state: CharacterState = self[type]
 	if is_instance_valid(old_state):
@@ -69,7 +68,6 @@ func update_states(type: String, container: Node) -> void:
 
 ### Logic
 func _physics_process(delta: float) -> void:
-	#print(physics)
 	input = get_input()
 	
 	update_states("physics", physics_states)
