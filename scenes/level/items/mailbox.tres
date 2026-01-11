@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ObjectResource" load_steps=3 format=3 uid="uid://daqed0ax142bl"]
+
+[ext_resource type="Script" uid="uid://dlopniqc5ddwe" path="res://scenes/level/items/objects.gd" id="1_25ife"]
+[ext_resource type="Texture2D" uid="uid://c2fis14srkqnw" path="res://icon.svg" id="1_v1lnv"]
+
+[resource]
+script = ExtResource("1_25ife")
+object_name = "mailbox"
+icon = ExtResource("1_v1lnv")
+metadata/_custom_type_script = "uid://dlopniqc5ddwe"

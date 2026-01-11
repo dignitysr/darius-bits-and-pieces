@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://c0ufyyp0yfay8"]
+
+[node name="Mail" type="StaticBody2D"]

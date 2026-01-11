@@ -3,7 +3,7 @@ extends Node
 
 enum Rank {F, D, C, B, A, S}
 
-@export var parts_list: PartsList
+@export var parts_list: ObjectList
 @export var recipes: Recipes
 
 ## Notation is:

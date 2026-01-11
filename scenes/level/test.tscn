@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl6foq6oixgrr"]
+
+[ext_resource type="PackedScene" uid="uid://c0nclxadp8xws" path="res://scenes/level/base_level.tscn" id="1_6nsnc"]
+[ext_resource type="PackedScene" uid="uid://cqhan3bhxm6h6" path="res://scenes/player/player.tscn" id="2_a84y6"]
+[ext_resource type="PackedScene" uid="uid://cvy8dxqprjjkx" path="res://scenes/enemies/test.tscn" id="3_ls1i8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6nsnc"]
+size = Vector2(397, 34)
+
+[node name="BaseLevel" instance=ExtResource("1_6nsnc")]
+
+[node name="Player" parent="." index="1" instance=ExtResource("2_a84y6")]
+position = Vector2(221, 126)
+
+[node name="DariusEnemy" parent="." index="2" instance=ExtResource("3_ls1i8")]
+enemy_name = "darius"
+enemy_path = "test"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(190.5, 197)
+shape = SubResource("RectangleShape2D_6nsnc")

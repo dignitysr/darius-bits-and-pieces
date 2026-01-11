@@ -26,6 +26,9 @@ var dithering_intensity: float = 0
 
 var selected_enemy: BaseEnemy
 
+func _ready():
+	durability = init_durability * (durability_mult * (rank + 1))
+
 func _attack() -> void:
 	durability -= 1
 

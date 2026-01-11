@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=3 uid="uid://cvy8dxqprjjkx"]
+
+[ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_h7jsh"]
+[ext_resource type="Texture2D" uid="uid://djal0tc847s5a" path="res://scenes/player/assets/new_sheet.png" id="2_k7n0b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqphu"]
+atlas = ExtResource("2_k7n0b")
+region = Rect2(8, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukaqn"]
+atlas = ExtResource("2_k7n0b")
+region = Rect2(24, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkbjl"]
+atlas = ExtResource("2_k7n0b")
+region = Rect2(40, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ufl8"]
+atlas = ExtResource("2_k7n0b")
+region = Rect2(56, 0, 16, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_websd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqphu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukaqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkbjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ufl8")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_k7n0b"]
+resource_name = "test"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-5, 172), Vector2(399, 172)]
+}
+
+[sub_resource type="Animation" id="Animation_hqphu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-5, 172)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqphu"]
+_data = {
+&"RESET": SubResource("Animation_hqphu"),
+&"test": SubResource("Animation_k7n0b")
+}
+
+[node name="DariusEnemy" instance=ExtResource("1_h7jsh")]
+position = Vector2(-5, 172)
+
+[node name="Animator" parent="." index="0"]
+self_modulate = Color(3.016219, 5.3798604, 0.8343959, 1)
+sprite_frames = SubResource("SpriteFrames_websd")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="PathPlayer" parent="." index="2"]
+libraries = {
+&"": SubResource("AnimationLibrary_hqphu")
+}

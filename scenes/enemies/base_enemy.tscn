@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4pq0ef4dqlxw"]
+
+[ext_resource type="Script" uid="uid://bhye2cruqvesn" path="res://scenes/enemies/base_enemy.gd" id="1_r5xb8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5xb8"]
+size = Vector2(10, 12)
+
+[node name="BaseEnemy" type="CharacterBody2D"]
+script = ExtResource("1_r5xb8")
+
+[node name="Animator" type="AnimatedSprite2D" parent="."]
+
+[node name="EnemyArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
+shape = SubResource("RectangleShape2D_r5xb8")
+
+[node name="PathPlayer" type="AnimationPlayer" parent="."]
