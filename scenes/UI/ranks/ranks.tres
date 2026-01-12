@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="RanksResource" load_steps=9 format=3 uid="uid://6rxf2qmjweg1"]
+
+[ext_resource type="Texture2D" uid="uid://3rapfa1hagkb" path="res://assets/UI/sprites/icons.png" id="1_8ds6i"]
+[ext_resource type="Script" uid="uid://bbc7g1vv036hy" path="res://scenes/UI/ranks/ranks_resource.gd" id="2_uy5kr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ds6i"]
+atlas = ExtResource("1_8ds6i")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbhg8"]
+atlas = ExtResource("1_8ds6i")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc1il"]
+atlas = ExtResource("1_8ds6i")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p3ol"]
+atlas = ExtResource("1_8ds6i")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81yhx"]
+atlas = ExtResource("1_8ds6i")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uy5kr"]
+atlas = ExtResource("1_8ds6i")
+region = Rect2(48, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_uy5kr")
+ranks = Dictionary[int, Texture2D]({
+0: SubResource("AtlasTexture_8ds6i"),
+1: SubResource("AtlasTexture_tbhg8"),
+2: SubResource("AtlasTexture_sc1il"),
+3: SubResource("AtlasTexture_6p3ol"),
+4: SubResource("AtlasTexture_81yhx"),
+5: SubResource("AtlasTexture_uy5kr")
+})

@@ -5,13 +5,13 @@
 [resource]
 script = ExtResource("1_nlpro")
 recipes = Dictionary[String, Dictionary]({
-"dignity is the best": {
-"paper": 4,
-"scrap": 3
-},
 "mailbox": {
 "paper": 3,
 "scrap": 2
+},
+"mario": {
+"paper": 4,
+"scrap": 5
 }
 })
 metadata/_custom_type_script = "uid://b7cxwhqxoa3ua"

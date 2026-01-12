@@ -1,30 +1,61 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5k6bsbagrg4b"]
+[gd_scene load_steps=7 format=3 uid="uid://b5k6bsbagrg4b"]
 
-[ext_resource type="Texture2D" uid="uid://c2fis14srkqnw" path="res://icon.svg" id="1_f1jpi"]
+[ext_resource type="Script" uid="uid://bfpb340jttsme" path="res://scenes/UI/quantitylabel.gd" id="1_3p21j"]
 [ext_resource type="Theme" uid="uid://csbmn3ra74l3n" path="res://assets/UI/base_theme.tres" id="2_3p21j"]
-[ext_resource type="FontFile" uid="uid://cnppc1ycs2i8h" path="res://assets/UI/fonts/Able Tailed.ttf" id="3_40w5k"]
+[ext_resource type="Texture2D" uid="uid://3rapfa1hagkb" path="res://assets/UI/sprites/icons.png" id="2_40w5k"]
+[ext_resource type="FontFile" uid="uid://cve6xpuuckgvx" path="res://assets/UI/fonts/pixelFJ8pt1__.TTF" id="4_3p21j"]
 
-[node name="Control5" type="Control"]
-custom_minimum_size = Vector2(14, 6)
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8txe"]
+atlas = ExtResource("2_40w5k")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ppwl"]
+atlas = ExtResource("2_40w5k")
+region = Rect2(48, 0, 16, 16)
+
+[node name="Part" type="Control"]
+custom_minimum_size = Vector2(22.105, 7.665)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 20.14
+offset_bottom = 7.665
+mouse_filter = 2
+script = ExtResource("1_3p21j")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 20.0
-offset_bottom = 6.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.71400005
+anchor_bottom = 0.66700006
+offset_right = 0.0059986115
+offset_bottom = -0.0030002594
+mouse_filter = 2
 theme_override_constants/separation = 1
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
-custom_minimum_size = Vector2(6.005, 5.015)
+[node name="Icon" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12.605, 2.68)
 layout_mode = 2
-texture = ExtResource("1_f1jpi")
-expand_mode = 1
-stretch_mode = 5
+mouse_filter = 2
+texture = SubResource("AtlasTexture_c8txe")
+expand_mode = 4
+stretch_mode = 4
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Icon"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 21.0
+offset_bottom = 9.0
+texture = SubResource("AtlasTexture_4ppwl")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Amount" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_3p21j")
-theme_override_fonts/font = ExtResource("3_40w5k")
-theme_override_font_sizes/font_size = 7
-text = "x0"
+theme_override_fonts/font = ExtResource("4_3p21j")
+theme_override_font_sizes/font_size = 8
+text = "x999"

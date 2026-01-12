@@ -1,54 +1,60 @@
-[gd_scene load_steps=9 format=3 uid="uid://dflehm1nse4cx"]
+[gd_scene load_steps=13 format=3 uid="uid://dflehm1nse4cx"]
 
 [ext_resource type="Script" uid="uid://dhfwyr5qu1dq2" path="res://scenes/UI/craft_panel.gd" id="1_a1seb"]
 [ext_resource type="Texture2D" uid="uid://c2fis14srkqnw" path="res://icon.svg" id="1_qfitj"]
 [ext_resource type="Theme" uid="uid://csbmn3ra74l3n" path="res://assets/UI/base_theme.tres" id="2_se46u"]
+[ext_resource type="Resource" uid="uid://b3hvljlpew5e4" path="res://scenes/level/object_list.tres" id="3_0k2n0"]
 [ext_resource type="FontFile" uid="uid://dr00saqh1n260" path="res://assets/UI/fonts/Timetwist-Regular.ttf" id="3_e0ai8"]
 [ext_resource type="PackedScene" uid="uid://b5k6bsbagrg4b" path="res://scenes/UI/quantitylabel.tscn" id="4_e0ai8"]
-[ext_resource type="PackedScene" uid="uid://ce3184whxb634" path="res://scenes/UI/rankpanel.tscn" id="5_x7nth"]
+[ext_resource type="Resource" uid="uid://c57gvffr23thc" path="res://scenes/level/items/recipes.tres" id="4_yfdkm"]
+[ext_resource type="Resource" uid="uid://6rxf2qmjweg1" path="res://scenes/UI/ranks/ranks.tres" id="6_yfdkm"]
+[ext_resource type="PackedScene" uid="uid://ce3184whxb634" path="res://scenes/UI/rankpanel.tscn" id="8_0k2n0"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0ai8"]
-content_margin_left = 0.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 6
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yfdkm"]
 
-[sub_resource type="Theme" id="Theme_x7nth"]
-HScrollBar/styles/scroll = SubResource("StyleBoxFlat_e0ai8")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2r1i5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kbfmq"]
 
 [node name="CraftPanel" type="PanelContainer"]
-custom_minimum_size = Vector2(98.51, 25.565)
-offset_right = 98.51
-offset_bottom = 25.565
+custom_minimum_size = Vector2(70, 25.235)
+size_flags_horizontal = 2
+size_flags_vertical = 3
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_yfdkm")
 script = ExtResource("1_a1seb")
+quantity_label_scene = ExtResource("4_e0ai8")
+rank_scene = ExtResource("8_0k2n0")
+object_list = ExtResource("3_0k2n0")
+recipes = ExtResource("4_yfdkm")
+ranks_resource = ExtResource("6_yfdkm")
 
-[node name="NamePanel" type="Control" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="NamePanel" type="PanelContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 25.235)
 layout_mode = 2
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2r1i5")
 
-[node name="Button" type="Button" parent="NamePanel"]
-layout_mode = 0
-offset_right = 98.51
-offset_bottom = 25.565
+[node name="RankSelectButton" type="Button" parent="VBoxContainer/NamePanel"]
+unique_name_in_owner = true
+layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NamePanel"]
-custom_minimum_size = Vector2(11.765, 25.565)
-layout_mode = 0
-offset_right = 98.51
-offset_bottom = 25.565
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/NamePanel"]
+custom_minimum_size = Vector2(98.51, 25.235)
+layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 4
 
-[node name="Control" type="Control" parent="NamePanel/HBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/NamePanel/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="TowerTexture" type="TextureRect" parent="NamePanel/HBoxContainer"]
+[node name="TowerTexture" type="TextureRect" parent="VBoxContainer/NamePanel/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(19.135, 0)
 layout_mode = 2
@@ -57,78 +63,40 @@ texture = ExtResource("1_qfitj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NamePanel/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="Control" type="Control" parent="NamePanel/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 2.75)
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/NamePanel/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 3
 
-[node name="Label" type="Label" parent="NamePanel/HBoxContainer/VBoxContainer"]
+[node name="Name" type="Label" parent="VBoxContainer/NamePanel/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
-size_flags_vertical = 0
 theme = ExtResource("2_se46u")
 theme_override_fonts/font = ExtResource("3_e0ai8")
 theme_override_font_sizes/font_size = 8
-text = "Name"
+text = "Mailbox"
 horizontal_alignment = 1
 
-[node name="Control2" type="Control" parent="NamePanel/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 1.11)
+[node name="QuantityContainer" type="VBoxContainer" parent="VBoxContainer/NamePanel/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="NamePanel/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-theme_override_constants/separation = 11
+theme_override_constants/separation = 2
 alignment = 1
 
-[node name="Part" parent="NamePanel/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_e0ai8")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Part2" parent="NamePanel/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_e0ai8")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Part3" parent="NamePanel/HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("4_e0ai8")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="RankPanel" type="Control" parent="."]
+[node name="RankPanel" type="PanelContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
-mouse_filter = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="RankPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = SubResource("Theme_x7nth")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="RankPanel/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kbfmq")
 
-[node name="Control" parent="RankPanel/ScrollContainer/HBoxContainer" instance=ExtResource("5_x7nth")]
+[node name="RanksContainer" type="VBoxContainer" parent="VBoxContainer/RankPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(98.65, 0)
 layout_mode = 2
-
-[node name="Control2" parent="RankPanel/ScrollContainer/HBoxContainer" instance=ExtResource("5_x7nth")]
-visible = false
-layout_mode = 2
-
-[node name="Control3" parent="RankPanel/ScrollContainer/HBoxContainer" instance=ExtResource("5_x7nth")]
-visible = false
-layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_constants/separation = 3

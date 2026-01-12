@@ -1,54 +1,45 @@
 [gd_scene load_steps=4 format=3 uid="uid://ce3184whxb634"]
 
-[ext_resource type="Texture2D" uid="uid://djal0tc847s5a" path="res://scenes/player/assets/new_sheet.png" id="1_7mirn"]
-[ext_resource type="PackedScene" uid="uid://b5k6bsbagrg4b" path="res://scenes/UI/quantitylabel.tscn" id="2_e1os6"]
+[ext_resource type="Script" uid="uid://bwhj3r7nokwfu" path="res://scenes/UI/rankpanel.gd" id="1_e1os6"]
+[ext_resource type="Texture2D" uid="uid://c2fis14srkqnw" path="res://icon.svg" id="2_e1os6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a1seb"]
-atlas = ExtResource("1_7mirn")
-region = Rect2(0, 0, 15.047371, 17)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mirn"]
 
 [node name="Rank" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 25.235)
+offset_right = 70.0
+offset_bottom = 20.0
 size_flags_horizontal = 3
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7mirn")
+script = ExtResource("1_e1os6")
 
-[node name="Button" type="Button" parent="."]
+[node name="BuyButton" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 0
-alignment = 1
+theme_override_constants/separation = 4
 
-[node name="Control" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 1.945)
+[node name="Control3" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(-0.735, 1.64)
 layout_mode = 2
+mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2(4.795, 11.06)
+[node name="RankTexture" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(19.135, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-texture = SubResource("AtlasTexture_a1seb")
-expand_mode = 2
-stretch_mode = 4
+mouse_filter = 2
+texture = ExtResource("2_e1os6")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Control2" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 1.64)
+[node name="QualityContainer" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 2
 alignment = 1
-
-[node name="Part" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_e1os6")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Part2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_e1os6")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Part3" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_e1os6")]
-layout_mode = 2
-mouse_filter = 2

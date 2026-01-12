@@ -1,33 +1,108 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0nclxadp8xws"]
+[gd_scene load_steps=12 format=3 uid="uid://c0nclxadp8xws"]
 
 [ext_resource type="Script" uid="uid://c3d6hdxo3ibrw" path="res://scenes/level/parts_manager.gd" id="1_ebx1s"]
-[ext_resource type="Resource" uid="uid://b3hvljlpew5e4" path="res://scenes/level/parts_list.tres" id="2_upopr"]
+[ext_resource type="Resource" uid="uid://b3hvljlpew5e4" path="res://scenes/level/object_list.tres" id="2_upopr"]
 [ext_resource type="Resource" uid="uid://c57gvffr23thc" path="res://scenes/level/items/recipes.tres" id="3_7xj1c"]
 [ext_resource type="Theme" uid="uid://csbmn3ra74l3n" path="res://assets/UI/base_theme.tres" id="4_e1fnv"]
+[ext_resource type="Resource" uid="uid://6rxf2qmjweg1" path="res://scenes/UI/ranks/ranks.tres" id="4_kxd26"]
+[ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="4_t6xnl"]
 [ext_resource type="PackedScene" uid="uid://dflehm1nse4cx" path="res://scenes/UI/craftable.tscn" id="5_3ipv6"]
+[ext_resource type="Texture2D" uid="uid://82p0pdd7hmbp" path="res://assets/UI/sprites/craft_open.png" id="7_8xnqg"]
+
+[sub_resource type="Animation" id="Animation_8xnqg"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../UI/HBoxContainer:size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(315, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UI/HBoxContainer:size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(270, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_kxd26"]
+resource_name = "craft_trans"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../UI/HBoxContainer:size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(315, -0.25, 0, 0.25, 0, 200, -0.083333336, 19.166668, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../UI/HBoxContainer:size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(270, -0.25, 0, 0.25, 0, 270, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wq2a1"]
+_data = {
+&"RESET": SubResource("Animation_8xnqg"),
+&"craft_trans": SubResource("Animation_kxd26")
+}
 
 [node name="BaseLevel" type="Node2D"]
 
 [node name="InvManager" type="Node" parent="."]
 script = ExtResource("1_ebx1s")
-parts_list = ExtResource("2_upopr")
 recipes = ExtResource("3_7xj1c")
+object_list = ExtResource("2_upopr")
+ranks_resource = ExtResource("4_kxd26")
+craftable_panel = ExtResource("5_3ipv6")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="CraftMenu" type="Panel" parent="UI"]
-custom_minimum_size = Vector2(84.57, 0)
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -109.0
-offset_right = 0.5700073
+offset_left = -200.0
+offset_right = 115.0
 grow_horizontal = 0
 grow_vertical = 2
+alignment = 2
+
+[node name="CraftTransButton" type="Button" parent="UI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_t6xnl")
+toggle_mode = true
+icon = ExtResource("7_8xnqg")
+
+[node name="CraftMenu" type="Panel" parent="UI/HBoxContainer"]
+custom_minimum_size = Vector2(113.205, 0)
+layout_mode = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/CraftMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HBoxContainer/CraftMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -37,65 +112,51 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/CraftMenu/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/HBoxContainer/CraftMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 13.915)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="CraftLabel" type="Label" parent="UI/CraftMenu/VBoxContainer/MarginContainer"]
+[node name="CraftLabel" type="Label" parent="UI/HBoxContainer/CraftMenu/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_e1fnv")
 text = "Craft"
 
-[node name="HSeparator" type="HSeparator" parent="UI/CraftMenu/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="UI/HBoxContainer/CraftMenu/VBoxContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(0, 1.135)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Control" type="Control" parent="UI/CraftMenu/VBoxContainer"]
+[node name="Control" type="Control" parent="UI/HBoxContainer/CraftMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 4.905)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/CraftMenu/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/HBoxContainer/CraftMenu/VBoxContainer"]
 custom_minimum_size = Vector2(9.46, 195.675)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/CraftMenu/VBoxContainer/ScrollContainer"]
+[node name="CraftableContainer" type="VBoxContainer" parent="UI/HBoxContainer/CraftMenu/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(72.895, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Panel" parent="UI/CraftMenu/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_3ipv6")]
+[node name="CraftPanel" parent="UI/HBoxContainer/CraftMenu/VBoxContainer/ScrollContainer/CraftableContainer" instance=ExtResource("5_3ipv6")]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="Panel2" parent="UI/CraftMenu/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_3ipv6")]
+[node name="CraftPanel2" parent="UI/HBoxContainer/CraftMenu/VBoxContainer/ScrollContainer/CraftableContainer" instance=ExtResource("5_3ipv6")]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="Panel3" parent="UI/CraftMenu/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_3ipv6")]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Panel4" parent="UI/CraftMenu/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_3ipv6")]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Panel5" parent="UI/CraftMenu/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_3ipv6")]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Panel6" parent="UI/CraftMenu/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_3ipv6")]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Panel7" parent="UI/CraftMenu/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_3ipv6")]
-layout_mode = 2
-size_flags_vertical = 3
+[node name="TransitionPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../InvManager")
+libraries = {
+&"": SubResource("AnimationLibrary_wq2a1")
+}

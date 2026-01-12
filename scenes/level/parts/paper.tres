@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="PartResource" load_steps=2 format=3 uid="uid://bxxp2orfrjpqe"]
+[gd_resource type="Resource" script_class="PartResource" load_steps=4 format=3 uid="uid://bxxp2orfrjpqe"]
 
+[ext_resource type="Texture2D" uid="uid://3rapfa1hagkb" path="res://assets/UI/sprites/icons.png" id="1_da14f"]
 [ext_resource type="Script" uid="uid://dq1gpa3p1xpu5" path="res://scenes/level/parts/part.gd" id="1_v8mxl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r3gn"]
+atlas = ExtResource("1_da14f")
+region = Rect2(16, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_v8mxl")
 part_name = "Paper"
+icon = SubResource("AtlasTexture_0r3gn")
 recipes = Dictionary[String, int]({
 "mailbox": 3
 })
