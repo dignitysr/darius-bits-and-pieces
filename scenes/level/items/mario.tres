@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ObjectResource" load_steps=4 format=3 uid="uid://d103r5swp2cnv"]
+[gd_resource type="Resource" script_class="ObjectResource" load_steps=4 format=3 uid="uid://bmtl4e24nh2at"]
 
 [ext_resource type="Script" uid="uid://dlopniqc5ddwe" path="res://scenes/level/items/objects.gd" id="1_7h05v"]
 [ext_resource type="Texture2D" uid="uid://3rapfa1hagkb" path="res://assets/UI/sprites/icons.png" id="1_q6xsc"]

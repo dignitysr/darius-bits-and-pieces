@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ce3184whxb634"]
 
-[ext_resource type="Script" uid="uid://bwhj3r7nokwfu" path="res://scenes/UI/rankpanel.gd" id="1_e1os6"]
+[ext_resource type="Script" path="res://scenes/UI/rankpanel.gd" id="1_e1os6"]
 [ext_resource type="Texture2D" uid="uid://c2fis14srkqnw" path="res://icon.svg" id="2_e1os6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mirn"]
@@ -18,17 +18,17 @@ script = ExtResource("1_e1os6")
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 4
 
-[node name="Control3" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(-0.735, 1.64)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="RankTexture" type="TextureRect" parent="VBoxContainer"]
+[node name="RankTexture" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(19.135, 0)
 layout_mode = 2
@@ -37,9 +37,10 @@ texture = ExtResource("2_e1os6")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="QualityContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="QualityContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_constants/separation = 2
 alignment = 1

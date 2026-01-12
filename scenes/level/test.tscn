@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://cl6foq6oixgrr"]
+[gd_scene load_steps=6 format=3 uid="uid://cl6foq6oixgrr"]
 
 [ext_resource type="PackedScene" uid="uid://c0nclxadp8xws" path="res://scenes/level/base_level.tscn" id="1_6nsnc"]
 [ext_resource type="PackedScene" uid="uid://cqhan3bhxm6h6" path="res://scenes/player/player.tscn" id="2_a84y6"]
+[ext_resource type="Resource" path="res://scenes/level/object_list.tres" id="2_ls1i8"]
 [ext_resource type="PackedScene" uid="uid://cvy8dxqprjjkx" path="res://scenes/enemies/test.tscn" id="3_ls1i8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6nsnc"]
 size = Vector2(397, 34)
 
 [node name="BaseLevel" instance=ExtResource("1_6nsnc")]
+
+[node name="InvManager" parent="." index="0"]
+object_list = ExtResource("2_ls1i8")
 
 [node name="Player" parent="." index="1" instance=ExtResource("2_a84y6")]
 position = Vector2(221, 126)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5k6bsbagrg4b"]
 
-[ext_resource type="Script" uid="uid://bfpb340jttsme" path="res://scenes/UI/quantitylabel.gd" id="1_3p21j"]
+[ext_resource type="Script" path="res://scenes/UI/quantitylabel.gd" id="1_3p21j"]
 [ext_resource type="Theme" uid="uid://csbmn3ra74l3n" path="res://assets/UI/base_theme.tres" id="2_3p21j"]
 [ext_resource type="Texture2D" uid="uid://3rapfa1hagkb" path="res://assets/UI/sprites/icons.png" id="2_40w5k"]
 [ext_resource type="FontFile" uid="uid://cve6xpuuckgvx" path="res://assets/UI/fonts/pixelFJ8pt1__.TTF" id="4_3p21j"]
@@ -13,43 +13,47 @@ region = Rect2(16, 0, 16, 16)
 atlas = ExtResource("2_40w5k")
 region = Rect2(48, 0, 16, 16)
 
-[node name="Part" type="Control"]
+[node name="Part" type="BoxContainer"]
 custom_minimum_size = Vector2(22.105, 7.665)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 20.14
-offset_bottom = 7.665
+offset_right = 44.0
+offset_bottom = 16.0
+size_flags_horizontal = 3
 mouse_filter = 2
 script = ExtResource("1_3p21j")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.71400005
-anchor_bottom = 0.66700006
-offset_right = 0.0059986115
-offset_bottom = -0.0030002594
+layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_constants/separation = 1
+alignment = 2
+
+[node name="Padding" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Icon" type="TextureRect" parent="HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(12.605, 2.68)
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_c8txe")
 expand_mode = 4
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/Icon"]
 visible = false
-layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 21.0
-offset_bottom = 9.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
 texture = SubResource("AtlasTexture_4ppwl")
-expand_mode = 2
 stretch_mode = 4
 
 [node name="Amount" type="Label" parent="HBoxContainer"]
