@@ -38,7 +38,6 @@ var selected_enemy: BaseEnemy
 
 func _ready():
 	random_frame = str(randi_range(1, variant_num))
-	print(random_frame)
 	animator.animation = random_frame
 	durability = init_durability * (durability_mult * (rank + 1))
 	damage = damage * (damage_mult * (rank + 1))

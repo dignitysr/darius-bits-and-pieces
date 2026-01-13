@@ -44,11 +44,11 @@ func refresh_recipes() -> void:
 	var valid_recipes = good_util.get_valid_recipes(recipes, parts)
 	for recipe: String in valid_recipes:
 		if valid_recipes.keys().find(recipe) + 1 == valid_recipes.keys().size():
-			instance_craftable(recipe, valid_recipes[recipe], true)
+			instance_craftable(recipe, valid_recipes[recipe])
 		else:
-			instance_craftable(recipe, valid_recipes[recipe], false)
+			instance_craftable(recipe, valid_recipes[recipe])
 
-func instance_craftable(recipe: String, valid_ranks: Array, is_final: bool) -> void:
+func instance_craftable(recipe: String, valid_ranks: Array) -> void:
 	var craftable = craftable_panel.instantiate()
 	craftable.object_list = object_list
 	craftable.inventory = self
@@ -83,6 +83,7 @@ func place_tower(tower: String, rank: int):
 	var tower_scene: BaseTower = object_list.parts[tower].scene.instantiate()
 	tower_scene.inventory_manager = self
 	tower_scene.global_position = place_validator.get_collision_point()
+	@warning_ignore("int_as_enum_without_cast")
 	tower_scene.rank = rank
 	for part: String in recipes.recipes[tower]:
 		parts[part][rank] -= recipes.recipes[tower][part]

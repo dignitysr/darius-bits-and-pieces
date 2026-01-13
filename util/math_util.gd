@@ -27,7 +27,10 @@ static func subtract_angles(param1: float, param2: float) -> float:
 static func convert_num(num: int) -> String:
 	var suffixes: Array = ["", "K", "M", "B", "T", "Q"]
 	var log_value := int(log(num)/log(10))
+	@warning_ignore("integer_division")
 	var power := int(log_value/3)
+	@warning_ignore("narrowing_conversion")
 	var scale: int = pow(10, abs((log_value%3) - 2))
 	var rounded_num: float = (int((num/pow(10, (power*3)))*scale))/float(scale)
+	@warning_ignore("incompatible_ternary")
 	return str(rounded_num if !log_value%3 == 2 else int((num/pow(10, (power*3))))) + suffixes[power] if num >= 1000 else str(num)

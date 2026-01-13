@@ -5,6 +5,10 @@ extends Control
 
 var resource_dir = "res://tools/achievements/resources/"
 var achievements: Dictionary
+var achievement_keys: Array
+
+var total_achievements: int
+var unlocked_achievements: int
 
 class Achievement:
 	var achievement_name: String
@@ -14,18 +18,31 @@ class Achievement:
 	func _init(n: String, d: String):
 		achievement_name = n
 		description = d
+		
+signal done_loading
 
 func _ready() -> void:
-	var dir := DirAccess.open(resource_dir)
-	for resource: String in dir.get_files():
+	for resource: String in DirAccess.get_files_at(resource_dir):
 		var achievement: AchievementData = load(resource_dir + resource)
+		achievement_keys.append(achievement)
+	achievement_keys.sort_custom(sort_ascending)
+	for achievement: AchievementData in achievement_keys:
 		store_achievements(achievement.achievement_name, achievement.description)
+	done_loading.emit()
 	
+func sort_ascending(a: AchievementData, b: AchievementData):
+	if a.achievement_index < b.achievement_index:
+		return true
+	return false
+
 
 func store_achievements(achievement_name: String, description: String) -> void:
 	var achievement = Achievement.new(achievement_name, description)
 	achievements[achievement_name] = achievement
+	total_achievements += 1
 	achievement.unlocked = Save.load_setting("achievements", achievement_name, false)
+	if achievement.unlocked:
+		unlocked_achievements += 1
 
 func unlock(achievement_name: String) -> void:
 	achievements[achievement_name].unlocked = true

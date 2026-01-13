@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://diff5064kusnd"]
+
+[ext_resource type="Texture2D" uid="uid://c2fis14srkqnw" path="res://icon.svg" id="1_fco5x"]
+[ext_resource type="Script" uid="uid://dqqglubeo8eob" path="res://scenes/UI/main menu/main_menu.gd" id="1_lok01"]
+[ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="2_lok01"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lok01")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.025
+anchor_right = 1.025
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_right = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Filler" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(78, 0)
+layout_mode = 2
+
+[node name="Logo" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(85.78, 0)
+layout_mode = 2
+texture = ExtResource("1_fco5x")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Filler2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(138, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Play" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(129, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lok01")
+text = "Play"
+
+[node name="Options" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(129, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lok01")
+text = "Options"
+
+[node name="Quit" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(129, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lok01")
+text = "Quit"
+
+[node name="Filler3" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(58, 0)
+layout_mode = 2

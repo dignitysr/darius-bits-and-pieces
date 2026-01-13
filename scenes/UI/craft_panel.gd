@@ -7,7 +7,7 @@ extends PanelContainer
 @onready var rank_selection_button: Button = %RankSelectButton
 @onready var ranks_container: VBoxContainer = %RanksContainer
 @onready var name_panel: Control = %NamePanel
-@onready var rank_panel: Control = %RankPanel
+@onready var rank_panel_node: Control = %RankPanel
 
 @export var quantity_label_scene: PackedScene
 @export var rank_scene: PackedScene
@@ -59,4 +59,4 @@ func on_rank_selection_pressed() -> void:
 	for rank: int in valid_recipes:
 		populate_rank(rank)
 	name_panel.hide()
-	rank_panel.show()
+	rank_panel_node.show()

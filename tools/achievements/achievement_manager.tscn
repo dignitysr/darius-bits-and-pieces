@@ -4,6 +4,31 @@
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="2_72v5p"]
 [ext_resource type="FontFile" uid="uid://dr00saqh1n260" path="res://assets/UI/fonts/Timetwist-Regular.ttf" id="3_r70fx"]
 
+[sub_resource type="Animation" id="Animation_k6885"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AchievementPanel:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-111, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AchievementPanel:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_ishdg"]
 resource_name = "slide"
 length = 4.0
@@ -31,31 +56,6 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 1.5, 2)
 }
 
-[sub_resource type="Animation" id="Animation_k6885"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AchievementPanel:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-111, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AchievementPanel:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0nvke"]
 _data = {
 &"RESET": SubResource("Animation_k6885"),
@@ -69,23 +69,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_2tw4h")
 
 [node name="AchievementPanel" type="PanelContainer" parent="."]
 clip_contents = true
+custom_minimum_size = Vector2(111, 55)
 layout_mode = 0
-anchor_right = 0.23125
+anchor_left = -0.23125
 anchor_bottom = 0.2037037
-offset_left = -111.0
-offset_right = -111.0
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="AchievementPanel"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="AchievementPanel/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("2_72v5p")
 bbcode_enabled = true
 text = "[rainbow][wave]Achievement!"
@@ -94,6 +97,7 @@ horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="AchievementPanel/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="AchievementName" type="Label" parent="AchievementPanel/VBoxContainer"]
 unique_name_in_owner = true

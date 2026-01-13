@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfmpe5508ukf5"]
+
+[ext_resource type="FontFile" uid="uid://dr00saqh1n260" path="res://assets/UI/fonts/Timetwist-Regular.ttf" id="1_e56rc"]
+
+[node name="AchievementButton" type="Button"]
+custom_minimum_size = Vector2(100, 20)
+theme_override_fonts/font = ExtResource("1_e56rc")
+theme_override_font_sizes/font_size = 8
+text = "First Steps"
+autowrap_mode = 2
