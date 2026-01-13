@@ -4,10 +4,11 @@ static func get_valid_recipes(recipes: Recipes, parts: Dictionary) -> Dictionary
 	var valid_recipes: Dictionary = {}
 	for recipe: String in recipes.recipes:
 		valid_recipes[recipe] = get_valid_recipe(recipes, recipe, parts)
+	var verified_recipes: Dictionary
 	for recipe: String in valid_recipes:
-		if valid_recipes[recipe].is_empty():
-			valid_recipes.erase(recipe)
-	return valid_recipes
+		if !valid_recipes[recipe].is_empty():
+			verified_recipes[recipe] = valid_recipes[recipe]
+	return verified_recipes
 
 static func get_valid_recipe(recipes: Recipes, recipe: String, parts: Dictionary) -> Array:
 	var recipe_ranks: Array = []

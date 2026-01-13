@@ -16,9 +16,10 @@ enum Rank {F, D, C, B, A, S}
 @export_category("Tower Details")
 @export var durability_mult: float = 1.5
 @export var init_durability: float = 100
-@export var damage: float = 20
+@export var damage: float = 10
+@export var damage_mult: float = 2
 @export var parts_dropped: Dictionary[String, int]
-@export var attack_speed: int = 2000
+@export var attack_speed: int = 30
 
 @export_category("References")
 @export var inventory_manager: InventoryManager
@@ -40,20 +41,21 @@ func _ready():
 	print(random_frame)
 	animator.animation = random_frame
 	durability = init_durability * (durability_mult * (rank + 1))
+	damage = damage * (damage_mult * (rank + 1))
 
 func _attack() -> void:
 	durability -= 1
 
 func _physics_process(delta) -> void:
-	#print(enemy_detection.get_overlapping_areas())
 	var min_dist = INF
 	for enemy_area: Area2D in enemy_detection.get_overlapping_areas():
-		var dist = position.distance_squared_to(enemy_area.get_parent().position)
-		if dist < min_dist:
-			min_dist = dist
-			selected_enemy = enemy_area.get_parent()
-			animator.animation = str(random_frame) + "shoot"
-	if enemy_detection.get_overlapping_areas().is_empty():
+		if enemy_area.get_parent() is BaseEnemy:
+			var dist = position.distance_squared_to(enemy_area.get_parent().position)
+			if dist < min_dist:
+				min_dist = dist
+				selected_enemy = enemy_area.get_parent()
+				animator.animation = str(random_frame) + "shoot"
+	if !"EnemyArea" in str(enemy_detection.get_overlapping_areas()):
 		selected_enemy = null
 		animator.animation = str(random_frame)
 			
@@ -69,9 +71,8 @@ func _physics_process(delta) -> void:
 		animator.get_material().set_shader_parameter("intensity", dithering_intensity)
 		dithering_intensity += delta
 		
-	while cooldown > 0:
+	if cooldown > 0:
 		cooldown -= 1
-		await get_tree().physics_frame
 	if cooldown <= 0:
 		if is_instance_valid(selected_enemy):
 			_attack()

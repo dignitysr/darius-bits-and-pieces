@@ -1,3 +1,4 @@
+class_name Mailbox
 extends BaseTower
 
 func _attack() -> void:
@@ -6,4 +7,4 @@ func _attack() -> void:
 	mail_instance.position = spawner.global_position
 	mail_instance.enemy = selected_enemy
 	mail_instance.damage = damage
-	owner.add_child(mail_instance)
+	inventory_manager.add_child(mail_instance)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0nclxadp8xws"]
+[gd_scene load_steps=14 format=3 uid="uid://c0nclxadp8xws"]
 
 [ext_resource type="Script" uid="uid://c3d6hdxo3ibrw" path="res://scenes/level/parts_manager.gd" id="1_ebx1s"]
 [ext_resource type="Resource" uid="uid://b3hvljlpew5e4" path="res://scenes/level/object_list.tres" id="2_upopr"]
@@ -8,13 +8,18 @@
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="4_t6xnl"]
 [ext_resource type="PackedScene" uid="uid://dflehm1nse4cx" path="res://scenes/UI/craftable.tscn" id="5_3ipv6"]
 [ext_resource type="Texture2D" uid="uid://82p0pdd7hmbp" path="res://assets/UI/sprites/craft_open.png" id="7_8xnqg"]
+[ext_resource type="Texture2D" uid="uid://c8yfpxu12d6w7" path="res://scenes/towers/mailbox/assets.png" id="9_wq2a1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_466n5"]
+atlas = ExtResource("9_wq2a1")
+region = Rect2(0, 0, 16, 32)
 
 [sub_resource type="Animation" id="Animation_8xnqg"]
 length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../UI/HBoxContainer:size:x")
+tracks/0/path = NodePath("../UI/CraftContainer:size:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +30,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../UI/HBoxContainer:size:y")
+tracks/1/path = NodePath("../UI/CraftContainer:size:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -40,7 +45,7 @@ length = 0.5
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../UI/HBoxContainer:size:x")
+tracks/0/path = NodePath("../UI/CraftContainer:size:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -51,7 +56,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../UI/HBoxContainer:size:y")
+tracks/1/path = NodePath("../UI/CraftContainer:size:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -68,7 +73,7 @@ _data = {
 
 [node name="BaseLevel" type="Node2D"]
 
-[node name="InvManager" type="Node" parent="."]
+[node name="InvManager" type="Node2D" parent="."]
 script = ExtResource("1_ebx1s")
 recipes = ExtResource("3_7xj1c")
 object_list = ExtResource("2_upopr")
@@ -77,7 +82,8 @@ craftable_panel = ExtResource("5_3ipv6")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+[node name="CraftContainer" type="HBoxContainer" parent="UI"]
+unique_name_in_owner = true
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -88,7 +94,7 @@ grow_horizontal = 0
 grow_vertical = 2
 alignment = 2
 
-[node name="CraftTransButton" type="Button" parent="UI/HBoxContainer"]
+[node name="CraftTransButton" type="Button" parent="UI/CraftContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -97,12 +103,12 @@ theme_override_fonts/font = ExtResource("4_t6xnl")
 toggle_mode = true
 icon = ExtResource("7_8xnqg")
 
-[node name="CraftMenu" type="Panel" parent="UI/HBoxContainer"]
+[node name="CraftMenu" type="Panel" parent="UI/CraftContainer"]
 custom_minimum_size = Vector2(113.205, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/HBoxContainer/CraftMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CraftContainer/CraftMenu"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -112,47 +118,57 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/HBoxContainer/CraftMenu/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/CraftContainer/CraftMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 13.915)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="CraftLabel" type="Label" parent="UI/HBoxContainer/CraftMenu/VBoxContainer/MarginContainer"]
+[node name="CraftLabel" type="Label" parent="UI/CraftContainer/CraftMenu/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_e1fnv")
 text = "Craft"
 
-[node name="HSeparator" type="HSeparator" parent="UI/HBoxContainer/CraftMenu/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="UI/CraftContainer/CraftMenu/VBoxContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(0, 1.135)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Control" type="Control" parent="UI/HBoxContainer/CraftMenu/VBoxContainer"]
+[node name="Control" type="Control" parent="UI/CraftContainer/CraftMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 4.905)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="UI/HBoxContainer/CraftMenu/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/CraftContainer/CraftMenu/VBoxContainer"]
 custom_minimum_size = Vector2(9.46, 195.675)
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="CraftableContainer" type="VBoxContainer" parent="UI/HBoxContainer/CraftMenu/VBoxContainer/ScrollContainer"]
+[node name="CraftableContainer" type="VBoxContainer" parent="UI/CraftContainer/CraftMenu/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(72.895, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="CraftPanel" parent="UI/HBoxContainer/CraftMenu/VBoxContainer/ScrollContainer/CraftableContainer" instance=ExtResource("5_3ipv6")]
+[node name="CraftPanel" parent="UI/CraftContainer/CraftMenu/VBoxContainer/ScrollContainer/CraftableContainer" instance=ExtResource("5_3ipv6")]
 layout_mode = 2
 
-[node name="CraftPanel2" parent="UI/HBoxContainer/CraftMenu/VBoxContainer/ScrollContainer/CraftableContainer" instance=ExtResource("5_3ipv6")]
+[node name="CraftPanel2" parent="UI/CraftContainer/CraftMenu/VBoxContainer/ScrollContainer/CraftableContainer" instance=ExtResource("5_3ipv6")]
 layout_mode = 2
+
+[node name="Preview" type="Sprite2D" parent="UI"]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 0, 0.53333336)
+texture = SubResource("AtlasTexture_466n5")
+
+[node name="PlaceValidator" type="RayCast2D" parent="UI/Preview"]
+unique_name_in_owner = true
+target_position = Vector2(0, 22)
+collision_mask = 8
 
 [node name="TransitionPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
