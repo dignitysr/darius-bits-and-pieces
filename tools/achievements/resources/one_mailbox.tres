@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://34uw8ycx273h"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_aht71"]
+
+[resource]
+script = ExtResource("1_aht71")
+achievement_name = "First Steps"
+description = "Craft your first mailbox!"
+metadata/_custom_type_script = "uid://clsfgafsghq51"

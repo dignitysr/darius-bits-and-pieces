@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjv0jntgyj772"]
+
+[ext_resource type="Script" uid="uid://cef57jqwdcwk4" path="res://tools/achievements/achievement_manager.gd" id="1_2tw4h"]
+[ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="2_72v5p"]
+[ext_resource type="FontFile" uid="uid://dr00saqh1n260" path="res://assets/UI/fonts/Timetwist-Regular.ttf" id="3_r70fx"]
+
+[sub_resource type="Animation" id="Animation_ishdg"]
+resource_name = "slide"
+length = 4.0
+step = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AchievementPanel:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 0),
+"points": PackedFloat32Array(-111, -0.25, 0, 0.058582965, 55, 0, -0.19536859, -12, 0, 0, 0, -0.16666667, 0, 0, 0, -111, -0.5, 46, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 3.5, 4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AchievementPanel:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.083333336, 0, 0, 0, 0, -0.16666667, 0, 0, 0, 0, -0.083333336, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2)
+}
+
+[sub_resource type="Animation" id="Animation_k6885"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AchievementPanel:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-111, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AchievementPanel:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0nvke"]
+_data = {
+&"RESET": SubResource("Animation_k6885"),
+&"slide": SubResource("Animation_ishdg")
+}
+
+[node name="AchievementManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2tw4h")
+
+[node name="AchievementPanel" type="PanelContainer" parent="."]
+clip_contents = true
+layout_mode = 0
+anchor_right = 0.23125
+anchor_bottom = 0.2037037
+offset_left = -111.0
+offset_right = -111.0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AchievementPanel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="AchievementPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_72v5p")
+bbcode_enabled = true
+text = "[rainbow][wave]Achievement!"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="AchievementPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="AchievementName" type="Label" parent="AchievementPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_r70fx")
+theme_override_font_sizes/font_size = 8
+text = "Encounter with the Enemy"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TransPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_0nvke")
+}

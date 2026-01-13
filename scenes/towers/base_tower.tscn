@@ -19,6 +19,9 @@ script = ExtResource("1_jksl4")
 [node name="Animator" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_rtahd")
 
+[node name="Spawner" type="Node2D" parent="."]
+unique_name_in_owner = true
+
 [node name="PickupDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupDetection"]

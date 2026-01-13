@@ -44,7 +44,7 @@ region = Rect2(96, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cmop5"]
 atlas = ExtResource("5_kp23f")
-region = Rect2(104, 49, 24, 31)
+region = Rect2(104, 48, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjykk"]
 atlas = ExtResource("2_1jf8q")
@@ -52,7 +52,7 @@ region = Rect2(120, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v16h3"]
 atlas = ExtResource("5_kp23f")
-region = Rect2(128, 49, 24, 31)
+region = Rect2(128, 48, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xh7n7"]
 atlas = ExtResource("2_1jf8q")
@@ -60,7 +60,7 @@ region = Rect2(144, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xugwd"]
 atlas = ExtResource("5_kp23f")
-region = Rect2(152, 49, 24, 31)
+region = Rect2(152, 48, 24, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ta3pg"]
 animations = [{
@@ -184,5 +184,8 @@ mail = ExtResource("3_kp23f")
 
 [node name="Animator" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ta3pg")
-animation = &"7shoot"
-frame_progress = 0.252399
+animation = &"6shoot"
+frame_progress = 0.18605888
+
+[node name="Spawner" parent="." index="1"]
+position = Vector2(-8, -6)

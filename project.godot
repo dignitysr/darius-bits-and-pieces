@@ -15,6 +15,11 @@ run/main_scene="uid://cl6foq6oixgrr"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+AchievementManager="*res://tools/achievements/achievement_manager.tscn"
+Save="*res://tools/save.gd"
+
 [display]
 
 window/size/viewport_width=480

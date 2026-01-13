@@ -19,7 +19,7 @@ enum Rank {F, D, C, B, A, S}
 ## Rank: Number},
 ## Part name: etc}
 var parts: Dictionary = {
-	"paper": {Rank.S: 5, Rank.A: 4, Rank.B: 2, Rank.C: 6}, 
+	"paper": {Rank.S: 5, Rank.A: 4, Rank.B: 2, Rank.C: 63454213454}, 
 	"scrap": {Rank.S: 3, Rank.A: 5, Rank.B: 2, Rank.C: 3}}
 	
 func _ready() -> void:

@@ -6,6 +6,7 @@ enum Rank {F, D, C, B, A, S}
 @onready var animator: AnimatedSprite2D = $Animator
 @onready var enemy_detection: Area2D = $EnemyDetection
 @onready var pickup_detection: Area2D = $PickupDetection
+@onready var spawner: Node2D = %Spawner
 
 @export_category("Tower Information")
 @export var tower_name: String = "Darius Goat"
