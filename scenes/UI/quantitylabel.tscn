@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5k6bsbagrg4b"]
+[gd_scene load_steps=6 format=3 uid="uid://b5k6bsbagrg4b"]
 
-[ext_resource type="Script" path="res://scenes/UI/quantitylabel.gd" id="1_3p21j"]
+[ext_resource type="Script" uid="uid://bfpb340jttsme" path="res://scenes/UI/quantitylabel.gd" id="1_3p21j"]
 [ext_resource type="Theme" uid="uid://csbmn3ra74l3n" path="res://assets/UI/base_theme.tres" id="2_3p21j"]
 [ext_resource type="Texture2D" uid="uid://3rapfa1hagkb" path="res://assets/UI/sprites/icons.png" id="2_40w5k"]
 [ext_resource type="FontFile" uid="uid://cve6xpuuckgvx" path="res://assets/UI/fonts/pixelFJ8pt1__.TTF" id="4_3p21j"]
@@ -8,10 +8,6 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8txe"]
 atlas = ExtResource("2_40w5k")
 region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ppwl"]
-atlas = ExtResource("2_40w5k")
-region = Rect2(48, 0, 16, 16)
 
 [node name="Part" type="BoxContainer"]
 custom_minimum_size = Vector2(22.105, 7.665)
@@ -41,19 +37,22 @@ texture = SubResource("AtlasTexture_c8txe")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Icon"]
-visible = false
+[node name="Rank" type="TextureRect" parent="HBoxContainer/Icon"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2, 0)
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -16.0
+offset_left = -7.0
+offset_top = -6.0
+offset_right = 1.0
+offset_bottom = 2.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = SubResource("AtlasTexture_4ppwl")
+expand_mode = 4
 stretch_mode = 4
 
 [node name="Amount" type="Label" parent="HBoxContainer"]

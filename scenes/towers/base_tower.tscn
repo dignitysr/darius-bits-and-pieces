@@ -8,9 +8,10 @@ shader = ExtResource("2_1ilgo")
 shader_parameter/intensity = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jksl4"]
+radius = 16.27882
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fa6h"]
-radius = 13.61
+radius = 46.173584
 
 [node name="BaseTower" type="CharacterBody2D"]
 script = ExtResource("1_jksl4")
@@ -19,8 +20,6 @@ script = ExtResource("1_jksl4")
 material = SubResource("ShaderMaterial_rtahd")
 
 [node name="PickupDetection" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupDetection"]
 shape = SubResource("CircleShape2D_jksl4")

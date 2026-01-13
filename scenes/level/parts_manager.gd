@@ -6,6 +6,7 @@ enum Rank {F, D, C, B, A, S}
 @export var recipes: Recipes
 @export var object_list: ObjectList
 @export var ranks_resource: RanksResource
+@export var small_ranks_resource: RanksResource
 @export var craftable_panel: PackedScene
 
 @onready var craft_trans_button: Button = %CraftTransButton
@@ -18,7 +19,7 @@ enum Rank {F, D, C, B, A, S}
 ## Rank: Number},
 ## Part name: etc}
 var parts: Dictionary = {
-	"paper": {Rank.S: 5, Rank.A: 4, Rank.B: 2, Rank.C: 99}, 
+	"paper": {Rank.S: 5, Rank.A: 4, Rank.B: 2, Rank.C: 6}, 
 	"scrap": {Rank.S: 3, Rank.A: 5, Rank.B: 2, Rank.C: 3}}
 	
 func _ready() -> void:
@@ -47,6 +48,7 @@ func instance_craftable(recipe: String, valid_ranks: Array, is_final: bool) -> v
 	craftable.inventory = self
 	craftable.recipes = recipes
 	craftable.ranks_resource = ranks_resource
+	craftable.small_ranks_resource = small_ranks_resource
 	craftable.tower = recipe
 	craftable.valid_recipes = valid_ranks
 	craftable_container.add_child(craftable)

@@ -1,0 +1,188 @@
+[gd_scene load_steps=21 format=3 uid="uid://dsyr8mm2i37he"]
+
+[ext_resource type="PackedScene" uid="uid://b5j3fw6p1qo80" path="res://scenes/towers/base_tower.tscn" id="1_avs0o"]
+[ext_resource type="Texture2D" uid="uid://c8yfpxu12d6w7" path="res://scenes/towers/mailbox/assets.png" id="2_1jf8q"]
+[ext_resource type="Script" uid="uid://44t8mld27brk" path="res://scenes/towers/mailbox/mailbox.gd" id="2_8n61u"]
+[ext_resource type="PackedScene" uid="uid://c0ufyyp0yfay8" path="res://scenes/towers/mail.tscn" id="3_kp23f"]
+[ext_resource type="Texture2D" uid="uid://6mloo634fywo" path="res://scenes/towers/mailbox/shooting.png" id="5_kp23f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n61u"]
+atlas = ExtResource("2_1jf8q")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta3pg"]
+atlas = ExtResource("5_kp23f")
+region = Rect2(8, 48, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp23f"]
+atlas = ExtResource("2_1jf8q")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcm1b"]
+atlas = ExtResource("5_kp23f")
+region = Rect2(32, 48, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipbwf"]
+atlas = ExtResource("2_1jf8q")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd1bg"]
+atlas = ExtResource("5_kp23f")
+region = Rect2(56, 49, 24, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgtj1"]
+atlas = ExtResource("2_1jf8q")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ais4g"]
+atlas = ExtResource("5_kp23f")
+region = Rect2(80, 49, 24, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y65ag"]
+atlas = ExtResource("2_1jf8q")
+region = Rect2(96, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmop5"]
+atlas = ExtResource("5_kp23f")
+region = Rect2(104, 49, 24, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjykk"]
+atlas = ExtResource("2_1jf8q")
+region = Rect2(120, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v16h3"]
+atlas = ExtResource("5_kp23f")
+region = Rect2(128, 49, 24, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh7n7"]
+atlas = ExtResource("2_1jf8q")
+region = Rect2(144, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xugwd"]
+atlas = ExtResource("5_kp23f")
+region = Rect2(152, 49, 24, 31)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ta3pg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n61u")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ta3pg")
+}],
+"loop": true,
+"name": &"1shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp23f")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcm1b")
+}],
+"loop": true,
+"name": &"2shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipbwf")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hd1bg")
+}],
+"loop": true,
+"name": &"3shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgtj1")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ais4g")
+}],
+"loop": true,
+"name": &"4shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y65ag")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmop5")
+}],
+"loop": true,
+"name": &"5shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjykk")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v16h3")
+}],
+"loop": true,
+"name": &"6shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xh7n7")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xugwd")
+}],
+"loop": true,
+"name": &"7shoot",
+"speed": 5.0
+}]
+
+[node name="Mailbox" instance=ExtResource("1_avs0o")]
+script = ExtResource("2_8n61u")
+variant_num = 7
+mail = ExtResource("3_kp23f")
+
+[node name="Animator" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_ta3pg")
+animation = &"7shoot"
+frame_progress = 0.252399

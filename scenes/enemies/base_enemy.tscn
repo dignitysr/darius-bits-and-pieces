@@ -1,16 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4pq0ef4dqlxw"]
+[gd_scene load_steps=5 format=3 uid="uid://c4pq0ef4dqlxw"]
 
 [ext_resource type="Script" uid="uid://bhye2cruqvesn" path="res://scenes/enemies/base_enemy.gd" id="1_r5xb8"]
+[ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/dithering.gdshader" id="2_qf3h2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkvl6"]
+shader = ExtResource("2_qf3h2")
+shader_parameter/intensity = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5xb8"]
 size = Vector2(10, 12)
 
 [node name="BaseEnemy" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_r5xb8")
 
 [node name="Animator" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_lkvl6")
 
 [node name="EnemyArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 6
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
 shape = SubResource("RectangleShape2D_r5xb8")

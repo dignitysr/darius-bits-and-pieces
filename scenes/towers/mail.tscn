@@ -1,3 +1,19 @@
-[gd_scene format=3 uid="uid://c0ufyyp0yfay8"]
+[gd_scene load_steps=4 format=3 uid="uid://c0ufyyp0yfay8"]
+
+[ext_resource type="Texture2D" uid="uid://cqg8sn21yt64j" path="res://scenes/towers/mail.png" id="1_m6acy"]
+[ext_resource type="Script" uid="uid://cipewfavtv6q4" path="res://scenes/towers/mail.gd" id="1_pv7cs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pv7cs"]
+size = Vector2(12, 8)
 
 [node name="Mail" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_pv7cs")
+rot_speed = 60
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_m6acy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pv7cs")

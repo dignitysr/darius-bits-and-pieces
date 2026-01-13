@@ -17,6 +17,7 @@ extends PanelContainer
 @export var object_list: ObjectList
 @export var recipes: Recipes
 @export var ranks_resource: RanksResource
+@export var small_ranks_resource: RanksResource
 
 
 var tower: String = "mailbox"
@@ -35,16 +36,21 @@ func direct_image(texture: Texture2D) -> ImageTexture:
 	var image = texture.get_image()
 	return ImageTexture.create_from_image(image)
 
-func populate_part(part: String, parent: Control, amount: int) -> void:
+func populate_part(part: String, parent: Control, amount: int, rank = -1) -> void:
 	var quantity_label = quantity_label_scene.instantiate()
 	quantity_label.icon_texture = direct_image(object_list.parts[part].icon)
 	quantity_label.amount = amount
+	if rank == -1:
+		quantity_label.rank = rank
+	else:
+		quantity_label.rank = direct_image(small_ranks_resource.ranks[rank])
 	parent.add_child(quantity_label)
 	
 func populate_rank(rank: int) -> void:
 	var rank_panel = rank_scene.instantiate()
 	rank_panel.craft_panel = self
 	rank_panel.inventory = inventory
+	rank_panel.object_list = object_list
 	rank_panel.ranks_resource = ranks_resource
 	rank_panel.rank = rank
 	ranks_container.add_child(rank_panel)
