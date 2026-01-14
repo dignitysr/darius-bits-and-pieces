@@ -1,13 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://cqhan3bhxm6h6"]
+[gd_scene load_steps=23 format=3 uid="uid://cqhan3bhxm6h6"]
 
 [ext_resource type="Script" uid="uid://dsh2si3vgye6m" path="res://scenes/player/classes/character.gd" id="1_gmlin"]
 [ext_resource type="Texture2D" uid="uid://djal0tc847s5a" path="res://scenes/player/assets/new_sheet.png" id="2_qek5x"]
 [ext_resource type="Script" uid="uid://dxostdknl0om5" path="res://scenes/player/classes/animator.gd" id="3_p47bc"]
+[ext_resource type="AudioStream" uid="uid://ccr5b58udxomh" path="res://scenes/player/assets/sounds/jump.wav" id="4_5gtgg"]
+[ext_resource type="AudioStream" uid="uid://dtsirxyynp8g0" path="res://scenes/player/assets/sounds/footstep0.wav" id="4_fm80t"]
 [ext_resource type="Script" uid="uid://dqo7g8nnhmo30" path="res://scenes/player/states/ground.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://cp02xg1rj5qa7" path="res://scenes/player/states/air.gd" id="5_75vfm"]
+[ext_resource type="AudioStream" uid="uid://cugq4griv3wdo" path="res://scenes/player/assets/sounds/footstep1.wav" id="5_gx1jg"]
 [ext_resource type="Script" uid="uid://yag527r55u83" path="res://scenes/player/classes/rotationmanager.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://cf38apg2cgbbb" path="res://scenes/player/states/jump.gd" id="5_qek5x"]
 [ext_resource type="Script" uid="uid://cgvo2naoyxku4" path="res://scenes/player/states/none.gd" id="6_0owmy"]
+[ext_resource type="AudioStream" uid="uid://ddb02k8r8tscn" path="res://scenes/player/assets/sounds/footstep2.wav" id="6_ugbui"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
 atlas = ExtResource("2_qek5x")
@@ -84,6 +88,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fm80t"]
 size = Vector2(11, 15.5)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fcs02"]
+random_volume_offset_db = 0.5
+streams_count = 3
+stream_0/stream = ExtResource("4_fm80t")
+stream_1/stream = ExtResource("5_gx1jg")
+stream_2/stream = ExtResource("6_ugbui")
+
 [node name="Player" type="CharacterBody2D"]
 physics_interpolation_mode = 1
 z_index = 2
@@ -103,17 +114,30 @@ script = ExtResource("3_p47bc")
 position = Vector2(0.5, 0.75)
 shape = SubResource("RectangleShape2D_fm80t")
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Footstep" type="AudioStreamPlayer2D" parent="Node2D"]
+stream = SubResource("AudioStreamRandomizer_fcs02")
+bus = &"Sounds"
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="Node2D"]
+stream = ExtResource("4_5gtgg")
+bus = &"Sounds"
+
 [node name="PhysicsStates" type="Node" parent="."]
 
-[node name="Ground" type="Node" parent="PhysicsStates" node_paths=PackedStringArray("air_state", "rotation_manager")]
+[node name="Ground" type="Node" parent="PhysicsStates" node_paths=PackedStringArray("footstep_sound", "air_state", "rotation_manager")]
 script = ExtResource("4_lvxji")
+footstep_sound = NodePath("../../Node2D/Footstep")
+footstep_interval = 12
 move_speed = 2.0
 air_state = NodePath("../Air")
 rotation_manager = NodePath("../../RotationManager")
 animation = "idle"
 
-[node name="Jump" type="Node" parent="PhysicsStates/Ground" node_paths=PackedStringArray("air_state")]
+[node name="Jump" type="Node" parent="PhysicsStates/Ground" node_paths=PackedStringArray("jump_sound", "air_state")]
 script = ExtResource("5_qek5x")
+jump_sound = NodePath("../../../Node2D/Jump")
 air_state = NodePath("../../Air")
 jump_power = 1.0
 

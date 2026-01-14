@@ -1,6 +1,10 @@
 extends PhysicsState
 
 
+@export var footstep_sound: AudioStreamPlayer2D
+@export var footstep_interval: int
+var next_step_frames: int
+
 @export var move_speed: float = 8
 @export var coyote_frames: int = 2
 @export var air_state: PhysicsState
@@ -59,6 +63,13 @@ func _update() -> void:
 		character.vel.x += (gain - character.vel.x) * math_util.ease(accel)
 		if allow_anim && !is_equal_approx(character.vel.x, 0.0):
 			animation = "walk"
+		
+		next_step_frames -= 1
+		if next_step_frames <= 0:
+			var sound_scale: float = abs(move_speed / character.vel.x)
+			next_step_frames = int(float(footstep_interval) * sound_scale)
+			next_step_frames = min(next_step_frames, footstep_interval * 2)
+			footstep_sound.play()
 	else:
 		var friction: float = ice_friction_div if character.on_ice else friction_div
 		var subtract: float = ice_friction_sub if character.on_ice else friction_sub
@@ -74,6 +85,8 @@ func _physics_process(_delta: float) -> void:
 		
 func _on_enter() -> void:
 	if character.vel.x > 0:
+		if animation != "walk":
+			next_step_frames = 0
 		animation = "walk"
 	while !is_equal_approx(abs(sprite_rot), rotation_manager.angle):
 		sprite_rot = lerp_angle(sprite_rot, -rotation_manager.angle, math_util.FIXED_DELTA*rotate_speed)
