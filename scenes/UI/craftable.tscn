@@ -64,6 +64,26 @@ texture = ExtResource("1_qfitj")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Shadow" type="TextureRect" parent="VBoxContainer/NamePanel/HBoxContainer/TowerTexture"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 0.2509804)
+show_behind_parent = true
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_qfitj")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/NamePanel/HBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
@@ -82,7 +102,7 @@ text = "Mailbox"
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 2
+theme_override_constants/separation = -4
 alignment = 1
 
 [node name="RankPanel" type="PanelContainer" parent="VBoxContainer"]

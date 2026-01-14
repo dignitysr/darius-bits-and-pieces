@@ -2,6 +2,8 @@ class_name CraftablePanel
 extends PanelContainer
 
 @onready var tower_texture: TextureRect = %TowerTexture
+@onready var shadow: TextureRect = %Shadow
+
 @onready var name_label: Label = %Name
 @onready var quantity_container: VBoxContainer = %QuantityContainer
 @onready var rank_selection_button: Button = %RankSelectButton
@@ -28,6 +30,7 @@ func _ready() -> void:
 	rank_selection_button.connect("button_down", on_rank_selection_pressed)
 	name_label.text = tower.capitalize()
 	tower_texture.texture = direct_image(object_list.parts[tower].icon)
+	shadow.texture = tower_texture.texture
 	
 	for part: String in recipes.recipes[tower]:
 		populate_part(part, quantity_container, recipes.recipes[tower][part])

@@ -8,7 +8,7 @@ static func ease(param: float) -> float:
 static func friction(param: float) -> float:
 	return 1.0 - (1.0 / param)
 
-static func apply_gravity(vel: float, threshold_vel: float = 2, rise_grav: float = 0.3, fall_grav: float = 0.4, fall_fric: float = 100) -> float:
+static func apply_gravity(vel: float, threshold_vel: float = 0, rise_grav: float = 0.2, fall_grav: float = 0.3, fall_fric: float = 100) -> float:
 	if vel < threshold_vel:
 		vel += rise_grav
 	else:

@@ -7,13 +7,14 @@ const AUDIO_CUT_TIME: float = 0.35
 
 @export var air_state: PhysicsState
 @export var jump_power: float = 6.5
-@export var jump_hold: float = 2
 @export var fall_threshold: float = 3
 @export var buffer_frames: int = 3
 
+@export var variable_jump_factor: float = 1
+var jump_released: bool
+
 var tween: Tween
 var jump_buffer: int = 0
-var jump_released: bool
 
 
 ## runs this check every frame while inactive and 
@@ -34,15 +35,12 @@ func _transition_check() -> String:
 ## runs every frame while active
 func _update() -> void:
 	if not character.input["jump"][0] and not jump_released:
+		character.vel.y *= variable_jump_factor
 		jump_released = true
 		tween = create_tween()
 		tween.set_ease(Tween.EASE_IN)
 		tween.set_trans(Tween.TRANS_QUART)
 		tween.tween_property(jump_sound, "volume_linear", 0, AUDIO_CUT_TIME)
-		
-		
-	if air_state.in_air_counter <= 3 and character.vel.y < 0 and character.input["jump"][0]:
-		character.vel.y -= jump_hold
 
 
 ## runs once when this state begins being active

@@ -139,7 +139,8 @@ animation = "idle"
 script = ExtResource("5_qek5x")
 jump_sound = NodePath("../../../Node2D/Jump")
 air_state = NodePath("../../Air")
-jump_power = 1.0
+jump_power = 5.5
+variable_jump_factor = 0.63
 
 [node name="Air" type="Node" parent="PhysicsStates" node_paths=PackedStringArray("ground_state")]
 script = ExtResource("5_75vfm")
