@@ -23,9 +23,9 @@ func reload_achievements() -> void:
 		var achievement_button: Button = achievement_button_scene.instantiate()
 		achievement_button.text = achievement_name
 		if achievements[achievement_name].unlocked:
-			achievement_button.self_modulate = unlocked_color
+			achievement_button.modulate = unlocked_color
 		else:
-			achievement_button.self_modulate = locked_color
+			achievement_button.modulate = locked_color
 		achievement_container.add_child(achievement_button)
 		achievement_button.connect("button_down", achievement_pressed.bind(achievement_name))
 	achievement_desc.text = achievements[achievements.keys()[0]].description

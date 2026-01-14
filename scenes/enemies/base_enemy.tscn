@@ -1,18 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4pq0ef4dqlxw"]
+[gd_scene load_steps=6 format=3 uid="uid://c4pq0ef4dqlxw"]
 
 [ext_resource type="Script" uid="uid://bhye2cruqvesn" path="res://scenes/enemies/base_enemy.gd" id="1_r5xb8"]
-[ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/dithering.gdshader" id="2_qf3h2"]
+[ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="2_qf3h2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lkvl6"]
 shader = ExtResource("2_qf3h2")
+shader_parameter/screen_mode = true
+shader_parameter/num_colors = 0
+shader_parameter/precision = 0.1
 shader_parameter/intensity = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5xb8"]
-size = Vector2(10, 12)
+size = Vector2(10, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qf3h2"]
 
 [node name="BaseEnemy" type="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 16
+collision_mask = 16
 script = ExtResource("1_r5xb8")
 
 [node name="Animator" type="AnimatedSprite2D" parent="."]
@@ -28,3 +33,11 @@ collision_mask = 6
 shape = SubResource("RectangleShape2D_r5xb8")
 
 [node name="PathPlayer" type="AnimationPlayer" parent="."]
+
+[node name="WallFinder" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(30, 0)
+collision_mask = 8
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qf3h2")

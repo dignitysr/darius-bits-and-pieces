@@ -21,6 +21,7 @@ custom_minimum_size = Vector2(70, 25.235)
 size_flags_horizontal = 2
 size_flags_vertical = 3
 mouse_filter = 2
+theme = ExtResource("2_se46u")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_yfdkm")
 script = ExtResource("1_a1seb")
 quantity_label_scene = ExtResource("4_e0ai8")

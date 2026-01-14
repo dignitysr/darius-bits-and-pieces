@@ -24,8 +24,8 @@ var tower_placed: bool = false
 ## Rank: Number},
 ## Part name: etc}
 var parts: Dictionary = {
-	"paper": {Rank.S: 5, Rank.A: 4, Rank.B: 2, Rank.C: 63454213454, Rank.F: 5}, 
-	"scrap": {Rank.S: 3, Rank.A: 5, Rank.B: 2, Rank.C: 3, Rank.F: 5}}
+	"paper": {Rank.S: 5, Rank.A: 4, Rank.B: 4, Rank.C: 63454213454, Rank.F: 5}, 
+	"scrap": {Rank.S: 5, Rank.A: 5, Rank.B: 5, Rank.C: 3, Rank.F: 5}}
 	
 func _ready() -> void:
 	craft_trans_button.connect("button_down", on_craft_trans_pressed)

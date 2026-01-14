@@ -1,6 +1,35 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://csbmn3ra74l3n"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://csbmn3ra74l3n"]
 
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="1_r5wb6"]
+[ext_resource type="Texture2D" uid="uid://dvtll0svxa6ad" path="res://scenes/UI/postcard_new.png" id="2_mdekv"]
+[ext_resource type="Texture2D" uid="uid://bpuyyxr8cjyex" path="res://scenes/UI/panel_style.png" id="2_xuk4r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cluda"]
+texture = ExtResource("2_mdekv")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 17, 17)
+modulate_color = Color(0.28291652, 0.14549997, 0.97, 0.6862745)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r82wg"]
+texture = ExtResource("2_mdekv")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 17, 17)
+modulate_color = Color(0.28235295, 0.14509805, 0.96862745, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qsdim"]
+texture = ExtResource("2_mdekv")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 17, 17)
+modulate_color = Color(0.18666656, 0.095999986, 0.64, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xuk4r"]
 content_margin_left = 4.0
@@ -25,18 +54,58 @@ expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mdekv"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mdekv"]
+texture = ExtResource("2_xuk4r")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 48, 48)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xdgv2"]
+texture = ExtResource("2_xuk4r")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 48, 48)
+
 [resource]
 default_font = ExtResource("1_r5wb6")
-default_font_size = 18
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0)
-Label/constants/line_spacing = 3
-Label/constants/outline_size = 0
-Label/constants/shadow_offset_x = 1
+default_font_size = 16
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_r5wb6")
+Button/styles/hover = SubResource("StyleBoxTexture_cluda")
+Button/styles/normal = SubResource("StyleBoxTexture_r82wg")
+Button/styles/pressed = SubResource("StyleBoxTexture_qsdim")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_color = Color(0.47058824, 0.7529412, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.3019608)
+Label/constants/line_spacing = 12
+Label/constants/outline_size = 2
+Label/constants/shadow_offset_x = 2
 Label/constants/shadow_offset_y = 1
-Label/constants/shadow_outline_size = 1
+Label/constants/shadow_outline_size = 2
 Label/font_sizes/font_size = 16
 Label/fonts/font = ExtResource("1_r5wb6")
 Label/styles/focus = SubResource("StyleBoxFlat_xuk4r")
 Label/styles/normal = SubResource("StyleBoxEmpty_mdekv")
+OptionButton/colors/font_color = Color(1, 1, 1, 1)
+OptionButton/font_sizes/font_size = 16
+Panel/styles/panel = SubResource("StyleBoxTexture_mdekv")
+PanelContainer/styles/panel = null
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_outline_color = Color(0.47058824, 0.7529412, 1, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.3019608)
+RichTextLabel/constants/outline_size = 2
+RichTextLabel/constants/shadow_offset_x = 2
+RichTextLabel/constants/shadow_offset_y = 2
+RichTextLabel/constants/shadow_outline_size = 3
+RichTextLabel/fonts/normal_font = ExtResource("1_r5wb6")
+TabContainer/styles/panel = SubResource("StyleBoxTexture_xdgv2")

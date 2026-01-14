@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://b0xp3g0fjtowr"]
+
+[ext_resource type="Texture2D" uid="uid://3k7uex82iaq8" path="res://tools/transition_manager/dither_frame1.png" id="1_36hgi"]
+[ext_resource type="Script" uid="uid://cxr0ilpk1cjgl" path="res://tools/transition_manager/transition_manager.gd" id="1_e26qj"]
+[ext_resource type="Texture2D" uid="uid://mkqqxir6fxog" path="res://tools/transition_manager/dither_frame2.png" id="2_e26qj"]
+[ext_resource type="Texture2D" uid="uid://b5lpditppxynb" path="res://tools/transition_manager/dither_frame3.png" id="3_66qgc"]
+[ext_resource type="Texture2D" uid="uid://j6ho526p4hwy" path="res://tools/transition_manager/dither_frame4.png" id="4_vpdli"]
+[ext_resource type="Texture2D" uid="uid://cmgm2pw5k83gx" path="res://tools/transition_manager/dither_frame5.png" id="5_t70pp"]
+[ext_resource type="Texture2D" uid="uid://c1sgpjatyb7tn" path="res://tools/transition_manager/dither_frame6.png" id="6_p0h1s"]
+[ext_resource type="Texture2D" uid="uid://csfdl8e6iboi1" path="res://tools/transition_manager/dither_frame7.png" id="7_vykdb"]
+
+[sub_resource type="Animation" id="Animation_jhlc0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_e26qj"]
+resource_name = "dither"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3, 0.40000004, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_36hgi"), ExtResource("2_e26qj"), ExtResource("3_66qgc"), ExtResource("4_vpdli"), ExtResource("5_t70pp"), ExtResource("6_p0h1s"), ExtResource("7_vykdb")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_66qgc"]
+_data = {
+&"RESET": SubResource("Animation_jhlc0"),
+&"dither": SubResource("Animation_e26qj")
+}
+
+[node name="TransitionManager" type="CanvasLayer"]
+script = ExtResource("1_e26qj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+clip_children = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_66qgc")
+}

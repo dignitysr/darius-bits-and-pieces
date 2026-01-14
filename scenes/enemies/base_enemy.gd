@@ -2,10 +2,14 @@ class_name BaseEnemy
 extends CharacterBody2D
 
 enum Rank {F, D, C, B, A, S}
+const GRAVITY = 10
+const JUMP_POW = 9
+const SAFETY_MARGIN = 20
 
 @onready var pathplayer = $PathPlayer
 @onready var enemy_area = %EnemyArea
 @onready var animator = %Animator
+@onready var wall_finder = %WallFinder
 
 var dead: bool = false
 var dithering_intensity: float = 0
@@ -13,22 +17,38 @@ var dithering_intensity: float = 0
 @export_category("Enemy Info")
 @export var enemy_name: String
 @export var enemy_path: String = ""
+@export var airborne: bool = false
 
 @export_category("Enemy Stats")
 @export var health: float = 20
 @export var rank: Rank
 @export var death_speed: int = 4
+@export var speed: int = 100
 
 func _ready() -> void:
 	enemy_area.connect("body_entered", on_mail_entered)
-	pathplayer.play(enemy_path)
 	
 func _physics_process(delta):
+	#print(velocity)
+	if !airborne:
+		velocity.x = 50
 	if dead:
 		animator.get_material().set_shader_parameter("intensity", dithering_intensity)
 		dithering_intensity += delta*death_speed
 	if dithering_intensity >= 1:
 		queue_free()
+	if wall_finder.is_colliding() && velocity.is_equal_approx(Vector2(velocity.x, 0)):
+		velocity.y = -sqrt(-2*(GRAVITY/delta)*((get_wall_top_y()-position.y)-SAFETY_MARGIN	))
+		if !airborne:
+			animator.animation = "jump"
+	move_and_slide()
+	if !is_on_floor():
+		velocity.y += GRAVITY
+		if !airborne:
+			animator.animation = "jump"
+	else:
+		if !airborne:
+			animator.animation = "walk"
 
 func on_mail_entered(body: Mail) -> void:
 	health -= body.damage
@@ -36,3 +56,29 @@ func on_mail_entered(body: Mail) -> void:
 	
 	if health <= 0:
 		dead = true
+		
+func get_wall_top_y() -> float:
+	if not wall_finder.is_colliding():
+		return INF
+	
+	var wall_hit_point = wall_finder.get_collision_point()
+	var wall_normal = wall_finder.get_collision_normal()
+	
+	var offset_into_wall = -wall_normal * 4.0 
+	var scan_x = wall_hit_point.x + offset_into_wall.x
+	
+	var max_jump_height = 200.0 
+	var start_pos = Vector2(scan_x, global_position.y - max_jump_height)
+	var end_pos = Vector2(scan_x, global_position.y) 
+	
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(start_pos, end_pos)
+	
+	query.collision_mask = wall_finder.collision_mask 
+	
+	var result = space_state.intersect_ray(query)
+	
+	if result:
+		return result["position"].y
+	else:
+		return INF

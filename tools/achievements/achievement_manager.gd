@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @onready var achievement_name_label = %AchievementName
 @onready var trans_player = %TransPlayer

@@ -1,0 +1,128 @@
+[gd_scene load_steps=17 format=3 uid="uid://cmvevnsrw0wrc"]
+
+[ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_7a07e"]
+[ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="2_k3i2y"]
+[ext_resource type="Texture2D" uid="uid://crglf3jy5ies5" path="res://scenes/enemies/customer/sheet.png" id="3_5mo5y"]
+[ext_resource type="Texture2D" uid="uid://2r6h4vqj00pj" path="res://scenes/enemies/customer/yellow_palette.png" id="4_0ql35"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ql35"]
+shader = ExtResource("2_k3i2y")
+shader_parameter/screen_mode = true
+shader_parameter/num_colors = 12
+shader_parameter/precision = 0.30000001425
+shader_parameter/palette_out = ExtResource("4_0ql35")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3i2y"]
+atlas = ExtResource("3_5mo5y")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_710m3"]
+atlas = ExtResource("3_5mo5y")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7ge8"]
+atlas = ExtResource("3_5mo5y")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c886e"]
+atlas = ExtResource("3_5mo5y")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bm5k"]
+atlas = ExtResource("3_5mo5y")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f7b1v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3i2y")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_710m3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7ge8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c886e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bm5k")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3i2y"]
+size = Vector2(14, 27)
+
+[sub_resource type="Animation" id="Animation_dns35"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animator:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jump"]
+}
+
+[sub_resource type="Animation" id="Animation_k3i2y"]
+resource_name = "test"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animator:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5mo5y"]
+_data = {
+&"RESET": SubResource("Animation_dns35"),
+&"test": SubResource("Animation_k3i2y")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mo5y"]
+size = Vector2(14, 28)
+
+[node name="Customer" instance=ExtResource("1_7a07e")]
+
+[node name="Animator" parent="." index="0"]
+material = SubResource("ShaderMaterial_0ql35")
+sprite_frames = SubResource("SpriteFrames_f7b1v")
+animation = &"jump"
+autoplay = "walk"
+
+[node name="EnemyArea" parent="." index="1"]
+visible = false
+
+[node name="CollisionShape2D" parent="EnemyArea" index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_k3i2y")
+
+[node name="PathPlayer" parent="." index="2"]
+libraries = {
+&"": SubResource("AnimationLibrary_5mo5y")
+}
+
+[node name="Collider" parent="." index="4"]
+visible = false
+shape = SubResource("RectangleShape2D_5mo5y")

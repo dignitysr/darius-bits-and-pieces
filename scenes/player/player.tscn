@@ -85,8 +85,13 @@ animations = [{
 size = Vector2(11, 15.5)
 
 [node name="Player" type="CharacterBody2D"]
+physics_interpolation_mode = 1
 z_index = 2
 script = ExtResource("1_gmlin")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.9999981, -9.536743e-07)

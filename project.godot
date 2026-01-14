@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 AchievementManager="*res://tools/achievements/achievement_manager.tscn"
 Save="*res://tools/save.gd"
 StatsManager="*res://tools/stats_manager.gd"
+TransitionManager="*res://tools/transition_manager/transition_manager.tscn"
 
 [display]
 
@@ -30,10 +31,12 @@ window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
 
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true
+theme/custom="uid://csbmn3ra74l3n"
 
 [input]
 
@@ -74,6 +77,12 @@ back={
 2d_physics/layer_2="Enemy Detection"
 2d_physics/layer_3="Mail Detection"
 2d_physics/layer_4="Ground+Raycast Validator"
+2d_physics/layer_5="Ground + Enemy Collision"
+
+[physics]
+
+common/physics_jitter_fix=0.0
+common/physics_interpolation=true
 
 [rendering]
 

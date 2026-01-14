@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0nclxadp8xws"]
+[gd_scene load_steps=17 format=3 uid="uid://c0nclxadp8xws"]
 
 [ext_resource type="Script" uid="uid://c3d6hdxo3ibrw" path="res://scenes/level/parts_manager.gd" id="1_ebx1s"]
 [ext_resource type="Resource" uid="uid://b3hvljlpew5e4" path="res://scenes/level/object_list.tres" id="2_upopr"]
@@ -8,36 +8,206 @@
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="4_t6xnl"]
 [ext_resource type="PackedScene" uid="uid://dflehm1nse4cx" path="res://scenes/UI/craftable.tscn" id="5_3ipv6"]
 [ext_resource type="Texture2D" uid="uid://82p0pdd7hmbp" path="res://assets/UI/sprites/craft_open.png" id="7_8xnqg"]
+[ext_resource type="Texture2D" uid="uid://bpuyyxr8cjyex" path="res://scenes/UI/panel_style.png" id="9_466n5"]
 [ext_resource type="Texture2D" uid="uid://c8yfpxu12d6w7" path="res://scenes/towers/mailbox/assets.png" id="9_wq2a1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_466n5"]
-atlas = ExtResource("9_wq2a1")
-region = Rect2(0, 0, 16, 32)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_se6ax"]
+texture = ExtResource("9_466n5")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 48, 48)
+
+[sub_resource type="Theme" id="Theme_2qxot"]
+AcceptDialog/fonts/title_font = ExtResource("4_t6xnl")
+AcceptDialog/styles/panel = SubResource("StyleBoxTexture_se6ax")
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = null
+Button/styles/pressed = null
+CheckBox/styles/disabled = null
+CheckBox/styles/focus = null
+CheckBox/styles/hover = null
+CheckBox/styles/hover_pressed = null
+CheckBox/styles/normal = null
+CheckBox/styles/pressed = null
+CheckButton/styles/disabled = null
+CheckButton/styles/focus = null
+CheckButton/styles/hover = null
+CheckButton/styles/hover_pressed = null
+CheckButton/styles/normal = null
+CheckButton/styles/pressed = null
+CodeEdit/styles/completion = null
+CodeEdit/styles/focus = null
+CodeEdit/styles/normal = null
+CodeEdit/styles/read_only = null
+ColorPicker/styles/picker_focus_circle = null
+ColorPicker/styles/picker_focus_rectangle = null
+ColorPicker/styles/sample_focus = null
+ColorPickerButton/styles/disabled = null
+ColorPickerButton/styles/focus = null
+ColorPickerButton/styles/hover = null
+ColorPickerButton/styles/normal = null
+ColorPickerButton/styles/pressed = null
+ColorPresetButton/styles/preset_fg = null
+ColorPresetButton/styles/preset_focus = null
+FlatButton/styles/disabled = null
+FlatButton/styles/hover = null
+FlatButton/styles/normal = null
+FlatButton/styles/pressed = null
+FlatMenuButton/styles/disabled = null
+FlatMenuButton/styles/hover = null
+FlatMenuButton/styles/normal = null
+FlatMenuButton/styles/pressed = null
+FoldableContainer/styles/focus = null
+FoldableContainer/styles/panel = null
+FoldableContainer/styles/title_collapsed_hover_panel = null
+FoldableContainer/styles/title_collapsed_panel = null
+FoldableContainer/styles/title_hover_panel = null
+FoldableContainer/styles/title_panel = null
+GraphEdit/styles/menu_panel = null
+GraphEdit/styles/panel = null
+GraphEdit/styles/panel_focus = null
+GraphEditMinimap/styles/camera = null
+GraphEditMinimap/styles/node = null
+GraphEditMinimap/styles/panel = null
+GraphFrame/styles/panel = null
+GraphFrame/styles/panel_selected = null
+GraphFrame/styles/titlebar = null
+GraphFrame/styles/titlebar_selected = null
+GraphFrameTitleLabel/styles/normal = null
+GraphNode/styles/panel = null
+GraphNode/styles/panel_focus = null
+GraphNode/styles/panel_selected = null
+GraphNode/styles/slot = null
+GraphNode/styles/slot_selected = null
+GraphNode/styles/titlebar = null
+GraphNode/styles/titlebar_selected = null
+GraphNodeTitleLabel/styles/normal = null
+HScrollBar/styles/grabber = null
+HScrollBar/styles/grabber_highlight = null
+HScrollBar/styles/grabber_pressed = null
+HScrollBar/styles/scroll = null
+HScrollBar/styles/scroll_focus = null
+HSeparator/styles/separator = null
+HSlider/styles/grabber_area = null
+HSlider/styles/grabber_area_highlight = null
+HSlider/styles/slider = null
+HSplitContainer/styles/split_bar_background = null
+ItemList/styles/cursor = null
+ItemList/styles/cursor_unfocused = null
+ItemList/styles/focus = null
+ItemList/styles/hovered = null
+ItemList/styles/hovered_selected = null
+ItemList/styles/hovered_selected_focus = null
+ItemList/styles/panel = null
+ItemList/styles/selected = null
+ItemList/styles/selected_focus = null
+Label/styles/focus = null
+Label/styles/normal = null
+LineEdit/styles/focus = null
+LineEdit/styles/normal = null
+LineEdit/styles/read_only = null
+LinkButton/styles/focus = null
+MenuBar/styles/disabled = null
+MenuBar/styles/hover = null
+MenuBar/styles/normal = null
+MenuBar/styles/pressed = null
+MenuButton/styles/disabled = null
+MenuButton/styles/focus = null
+MenuButton/styles/hover = null
+MenuButton/styles/normal = null
+MenuButton/styles/pressed = null
+OptionButton/styles/disabled = null
+OptionButton/styles/disabled_mirrored = null
+OptionButton/styles/focus = null
+OptionButton/styles/hover = null
+OptionButton/styles/hover_mirrored = null
+OptionButton/styles/normal = null
+OptionButton/styles/normal_mirrored = null
+OptionButton/styles/pressed = null
+OptionButton/styles/pressed_mirrored = null
+Panel/styles/panel = SubResource("StyleBoxTexture_se6ax")
+PanelContainer/styles/panel = null
+PopupDialog/styles/panel = null
+PopupMenu/styles/hover = null
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = null
+PopupMenu/styles/separator = null
+PopupPanel/styles/panel = null
+ProgressBar/styles/background = null
+ProgressBar/styles/fill = null
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
+ScrollContainer/styles/focus = null
+ScrollContainer/styles/panel = null
+SpinBox/styles/down_background = null
+SpinBox/styles/down_background_disabled = null
+SpinBox/styles/down_background_hovered = null
+SpinBox/styles/down_background_pressed = null
+SpinBox/styles/field_and_buttons_separator = null
+SpinBox/styles/up_background = null
+SpinBox/styles/up_background_disabled = null
+SpinBox/styles/up_background_hovered = null
+SpinBox/styles/up_background_pressed = null
+SpinBox/styles/up_down_buttons_separator = null
+SplitContainer/styles/split_bar_background = null
+TabBar/styles/button_highlight = null
+TabBar/styles/button_pressed = null
+TabBar/styles/tab_disabled = null
+TabBar/styles/tab_focus = null
+TabBar/styles/tab_hovered = null
+TabBar/styles/tab_selected = null
+TabBar/styles/tab_unselected = null
+TabContainer/styles/panel = null
+TabContainer/styles/tab_disabled = null
+TabContainer/styles/tab_focus = null
+TabContainer/styles/tab_hovered = null
+TabContainer/styles/tab_selected = null
+TabContainer/styles/tab_unselected = null
+TabContainer/styles/tabbar_background = null
+TextEdit/styles/focus = null
+TextEdit/styles/normal = null
+TextEdit/styles/read_only = null
+TooltipPanel/styles/panel = null
+Tree/styles/button_hover = null
+Tree/styles/button_pressed = null
+Tree/styles/cursor = null
+Tree/styles/cursor_unfocused = null
+Tree/styles/custom_button = null
+Tree/styles/custom_button_hover = null
+Tree/styles/custom_button_pressed = null
+Tree/styles/focus = null
+Tree/styles/hovered = null
+Tree/styles/hovered_dimmed = null
+Tree/styles/hovered_selected = null
+Tree/styles/hovered_selected_focus = null
+Tree/styles/panel = null
+Tree/styles/selected = null
+Tree/styles/selected_focus = null
+Tree/styles/title_button_hover = null
+Tree/styles/title_button_normal = null
+Tree/styles/title_button_pressed = null
+VScrollBar/styles/grabber = null
+VScrollBar/styles/grabber_highlight = null
+VScrollBar/styles/grabber_pressed = null
+VScrollBar/styles/scroll = null
+VScrollBar/styles/scroll_focus = null
+VSeparator/styles/separator = null
+VSlider/styles/grabber_area = null
+VSlider/styles/grabber_area_highlight = null
+VSlider/styles/slider = null
+VSplitContainer/styles/split_bar_background = null
+Window/styles/embedded_border = null
+Window/styles/embedded_unfocused_border = null
 
 [sub_resource type="Animation" id="Animation_8xnqg"]
 length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../UI/CraftContainer:size:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(315, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../UI/CraftContainer:size:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(270, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="Animation" id="Animation_kxd26"]
 resource_name = "craft_trans"
@@ -71,6 +241,10 @@ _data = {
 &"craft_trans": SubResource("Animation_kxd26")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_466n5"]
+atlas = ExtResource("9_wq2a1")
+region = Rect2(0, 0, 16, 32)
+
 [node name="BaseLevel" type="Node2D"]
 
 [node name="InvManager" type="Node2D" parent="."]
@@ -92,6 +266,7 @@ offset_left = -200.0
 offset_right = 115.0
 grow_horizontal = 0
 grow_vertical = 2
+theme = ExtResource("4_e1fnv")
 alignment = 2
 
 [node name="CraftTransButton" type="Button" parent="UI/CraftContainer"]
@@ -99,14 +274,17 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+focus_mode = 0
 theme_override_fonts/font = ExtResource("4_t6xnl")
 toggle_mode = true
 icon = ExtResource("7_8xnqg")
+icon_alignment = 1
 
 [node name="CraftMenu" type="Panel" parent="UI/CraftContainer"]
 custom_minimum_size = Vector2(113.205, 0)
 layout_mode = 2
 mouse_filter = 2
+theme = SubResource("Theme_2qxot")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/CraftContainer/CraftMenu"]
 layout_mode = 1
@@ -152,7 +330,9 @@ mouse_filter = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(72.895, 0)
 layout_mode = 2
+size_flags_horizontal = 6
 mouse_filter = 2
+alignment = 1
 
 [node name="CraftPanel" parent="UI/CraftContainer/CraftMenu/VBoxContainer/ScrollContainer/CraftableContainer" instance=ExtResource("5_3ipv6")]
 layout_mode = 2
@@ -160,19 +340,19 @@ layout_mode = 2
 [node name="CraftPanel2" parent="UI/CraftContainer/CraftMenu/VBoxContainer/ScrollContainer/CraftableContainer" instance=ExtResource("5_3ipv6")]
 layout_mode = 2
 
-[node name="Preview" type="Sprite2D" parent="UI"]
-unique_name_in_owner = true
-self_modulate = Color(1, 0, 0, 0.53333336)
-texture = SubResource("AtlasTexture_466n5")
-
-[node name="PlaceValidator" type="RayCast2D" parent="UI/Preview"]
-unique_name_in_owner = true
-target_position = Vector2(0, 22)
-collision_mask = 8
-
 [node name="TransitionPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 root_node = NodePath("../InvManager")
 libraries = {
 &"": SubResource("AnimationLibrary_wq2a1")
 }
+
+[node name="Preview" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 0, 0.53333336)
+texture = SubResource("AtlasTexture_466n5")
+
+[node name="PlaceValidator" type="RayCast2D" parent="Preview"]
+unique_name_in_owner = true
+target_position = Vector2(0, 22)
+collision_mask = 8

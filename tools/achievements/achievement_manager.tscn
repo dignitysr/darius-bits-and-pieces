@@ -62,20 +62,13 @@ _data = {
 &"slide": SubResource("Animation_ishdg")
 }
 
-[node name="AchievementManager" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="AchievementManager" type="CanvasLayer"]
 script = ExtResource("1_2tw4h")
 
 [node name="AchievementPanel" type="PanelContainer" parent="."]
 clip_contents = true
 custom_minimum_size = Vector2(111, 55)
-layout_mode = 0
+anchors_preset = -1
 anchor_left = -0.23125
 anchor_bottom = 0.2037037
 mouse_filter = 2

@@ -17,4 +17,5 @@ func _physics_process(_delta):
 	Subscribers: {subscribers}
 	Defeated Rickmechs: {defeated_rickmechs}"""
 	
+	@warning_ignore("integer_division")
 	text.text = template.format(StatsManager.stats.merged({"ach_unlocked": AchievementManager.unlocked_achievements, "ach_total": AchievementManager.total_achievements, "ach_percent": (100*AchievementManager.unlocked_achievements)/(AchievementManager.total_achievements)}))
