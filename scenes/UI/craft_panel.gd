@@ -29,24 +29,20 @@ var valid_recipes: Array
 func _ready() -> void:
 	rank_selection_button.connect("button_down", on_rank_selection_pressed)
 	name_label.text = tower.capitalize()
-	tower_texture.texture = direct_image(object_list.parts[tower].icon)
+	tower_texture.texture = good_util.direct_image(object_list.parts[tower].icon)
 	shadow.texture = tower_texture.texture
 	
 	for part: String in recipes.recipes[tower]:
 		populate_part(part, quantity_container, recipes.recipes[tower][part])
 
-func direct_image(texture: Texture2D) -> ImageTexture:
-	var image = texture.get_image()
-	return ImageTexture.create_from_image(image)
-
 func populate_part(part: String, parent: Control, amount: int, rank = -1) -> void:
 	var quantity_label = quantity_label_scene.instantiate()
-	quantity_label.icon_texture = direct_image(object_list.parts[part].icon)
+	quantity_label.icon_texture = good_util.direct_image(object_list.parts[part].icon)
 	quantity_label.amount = amount
 	if rank == -1:
 		quantity_label.rank = rank
 	else:
-		quantity_label.rank = direct_image(small_ranks_resource.ranks[rank])
+		quantity_label.rank = good_util.direct_image(small_ranks_resource.ranks[rank])
 	parent.add_child(quantity_label)
 	
 func populate_rank(rank: int) -> void:

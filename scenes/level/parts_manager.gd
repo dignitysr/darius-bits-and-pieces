@@ -15,6 +15,8 @@ enum Rank {F, D, C, B, A, S}
 @onready var preview: Sprite2D = %Preview
 @onready var craft_container: HBoxContainer = %CraftContainer
 @onready var place_validator: RayCast2D = %PlaceValidator
+@onready var towers = %Towers
+@onready var level = get_parent()
 
 var tower_placed: bool = false
 
@@ -24,8 +26,8 @@ var tower_placed: bool = false
 ## Rank: Number},
 ## Part name: etc}
 var parts: Dictionary = {
-	"paper": {Rank.S: 5, Rank.A: 4, Rank.B: 4, Rank.C: 63454213454, Rank.F: 5}, 
-	"scrap": {Rank.S: 5, Rank.A: 5, Rank.B: 5, Rank.C: 3, Rank.F: 5}}
+	"paper": {Rank.S: 5e5, Rank.A: 4, Rank.B: 4, Rank.C: 63454213454, Rank.F: 50}, 
+	"scrap": {Rank.S: 5e5, Rank.A: 5, Rank.B: 5, Rank.C: 30, Rank.F: 50}}
 	
 func _ready() -> void:
 	craft_trans_button.connect("button_down", on_craft_trans_pressed)
@@ -60,29 +62,37 @@ func instance_craftable(recipe: String, valid_ranks: Array) -> void:
 	craftable_container.add_child(craftable)
 	craftable_container.add_child(HSeparator.new())
 	
+func get_snapped_mouse_position() -> Vector2:
+	return get_global_mouse_position().snapped(Vector2(16, 16))
+	
 func buy(tower: String, rank: Rank) -> void:
+	preview.texture = good_util.direct_image(object_list.parts[tower].preview)
 	craft_container.hide()
 	preview.show()
 	while !tower_placed:
-		preview.global_position = get_global_mouse_position()
+		preview.global_position = get_snapped_mouse_position()
+		place_validator.position = get_snapped_mouse_position()
 		if Input.is_action_just_pressed("back"):
 			preview.hide()
 			craft_container.show()
 			tower_placed = true
 		if place_validator.is_colliding():
 			preview.self_modulate = Color.GREEN
+			preview.global_position = Vector2(get_snapped_mouse_position().x, place_validator.get_collision_point().y)
 			if Input.is_action_just_pressed("click"):
 				place_tower(tower, rank)
 		else:
 			preview.self_modulate = Color.RED
+			preview.global_position = get_snapped_mouse_position()
 		await get_tree().physics_frame
 	tower_placed = false
 	preview.global_position = Vector2.ZERO
+	place_validator.global_position = Vector2.ZERO
 		
 func place_tower(tower: String, rank: int):
 	var tower_scene: BaseTower = object_list.parts[tower].scene.instantiate()
 	tower_scene.inventory_manager = self
-	tower_scene.global_position = place_validator.get_collision_point()
+	tower_scene.global_position = place_validator.get_collision_point() + Vector2(0, 0)
 	@warning_ignore("int_as_enum_without_cast")
 	tower_scene.rank = rank
 	for part: String in recipes.recipes[tower]:
@@ -90,5 +100,8 @@ func place_tower(tower: String, rank: int):
 	preview.hide()
 	craft_container.show()
 	tower_placed = true
-	get_parent().add_child(tower_scene)
+	towers.add_child(tower_scene)
 	refresh_recipes()
+
+func add_parts(parts_dropped, rank) -> void:
+	get_parent().add_parts(parts_dropped, rank)

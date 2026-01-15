@@ -13,8 +13,10 @@ func _ready():
 		if child is Slider:
 			editable_options[child.name] = child
 			child.value = Save.load_setting("options", child.name, 1)
+			slider_changed(child.value, child.name)
 			child.connect("value_changed", slider_changed.bind(child.name))
 		elif child is OptionButton:
+			child.get_popup().canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
 			editable_options[child.name] = child
 			child.connect("item_selected", option_selected.bind(child.name))
 			child._select_int(Save.load_setting("options", child.name, 0))
@@ -22,7 +24,9 @@ func _ready():
 
 
 func slider_changed(value: float, slider: String) -> void:
-	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(slider), value)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(slider), linear_to_db(value))
+	print(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(slider)))
+	print(linear_to_db(value))
 	Save.change_setting("options", slider, value)
 
 func option_selected(index: int, option: String) -> void:

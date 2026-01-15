@@ -1,10 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://dsyr8mm2i37he"]
+[gd_scene load_steps=24 format=3 uid="uid://dsyr8mm2i37he"]
 
 [ext_resource type="PackedScene" uid="uid://b5j3fw6p1qo80" path="res://scenes/towers/base_tower.tscn" id="1_avs0o"]
 [ext_resource type="Texture2D" uid="uid://c8yfpxu12d6w7" path="res://scenes/towers/mailbox/assets.png" id="2_1jf8q"]
 [ext_resource type="Script" uid="uid://44t8mld27brk" path="res://scenes/towers/mailbox/mailbox.gd" id="2_8n61u"]
 [ext_resource type="PackedScene" uid="uid://c0ufyyp0yfay8" path="res://scenes/towers/mail.tscn" id="3_kp23f"]
+[ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="4_ipbwf"]
 [ext_resource type="Texture2D" uid="uid://6mloo634fywo" path="res://scenes/towers/mailbox/shooting.png" id="5_kp23f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mgtj1"]
+resource_local_to_scene = true
+shader = ExtResource("4_ipbwf")
+shader_parameter/intensity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8n61u"]
 atlas = ExtResource("2_1jf8q")
@@ -177,15 +183,29 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ipbwf"]
+resource_local_to_scene = true
+shader = ExtResource("4_ipbwf")
+shader_parameter/intensity = 0.0
+
 [node name="Mailbox" instance=ExtResource("1_avs0o")]
 script = ExtResource("2_8n61u")
 variant_num = 7
+init_durability = 20.0
+parts_dropped = Dictionary[String, int]({
+"paper": 1,
+"scrap": 2
+})
 mail = ExtResource("3_kp23f")
 
 [node name="Animator" parent="." index="0"]
+material = SubResource("ShaderMaterial_mgtj1")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_ta3pg")
 animation = &"7"
 
 [node name="Spawner" parent="." index="1"]
 position = Vector2(-8, -21)
+
+[node name="DebrisSprite" parent="." index="5"]
+material = SubResource("ShaderMaterial_ipbwf")

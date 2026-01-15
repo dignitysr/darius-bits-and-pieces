@@ -1,0 +1,143 @@
+[gd_scene load_steps=22 format=3 uid="uid://bxa47vi1qyvlv"]
+
+[ext_resource type="PackedScene" uid="uid://b5j3fw6p1qo80" path="res://scenes/towers/base_tower.tscn" id="1_0gvqb"]
+[ext_resource type="Script" uid="uid://72rmasppnog0" path="res://scenes/towers/forklift/forklift.gd" id="2_sivji"]
+[ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="3_7kqrj"]
+[ext_resource type="Texture2D" uid="uid://tfkrrp1m0sij" path="res://scenes/towers/forklift/assets.png" id="3_ys3b3"]
+[ext_resource type="Texture2D" uid="uid://crwn47842mbdm" path="res://scenes/towers/forklift/attack.png" id="5_sqoa3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jwsn4"]
+resource_local_to_scene = true
+shader = ExtResource("3_7kqrj")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kqrj"]
+atlas = ExtResource("3_ys3b3")
+region = Rect2(92, 0, 46, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdqx3"]
+atlas = ExtResource("5_sqoa3")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygk0i"]
+atlas = ExtResource("5_sqoa3")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2f28"]
+atlas = ExtResource("5_sqoa3")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj245"]
+atlas = ExtResource("5_sqoa3")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3d0n"]
+atlas = ExtResource("5_sqoa3")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqoa3"]
+atlas = ExtResource("5_sqoa3")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwsn4"]
+atlas = ExtResource("5_sqoa3")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnnpt"]
+atlas = ExtResource("5_sqoa3")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sqoa3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kqrj")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdqx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygk0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2f28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj245")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3d0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqoa3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwsn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnnpt")
+}],
+"loop": true,
+"name": &"1shoot",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jwsn4"]
+radius = 16.27882
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pdqx3"]
+radius = 46.173584
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sivji"]
+radius = 154.01299
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sivji"]
+size = Vector2(31, 30)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rnnpt"]
+resource_local_to_scene = true
+shader = ExtResource("3_7kqrj")
+shader_parameter/intensity = 0.0
+
+[node name="Forklift" instance=ExtResource("1_0gvqb")]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("2_sivji")
+speed = 0.3
+variant_num = 1
+attack_speed = 60
+
+[node name="Animator" parent="." index="0"]
+material = SubResource("ShaderMaterial_jwsn4")
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_sqoa3")
+animation = &"1shoot"
+autoplay = "1shoot"
+frame_progress = 0.28294572
+
+[node name="CollisionShape2D" parent="PickupDetection" index="0"]
+shape = SubResource("CircleShape2D_jwsn4")
+
+[node name="CollisionShape2D" parent="EnemyDetection" index="0"]
+shape = SubResource("CircleShape2D_pdqx3")
+
+[node name="Home" type="Area2D" parent="." index="5"]
+unique_name_in_owner = true
+top_level = true
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Home" index="0"]
+shape = SubResource("CircleShape2D_sivji")
+
+[node name="Collider" type="CollisionShape2D" parent="." index="6"]
+position = Vector2(5.5, -17)
+shape = SubResource("RectangleShape2D_sivji")
+
+[node name="DebrisSprite" parent="." index="7"]
+material = SubResource("ShaderMaterial_rnnpt")

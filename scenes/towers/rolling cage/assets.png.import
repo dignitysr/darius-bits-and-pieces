@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blndd3ntlgo5c"
-path="res://.godot/imported/postcard.png-467e2a2cba086cdf095114a2c3361a9a.ctex"
+uid="uid://bcfbujfonckds"
+path="res://.godot/imported/assets.png-e55741afaeddb747db4fe26d54e681fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/UI/postcard.png"
-dest_files=["res://.godot/imported/postcard.png-467e2a2cba086cdf095114a2c3361a9a.ctex"]
+source_file="res://scenes/towers/rolling cage/assets.png"
+dest_files=["res://.godot/imported/assets.png-e55741afaeddb747db4fe26d54e681fe.ctex"]
 
 [params]
 

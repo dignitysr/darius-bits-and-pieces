@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://d7pmjweuyb7x"]
+
+[ext_resource type="PackedScene" uid="uid://b5j3fw6p1qo80" path="res://scenes/towers/base_tower.tscn" id="1_iyu6l"]
+[ext_resource type="Script" uid="uid://cybrbqtuaexim" path="res://scenes/towers/rolling cage/rolling_cage.gd" id="2_axli4"]
+[ext_resource type="Texture2D" uid="uid://bcfbujfonckds" path="res://scenes/towers/rolling cage/assets.png" id="2_ukadc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axli4"]
+atlas = ExtResource("2_ukadc")
+region = Rect2(32, 16, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22uuv"]
+atlas = ExtResource("2_ukadc")
+region = Rect2(0, 16, 24, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lyyip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axli4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22uuv")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axli4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22uuv")
+}],
+"loop": true,
+"name": &"1shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_axli4"]
+radius = 22.022715
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axli4"]
+size = Vector2(24, 15)
+
+[node name="RollingCage" instance=ExtResource("1_iyu6l")]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("2_axli4")
+speed = 20.0
+variant_num = 1
+damage = 20.0
+damage_mult = 3.0
+attack_speed = 10
+
+[node name="Animator" parent="." index="0"]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_lyyip")
+animation = &"1"
+autoplay = "1"
+
+[node name="CollisionShape2D" parent="EnemyDetection" index="0"]
+shape = SubResource("CircleShape2D_axli4")
+
+[node name="Collider" type="CollisionShape2D" parent="." index="5"]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_axli4")

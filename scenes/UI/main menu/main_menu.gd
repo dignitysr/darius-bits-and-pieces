@@ -9,7 +9,7 @@ func _ready():
 	options.connect("button_down", options_pressed)
 	
 func play_pressed() -> void:
-	trans_to("Options")
+	trans_to("LevelSelect")
 	
 func options_pressed() -> void:
 	trans_to("Options")

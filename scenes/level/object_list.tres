@@ -1,17 +1,19 @@
-[gd_resource type="Resource" script_class="ObjectList" load_steps=6 format=3 uid="uid://b3hvljlpew5e4"]
+[gd_resource type="Resource" script_class="ObjectList" load_steps=7 format=3 uid="uid://b3hvljlpew5e4"]
 
 [ext_resource type="Resource" uid="uid://daqed0ax142bl" path="res://scenes/level/items/mailbox.tres" id="1_kvvoh"]
 [ext_resource type="Resource" uid="uid://bxxp2orfrjpqe" path="res://scenes/level/parts/paper.tres" id="2_ewlxi"]
 [ext_resource type="Resource" uid="uid://dnnfkfh8oju74" path="res://scenes/level/parts/scrap.tres" id="3_0cfgq"]
 [ext_resource type="Script" uid="uid://c3t0unjlym1l0" path="res://scenes/level/partslist.gd" id="4_70eck"]
-[ext_resource type="Resource" uid="uid://d103r5swp2cnv" path="res://scenes/level/items/mario.tres" id="4_ewlxi"]
+[ext_resource type="Resource" uid="uid://blv74o4vhvupb" path="res://scenes/level/items/forklift.tres" id="4_ewlxi"]
+[ext_resource type="Resource" uid="uid://co8mjc8mf2wdt" path="res://scenes/level/items/rolling_cage.tres" id="5_0cfgq"]
 
 [resource]
 script = ExtResource("4_70eck")
 parts = Dictionary[String, Resource]({
+"forklift": ExtResource("4_ewlxi"),
 "mailbox": ExtResource("1_kvvoh"),
-"mario": ExtResource("4_ewlxi"),
 "paper": ExtResource("2_ewlxi"),
+"rolling_cage": ExtResource("5_0cfgq"),
 "scrap": ExtResource("3_0cfgq")
 })
 metadata/_custom_type_script = "uid://c3t0unjlym1l0"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8ydu1pbxo8rr"
-path="res://.godot/imported/white_postcard.png-259b8a3ab4dd493a54575331f406abd3.ctex"
+uid="uid://bpn3k8st5fbbl"
+path="res://.godot/imported/breaking_news_white.png-52d01580f98ab69de1f5eff38ab65dd5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/UI/white_postcard.png"
-dest_files=["res://.godot/imported/white_postcard.png-259b8a3ab4dd493a54575331f406abd3.ctex"]
+source_file="res://assets/UI/sprites/breaking_news_white.png"
+dest_files=["res://.godot/imported/breaking_news_white.png-52d01580f98ab69de1f5eff38ab65dd5.ctex"]
 
 [params]
 

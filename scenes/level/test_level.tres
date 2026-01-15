@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="LevelResource" load_steps=2 format=3 uid="uid://cvmsn0drl6n0t"]
+
+[ext_resource type="Script" uid="uid://df00pj8834vq1" path="res://scenes/level/waves/level_resource.gd" id="1_8ofaf"]
+
+[resource]
+script = ExtResource("1_8ofaf")
+waves = Array[Dictionary]([{
+"customer": {
+"number": 10,
+"rank": 0
+}
+}, {
+"customer": {
+"number": 20,
+"rank": 0
+}
+}, {}])
+name = "Grassy Grassland"
+scene = "res://scenes/level/test.tscn"
+metadata/_custom_type_script = "uid://df00pj8834vq1"

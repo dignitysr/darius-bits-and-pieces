@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ObjectResource" load_steps=7 format=3 uid="uid://blv74o4vhvupb"]
+
+[ext_resource type="Texture2D" uid="uid://tfkrrp1m0sij" path="res://scenes/towers/forklift/assets.png" id="1_gw3q4"]
+[ext_resource type="Script" uid="uid://dlopniqc5ddwe" path="res://scenes/level/items/objects.gd" id="1_nxhqs"]
+[ext_resource type="PackedScene" uid="uid://bxa47vi1qyvlv" path="res://scenes/towers/forklift/forklift.tscn" id="2_616om"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adyj4"]
+atlas = ExtResource("1_gw3q4")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gw3q4"]
+load_path = "res://.godot/imported/assets.png-428c2349c650b7dfb68f8959e8b6c77a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_616om"]
+atlas = SubResource("CompressedTexture2D_gw3q4")
+region = Rect2(0, 0, 48, 32)
+
+[resource]
+script = ExtResource("1_nxhqs")
+object_name = "Forklift"
+icon = SubResource("AtlasTexture_adyj4")
+preview = SubResource("AtlasTexture_616om")
+scene = ExtResource("2_616om")
+metadata/_custom_type_script = "uid://dlopniqc5ddwe"

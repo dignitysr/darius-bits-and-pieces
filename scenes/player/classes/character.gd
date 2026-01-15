@@ -9,6 +9,8 @@ var vel: Vector2
 var facing_dir: int = 1
 var input: Dictionary
 
+@export var inventory_manager: InventoryManager
+
 ### Attributes
 @export var on_ice: bool
 

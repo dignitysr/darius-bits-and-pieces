@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5j3fw6p1qo80"]
+[gd_scene load_steps=10 format=3 uid="uid://b5j3fw6p1qo80"]
 
 [ext_resource type="Script" uid="uid://kxbqff21a7wi" path="res://scenes/towers/base_tower.gd" id="1_jksl4"]
 [ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="2_1ilgo"]
+[ext_resource type="Texture2D" uid="uid://cqg8sn21yt64j" path="res://scenes/towers/mail.png" id="3_rtahd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rtahd"]
+resource_local_to_scene = true
 shader = ExtResource("2_1ilgo")
 shader_parameter/intensity = 0.0
 
@@ -12,6 +14,27 @@ radius = 16.27882
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fa6h"]
 radius = 46.173584
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lx0n3"]
+resource_local_to_scene = true
+shader = ExtResource("2_1ilgo")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lx0n3"]
+bg_color = Color(0, 0.25, 0.14166665, 0.45882353)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtahd"]
+bg_color = Color(0.21568628, 0.4509804, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
 
 [node name="BaseTower" type="CharacterBody2D"]
 script = ExtResource("1_jksl4")
@@ -23,6 +46,8 @@ material = SubResource("ShaderMaterial_rtahd")
 unique_name_in_owner = true
 
 [node name="PickupDetection" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupDetection"]
 shape = SubResource("CircleShape2D_jksl4")
@@ -35,3 +60,19 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_7fa6h")
 
 [node name="PathPlayer" type="AnimationPlayer" parent="."]
+
+[node name="DebrisSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_lx0n3")
+position = Vector2(0, -3)
+texture = ExtResource("3_rtahd")
+
+[node name="BrokenBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -25.0
+offset_right = 24.0
+offset_bottom = 7.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lx0n3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rtahd")
+value = 100.0
+show_percentage = false

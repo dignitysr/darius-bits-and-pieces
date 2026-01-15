@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bfmpe5508ukf5"]
 
 [ext_resource type="FontFile" uid="uid://dr00saqh1n260" path="res://assets/UI/fonts/Timetwist-Regular.ttf" id="1_e56rc"]
-[ext_resource type="Texture2D" uid="uid://8ydu1pbxo8rr" path="res://scenes/UI/white_postcard.png" id="2_e56rc"]
+[ext_resource type="Texture2D" uid="uid://8ydu1pbxo8rr" path="res://scenes/UI/assets/white_postcard.png" id="2_e56rc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5gdxq"]
 texture = ExtResource("2_e56rc")

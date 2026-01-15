@@ -1,16 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmvevnsrw0wrc"]
+[gd_scene load_steps=16 format=3 uid="uid://cmvevnsrw0wrc"]
 
 [ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_7a07e"]
 [ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="2_k3i2y"]
 [ext_resource type="Texture2D" uid="uid://crglf3jy5ies5" path="res://scenes/enemies/customer/sheet.png" id="3_5mo5y"]
-[ext_resource type="Texture2D" uid="uid://2r6h4vqj00pj" path="res://scenes/enemies/customer/yellow_palette.png" id="4_0ql35"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ql35"]
+resource_local_to_scene = true
 shader = ExtResource("2_k3i2y")
 shader_parameter/screen_mode = true
 shader_parameter/num_colors = 12
 shader_parameter/precision = 0.30000001425
-shader_parameter/palette_out = ExtResource("4_0ql35")
 shader_parameter/intensity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3i2y"]
@@ -104,8 +103,16 @@ _data = {
 size = Vector2(14, 28)
 
 [node name="Customer" instance=ExtResource("1_7a07e")]
+enemy_name = "Customer"
+rank = 5
+parts_dropped = Dictionary[String, int]({
+"paper": 3,
+"scrap": 2
+})
 
 [node name="Animator" parent="." index="0"]
+modulate = Color(0, 0, 1, 1)
+self_modulate = Color(0, 0, 1, 1)
 material = SubResource("ShaderMaterial_0ql35")
 sprite_frames = SubResource("SpriteFrames_f7b1v")
 animation = &"jump"

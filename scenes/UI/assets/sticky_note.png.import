@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvtll0svxa6ad"
-path="res://.godot/imported/postcard_new.png-ebbb0aff36bcaaeb95e9f60dd52bd5f2.ctex"
+uid="uid://cfvb0i5prxkeu"
+path="res://.godot/imported/sticky_note.png-51bc87ddef50ad31ef757af6c17eb508.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/UI/postcard_new.png"
-dest_files=["res://.godot/imported/postcard_new.png-ebbb0aff36bcaaeb95e9f60dd52bd5f2.ctex"]
+source_file="res://scenes/UI/assets/sticky_note.png"
+dest_files=["res://.godot/imported/sticky_note.png-51bc87ddef50ad31ef757af6c17eb508.ctex"]
 
 [params]
 

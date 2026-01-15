@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemiesResource" load_steps=3 format=3 uid="uid://bcvclfg6r1av0"]
+
+[ext_resource type="PackedScene" uid="uid://cmvevnsrw0wrc" path="res://scenes/enemies/customer/customer.tscn" id="1_mw3w8"]
+[ext_resource type="Script" uid="uid://bv0frty0chg8k" path="res://scenes/enemies/enemy_resource.gd" id="2_q076a"]
+
+[resource]
+script = ExtResource("2_q076a")
+enemies = Dictionary[String, PackedScene]({
+"customer": ExtResource("1_mw3w8")
+})
+metadata/_custom_type_script = "uid://bv0frty0chg8k"

@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://bhye2cruqvesn" path="res://scenes/enemies/base_enemy.gd" id="1_r5xb8"]
 [ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="2_qf3h2"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkvl6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qf3h2"]
+resource_local_to_scene = true
 shader = ExtResource("2_qf3h2")
 shader_parameter/screen_mode = true
 shader_parameter/num_colors = 0
@@ -19,10 +20,11 @@ size = Vector2(10, 15)
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_r5xb8")
+health = 60.0
 
 [node name="Animator" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_lkvl6")
+material = SubResource("ShaderMaterial_qf3h2")
 
 [node name="EnemyArea" type="Area2D" parent="."]
 unique_name_in_owner = true

@@ -1,16 +1,22 @@
-[gd_resource type="Resource" script_class="ObjectResource" load_steps=5 format=3 uid="uid://daqed0ax142bl"]
+[gd_resource type="Resource" script_class="ObjectResource" load_steps=7 format=3 uid="uid://daqed0ax142bl"]
 
 [ext_resource type="Script" uid="uid://dlopniqc5ddwe" path="res://scenes/level/items/objects.gd" id="1_25ife"]
 [ext_resource type="Texture2D" uid="uid://3rapfa1hagkb" path="res://assets/UI/sprites/icons.png" id="1_v1lnv"]
+[ext_resource type="Texture2D" uid="uid://c8yfpxu12d6w7" path="res://scenes/towers/mailbox/assets.png" id="2_5bojo"]
 [ext_resource type="PackedScene" uid="uid://dsyr8mm2i37he" path="res://scenes/towers/mailbox/mailbox.tscn" id="2_mpjdx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mpjdx"]
 atlas = ExtResource("1_v1lnv")
 region = Rect2(0, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3ni0"]
+atlas = ExtResource("2_5bojo")
+region = Rect2(0, 0, 16, 32)
+
 [resource]
 script = ExtResource("1_25ife")
 object_name = "mailbox"
 icon = SubResource("AtlasTexture_mpjdx")
+preview = SubResource("AtlasTexture_u3ni0")
 scene = ExtResource("2_mpjdx")
 metadata/_custom_type_script = "uid://dlopniqc5ddwe"

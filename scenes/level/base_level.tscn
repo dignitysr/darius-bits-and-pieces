@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://c0nclxadp8xws"]
+[gd_scene load_steps=24 format=3 uid="uid://c0nclxadp8xws"]
 
+[ext_resource type="Script" uid="uid://c8kx2jgqnthg4" path="res://scenes/level/base_level.gd" id="1_2qxot"]
 [ext_resource type="Script" uid="uid://c3d6hdxo3ibrw" path="res://scenes/level/parts_manager.gd" id="1_ebx1s"]
 [ext_resource type="Resource" uid="uid://b3hvljlpew5e4" path="res://scenes/level/object_list.tres" id="2_upopr"]
 [ext_resource type="Resource" uid="uid://c57gvffr23thc" path="res://scenes/level/items/recipes.tres" id="3_7xj1c"]
@@ -7,9 +8,15 @@
 [ext_resource type="Resource" uid="uid://6rxf2qmjweg1" path="res://scenes/UI/ranks/ranks.tres" id="4_kxd26"]
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="4_t6xnl"]
 [ext_resource type="PackedScene" uid="uid://dflehm1nse4cx" path="res://scenes/UI/craftable.tscn" id="5_3ipv6"]
+[ext_resource type="Resource" uid="uid://bb2pamo51cvxh" path="res://scenes/UI/ranks/small_ranks.tres" id="6_8x4to"]
 [ext_resource type="Texture2D" uid="uid://82p0pdd7hmbp" path="res://assets/UI/sprites/craft_open.png" id="7_8xnqg"]
-[ext_resource type="Texture2D" uid="uid://bpuyyxr8cjyex" path="res://scenes/UI/panel_style.png" id="9_466n5"]
+[ext_resource type="PackedScene" uid="uid://cqhan3bhxm6h6" path="res://scenes/player/player.tscn" id="7_u35hf"]
+[ext_resource type="Texture2D" uid="uid://bpuyyxr8cjyex" path="res://scenes/UI/assets/panel_style.png" id="9_466n5"]
 [ext_resource type="Texture2D" uid="uid://c8yfpxu12d6w7" path="res://scenes/towers/mailbox/assets.png" id="9_wq2a1"]
+[ext_resource type="PackedScene" uid="uid://c7fkici0dc1ma" path="res://scenes/UI/parts_container.tscn" id="13_qf4k4"]
+[ext_resource type="Script" uid="uid://vcmg26kxy8c6" path="res://scenes/level/breaking_news.gd" id="14_41h08"]
+[ext_resource type="Texture2D" uid="uid://osocf0h8p0cq" path="res://assets/UI/sprites/breaking_news_red.png" id="14_ufabe"]
+[ext_resource type="Texture2D" uid="uid://bpn3k8st5fbbl" path="res://assets/UI/sprites/breaking_news_white.png" id="15_41h08"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_se6ax"]
 texture = ExtResource("9_466n5")
@@ -211,7 +218,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%CraftTransButton/ClickBlocker:visible")
+tracks/0/path = NodePath("../UI/CraftContainer/CraftTransButton/ClickBlocker:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -223,7 +230,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%CraftTransButton:button_pressed")
+tracks/1/path = NodePath("../UI/CraftContainer/CraftTransButton:button_pressed")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -262,7 +269,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%CraftTransButton/ClickBlocker:visible")
+tracks/2/path = NodePath("../UI/CraftContainer/CraftTransButton/ClickBlocker:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -274,7 +281,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("%CraftTransButton:button_pressed")
+tracks/3/path = NodePath("../UI/CraftContainer/CraftTransButton:button_pressed")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -295,15 +302,71 @@ atlas = ExtResource("9_wq2a1")
 region = Rect2(0, 0, 16, 32)
 
 [node name="BaseLevel" type="Node2D"]
+script = ExtResource("1_2qxot")
+small_ranks_resource = ExtResource("6_8x4to")
+objects_list = ExtResource("2_upopr")
+quantity_container = ExtResource("13_qf4k4")
+
+[node name="Towers" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Enemies" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="InvManager" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("1_ebx1s")
 recipes = ExtResource("3_7xj1c")
 object_list = ExtResource("2_upopr")
 ranks_resource = ExtResource("4_kxd26")
+small_ranks_resource = ExtResource("6_8x4to")
 craftable_panel = ExtResource("5_3ipv6")
 
+[node name="Player" parent="." node_paths=PackedStringArray("inventory_manager") instance=ExtResource("7_u35hf")]
+position = Vector2(34, 190)
+inventory_manager = NodePath("../InvManager")
+
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="BreakingNews" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 7.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(240, 247)
+mouse_filter = 2
+script = ExtResource("14_41h08")
+
+[node name="Red" type="Sprite2D" parent="UI/BreakingNews"]
+position = Vector2(240, 247)
+texture = ExtResource("14_ufabe")
+
+[node name="Label" type="Label" parent="UI/BreakingNews"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.0375
+anchor_top = 0.8851852
+anchor_bottom = 0.9444444
+offset_right = 6.1035156e-05
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "Local Darius the Mailman gets hit by truck and fucking dies. More at 10."
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="White" type="Sprite2D" parent="UI/BreakingNews"]
+position = Vector2(240, 247)
+texture = ExtResource("15_41h08")
+
+[node name="Label" type="Label" parent="UI"]
+offset_right = 72.0
+offset_bottom = 15.0
+text = "time left: "
 
 [node name="CraftContainer" type="HBoxContainer" parent="UI"]
 unique_name_in_owner = true
@@ -435,6 +498,16 @@ theme = null
 layout_mode = 2
 theme = null
 
+[node name="QuantitiesContainer" type="VBoxContainer" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+alignment = 2
+
+[node name="HBoxContainer" parent="UI/QuantitiesContainer" instance=ExtResource("13_qf4k4")]
+layout_mode = 2
+
 [node name="TransitionPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 root_node = NodePath("../InvManager")
@@ -446,8 +519,13 @@ libraries = {
 unique_name_in_owner = true
 self_modulate = Color(1, 0, 0, 0.53333336)
 texture = SubResource("AtlasTexture_466n5")
+offset = Vector2(0, -16)
 
 [node name="PlaceValidator" type="RayCast2D" parent="Preview"]
 unique_name_in_owner = true
-target_position = Vector2(0, 22)
+top_level = true
+target_position = Vector2(0, 100)
 collision_mask = 8
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+unique_name_in_owner = true

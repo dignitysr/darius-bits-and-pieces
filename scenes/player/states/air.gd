@@ -32,6 +32,10 @@ func _transition_check() -> String:
 
 ## runs every frame while active
 func _update() -> void:
+	if character.inventory_manager.level.active_buff == "faster":
+		move_speed = 4
+	else:
+		move_speed = 2
 	character.vel.y = math_util.apply_gravity(character.vel.y)
 	
 	var move_dir: int = 0

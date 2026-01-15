@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7fkici0dc1ma"]
+
+[ext_resource type="Script" uid="uid://ck08awc7ck3to" path="res://scenes/UI/parts_container.gd" id="1_8121a"]
+[ext_resource type="Resource" uid="uid://b3hvljlpew5e4" path="res://scenes/level/object_list.tres" id="2_tsos5"]
+[ext_resource type="Resource" uid="uid://bb2pamo51cvxh" path="res://scenes/UI/ranks/small_ranks.tres" id="3_3rga2"]
+[ext_resource type="PackedScene" uid="uid://b5k6bsbagrg4b" path="res://scenes/UI/quantitylabel.tscn" id="4_3rga2"]
+
+[node name="PartsContainer" type="HBoxContainer"]
+pivot_offset = Vector2(21.58, 0)
+script = ExtResource("1_8121a")
+object_list = ExtResource("2_tsos5")
+small_ranks_resource = ExtResource("3_3rga2")
+quantity_label = ExtResource("4_3rga2")

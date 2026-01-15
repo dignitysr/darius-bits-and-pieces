@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="darius bits and pieces"
-run/main_scene="uid://cl6foq6oixgrr"
+run/main_scene="uid://dh30ifxl6br0p"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -78,6 +78,9 @@ back={
 2d_physics/layer_3="Mail Detection"
 2d_physics/layer_4="Ground+Raycast Validator"
 2d_physics/layer_5="Ground + Enemy Collision"
+2d_physics/layer_6="Darius + Toewrs"
+2d_physics/layer_7="Ground + Forklift"
+2d_physics/layer_8="Ground + Rolling Cage"
 
 [physics]
 

@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://drjpjfrgcsw"]
+
+[ext_resource type="Script" uid="uid://csj4x5jnn6nra" path="res://scenes/UI/main menu/level select/level_select.gd" id="1_gtv1j"]
+[ext_resource type="Resource" uid="uid://cc0dqjm7dsbx0" path="res://scenes/level/waves/levels.tres" id="2_5u41o"]
+[ext_resource type="PackedScene" uid="uid://cvwvjx3doyrtr" path="res://scenes/UI/main menu/level select/level_select_button.tscn" id="3_rfe02"]
+
+[node name="LevelSelect" type="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_gtv1j")
+levels_resource = ExtResource("2_5u41o")
+level_select_button_script = ExtResource("3_rfe02")
+
+[node name="LevelContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -56.0
+offset_right = 107.0
+offset_bottom = 56.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Filler" type="Control" parent="LevelContainer"]
+custom_minimum_size = Vector2(7, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Return" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 32.0
+offset_bottom = 39.0
+text = "X"

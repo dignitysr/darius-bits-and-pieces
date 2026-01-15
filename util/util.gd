@@ -22,3 +22,7 @@ static func get_valid_recipe(recipes: Recipes, recipe: String, parts: Dictionary
 		if part_quantity[part_rank] == recipes.recipes[recipe].size():
 			recipe_ranks.append(part_rank)
 	return recipe_ranks
+
+static func direct_image(texture: Texture2D) -> ImageTexture:
+	var image = texture.get_image()
+	return ImageTexture.create_from_image(image)

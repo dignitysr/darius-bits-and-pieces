@@ -1,7 +1,6 @@
 class_name BaseEnemy
 extends CharacterBody2D
 
-enum Rank {F, D, C, B, A, S}
 const GRAVITY = 10
 const JUMP_POW = 9
 const SAFETY_MARGIN = 20
@@ -13,6 +12,7 @@ const SAFETY_MARGIN = 20
 
 var dead: bool = false
 var dithering_intensity: float = 0
+var inventory_manager: InventoryManager
 
 @export_category("Enemy Info")
 @export var enemy_name: String
@@ -21,21 +21,30 @@ var dithering_intensity: float = 0
 
 @export_category("Enemy Stats")
 @export var health: float = 20
-@export var rank: Rank
+@export var health_mult: float = 1.5
+@export var rank: InventoryManager.Rank
 @export var death_speed: int = 4
-@export var speed: int = 100
+@export var speed: float = 100
+@export var parts_dropped: Dictionary[String, int]
+
+var init_speed: float
 
 func _ready() -> void:
+	health = health * (health_mult * (rank + 1))
+	init_speed = speed
 	enemy_area.connect("body_entered", on_mail_entered)
 	
 func _physics_process(delta):
 	#print(velocity)
+	if inventory_manager.level.active_buff == "slowdown":
+		speed = init_speed + init_speed*0.25
 	if !airborne:
 		velocity.x = 50
 	if dead:
 		animator.get_material().set_shader_parameter("intensity", dithering_intensity)
 		dithering_intensity += delta*death_speed
 	if dithering_intensity >= 1:
+		inventory_manager.add_parts(parts_dropped, rank)
 		queue_free()
 	if wall_finder.is_colliding() && velocity.is_equal_approx(Vector2(velocity.x, 0)):
 		velocity.y = -sqrt(-2*(GRAVITY/delta)*((get_wall_top_y()-position.y)-SAFETY_MARGIN	))
@@ -51,9 +60,11 @@ func _physics_process(delta):
 			animator.animation = "walk"
 
 func on_mail_entered(body: Mail) -> void:
-	health -= body.damage
+	damage(body.damage)
 	body.queue_free()
-	
+		
+func damage(damage_points: float) -> void:
+	health -= damage_points
 	if health <= 0:
 		dead = true
 		

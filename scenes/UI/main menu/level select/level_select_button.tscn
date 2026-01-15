@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvwvjx3doyrtr"]
+
+[ext_resource type="Texture2D" uid="uid://82p0pdd7hmbp" path="res://assets/UI/sprites/craft_open.png" id="1_4uqj6"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(112, 112)
+focus_mode = 0
+text = "Grassy Grasslands of Grass"
+icon = ExtResource("1_4uqj6")
+autowrap_mode = 2
+icon_alignment = 1
+vertical_icon_alignment = 0
