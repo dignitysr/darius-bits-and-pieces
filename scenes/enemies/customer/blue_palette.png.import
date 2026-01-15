@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce072spkctpyq"
-path="res://.godot/imported/normal_palette.png-e13cd5724b5e875814f53db9c0551532.ctex"
+uid="uid://xorxdhi25ln3"
+path="res://.godot/imported/blue_palette.png-1748c6338c32ead3a4d346476b73e5d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/enemies/customer/normal_palette.png"
-dest_files=["res://.godot/imported/normal_palette.png-e13cd5724b5e875814f53db9c0551532.ctex"]
+source_file="res://scenes/enemies/customer/blue_palette.png"
+dest_files=["res://.godot/imported/blue_palette.png-1748c6338c32ead3a4d346476b73e5d2.ctex"]
 
 [params]
 
