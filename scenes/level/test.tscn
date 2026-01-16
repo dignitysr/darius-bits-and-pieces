@@ -34,3 +34,6 @@ position = Vector2(0, 163)
 
 [node name="PlayerSpawner" parent="." index="10"]
 position = Vector2(32, 177)
+
+[node name="LoseAxis" parent="." index="11"]
+position = Vector2(418, 78)

@@ -6,7 +6,7 @@
 script = ExtResource("1_8ofaf")
 waves = Array[Dictionary]([{
 "customer": {
-"number": 10,
+"number": 12,
 "rank": 0
 }
 }, {

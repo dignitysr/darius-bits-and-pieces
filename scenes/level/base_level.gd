@@ -27,12 +27,15 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @onready var sub_count = %SubCount
 @onready var breaking_news = %BreakingNews
 @onready var UI = %UI
+@onready var lose_axis = %LoseAxis
+@onready var net_worth = %NetWorth
+@onready var net_worth_label = %NetWorthLabel
 
 var run_wave: bool = false
 var wave_number: int = -1
 var timer: float
 
-var subscribers: int = 0
+var subscribers: int = 1
 
 var buffs: Array = [
 	"Slow Down Customers",
@@ -119,6 +122,10 @@ func update_stats() -> void:
 		if subscribers >= sub_milestone && milestones[sub_milestone][1] == false:
 			breaking_news.show_news(milestones[sub_milestone][0])
 			milestones[sub_milestone][1] = true
+	if net_worth.max_value < subscribers*10:
+		var tween := get_tree().create_tween()
+		tween.tween_property(net_worth, "max_value", subscribers*10, 0.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	net_worth_label.add_theme_color_override("font_color", Color(1, (1-net_worth.value/net_worth.max_value), (1-net_worth.value/net_worth.max_value), 1))
 
 func on_darius_death() -> void:
 	var intensity = 0

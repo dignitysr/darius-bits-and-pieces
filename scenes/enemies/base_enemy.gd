@@ -49,9 +49,10 @@ func _physics_process(delta):
 		enemy_area.monitorable = false
 		enemy_area.monitoring = false
 	if dithering_intensity >= 1:
-		inventory_manager.add_parts(parts_dropped, rank)
 		set_physics_process(false)
 		await cheer.finished
+		if cheer.playing:
+			await cheer.finished
 		queue_free()
 	if wall_finder.is_colliding() && velocity.is_equal_approx(Vector2(velocity.x, 0)):
 		velocity.y = -sqrt(-2*(GRAVITY/delta)*((get_wall_top_y()-position.y)-SAFETY_MARGIN	))
@@ -67,6 +68,16 @@ func _physics_process(delta):
 			animator.animation = "walk"
 	if !dead && inventory_manager.level.player in enemy_area.get_overlapping_bodies() && inventory_manager.level.active_buff == BaseLevel.Buffs.SLOW:
 		speed = init_speed*0.75
+	if position.x >= inventory_manager.level.lose_axis.position.x:
+		lose_subscriber()
+
+func lose_subscriber() -> void:
+	if !dead:
+		inventory_manager.level.subscribers -= inventory_manager.level.subscribers*0.1
+		var tween := get_tree().create_tween()
+		tween.tween_property(inventory_manager.level.net_worth, "value", inventory_manager.level.net_worth.value + inventory_manager.level.net_worth.max_value*0.1, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		inventory_manager.level.update_stats()
+	dead = true
 
 func on_mail_entered(body) -> void:
 	if body is Mail:
@@ -80,6 +91,7 @@ func damage(damage_points: float) -> void:
 		if not dead:
 			cheer.play()
 		dead = true
+		inventory_manager.add_parts(parts_dropped, rank)
 		StatsManager.stats["recruited_customers"] += 1
 		StatsManager.stats["recruited_customers_total"] += 1
 		if StatsManager.stats["recruited_customers"] == 1:
