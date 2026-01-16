@@ -10,6 +10,7 @@ const SAFETY_MARGIN = 20
 @onready var animator = %Animator
 @onready var wall_finder = %WallFinder
 @onready var cheer: AudioStreamPlayer2D = %Cheer
+@onready var hit: AudioStreamPlayer2D = %Hit
 
 var dead: bool = false
 var dithering_intensity: float = 0
@@ -50,7 +51,6 @@ func _physics_process(delta):
 	if dithering_intensity >= 1:
 		inventory_manager.add_parts(parts_dropped, rank)
 		set_physics_process(false)
-		collision_layer = 0
 		await cheer.finished
 		queue_free()
 	if wall_finder.is_colliding() && velocity.is_equal_approx(Vector2(velocity.x, 0)):
@@ -65,7 +65,7 @@ func _physics_process(delta):
 	else:
 		if !airborne:
 			animator.animation = "walk"
-	if inventory_manager.level.player in enemy_area.get_overlapping_bodies() && inventory_manager.level.active_buff == BaseLevel.Buffs.SLOW:
+	if !dead && inventory_manager.level.player in enemy_area.get_overlapping_bodies() && inventory_manager.level.active_buff == BaseLevel.Buffs.SLOW:
 		speed = init_speed*0.75
 
 func on_mail_entered(body) -> void:
@@ -74,6 +74,7 @@ func on_mail_entered(body) -> void:
 		body.queue_free()
 		
 func damage(damage_points: float) -> void:
+	hit.play()
 	health -= damage_points
 	if health <= 0:
 		if not dead:

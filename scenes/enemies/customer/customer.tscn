@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cmvevnsrw0wrc"]
+[gd_scene load_steps=26 format=3 uid="uid://cmvevnsrw0wrc"]
 
 [ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_7a07e"]
 [ext_resource type="Texture2D" uid="uid://xorxdhi25ln3" path="res://scenes/enemies/customer/blue_palette.png" id="2_1bm5k"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://by12kbpb07n6x" path="res://scenes/enemies/customer/sounds/cheer0.wav" id="9_5cqwp"]
 [ext_resource type="AudioStream" uid="uid://bb8amxekso6ib" path="res://scenes/enemies/customer/sounds/cheer1.wav" id="10_6yd8o"]
 [ext_resource type="AudioStream" uid="uid://cd0t2vco1islr" path="res://scenes/enemies/customer/sounds/cheer2.wav" id="11_qx7nh"]
+[ext_resource type="AudioStream" uid="uid://cxfbmktqh467y" path="res://scenes/enemies/customer/sounds/hit.wav" id="12_6yd8o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ql35"]
 resource_local_to_scene = true
@@ -153,4 +154,10 @@ shape = SubResource("RectangleShape2D_5mo5y")
 [node name="Cheer" type="AudioStreamPlayer2D" parent="." index="5"]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_487ha")
+bus = &"SFX"
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="." index="6"]
+unique_name_in_owner = true
+stream = ExtResource("12_6yd8o")
+volume_db = -2.5
 bus = &"SFX"
