@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dflehm1nse4cx"]
+[gd_scene load_steps=16 format=3 uid="uid://dflehm1nse4cx"]
 
 [ext_resource type="Script" uid="uid://dhfwyr5qu1dq2" path="res://scenes/UI/craft_panel.gd" id="1_a1seb"]
 [ext_resource type="Texture2D" uid="uid://c2fis14srkqnw" path="res://icon.svg" id="1_qfitj"]
@@ -9,6 +9,9 @@
 [ext_resource type="Resource" uid="uid://c57gvffr23thc" path="res://scenes/level/items/recipes.tres" id="4_yfdkm"]
 [ext_resource type="Resource" uid="uid://6rxf2qmjweg1" path="res://scenes/UI/ranks/ranks.tres" id="6_yfdkm"]
 [ext_resource type="PackedScene" uid="uid://ce3184whxb634" path="res://scenes/UI/rankpanel.tscn" id="8_0k2n0"]
+[ext_resource type="Script" uid="uid://bahc168i55qjm" path="res://scenes/UI/nested_button_sound.gd" id="8_kbfmq"]
+[ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="11_8s7uw"]
+[ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="12_fjekm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yfdkm"]
 
@@ -44,6 +47,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_2r1i5")
 [node name="RankSelectButton" type="Button" parent="VBoxContainer/NamePanel"]
 unique_name_in_owner = true
 layout_mode = 2
+script = ExtResource("8_kbfmq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/NamePanel"]
 custom_minimum_size = Vector2(98.51, 25.235)
@@ -119,3 +123,15 @@ layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_constants/separation = 3
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("11_8s7uw")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="PressSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("12_fjekm")
+volume_db = -6.0
+bus = &"SFX"

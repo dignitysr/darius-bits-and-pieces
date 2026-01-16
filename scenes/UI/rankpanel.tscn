@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce3184whxb634"]
+[gd_scene load_steps=5 format=3 uid="uid://ce3184whxb634"]
 
 [ext_resource type="Script" uid="uid://bwhj3r7nokwfu" path="res://scenes/UI/rankpanel.gd" id="1_e1os6"]
+[ext_resource type="Script" uid="uid://bahc168i55qjm" path="res://scenes/UI/nested_button_sound.gd" id="2_3rhps"]
 [ext_resource type="Texture2D" uid="uid://c2fis14srkqnw" path="res://icon.svg" id="2_e1os6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7mirn"]
@@ -18,6 +19,7 @@ script = ExtResource("1_e1os6")
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
+script = ExtResource("2_3rhps")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

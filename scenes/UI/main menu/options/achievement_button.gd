@@ -1,2 +1,2 @@
 class_name AchievementButton
-extends Button
+extends ButtonSound

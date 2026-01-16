@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfmpe5508ukf5"]
+[gd_scene load_steps=7 format=3 uid="uid://bfmpe5508ukf5"]
 
 [ext_resource type="FontFile" uid="uid://dr00saqh1n260" path="res://assets/UI/fonts/Timetwist-Regular.ttf" id="1_e56rc"]
 [ext_resource type="Texture2D" uid="uid://8ydu1pbxo8rr" path="res://scenes/UI/assets/white_postcard.png" id="2_e56rc"]
+[ext_resource type="Script" uid="uid://5th27v3n7pq5" path="res://scenes/UI/main menu/options/achievement_button.gd" id="3_5gdxq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5gdxq"]
 texture = ExtResource("2_e56rc")
@@ -43,3 +44,4 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_e56rc")
 theme_override_styles/hover = SubResource("StyleBoxTexture_02f6a")
 text = "First Steps"
 autowrap_mode = 2
+script = ExtResource("3_5gdxq")

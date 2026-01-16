@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvwvjx3doyrtr"]
+[gd_scene load_steps=3 format=3 uid="uid://cvwvjx3doyrtr"]
 
 [ext_resource type="Texture2D" uid="uid://82p0pdd7hmbp" path="res://assets/UI/sprites/craft_open.png" id="1_4uqj6"]
+[ext_resource type="Script" uid="uid://dkhkefsalmq5b" path="res://scenes/UI/button_sound.gd" id="2_hicd7"]
 
 [node name="Button" type="Button"]
 custom_minimum_size = Vector2(112, 112)
@@ -10,3 +11,4 @@ icon = ExtResource("1_4uqj6")
 autowrap_mode = 2
 icon_alignment = 1
 vertical_icon_alignment = 0
+script = ExtResource("2_hicd7")

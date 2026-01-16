@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://diff5064kusnd"]
+[gd_scene load_steps=7 format=3 uid="uid://diff5064kusnd"]
 
 [ext_resource type="Texture2D" uid="uid://c2fis14srkqnw" path="res://icon.svg" id="1_fco5x"]
 [ext_resource type="Script" uid="uid://dqqglubeo8eob" path="res://scenes/UI/main menu/main_menu.gd" id="1_lok01"]
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="2_lok01"]
+[ext_resource type="Script" uid="uid://dkhkefsalmq5b" path="res://scenes/UI/button_sound.gd" id="4_agl0q"]
+[ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="5_7df32"]
+[ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="6_7df32"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -57,6 +60,7 @@ custom_minimum_size = Vector2(129, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_lok01")
 text = "Play"
+script = ExtResource("4_agl0q")
 
 [node name="Options" type="Button" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -64,6 +68,7 @@ custom_minimum_size = Vector2(129, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_lok01")
 text = "Options"
+script = ExtResource("4_agl0q")
 
 [node name="Quit" type="Button" parent="HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -71,8 +76,21 @@ custom_minimum_size = Vector2(129, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_lok01")
 text = "Quit"
+script = ExtResource("4_agl0q")
 
 [node name="Filler3" type="Control" parent="HBoxContainer"]
 custom_minimum_size = Vector2(58, 0)
 layout_mode = 2
 mouse_filter = 2
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_7df32")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="PressSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_7df32")
+volume_db = -6.0
+bus = &"SFX"

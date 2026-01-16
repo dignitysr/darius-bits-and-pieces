@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c0nclxadp8xws"]
+[gd_scene load_steps=36 format=3 uid="uid://c0nclxadp8xws"]
 
 [ext_resource type="Script" uid="uid://c8kx2jgqnthg4" path="res://scenes/level/base_level.gd" id="1_2qxot"]
 [ext_resource type="Script" uid="uid://c3d6hdxo3ibrw" path="res://scenes/level/parts_manager.gd" id="1_ebx1s"]
@@ -22,6 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://bpn3k8st5fbbl" path="res://assets/UI/sprites/breaking_news_white.png" id="15_41h08"]
 [ext_resource type="Texture2D" uid="uid://c2dj8h476f7ps" path="res://scenes/UI/assets/slider plus money.png" id="15_852lj"]
 [ext_resource type="Texture2D" uid="uid://cn323qcyjay3l" path="res://scenes/UI/assets/subs.png" id="17_wk8xf"]
+[ext_resource type="Script" uid="uid://dkhkefsalmq5b" path="res://scenes/UI/button_sound.gd" id="21_lqmad"]
+[ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="22_ortha"]
+[ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="23_lqmad"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_co8g8"]
 atlas = ExtResource("15_852lj")
@@ -537,6 +540,8 @@ theme_override_fonts/font = ExtResource("4_t6xnl")
 toggle_mode = true
 icon = ExtResource("7_8xnqg")
 icon_alignment = 1
+script = ExtResource("21_lqmad")
+press_name = ""
 
 [node name="CenterContainer" type="CenterContainer" parent="UI/CraftContainer/CraftTransButton"]
 layout_mode = 0
@@ -653,6 +658,18 @@ alignment = 2
 
 [node name="HBoxContainer" parent="UI/QuantitiesContainer" instance=ExtResource("13_qf4k4")]
 layout_mode = 2
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="UI"]
+unique_name_in_owner = true
+stream = ExtResource("22_ortha")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="PressSound" type="AudioStreamPlayer" parent="UI"]
+unique_name_in_owner = true
+stream = ExtResource("23_lqmad")
+volume_db = -6.0
+bus = &"SFX"
 
 [node name="TransitionPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

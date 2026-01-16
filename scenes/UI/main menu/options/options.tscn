@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://bv2xa0wek7j8t"]
+[gd_scene load_steps=36 format=4 uid="uid://bv2xa0wek7j8t"]
 
 [ext_resource type="Script" uid="uid://dmn0k2k2vlxq3" path="res://scenes/UI/main menu/options/options.gd" id="1_2pwr6"]
 [ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="1_157xu"]
@@ -6,10 +6,16 @@
 [ext_resource type="Script" uid="uid://chlm3iry8g2sv" path="res://scenes/UI/main menu/options/audiovisual.gd" id="2_7toq6"]
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="3_i6pal"]
 [ext_resource type="Script" uid="uid://dhsyvev6hbsod" path="res://scenes/UI/main menu/options/control.gd" id="4_7toq6"]
+[ext_resource type="Script" uid="uid://bilq3m1mpqkuh" path="res://scenes/UI/main menu/options/tab_sound.gd" id="5_g7b26"]
 [ext_resource type="Script" uid="uid://drerhw7vrrjw" path="res://scenes/UI/main menu/options/achievements.gd" id="5_i6pal"]
 [ext_resource type="PackedScene" uid="uid://bfmpe5508ukf5" path="res://scenes/UI/main menu/options/achievement_button.tscn" id="6_shko1"]
+[ext_resource type="Script" uid="uid://d4lr3pduxhqer" path="res://scenes/UI/option_sound.gd" id="7_lhrrj"]
 [ext_resource type="Script" uid="uid://cm1taalfwjv03" path="res://scenes/UI/main menu/options/stats.gd" id="7_shko1"]
+[ext_resource type="Script" uid="uid://boqqkki6t66yl" path="res://scenes/UI/slider_sound.gd" id="7_voccj"]
 [ext_resource type="Texture2D" uid="uid://cy8xsvim3t8mb" path="res://assets/UI/sprites/back.png" id="9_wsbjl"]
+[ext_resource type="Script" uid="uid://dkhkefsalmq5b" path="res://scenes/UI/button_sound.gd" id="11_nsjvu"]
+[ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="12_g7b26"]
+[ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="13_lhrrj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jnhg8"]
 shader = ExtResource("1_157xu")
@@ -1825,6 +1831,7 @@ theme_override_font_sizes/font_size = 16
 tab_alignment = 1
 current_tab = 0
 tab_focus_mode = 0
+script = ExtResource("5_g7b26")
 
 [node name="Audiovisual" type="Control" parent="MarginContainer/TabContainer"]
 use_parent_material = true
@@ -1869,6 +1876,7 @@ layout_mode = 2
 focus_mode = 0
 max_value = 1.0
 step = 0.05
+script = ExtResource("7_voccj")
 
 [node name="Music" type="HBoxContainer" parent="MarginContainer/TabContainer/Audiovisual/VBoxContainer"]
 use_parent_material = true
@@ -1889,6 +1897,7 @@ layout_mode = 2
 focus_mode = 0
 max_value = 1.0
 step = 0.05
+script = ExtResource("7_voccj")
 
 [node name="SFX" type="HBoxContainer" parent="MarginContainer/TabContainer/Audiovisual/VBoxContainer"]
 use_parent_material = true
@@ -1909,6 +1918,7 @@ layout_mode = 2
 focus_mode = 0
 max_value = 1.0
 step = 0.05
+script = ExtResource("7_voccj")
 
 [node name="FPS" type="HBoxContainer" parent="MarginContainer/TabContainer/Audiovisual/VBoxContainer"]
 use_parent_material = true
@@ -1944,6 +1954,7 @@ popup/item_4/text = "15"
 popup/item_4/id = 3
 popup/item_5/text = "Disable"
 popup/item_5/id = 5
+script = ExtResource("7_lhrrj")
 
 [node name="Scale" type="HBoxContainer" parent="MarginContainer/TabContainer/Audiovisual/VBoxContainer"]
 use_parent_material = true
@@ -1973,6 +1984,7 @@ popup/item_2/text = "3x"
 popup/item_2/id = 1
 popup/item_3/text = "Full"
 popup/item_3/id = 0
+script = ExtResource("7_lhrrj")
 
 [node name="Controls" type="Control" parent="MarginContainer/TabContainer"]
 visible = false
@@ -2017,6 +2029,7 @@ layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_i6pal")
 text = "Action"
+script = ExtResource("11_nsjvu")
 
 [node name="Right" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/VBoxContainer"]
 use_parent_material = true
@@ -2038,6 +2051,7 @@ layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_i6pal")
 text = "Action"
+script = ExtResource("11_nsjvu")
 
 [node name="Jump" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/VBoxContainer"]
 use_parent_material = true
@@ -2059,6 +2073,7 @@ layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_i6pal")
 text = "Action"
+script = ExtResource("11_nsjvu")
 
 [node name="Click" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/VBoxContainer"]
 use_parent_material = true
@@ -2080,6 +2095,7 @@ layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_i6pal")
 text = "Action"
+script = ExtResource("11_nsjvu")
 
 [node name="Back" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/VBoxContainer"]
 use_parent_material = true
@@ -2101,6 +2117,7 @@ layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_i6pal")
 text = "Action"
+script = ExtResource("11_nsjvu")
 
 [node name="Achievements" type="Control" parent="MarginContainer/TabContainer"]
 visible = false
@@ -2254,3 +2271,16 @@ grow_vertical = 0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_i6pal")
 icon = ExtResource("9_wsbjl")
+script = ExtResource("11_nsjvu")
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("12_g7b26")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="PressSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_lhrrj")
+volume_db = -6.0
+bus = &"SFX"
