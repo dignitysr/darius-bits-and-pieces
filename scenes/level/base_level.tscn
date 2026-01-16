@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c0nclxadp8xws"]
+[gd_scene load_steps=33 format=3 uid="uid://c0nclxadp8xws"]
 
 [ext_resource type="Script" uid="uid://c8kx2jgqnthg4" path="res://scenes/level/base_level.gd" id="1_2qxot"]
 [ext_resource type="Script" uid="uid://c3d6hdxo3ibrw" path="res://scenes/level/parts_manager.gd" id="1_ebx1s"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://6rxf2qmjweg1" path="res://scenes/UI/ranks/ranks.tres" id="4_kxd26"]
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="4_t6xnl"]
 [ext_resource type="PackedScene" uid="uid://dflehm1nse4cx" path="res://scenes/UI/craftable.tscn" id="5_3ipv6"]
+[ext_resource type="PackedScene" uid="uid://bv2xa0wek7j8t" path="res://scenes/UI/main menu/options/options.tscn" id="5_co8g8"]
 [ext_resource type="PackedScene" uid="uid://bb8p24vsdb0d5" path="res://scenes/level/tiles/dirt.tscn" id="5_uhv4h"]
 [ext_resource type="Resource" uid="uid://bb2pamo51cvxh" path="res://scenes/UI/ranks/small_ranks.tres" id="6_8x4to"]
 [ext_resource type="Texture2D" uid="uid://82p0pdd7hmbp" path="res://assets/UI/sprites/craft_open.png" id="7_8xnqg"]
@@ -19,7 +20,35 @@
 [ext_resource type="FontFile" uid="uid://dr00saqh1n260" path="res://assets/UI/fonts/Timetwist-Regular.ttf" id="14_ddm1m"]
 [ext_resource type="Texture2D" uid="uid://osocf0h8p0cq" path="res://assets/UI/sprites/breaking_news_red.png" id="14_ufabe"]
 [ext_resource type="Texture2D" uid="uid://bpn3k8st5fbbl" path="res://assets/UI/sprites/breaking_news_white.png" id="15_41h08"]
+[ext_resource type="Texture2D" uid="uid://c2dj8h476f7ps" path="res://scenes/UI/assets/slider plus money.png" id="15_852lj"]
 [ext_resource type="Texture2D" uid="uid://cn323qcyjay3l" path="res://scenes/UI/assets/subs.png" id="17_wk8xf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co8g8"]
+atlas = ExtResource("15_852lj")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4tpiy"]
+texture = SubResource("AtlasTexture_co8g8")
+texture_margin_left = 7.0
+texture_margin_top = 6.0
+texture_margin_right = 8.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ortha"]
+atlas = ExtResource("15_852lj")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lqmad"]
+texture = SubResource("AtlasTexture_ortha")
+texture_margin_left = 7.0
+texture_margin_top = 6.0
+texture_margin_right = 7.0
+texture_margin_bottom = 6.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 16, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_se6ax"]
 texture = ExtResource("9_466n5")
@@ -309,6 +338,7 @@ script = ExtResource("1_2qxot")
 small_ranks_resource = ExtResource("6_8x4to")
 objects_list = ExtResource("2_upopr")
 quantity_container = ExtResource("13_qf4k4")
+options_screen = ExtResource("5_co8g8")
 
 [node name="Towers" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -333,8 +363,10 @@ position = Vector2(34, 190)
 inventory_manager = NodePath("../InvManager")
 
 [node name="UI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
 [node name="BreakingNews" type="Control" parent="UI"]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -387,6 +419,7 @@ metadata/_edit_use_anchors_ = true
 [node name="NumbersContainer" type="VBoxContainer" parent="UI/UIContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = 1
 
 [node name="Control" type="Control" parent="UI/UIContainer/NumbersContainer"]
 layout_mode = 2
@@ -399,6 +432,17 @@ alignment = 1
 
 [node name="SubIcon" type="TextureRect" parent="UI/UIContainer/NumbersContainer/SubContainer"]
 layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("17_wk8xf")
+
+[node name="SubShadow" type="TextureRect" parent="UI/UIContainer/NumbersContainer/SubContainer/SubIcon"]
+modulate = Color(0, 0, 0, 0.32941177)
+show_behind_parent = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 18.0
+offset_bottom = 17.0
 mouse_filter = 2
 texture = ExtResource("17_wk8xf")
 
@@ -427,13 +471,18 @@ mouse_filter = 2
 
 [node name="Label" type="Label" parent="UI/UIContainer/NumbersContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.827451, 0.93333334, 1, 1)
+theme_override_colors/font_color = Color(0.69411767, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.25490198, 0.11764706, 0.16470589, 1)
 text = "Rick's Net Worth"
 
 [node name="ProgressBar" type="ProgressBar" parent="UI/UIContainer/NumbersContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_4tpiy")
+theme_override_styles/fill = SubResource("StyleBoxTexture_lqmad")
+value = 75.51
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/UIContainer"]
 layout_mode = 2

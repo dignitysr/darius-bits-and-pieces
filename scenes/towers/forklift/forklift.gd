@@ -1,6 +1,8 @@
 class_name Forklift
 extends BaseTower
 
+const GRAVITY = 10
+
 @onready var home: Area2D = %Home
 @onready var inner_enemy_detection: Area2D = $EnemyDetection
 
@@ -17,6 +19,10 @@ func _physics_process(delta) -> void:
 	if is_instance_valid(selected_enemy):
 		animator.flip_h = selected_enemy.position.x > position.x
 		position = position.move_toward(Vector2(selected_enemy.position.x, position.y), speed)
+	if !is_on_floor():
+		velocity.y += GRAVITY
+	else:
+		velocity.y = 0
 	move_and_slide()
 	
 func _attack() -> void:

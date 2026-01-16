@@ -23,10 +23,21 @@ func reload_achievements() -> void:
 		var achievement_button: Button = achievement_button_scene.instantiate()
 		achievement_button.text = achievement_name
 		if achievements[achievement_name].unlocked:
-			achievement_button.modulate = unlocked_color
+			set_button_bg_modulate(achievement_button, unlocked_color)
 		else:
-			achievement_button.modulate = locked_color
+			set_button_bg_modulate(achievement_button, locked_color)
 		achievement_container.add_child(achievement_button)
 		achievement_button.connect("button_down", achievement_pressed.bind(achievement_name))
 	achievement_desc.text = achievements[achievements.keys()[0]].description
 	unlocked_check.button_pressed = achievements[achievements.keys()[0]].unlocked
+
+func set_button_bg_modulate(box: Button, color: Color):
+	var normal_stylebox: StyleBoxTexture = box.get_theme_stylebox("normal").duplicate()
+	var hover_stylebox: StyleBoxTexture = box.get_theme_stylebox("hover").duplicate()
+	var pressed_stylebox: StyleBoxTexture = box.get_theme_stylebox("pressed").duplicate()
+	normal_stylebox.modulate_color = Color(color, 0.8)
+	hover_stylebox.modulate_color = Color(color, 0.6)
+	pressed_stylebox.modulate_color = Color(color, 1)
+	box.add_theme_stylebox_override("normal", normal_stylebox)
+	box.add_theme_stylebox_override("hover", hover_stylebox)
+	box.add_theme_stylebox_override("pressed", pressed_stylebox)

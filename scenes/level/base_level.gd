@@ -10,6 +10,7 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @export var objects_list: ObjectList
 @export var quantity_container: PackedScene
 @export var player_scene: PackedScene
+@export var options_screen: PackedScene
 
 @export_category("Wave Information")
 @export var time_between_waves: float = 60 ## In seconds
@@ -24,6 +25,8 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @onready var darius_name_label = %DariusName
 @onready var ability_label = %Ability
 @onready var sub_count = %SubCount
+@onready var breaking_news = %BreakingNews
+@onready var UI = %UI
 
 var run_wave: bool = false
 var wave_number: int = -1
@@ -43,6 +46,13 @@ var buff_prefixes: Array = [
 	'Featuring: ',
 	'Trade: '
 ]
+
+var milestones: Dictionary = {
+	1e3: ["New OOPS competitor? All you need to know about DPS.", false],
+	1e4: ["OOPS competitor gaining steam in recent push to reach ten thousand subscribers.", false],
+	1e5: ["DPS becoming the second-most-used postal service behind Rick Aschez's OOPS. Is it on track to dethrone it?", false],
+	1e6: ["DPS subscribership surpassing the population of a small country. OOPS in grave danger.", false]
+}
 	
 var active_buff := Buffs.SLOW
 
@@ -65,7 +75,7 @@ func _physics_process(delta) -> void:
 				enemy_instance.rank = wave_resource.waves[wave_number][enemy]["rank"]
 				enemy_instance.inventory_manager = inventory_manager
 				enemy_container.add_child(enemy_instance)
-				await get_tree().create_timer(time_between_enemies).timeout
+				await get_tree().create_timer(time_between_enemies, false).timeout
 		run_wave = false
 	else:
 		if enemy_container.get_children().is_empty():
@@ -76,7 +86,11 @@ func _physics_process(delta) -> void:
 				wave_number += 1
 				run_wave = true
 			
-		
+	if Input.is_action_just_pressed("back"):
+		var options = options_screen.instantiate()
+		options.owner = self
+		UI.add_child(options)
+		get_tree().paused = true
 
 func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Rank):
 	var total_parts: int = 0
@@ -101,6 +115,10 @@ func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Ra
 		
 func update_stats() -> void:
 	sub_count.text = math_util.convert_num(subscribers)
+	for sub_milestone: float in milestones:
+		if subscribers >= sub_milestone && milestones[sub_milestone][1] == false:
+			breaking_news.show_news(milestones[sub_milestone][0])
+			milestones[sub_milestone][1] = true
 
 func on_darius_death() -> void:
 	var intensity = 0

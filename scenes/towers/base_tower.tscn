@@ -69,6 +69,7 @@ texture = ExtResource("3_rtahd")
 
 [node name="BrokenBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
+z_index = 5
 offset_left = -25.0
 offset_right = 24.0
 offset_bottom = 7.0

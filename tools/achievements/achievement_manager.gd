@@ -45,7 +45,12 @@ func store_achievements(achievement_name: String, description: String) -> void:
 		unlocked_achievements += 1
 
 func unlock(achievement_name: String) -> void:
+	if achievements[achievement_name].unlocked:
+		return
+	trans_player.play("RESET")
 	achievements[achievement_name].unlocked = true
+	unlocked_achievements += 1
 	achievement_name_label.text = achievement_name
 	trans_player.play("slide")
 	Save.change_setting("achievements", achievement_name, true)
+	StatsManager.save_stats()

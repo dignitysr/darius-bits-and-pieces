@@ -1,17 +1,20 @@
 class_name BreakingNews
 extends Control
 
-
 @onready var label: Label = %Label
 @export var text_move_speed: float = 0.5
+
+var is_broadcasting: bool = false
 
 func _ready() -> void:
 	hide()
 	modulate.a = 0
-	show_news("Local Darius the Mailman gets hit by truck and fucking dies. More at 10.")
 	
 func show_news(news: String) -> void:
+	if is_broadcasting:
+		return
 	show()
+	is_broadcasting = true
 	var default_text_pos = get_viewport_rect().size.x
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(self, "modulate:a", 1, 1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
@@ -26,3 +29,4 @@ func show_news(news: String) -> void:
 	tween.tween_property(self, "modulate:a", 0, 1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	await tween.finished
 	hide()
+	is_broadcasting = false

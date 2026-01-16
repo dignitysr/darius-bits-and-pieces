@@ -86,6 +86,10 @@ func buy(tower: String, rank: Rank) -> void:
 			preview.global_position = get_snapped_mouse_position()
 		await get_tree().physics_frame
 	tower_placed = false
+	StatsManager.stats["towers_placed"] += 1
+	StatsManager.stats["towers_placed_total"] += 1
+	if StatsManager.stats["towers_placed"] == 1:
+		AchievementManager.unlock("First Steps")
 	preview.global_position = Vector2.ZERO
 	place_validator.global_position = Vector2.ZERO
 		

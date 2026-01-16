@@ -79,6 +79,10 @@ func damage(damage_points: float) -> void:
 		if not dead:
 			cheer.play()
 		dead = true
+		StatsManager.stats["recruited_customers"] += 1
+		StatsManager.stats["recruited_customers_total"] += 1
+		if StatsManager.stats["recruited_customers"] == 1:
+			AchievementManager.unlock("Encounter with the Enemy")
 	animator.modulate = Color.DARK_RED
 	var tween := get_tree().create_tween()
 	animator.modulate = Color.ROYAL_BLUE

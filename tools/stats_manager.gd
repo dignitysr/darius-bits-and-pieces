@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_TIME = 60
+const SAVE_TIME = 30
 
 var stats: Dictionary = {
 	"playtime": 0,
@@ -21,6 +21,7 @@ var init_unix_time: float
 var init_time: float
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	load_stats()
 	init_time = stats["playtime"]
 	init_unix_time = Time.get_unix_time_from_system()

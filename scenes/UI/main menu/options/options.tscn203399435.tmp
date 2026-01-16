@@ -1,7 +1,6 @@
-[gd_scene load_steps=30 format=4 uid="uid://bv2xa0wek7j8t"]
+[gd_scene load_steps=28 format=4 uid="uid://bv2xa0wek7j8t"]
 
 [ext_resource type="Script" uid="uid://dmn0k2k2vlxq3" path="res://scenes/UI/main menu/options/options.gd" id="1_2pwr6"]
-[ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="1_157xu"]
 [ext_resource type="Theme" uid="uid://csbmn3ra74l3n" path="res://assets/UI/base_theme.tres" id="2_2pwr6"]
 [ext_resource type="Script" uid="uid://chlm3iry8g2sv" path="res://scenes/UI/main menu/options/audiovisual.gd" id="2_7toq6"]
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="3_i6pal"]
@@ -10,10 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bfmpe5508ukf5" path="res://scenes/UI/main menu/options/achievement_button.tscn" id="6_shko1"]
 [ext_resource type="Script" uid="uid://cm1taalfwjv03" path="res://scenes/UI/main menu/options/stats.gd" id="7_shko1"]
 [ext_resource type="Texture2D" uid="uid://cy8xsvim3t8mb" path="res://assets/UI/sprites/back.png" id="9_wsbjl"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jnhg8"]
-shader = ExtResource("1_157xu")
-shader_parameter/intensity = 0.0
 
 [sub_resource type="Theme" id="Theme_w2wxb"]
 default_font = ExtResource("3_i6pal")
@@ -1793,13 +1788,8 @@ default_font = SubResource("FontFile_lhrrj")
 
 [node name="Options" type="Control"]
 process_mode = 3
-material = SubResource("ShaderMaterial_jnhg8")
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_2pwr6")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

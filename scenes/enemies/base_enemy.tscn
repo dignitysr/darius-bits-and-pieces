@@ -17,7 +17,7 @@ size = Vector2(10, 15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qf3h2"]
 
 [node name="BaseEnemy" type="CharacterBody2D"]
-collision_layer = 16
+collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_r5xb8")
 health = 60.0
@@ -38,7 +38,7 @@ shape = SubResource("RectangleShape2D_r5xb8")
 
 [node name="WallFinder" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-target_position = Vector2(30, 0)
+target_position = Vector2(20, 0)
 collision_mask = 8
 
 [node name="Collider" type="CollisionShape2D" parent="."]

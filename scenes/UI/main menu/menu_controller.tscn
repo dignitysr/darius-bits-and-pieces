@@ -1,14 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh30ifxl6br0p"]
+[gd_scene load_steps=5 format=3 uid="uid://dh30ifxl6br0p"]
 
 [ext_resource type="PackedScene" uid="uid://diff5064kusnd" path="res://scenes/UI/main menu/main_menu.tscn" id="1_bw352"]
 [ext_resource type="Script" uid="uid://cydhhlfmuy03x" path="res://scenes/UI/main menu/menu_controller.gd" id="1_wmq10"]
 [ext_resource type="PackedScene" uid="uid://bv2xa0wek7j8t" path="res://scenes/UI/main menu/options/options.tscn" id="3_yvyyh"]
-[ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="4_agmpk"]
 [ext_resource type="PackedScene" uid="uid://drjpjfrgcsw" path="res://scenes/UI/main menu/level select/level_select.tscn" id="5_kew0u"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kew0u"]
-shader = ExtResource("4_agmpk")
-shader_parameter/intensity = 1.0
 
 [node name="MenuController" type="Control"]
 layout_mode = 3
@@ -17,8 +12,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 script = ExtResource("1_wmq10")
+metadata/_edit_use_anchors_ = true
 
 [node name="Active" type="Control" parent="."]
 unique_name_in_owner = true
@@ -49,7 +44,6 @@ mouse_filter = 2
 [node name="Options" parent="Inactive" node_paths=PackedStringArray("menu_controller") instance=ExtResource("3_yvyyh")]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
-material = SubResource("ShaderMaterial_kew0u")
 layout_mode = 1
 mouse_filter = 2
 menu_controller = NodePath("../..")
