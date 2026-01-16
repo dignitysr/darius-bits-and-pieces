@@ -76,7 +76,7 @@ func _physics_process(delta) -> void:
 			if !pickup_detection.get_overlapping_bodies().is_empty() && inventory_manager.level.active_buff == "repair":
 				if durability != max_durability:
 					var tween := get_tree().create_tween()
-					animator.modulate = Color.ROYAL_BLUE
+					animator.modulate = Color.PALE_GREEN
 					tween.tween_property(animator, "modulate", Color.WHITE, 0.2)
 				durability = clamp(durability + max_durability*tower_repair_buff, 0, max_durability)
 			print(durability)

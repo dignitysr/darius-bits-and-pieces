@@ -1,9 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmvevnsrw0wrc"]
+[gd_scene load_steps=21 format=3 uid="uid://cmvevnsrw0wrc"]
 
 [ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_7a07e"]
+[ext_resource type="Texture2D" uid="uid://xorxdhi25ln3" path="res://scenes/enemies/customer/blue_palette.png" id="2_1bm5k"]
 [ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="2_k3i2y"]
 [ext_resource type="Texture2D" uid="uid://ce072spkctpyq" path="res://scenes/enemies/customer/default_palette.png" id="3_0ql35"]
 [ext_resource type="Texture2D" uid="uid://crglf3jy5ies5" path="res://scenes/enemies/customer/sheet.png" id="3_5mo5y"]
+[ext_resource type="Texture2D" uid="uid://ftkusvkvddl5" path="res://scenes/enemies/customer/green_palette.png" id="3_c886e"]
+[ext_resource type="Texture2D" uid="uid://2r6h4vqj00pj" path="res://scenes/enemies/customer/yellow_palette.png" id="4_0ql35"]
+[ext_resource type="Texture2D" uid="uid://dp8g4ksha7an3" path="res://scenes/enemies/customer/white_palette.png" id="4_f7b1v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ql35"]
 resource_local_to_scene = true
@@ -107,6 +111,7 @@ size = Vector2(14, 28)
 
 [node name="Customer" instance=ExtResource("1_7a07e")]
 enemy_name = "Customer"
+palettes = Array[Texture2D]([ExtResource("2_1bm5k"), ExtResource("3_c886e"), ExtResource("4_f7b1v"), ExtResource("4_0ql35"), ExtResource("3_0ql35")])
 rank = 5
 parts_dropped = Dictionary[String, int]({
 "paper": 3,

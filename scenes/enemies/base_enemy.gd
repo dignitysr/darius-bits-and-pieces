@@ -18,6 +18,7 @@ var inventory_manager: InventoryManager
 @export var enemy_name: String
 @export var enemy_path: String = ""
 @export var airborne: bool = false
+@export var palettes: Array[Texture2D]
 
 @export_category("Enemy Stats")
 @export var health: float = 20
@@ -30,6 +31,9 @@ var inventory_manager: InventoryManager
 var init_speed: float
 
 func _ready() -> void:
+	if !palettes.is_empty():
+		randomize()
+		animator.material.set_shader_parameter("palette_out", palettes[randi_range(0, palettes.size()-1)])
 	health = health * (health_mult * (rank + 1))
 	init_speed = speed
 	enemy_area.connect("body_entered", on_mail_entered)
@@ -67,6 +71,11 @@ func damage(damage_points: float) -> void:
 	health -= damage_points
 	if health <= 0:
 		dead = true
+	animator.modulate = Color.DARK_RED
+	var tween := get_tree().create_tween()
+	animator.modulate = Color.ROYAL_BLUE
+	tween.tween_property(animator, "modulate", Color.WHITE, 0.2)
+		
 		
 func get_wall_top_y() -> float:
 	if not wall_finder.is_colliding():

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqpd3vad3nqa7"]
+
+[ext_resource type="Script" uid="uid://cssg1fjfnmest" path="res://tools/music_manager.gd" id="1_5v2dh"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_5v2dh")
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+bus = &"Music"
+
+[node name="JingleStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+bus = &"Music"

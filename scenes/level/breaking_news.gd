@@ -3,7 +3,7 @@ extends Control
 
 
 @onready var label: Label = %Label
-@export var text_move_speed: float = 0.1
+@export var text_move_speed: float = 0.5
 
 func _ready() -> void:
 	hide()

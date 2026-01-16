@@ -22,11 +22,14 @@ var wave_number: int = -1
 var timer: float
 
 var buffs: Array = ["slowdown", "repair", "25% more", "faster"]
-var active_buff: String = "slowdown"
+var active_buff: String = "repair"
 
 func _ready() -> void:
 	#active_buff = buffs[randi_range(0, buffs.size() - 1)]
 	timer = time_between_waves
+	MusicManager.play_song("darius_wave_intermission")
+	await get_tree().create_timer(1).timeout
+	MusicManager.play_jingle("victory")
 
 func _physics_process(delta) -> void:
 	if run_wave && enemy_container.get_children().is_empty():
