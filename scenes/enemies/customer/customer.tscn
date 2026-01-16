@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cmvevnsrw0wrc"]
+[gd_scene load_steps=25 format=3 uid="uid://cmvevnsrw0wrc"]
 
 [ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_7a07e"]
 [ext_resource type="Texture2D" uid="uid://xorxdhi25ln3" path="res://scenes/enemies/customer/blue_palette.png" id="2_1bm5k"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://ftkusvkvddl5" path="res://scenes/enemies/customer/green_palette.png" id="3_c886e"]
 [ext_resource type="Texture2D" uid="uid://2r6h4vqj00pj" path="res://scenes/enemies/customer/yellow_palette.png" id="4_0ql35"]
 [ext_resource type="Texture2D" uid="uid://dp8g4ksha7an3" path="res://scenes/enemies/customer/white_palette.png" id="4_f7b1v"]
+[ext_resource type="AudioStream" uid="uid://by12kbpb07n6x" path="res://scenes/enemies/customer/sounds/cheer0.wav" id="9_5cqwp"]
+[ext_resource type="AudioStream" uid="uid://bb8amxekso6ib" path="res://scenes/enemies/customer/sounds/cheer1.wav" id="10_6yd8o"]
+[ext_resource type="AudioStream" uid="uid://cd0t2vco1islr" path="res://scenes/enemies/customer/sounds/cheer2.wav" id="11_qx7nh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ql35"]
 resource_local_to_scene = true
@@ -109,6 +112,13 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mo5y"]
 size = Vector2(14, 28)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_487ha"]
+random_pitch = 1.15
+streams_count = 3
+stream_0/stream = ExtResource("9_5cqwp")
+stream_1/stream = ExtResource("10_6yd8o")
+stream_2/stream = ExtResource("11_qx7nh")
+
 [node name="Customer" instance=ExtResource("1_7a07e")]
 enemy_name = "Customer"
 palettes = Array[Texture2D]([ExtResource("2_1bm5k"), ExtResource("3_c886e"), ExtResource("4_f7b1v"), ExtResource("4_0ql35"), ExtResource("3_0ql35")])
@@ -139,3 +149,8 @@ libraries = {
 [node name="Collider" parent="." index="4"]
 visible = false
 shape = SubResource("RectangleShape2D_5mo5y")
+
+[node name="Cheer" type="AudioStreamPlayer2D" parent="." index="5"]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_487ha")
+bus = &"SFX"

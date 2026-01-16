@@ -9,6 +9,7 @@ const SAFETY_MARGIN = 20
 @onready var enemy_area = %EnemyArea
 @onready var animator = %Animator
 @onready var wall_finder = %WallFinder
+@onready var cheer: AudioStreamPlayer2D = %Cheer
 
 var dead: bool = false
 var dithering_intensity: float = 0
@@ -49,6 +50,8 @@ func _physics_process(delta):
 		dithering_intensity += delta*death_speed
 	if dithering_intensity >= 1:
 		inventory_manager.add_parts(parts_dropped, rank)
+		set_physics_process(false)
+		await cheer.finished
 		queue_free()
 	if wall_finder.is_colliding() && velocity.is_equal_approx(Vector2(velocity.x, 0)):
 		velocity.y = -sqrt(-2*(GRAVITY/delta)*((get_wall_top_y()-position.y)-SAFETY_MARGIN	))
@@ -70,6 +73,8 @@ func on_mail_entered(body: Mail) -> void:
 func damage(damage_points: float) -> void:
 	health -= damage_points
 	if health <= 0:
+		if not dead:
+			cheer.play()
 		dead = true
 	animator.modulate = Color.DARK_RED
 	var tween := get_tree().create_tween()
