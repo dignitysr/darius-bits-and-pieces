@@ -26,7 +26,7 @@ var inventory_manager: InventoryManager
 @export var health_mult: float = 1.5
 @export var rank: InventoryManager.Rank
 @export var death_speed: int = 4
-@export var speed: float = 100
+@export var speed: float = 50
 @export var parts_dropped: Dictionary[String, int]
 
 var init_speed: float
@@ -40,10 +40,8 @@ func _ready() -> void:
 	enemy_area.connect("body_entered", on_mail_entered)
 	
 func _physics_process(delta):
-	if inventory_manager.level.active_buff == BaseLevel.Buffs.SLOW:
-		speed = init_speed + init_speed*0.25
 	if !airborne:
-		velocity.x = 50
+		velocity.x = speed
 	if dead:
 		animator.get_material().set_shader_parameter("intensity", dithering_intensity)
 		dithering_intensity += delta*death_speed
@@ -67,10 +65,13 @@ func _physics_process(delta):
 	else:
 		if !airborne:
 			animator.animation = "walk"
+	if inventory_manager.level.player in enemy_area.get_overlapping_bodies() && inventory_manager.level.active_buff == BaseLevel.Buffs.SLOW:
+		speed = init_speed*0.75
 
-func on_mail_entered(body: Mail) -> void:
-	damage(body.damage)
-	body.queue_free()
+func on_mail_entered(body) -> void:
+	if body is Mail:
+		damage(body.damage)
+		body.queue_free()
 		
 func damage(damage_points: float) -> void:
 	health -= damage_points

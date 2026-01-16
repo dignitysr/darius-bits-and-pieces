@@ -76,6 +76,7 @@ func update_states(type: String, container: Node) -> void:
 
 ### Logic
 func _physics_process(delta: float) -> void:
+	sprite_overlay.animation = animator.animation
 	input = get_input()
 	
 	update_states("physics", physics_states)
@@ -95,7 +96,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	vel = (velocity * delta).rotated(-rotation)
 	
-	sprite_overlay.animation = animator.animation
+	sprite_overlay.flip_h = animator.flip_h
 
 
 ### Input

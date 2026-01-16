@@ -51,8 +51,6 @@ func _ready() -> void:
 	ability_label.text = "Featuring: " + buffs[active_buff]
 	timer = time_between_waves
 	MusicManager.play_song("darius_wave_intermission")
-	await get_tree().create_timer(1).timeout
-	on_darius_death()
 
 func _physics_process(delta) -> void:
 	if run_wave && enemy_container.get_children().is_empty():
@@ -78,6 +76,10 @@ func _physics_process(delta) -> void:
 	$UI/Label.text = "time left: " + str(roundi(timer))
 
 func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Rank):
+	if active_buff == Buffs.PARTS:
+		for part: String in parts_dropped:
+			@warning_ignore("narrowing_conversion")
+			parts_dropped[part] = roundi(parts_dropped[part] + parts_dropped[part]*0.25)
 	var quantity_container_scene = quantity_container.instantiate()
 	quantity_container_scene.parts = parts_dropped
 	quantity_container_scene.rank = good_util.direct_image(small_ranks_resource.ranks[rank])
@@ -88,7 +90,7 @@ func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Ra
 		if !inventory_manager.parts[part].has(rank):
 			inventory_manager.parts[part][rank] = 0
 
-		inventory_manager.parts[part][rank] += parts_dropped[part] if !active_buff == Buffs.PARTS else int(parts_dropped[part] + parts_dropped[part]*0.75)
+		inventory_manager.parts[part][rank] += parts_dropped[part]
 		
 
 func on_darius_death() -> void:
@@ -101,10 +103,9 @@ func on_darius_death() -> void:
 	var new_player: Character = player_scene.instantiate()
 	new_player.position = player_spawner.position
 	new_player.inventory_manager = inventory_manager
-	new_player.set_physics_process(true)
 	@warning_ignore("int_as_enum_without_cast")
-	active_buff = randi_range(0, int(Buffs.FASTER))
 	randomize()
+	active_buff = randi_range(0, int(Buffs.FASTER))
 	darius_name = "%sarius the %sailman" % [char(randi_range(65, 90)), char(randi_range(65, 90))]
 	darius_name_label.text = darius_name
 	ability_label.text = buff_prefixes[randi_range(0, buff_prefixes.size()-1)] + buffs[active_buff]

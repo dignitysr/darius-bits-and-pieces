@@ -28,8 +28,8 @@ material = SubResource("ShaderMaterial_qf3h2")
 
 [node name="EnemyArea" type="Area2D" parent="."]
 unique_name_in_owner = true
-collision_layer = 6
-collision_mask = 6
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
 shape = SubResource("RectangleShape2D_r5xb8")

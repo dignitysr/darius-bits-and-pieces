@@ -195,6 +195,7 @@ material = SubResource("ShaderMaterial_fcs02")
 position = Vector2(0.9999981, -9.536743e-07)
 sprite_frames = SubResource("SpriteFrames_je7p5")
 animation = &"walk"
+frame_progress = 0.6706919
 script = ExtResource("3_p47bc")
 
 [node name="SpriteOverlay" type="AnimatedSprite2D" parent="."]
@@ -204,6 +205,7 @@ material = SubResource("ShaderMaterial_myrg7")
 position = Vector2(0.9999981, -9.536743e-07)
 sprite_frames = SubResource("SpriteFrames_kvlxm")
 animation = &"walk"
+frame_progress = 0.65225226
 script = ExtResource("3_p47bc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

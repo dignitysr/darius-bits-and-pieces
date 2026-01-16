@@ -76,7 +76,7 @@ func buy(tower: String, rank: Rank) -> void:
 			preview.hide()
 			craft_container.show()
 			tower_placed = true
-		if place_validator.is_colliding():
+		if place_validator.is_colliding() && place_validator.get_collider().get_parent() is BaseLevel:
 			preview.self_modulate = Color.GREEN
 			preview.global_position = Vector2(get_snapped_mouse_position().x, place_validator.get_collision_point().y)
 			if Input.is_action_just_pressed("click"):
