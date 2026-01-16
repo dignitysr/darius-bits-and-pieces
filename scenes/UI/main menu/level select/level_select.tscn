@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://drjpjfrgcsw"]
+[gd_scene load_steps=5 format=3 uid="uid://drjpjfrgcsw"]
 
 [ext_resource type="Script" uid="uid://csj4x5jnn6nra" path="res://scenes/UI/main menu/level select/level_select.gd" id="1_gtv1j"]
 [ext_resource type="Resource" uid="uid://cc0dqjm7dsbx0" path="res://scenes/level/waves/levels.tres" id="2_5u41o"]
 [ext_resource type="PackedScene" uid="uid://cvwvjx3doyrtr" path="res://scenes/UI/main menu/level select/level_select_button.tscn" id="3_rfe02"]
+[ext_resource type="Texture2D" uid="uid://cy8xsvim3t8mb" path="res://assets/UI/sprites/back.png" id="4_bhbtp"]
 
 [node name="LevelSelect" type="Control"]
 modulate = Color(1, 1, 1, 0)
@@ -42,4 +43,4 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 32.0
 offset_bottom = 39.0
-text = "X"
+icon = ExtResource("4_bhbtp")

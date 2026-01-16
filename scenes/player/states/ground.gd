@@ -45,7 +45,7 @@ func _transition_check() -> String:
 
 ## runs every frame while active
 func _update() -> void:
-	if character.inventory_manager.level.active_buff == "faster":
+	if character.inventory_manager.level.active_buff == BaseLevel.Buffs.FASTER:
 		move_speed = 4
 	else:
 		move_speed = 2

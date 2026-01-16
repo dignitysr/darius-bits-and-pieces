@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bv2xa0wek7j8t"]
+[gd_scene load_steps=28 format=4 uid="uid://bv2xa0wek7j8t"]
 
 [ext_resource type="Script" uid="uid://dmn0k2k2vlxq3" path="res://scenes/UI/main menu/options/options.gd" id="1_2pwr6"]
 [ext_resource type="Theme" uid="uid://csbmn3ra74l3n" path="res://assets/UI/base_theme.tres" id="2_2pwr6"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://drerhw7vrrjw" path="res://scenes/UI/main menu/options/achievements.gd" id="5_i6pal"]
 [ext_resource type="PackedScene" uid="uid://bfmpe5508ukf5" path="res://scenes/UI/main menu/options/achievement_button.tscn" id="6_shko1"]
 [ext_resource type="Script" uid="uid://cm1taalfwjv03" path="res://scenes/UI/main menu/options/stats.gd" id="7_shko1"]
+[ext_resource type="Texture2D" uid="uid://cy8xsvim3t8mb" path="res://assets/UI/sprites/back.png" id="9_wsbjl"]
 
 [sub_resource type="Theme" id="Theme_w2wxb"]
 default_font = ExtResource("3_i6pal")
@@ -2170,4 +2171,4 @@ offset_bottom = -13.0
 grow_vertical = 0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_i6pal")
-text = "X"
+icon = ExtResource("9_wsbjl")

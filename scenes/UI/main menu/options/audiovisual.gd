@@ -25,8 +25,6 @@ func _ready():
 
 func slider_changed(value: float, slider: String) -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(slider), linear_to_db(value))
-	print(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(slider)))
-	print(linear_to_db(value))
 	Save.change_setting("options", slider, value)
 
 func option_selected(index: int, option: String) -> void:

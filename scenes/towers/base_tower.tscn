@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://kxbqff21a7wi" path="res://scenes/towers/base_tower.gd" id="1_jksl4"]
 [ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="2_1ilgo"]
-[ext_resource type="Texture2D" uid="uid://cqg8sn21yt64j" path="res://scenes/towers/mail.png" id="3_rtahd"]
+[ext_resource type="Texture2D" uid="uid://bufoamxbnilf0" path="res://scenes/towers/debris.png" id="3_rtahd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rtahd"]
 resource_local_to_scene = true
@@ -64,7 +64,7 @@ shape = SubResource("CircleShape2D_7fa6h")
 [node name="DebrisSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_lx0n3")
-position = Vector2(0, -3)
+position = Vector2(0, -8)
 texture = ExtResource("3_rtahd")
 
 [node name="BrokenBar" type="ProgressBar" parent="."]

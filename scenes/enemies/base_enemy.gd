@@ -40,14 +40,15 @@ func _ready() -> void:
 	enemy_area.connect("body_entered", on_mail_entered)
 	
 func _physics_process(delta):
-	#print(velocity)
-	if inventory_manager.level.active_buff == "slowdown":
+	if inventory_manager.level.active_buff == BaseLevel.Buffs.SLOW:
 		speed = init_speed + init_speed*0.25
 	if !airborne:
 		velocity.x = 50
 	if dead:
 		animator.get_material().set_shader_parameter("intensity", dithering_intensity)
 		dithering_intensity += delta*death_speed
+		enemy_area.monitorable = false
+		enemy_area.monitoring = false
 	if dithering_intensity >= 1:
 		inventory_manager.add_parts(parts_dropped, rank)
 		set_physics_process(false)

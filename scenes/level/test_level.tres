@@ -14,7 +14,12 @@ waves = Array[Dictionary]([{
 "number": 20,
 "rank": 0
 }
-}, {}])
+}, {
+"customer": {
+"number": 30,
+"rank": 3
+}
+}])
 name = "Grassy Grassland"
 scene = "res://scenes/level/test.tscn"
 metadata/_custom_type_script = "uid://df00pj8834vq1"

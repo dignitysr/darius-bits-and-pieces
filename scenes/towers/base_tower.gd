@@ -30,7 +30,7 @@ var durability: float = 0
 var rank: InventoryManager.Rank
 var broken: bool = false
 var dithering_intensity: float = 0
-var max_durability: float = (init_durability * (durability_mult * (rank + 1)))
+var max_durability: float
 
 var cooldown: int = attack_speed
 var random_frame
@@ -39,13 +39,13 @@ var selected_enemy: BaseEnemy
 
 
 func _ready():
+	max_durability = (init_durability * (durability_mult * (rank + 1)))
 	debris_sprite.hide()
 	random_frame = str(randi_range(1, variant_num))
 	animator.animation = random_frame
 	durability = max_durability
 	damage = damage * (damage_mult * (rank + 1))
 	broken_bar.position.y -= animator.sprite_frames.get_frame_texture(animator.animation, 0).get_size().y + 10
-	print(global_position)
 	broken_bar.max_value = durability
 
 func _attack() -> void:
@@ -73,13 +73,12 @@ func _physics_process(delta) -> void:
 		if cooldown <= 0:
 			if is_instance_valid(selected_enemy):
 				_attack()
-			if !pickup_detection.get_overlapping_bodies().is_empty() && inventory_manager.level.active_buff == "repair":
+			if !pickup_detection.get_overlapping_bodies().is_empty() && inventory_manager.level.active_buff == BaseLevel.Buffs.REPAIR:
 				if durability != max_durability:
 					var tween := get_tree().create_tween()
 					animator.modulate = Color.PALE_GREEN
 					tween.tween_property(animator, "modulate", Color.WHITE, 0.2)
 				durability = clamp(durability + max_durability*tower_repair_buff, 0, max_durability)
-			print(durability)
 			cooldown = attack_speed
 			
 	broken_bar.value = durability

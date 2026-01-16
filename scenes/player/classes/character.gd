@@ -17,6 +17,8 @@ var input: Dictionary
 ### Nodes
 @onready var animator: CharacterAnimator = $Sprite
 @onready var physics_states: Node = $PhysicsStates
+@onready var sprite_overlay = %SpriteOverlay
+@onready var camera = %Camera2D
 
 ### States
 @onready var physics: PhysicsState
@@ -27,6 +29,10 @@ var action: ActionState
 # can still do ground actions even if you're slightly late
 var container_override: PhysicsState
 var override_frames: int
+
+func _ready() -> void:
+	sprite_overlay.modulate = Color(randf(), randf(), randf(), 1)
+	sprite_overlay.visible = inventory_manager.level.darius_name != "Darius the Mailman"
 
 func set_state(type: String, state: CharacterState) -> void:
 	var old_state: CharacterState = self[type]
@@ -88,6 +94,8 @@ func _physics_process(delta: float) -> void:
 	velocity = (vel / delta).rotated(rotation)
 	move_and_slide()
 	vel = (velocity * delta).rotated(-rotation)
+	
+	sprite_overlay.animation = animator.animation
 
 
 ### Input

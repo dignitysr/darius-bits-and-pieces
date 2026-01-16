@@ -1,10 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://cqhan3bhxm6h6"]
+[gd_scene load_steps=35 format=3 uid="uid://cqhan3bhxm6h6"]
 
 [ext_resource type="Script" uid="uid://dsh2si3vgye6m" path="res://scenes/player/classes/character.gd" id="1_gmlin"]
 [ext_resource type="Texture2D" uid="uid://djal0tc847s5a" path="res://scenes/player/assets/new_sheet.png" id="2_qek5x"]
+[ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="2_ugbui"]
 [ext_resource type="Script" uid="uid://dxostdknl0om5" path="res://scenes/player/classes/animator.gd" id="3_p47bc"]
 [ext_resource type="AudioStream" uid="uid://ccr5b58udxomh" path="res://scenes/player/assets/sounds/jump.wav" id="4_5gtgg"]
 [ext_resource type="AudioStream" uid="uid://dtsirxyynp8g0" path="res://scenes/player/assets/sounds/footstep0.wav" id="4_fm80t"]
+[ext_resource type="Texture2D" uid="uid://bsfsb58v2h0qx" path="res://scenes/player/assets/darker_white.png" id="4_gx1jg"]
 [ext_resource type="Script" uid="uid://dqo7g8nnhmo30" path="res://scenes/player/states/ground.gd" id="4_lvxji"]
 [ext_resource type="Script" uid="uid://cp02xg1rj5qa7" path="res://scenes/player/states/air.gd" id="5_75vfm"]
 [ext_resource type="AudioStream" uid="uid://cugq4griv3wdo" path="res://scenes/player/assets/sounds/footstep1.wav" id="5_gx1jg"]
@@ -12,6 +14,10 @@
 [ext_resource type="Script" uid="uid://cf38apg2cgbbb" path="res://scenes/player/states/jump.gd" id="5_qek5x"]
 [ext_resource type="Script" uid="uid://cgvo2naoyxku4" path="res://scenes/player/states/none.gd" id="6_0owmy"]
 [ext_resource type="AudioStream" uid="uid://ddb02k8r8tscn" path="res://scenes/player/assets/sounds/footstep2.wav" id="6_ugbui"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fcs02"]
+shader = ExtResource("2_ugbui")
+shader_parameter/intensity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
 atlas = ExtResource("2_qek5x")
@@ -85,6 +91,82 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_myrg7"]
+shader = ExtResource("2_ugbui")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcs02"]
+atlas = ExtResource("4_gx1jg")
+region = Rect2(80, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
+atlas = ExtResource("4_gx1jg")
+region = Rect2(0, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvlxm"]
+atlas = ExtResource("4_gx1jg")
+region = Rect2(64, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf5tr"]
+atlas = ExtResource("4_gx1jg")
+region = Rect2(0, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgqa7"]
+atlas = ExtResource("4_gx1jg")
+region = Rect2(16, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ydkj"]
+atlas = ExtResource("4_gx1jg")
+region = Rect2(32, 0, 16, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j4b4"]
+atlas = ExtResource("4_gx1jg")
+region = Rect2(48, 0, 16, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvlxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcs02")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myrg7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvlxm")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf5tr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgqa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ydkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j4b4")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fm80t"]
 size = Vector2(11, 15.5)
 
@@ -103,14 +185,25 @@ collision_mask = 33
 script = ExtResource("1_gmlin")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
 limit_left = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_fcs02")
 position = Vector2(0.9999981, -9.536743e-07)
 sprite_frames = SubResource("SpriteFrames_je7p5")
-animation = &"fall"
+animation = &"walk"
+script = ExtResource("3_p47bc")
+
+[node name="SpriteOverlay" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0.90588236, 0.80784315, 0.29411766, 1)
+material = SubResource("ShaderMaterial_myrg7")
+position = Vector2(0.9999981, -9.536743e-07)
+sprite_frames = SubResource("SpriteFrames_kvlxm")
+animation = &"walk"
 script = ExtResource("3_p47bc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -11,9 +11,6 @@ func play_song(song_name: String):
 	music_stream_player.stream = load(FILEPATH + song_name + ".ogg")
 	music_stream_player.play()
 	
-func _process(_delta):
-	print(music_stream_player.volume_db)
-	
 func play_jingle(jingle_name: String):
 	jingle_stream_player.stop()
 	var tween := get_tree().create_tween()
