@@ -51,6 +51,7 @@ func _physics_process(delta):
 	if dithering_intensity >= 1:
 		inventory_manager.add_parts(parts_dropped, rank)
 		set_physics_process(false)
+		collision_layer = 0
 		await cheer.finished
 		queue_free()
 	if wall_finder.is_colliding() && velocity.is_equal_approx(Vector2(velocity.x, 0)):
