@@ -1,7 +1,6 @@
 class_name MenuController
 extends Control
 
-@onready var trans_player = %TransPlayer
 @onready var active = %Active
 @onready var inactive = %Inactive
 

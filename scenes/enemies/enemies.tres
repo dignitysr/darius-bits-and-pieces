@@ -1,11 +1,15 @@
-[gd_resource type="Resource" script_class="EnemiesResource" load_steps=3 format=3 uid="uid://bcvclfg6r1av0"]
+[gd_resource type="Resource" script_class="EnemiesResource" load_steps=5 format=3 uid="uid://bcvclfg6r1av0"]
 
 [ext_resource type="PackedScene" uid="uid://cmvevnsrw0wrc" path="res://scenes/enemies/customer/customer.tscn" id="1_mw3w8"]
+[ext_resource type="PackedScene" uid="uid://cmqqsm2mjnc2f" path="res://scenes/enemies/nan/nan.tscn" id="2_cqmw8"]
 [ext_resource type="Script" uid="uid://bv0frty0chg8k" path="res://scenes/enemies/enemy_resource.gd" id="2_q076a"]
+[ext_resource type="PackedScene" uid="uid://crhp7wyqmbyxf" path="res://scenes/enemies/luci/luci.tscn" id="3_cqmw8"]
 
 [resource]
 script = ExtResource("2_q076a")
 enemies = Dictionary[String, PackedScene]({
-"customer": ExtResource("1_mw3w8")
+"customer": ExtResource("1_mw3w8"),
+"luci": ExtResource("3_cqmw8"),
+"nan": ExtResource("2_cqmw8")
 })
 metadata/_custom_type_script = "uid://bv0frty0chg8k"

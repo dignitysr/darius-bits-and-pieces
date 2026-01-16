@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://xqkugpulmrnq"]
+
+[ext_resource type="Texture2D" uid="uid://bfccosvbp7p8s" path="res://scenes/level/backgrounds/grass/sea5.png" id="1_xw1rk"]
+[ext_resource type="Texture2D" uid="uid://dfg3hwk3fy2sd" path="res://scenes/level/backgrounds/grass/sea4.png" id="2_xhxer"]
+[ext_resource type="Texture2D" uid="uid://cqvb1ev32e0e8" path="res://scenes/level/backgrounds/grass/sea3.png" id="3_hnrro"]
+[ext_resource type="Texture2D" uid="uid://dllu7s4s8nhqm" path="res://scenes/level/backgrounds/grass/sea2.png" id="4_jac0w"]
+[ext_resource type="Texture2D" uid="uid://bvjju2ewllsnn" path="res://scenes/level/backgrounds/grass/sea1.png" id="5_fsdgt"]
+[ext_resource type="Texture2D" uid="uid://drw4gw44ijjps" path="res://scenes/level/backgrounds/grass/clouds.png" id="6_o7bdm"]
+[ext_resource type="Texture2D" uid="uid://bruwmg6ottc7i" path="res://scenes/level/backgrounds/grass/mountains_far.png" id="7_0tic2"]
+[ext_resource type="Texture2D" uid="uid://1oc4gp0n3l1l" path="res://scenes/level/backgrounds/grass/mountains_near.png" id="8_c5aur"]
+
+[node name="GrassBG" type="Node2D"]
+
+[node name="BGSection3" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.002, 1)
+repeat_size = Vector2(480, 270)
+repeat_times = 99
+limit_begin = Vector2(0, 0)
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="BGSection3"]
+position = Vector2(240, 135)
+texture = ExtResource("6_o7bdm")
+
+[node name="BGSection2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.005, 1)
+repeat_size = Vector2(480, 270)
+repeat_times = 99
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="BGSection2"]
+position = Vector2(240, 135)
+texture = ExtResource("7_0tic2")
+
+[node name="BGSection1" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.02, 1)
+repeat_size = Vector2(480, 270)
+repeat_times = 99
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="BGSection1"]
+position = Vector2(240, 135)
+texture = ExtResource("8_c5aur")
+
+[node name="Sea5" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.25, 1)
+repeat_size = Vector2(480, 270)
+repeat_times = 99
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Sea5"]
+position = Vector2(240, 135)
+texture = ExtResource("1_xw1rk")
+
+[node name="Sea4" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 1)
+repeat_size = Vector2(480, 270)
+repeat_times = 99
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Sea4"]
+position = Vector2(240, 135)
+texture = ExtResource("2_xhxer")
+
+[node name="Sea3" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.15, 1)
+repeat_size = Vector2(480, 270)
+repeat_times = 99
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Sea3"]
+position = Vector2(240, 135)
+texture = ExtResource("3_hnrro")
+
+[node name="Sea1" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 1)
+repeat_size = Vector2(480, 270)
+repeat_times = 99
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Sea1"]
+position = Vector2(240, 135)
+texture = ExtResource("4_jac0w")
+
+[node name="Sea6" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.05, 1)
+repeat_size = Vector2(480, 270)
+repeat_times = 99
+follow_viewport = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Sea6"]
+position = Vector2(240, 135)
+texture = ExtResource("5_fsdgt")

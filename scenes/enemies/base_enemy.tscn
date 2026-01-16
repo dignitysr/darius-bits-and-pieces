@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4pq0ef4dqlxw"]
+[gd_scene load_steps=11 format=3 uid="uid://c4pq0ef4dqlxw"]
 
 [ext_resource type="Script" uid="uid://bhye2cruqvesn" path="res://scenes/enemies/base_enemy.gd" id="1_r5xb8"]
 [ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="2_qf3h2"]
+[ext_resource type="AudioStream" uid="uid://by12kbpb07n6x" path="res://scenes/enemies/customer/sounds/cheer0.wav" id="3_2t7ph"]
+[ext_resource type="AudioStream" uid="uid://bb8amxekso6ib" path="res://scenes/enemies/customer/sounds/cheer1.wav" id="4_n2ebm"]
+[ext_resource type="AudioStream" uid="uid://cd0t2vco1islr" path="res://scenes/enemies/customer/sounds/cheer2.wav" id="5_i1su5"]
+[ext_resource type="AudioStream" uid="uid://cxfbmktqh467y" path="res://scenes/enemies/customer/sounds/hit.wav" id="6_hwcqj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qf3h2"]
 resource_local_to_scene = true
@@ -12,9 +16,17 @@ shader_parameter/precision = 0.1
 shader_parameter/intensity = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5xb8"]
-size = Vector2(10, 15)
+size = Vector2(20, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qf3h2"]
+size = Vector2(20, 32)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_h4c3k"]
+random_pitch = 1.15
+streams_count = 3
+stream_0/stream = ExtResource("3_2t7ph")
+stream_1/stream = ExtResource("4_n2ebm")
+stream_2/stream = ExtResource("5_i1su5")
 
 [node name="BaseEnemy" type="CharacterBody2D"]
 collision_layer = 0
@@ -43,3 +55,14 @@ collision_mask = 8
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qf3h2")
+
+[node name="Cheer" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_h4c3k")
+bus = &"SFX"
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_hwcqj")
+volume_db = -2.5
+bus = &"SFX"

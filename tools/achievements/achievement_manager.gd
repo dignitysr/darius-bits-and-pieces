@@ -47,6 +47,7 @@ func store_achievements(achievement_name: String, description: String) -> void:
 func unlock(achievement_name: String) -> void:
 	if achievements[achievement_name].unlocked:
 		return
+	MusicManager.play_jingle("darius_achievement")
 	trans_player.play("RESET")
 	achievements[achievement_name].unlocked = true
 	unlocked_achievements += 1

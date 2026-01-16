@@ -13,6 +13,7 @@ var stats: Dictionary = {
 	"recruited_customers": 0,
 	"subscribers": 0,
 	"defeated_rickmechs": 0,
+	"current_level": "",
 }
 
 var save_timer = SAVE_TIME

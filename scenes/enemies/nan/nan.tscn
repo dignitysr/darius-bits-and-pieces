@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://cmqqsm2mjnc2f"]
+
+[ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_yxajv"]
+[ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="2_euii2"]
+[ext_resource type="Texture2D" uid="uid://bmgtwajfypg1t" path="res://scenes/enemies/nan/regular_palette.png" id="2_lk4ow"]
+[ext_resource type="Texture2D" uid="uid://kohkxvo41gfn" path="res://scenes/enemies/nan/spritesheet.png" id="3_euii2"]
+[ext_resource type="Texture2D" uid="uid://c2w7aoxurujd6" path="res://scenes/enemies/nan/green_palette.png" id="3_u4ius"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c5v1a"]
+resource_local_to_scene = true
+shader = ExtResource("2_euii2")
+shader_parameter/screen_mode = true
+shader_parameter/num_colors = 16
+shader_parameter/precision = 0.1
+shader_parameter/palette_in = ExtResource("2_lk4ow")
+shader_parameter/palette_out = ExtResource("2_lk4ow")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euii2"]
+atlas = ExtResource("3_euii2")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5v1a"]
+atlas = ExtResource("3_euii2")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk4ow"]
+atlas = ExtResource("3_euii2")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4ius"]
+atlas = ExtResource("3_euii2")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_egucb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euii2")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5v1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk4ow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4ius")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk4ow")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Nan" instance=ExtResource("1_yxajv")]
+enemy_name = "Nan"
+palettes = Array[Texture2D]([ExtResource("2_lk4ow"), ExtResource("3_u4ius")])
+health = 120.0
+parts_dropped = Dictionary[String, int]({
+"paper": 35,
+"scrap": 25
+})
+
+[node name="Animator" parent="." index="0"]
+material = SubResource("ShaderMaterial_c5v1a")
+sprite_frames = SubResource("SpriteFrames_egucb")
+animation = &"walk"
+autoplay = "walk"

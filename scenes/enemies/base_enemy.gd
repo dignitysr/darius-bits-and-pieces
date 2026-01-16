@@ -50,7 +50,6 @@ func _physics_process(delta):
 		enemy_area.monitoring = false
 	if dithering_intensity >= 1:
 		set_physics_process(false)
-		await cheer.finished
 		if cheer.playing:
 			await cheer.finished
 		queue_free()
@@ -68,6 +67,8 @@ func _physics_process(delta):
 			animator.animation = "walk"
 	if !dead && inventory_manager.level.player in enemy_area.get_overlapping_bodies() && inventory_manager.level.active_buff == BaseLevel.Buffs.SLOW:
 		speed = init_speed*0.75
+	else:
+		speed = init_speed
 	if position.x >= inventory_manager.level.lose_axis.position.x:
 		lose_subscriber()
 
@@ -77,6 +78,8 @@ func lose_subscriber() -> void:
 		var tween := get_tree().create_tween()
 		tween.tween_property(inventory_manager.level.net_worth, "value", inventory_manager.level.net_worth.value + inventory_manager.level.net_worth.max_value*0.1, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		inventory_manager.level.update_stats()
+		if inventory_manager.level.net_worth.value == inventory_manager.level.net_worth.max_value:
+			TransitionManager.trans_to("res://scenes/UI/game over/game_over_screen.tscn")
 	dead = true
 
 func on_mail_entered(body) -> void:
@@ -96,6 +99,8 @@ func damage(damage_points: float) -> void:
 		StatsManager.stats["recruited_customers_total"] += 1
 		if StatsManager.stats["recruited_customers"] == 1:
 			AchievementManager.unlock("Encounter with the Enemy")
+		if get_parent().get_children()[-1] == self:
+			MusicManager.play_jingle("victory")
 	animator.modulate = Color.DARK_RED
 	var tween := get_tree().create_tween()
 	animator.modulate = Color.ROYAL_BLUE

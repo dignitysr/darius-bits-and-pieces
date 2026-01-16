@@ -13,6 +13,7 @@ func _ready() -> void:
 func show_news(news: String) -> void:
 	if is_broadcasting:
 		return
+	MusicManager.play_jingle("dariusnews")
 	show()
 	is_broadcasting = true
 	var default_text_pos = get_viewport_rect().size.x

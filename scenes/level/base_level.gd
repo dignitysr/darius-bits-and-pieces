@@ -68,6 +68,7 @@ func _ready() -> void:
 	ability_label.text = "Featuring: " + buffs[active_buff]
 	timer = time_between_waves
 	MusicManager.play_song("darius_wave_intermission")
+	StatsManager.stats["current_level"] = wave_resource.scene
 
 func _physics_process(delta) -> void:
 	if run_wave && enemy_container.get_children().is_empty():
@@ -87,6 +88,7 @@ func _physics_process(delta) -> void:
 			else:
 				timer = time_between_waves
 				wave_number += 1
+				MusicManager.play_jingle("darius_wave_start")
 				run_wave = true
 			
 	if Input.is_action_just_pressed("back"):
