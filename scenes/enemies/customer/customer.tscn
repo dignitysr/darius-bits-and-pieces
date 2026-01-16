@@ -122,7 +122,7 @@ stream_2/stream = ExtResource("11_qx7nh")
 [node name="Customer" instance=ExtResource("1_7a07e")]
 enemy_name = "Customer"
 palettes = Array[Texture2D]([ExtResource("2_1bm5k"), ExtResource("3_c886e"), ExtResource("4_f7b1v"), ExtResource("4_0ql35"), ExtResource("3_0ql35")])
-rank = 5
+health_mult = 1.0
 parts_dropped = Dictionary[String, int]({
 "paper": 3,
 "scrap": 2

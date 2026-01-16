@@ -23,10 +23,13 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @onready var player_spawner = $PlayerSpawner
 @onready var darius_name_label = %DariusName
 @onready var ability_label = %Ability
+@onready var sub_count = %SubCount
 
 var run_wave: bool = false
 var wave_number: int = -1
 var timer: float
+
+var subscribers: int = 0
 
 var buffs: Array = [
 	"Slow Down Customers",
@@ -47,6 +50,7 @@ var darius_name: String = "Darius the Mailman"
 
 
 func _ready() -> void:
+	update_stats()
 	darius_name_label.text = darius_name
 	ability_label.text = "Featuring: " + buffs[active_buff]
 	timer = time_between_waves
@@ -73,9 +77,9 @@ func _physics_process(delta) -> void:
 				run_wave = true
 			
 		
-	$UI/Label.text = "time left: " + str(roundi(timer))
 
 func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Rank):
+	var total_parts: int = 0
 	if active_buff == Buffs.PARTS:
 		for part: String in parts_dropped:
 			@warning_ignore("narrowing_conversion")
@@ -85,13 +89,18 @@ func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Ra
 	quantity_container_scene.rank = good_util.direct_image(small_ranks_resource.ranks[rank])
 	quantities_container.add_child(quantity_container_scene)
 	for part: String in parts_dropped:
+		total_parts += parts_dropped[part]
 		if !inventory_manager.parts.has(part):
 			inventory_manager.parts[part] = {}
 		if !inventory_manager.parts[part].has(rank):
 			inventory_manager.parts[part][rank] = 0
 
 		inventory_manager.parts[part][rank] += parts_dropped[part]
+	subscribers += roundi(pow((total_parts)*(rank+1)*2, 2))
+	update_stats()
 		
+func update_stats() -> void:
+	sub_count.text = math_util.convert_num(subscribers)
 
 func on_darius_death() -> void:
 	var intensity = 0
@@ -103,8 +112,8 @@ func on_darius_death() -> void:
 	var new_player: Character = player_scene.instantiate()
 	new_player.position = player_spawner.position
 	new_player.inventory_manager = inventory_manager
-	@warning_ignore("int_as_enum_without_cast")
 	randomize()
+	@warning_ignore("int_as_enum_without_cast")
 	active_buff = randi_range(0, int(Buffs.FASTER))
 	darius_name = "%sarius the %sailman" % [char(randi_range(65, 90)), char(randi_range(65, 90))]
 	darius_name_label.text = darius_name
