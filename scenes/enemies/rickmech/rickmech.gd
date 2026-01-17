@@ -23,6 +23,7 @@ var move_sinusoidal: bool = false
 var rest_position_y: float = 0
 var run_time: float = 0
 var time: float = 0
+var dead: bool
 
 func _ready() -> void:
 	animator.material.set_shader_parameter("intensity", 0)
@@ -62,11 +63,14 @@ func tween_finished() -> void:
 	move_sinusoidal = true
 	
 func on_stomped(body) -> void:
+	if dead: return
 	if body is Character:
 		body.vel.y = -bounce_power
 		die()
 	
 func die(killed: bool = true) -> void:
+	if dead: return
+	dead = true
 	var dither: float = 0
 	move_sinusoidal = false
 	if not killed:

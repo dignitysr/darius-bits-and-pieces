@@ -13,7 +13,7 @@
 resource_local_to_scene = true
 shader = ExtResource("4_xadnb")
 shader_parameter/screen_mode = true
-shader_parameter/num_colors = 16
+shader_parameter/num_colors = 14
 shader_parameter/precision = 0.1
 shader_parameter/palette_in = ExtResource("5_3kjgf")
 shader_parameter/palette_out = ExtResource("5_3kjgf")
