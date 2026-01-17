@@ -71,7 +71,7 @@ material = SubResource("ShaderMaterial_dmi4h")
 sprite_frames = SubResource("SpriteFrames_mj3mc")
 animation = &"float"
 autoplay = "float"
-frame_progress = 0.41798893
+frame_progress = 0.3319019
 
 [node name="LaserArm" type="Sprite2D" parent="Animator"]
 unique_name_in_owner = true

@@ -126,13 +126,16 @@ func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Ra
 	if active_buff == Buffs.PARTS:
 		for part: String in parts_dropped:
 			@warning_ignore("narrowing_conversion")
+			total_parts += parts_dropped[part]
 			parts_dropped[part] = roundi(parts_dropped[part] + parts_dropped[part]*0.25)
+	else:
+		for part: String in parts_dropped:
+			total_parts += parts_dropped[part]
 	var quantity_container_scene = quantity_container.instantiate()
 	quantity_container_scene.parts = parts_dropped
 	quantity_container_scene.rank = good_util.direct_image(small_ranks_resource.ranks[rank])
 	quantities_container.add_child(quantity_container_scene)
 	for part: String in parts_dropped:
-		total_parts += parts_dropped[part]
 		if !inventory_manager.parts.has(part):
 			inventory_manager.parts[part] = {}
 		if !inventory_manager.parts[part].has(rank):

@@ -43,4 +43,6 @@ func load_stats() -> void:
 
 func save_stats() -> void:
 	for stat: String in stats:
-		Save.change_setting("stats", stat, stats[stat])
+		if "total" in stat || "playtime" in stat:
+			Save.change_setting("stats", stat, stats[stat])
+			print("t")

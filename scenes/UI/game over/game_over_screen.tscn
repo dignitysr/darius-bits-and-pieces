@@ -360,7 +360,7 @@ position = Vector2(77, 77)
 sprite_frames = SubResource("SpriteFrames_hpmas")
 animation = &"dance"
 autoplay = "dance"
-frame_progress = 0.083016
+frame_progress = 0.013909009
 
 [node name="ButtonContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true

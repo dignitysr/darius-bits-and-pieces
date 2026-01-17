@@ -1829,11 +1829,12 @@ theme_override_constants/tab_separation = 4
 theme_override_fonts/font = ExtResource("3_i6pal")
 theme_override_font_sizes/font_size = 16
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 tab_focus_mode = 0
 script = ExtResource("5_g7b26")
 
 [node name="Audiovisual" type="Control" parent="MarginContainer/TabContainer"]
+visible = false
 use_parent_material = true
 layout_mode = 2
 script = ExtResource("2_7toq6")
@@ -1987,42 +1988,48 @@ popup/item_3/id = 0
 script = ExtResource("7_lhrrj")
 
 [node name="Controls" type="Control" parent="MarginContainer/TabContainer"]
-visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Controls"]
-use_parent_material = true
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/TabContainer/Controls"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_left = 0.14494681
+anchor_top = 0.04895105
+anchor_right = 0.8550532
+anchor_bottom = 1.048951
 grow_horizontal = 2
 grow_vertical = 2
+columns = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Controls/GridContainer"]
+use_parent_material = true
+layout_mode = 2
 theme_override_constants/separation = 3
 alignment = 1
 
-[node name="Filler" type="Control" parent="MarginContainer/TabContainer/Controls/VBoxContainer"]
+[node name="Filler" type="Control" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer"]
 visible = false
 use_parent_material = true
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 
-[node name="Left" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/VBoxContainer"]
+[node name="Left" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer"]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 17
 alignment = 1
 script = ExtResource("4_7toq6")
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/VBoxContainer/Left"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer/Left"]
 use_parent_material = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_i6pal")
 text = "Move Left"
 
-[node name="Action" type="Button" parent="MarginContainer/TabContainer/Controls/VBoxContainer/Left"]
+[node name="Action" type="Button" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer/Left"]
 use_parent_material = true
 custom_minimum_size = Vector2(21, 21)
 layout_mode = 2
@@ -2031,20 +2038,20 @@ theme_override_fonts/font = ExtResource("3_i6pal")
 text = "Action"
 script = ExtResource("11_nsjvu")
 
-[node name="Right" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/VBoxContainer"]
+[node name="Right" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer"]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 17
 alignment = 1
 script = ExtResource("4_7toq6")
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/VBoxContainer/Right"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer/Right"]
 use_parent_material = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_i6pal")
 text = "Move Right"
 
-[node name="Action" type="Button" parent="MarginContainer/TabContainer/Controls/VBoxContainer/Right"]
+[node name="Action" type="Button" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer/Right"]
 use_parent_material = true
 custom_minimum_size = Vector2(21, 21)
 layout_mode = 2
@@ -2053,20 +2060,20 @@ theme_override_fonts/font = ExtResource("3_i6pal")
 text = "Action"
 script = ExtResource("11_nsjvu")
 
-[node name="Jump" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/VBoxContainer"]
+[node name="Jump" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer"]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 17
 alignment = 1
 script = ExtResource("4_7toq6")
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/VBoxContainer/Jump"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer/Jump"]
 use_parent_material = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_i6pal")
 text = "Jump"
 
-[node name="Action" type="Button" parent="MarginContainer/TabContainer/Controls/VBoxContainer/Jump"]
+[node name="Action" type="Button" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer/Jump"]
 use_parent_material = true
 custom_minimum_size = Vector2(21, 21)
 layout_mode = 2
@@ -2075,20 +2082,23 @@ theme_override_fonts/font = ExtResource("3_i6pal")
 text = "Action"
 script = ExtResource("11_nsjvu")
 
-[node name="Click" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/TabContainer/Controls/GridContainer"]
+layout_mode = 2
+
+[node name="Click" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer2"]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 17
 alignment = 1
 script = ExtResource("4_7toq6")
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/VBoxContainer/Click"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer2/Click"]
 use_parent_material = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_i6pal")
 text = "Place"
 
-[node name="Action" type="Button" parent="MarginContainer/TabContainer/Controls/VBoxContainer/Click"]
+[node name="Action" type="Button" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer2/Click"]
 use_parent_material = true
 custom_minimum_size = Vector2(21, 21)
 layout_mode = 2
@@ -2097,20 +2107,42 @@ theme_override_fonts/font = ExtResource("3_i6pal")
 text = "Action"
 script = ExtResource("11_nsjvu")
 
-[node name="Back" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/VBoxContainer"]
+[node name="Back" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer2"]
 use_parent_material = true
 layout_mode = 2
 theme_override_constants/separation = 17
 alignment = 1
 script = ExtResource("4_7toq6")
 
-[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/VBoxContainer/Back"]
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer2/Back"]
 use_parent_material = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_i6pal")
-text = "Pause/Back"
+text = "Back"
 
-[node name="Action" type="Button" parent="MarginContainer/TabContainer/Controls/VBoxContainer/Back"]
+[node name="Action" type="Button" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer2/Back"]
+use_parent_material = true
+custom_minimum_size = Vector2(21, 21)
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_i6pal")
+text = "Action"
+script = ExtResource("11_nsjvu")
+
+[node name="Pause" type="HBoxContainer" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer2"]
+use_parent_material = true
+layout_mode = 2
+theme_override_constants/separation = 17
+alignment = 1
+script = ExtResource("4_7toq6")
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer2/Pause"]
+use_parent_material = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_i6pal")
+text = "Pause"
+
+[node name="Action" type="Button" parent="MarginContainer/TabContainer/Controls/GridContainer/VBoxContainer2/Pause"]
 use_parent_material = true
 custom_minimum_size = Vector2(21, 21)
 layout_mode = 2

@@ -5,6 +5,7 @@ extends Control
 @onready var button_container = %ButtonContainer
 
 func _ready():
+	get_tree().paused = false
 	MusicManager.play_song("darius_gameover")
 	return_button.connect("button_down", on_return_pressed)
 	retry_button.connect("button_down", on_retry_pressed)

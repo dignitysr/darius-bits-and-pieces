@@ -73,7 +73,7 @@ func die(killed: bool = true) -> void:
 		await get_tree().physics_frame
 	if killed:
 		StatsManager.stats["defeated_rickmechs_total"] += 1
-		StatsManager.stats["defeated_rickmechs"] += 1
+		level.inventory_manager.session_rickmechs += 1
 		StatsManager.save_stats()
 		level.add_parts(parts_dropped, int(run_time/time_threshold), false)
 	queue_free()
