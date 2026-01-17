@@ -8,7 +8,7 @@ var move_speed: float = 10
 var damage: float
 
 func _physics_process(_delta):
-	if !is_instance_valid(enemy):
+	if enemy.dead:
 		queue_free()
 	else:
 		position = position.move_toward(enemy.position, move_speed)

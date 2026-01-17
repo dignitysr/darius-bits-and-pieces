@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ObjectList" load_steps=7 format=3 uid="uid://b3hvljlpew5e4"]
+[gd_resource type="Resource" script_class="ObjectList" load_steps=8 format=3 uid="uid://b3hvljlpew5e4"]
 
 [ext_resource type="Resource" uid="uid://daqed0ax142bl" path="res://scenes/level/items/mailbox.tres" id="1_kvvoh"]
 [ext_resource type="Resource" uid="uid://bxxp2orfrjpqe" path="res://scenes/level/parts/paper.tres" id="2_ewlxi"]
@@ -6,10 +6,12 @@
 [ext_resource type="Script" uid="uid://c3t0unjlym1l0" path="res://scenes/level/partslist.gd" id="4_70eck"]
 [ext_resource type="Resource" uid="uid://blv74o4vhvupb" path="res://scenes/level/items/forklift.tres" id="4_ewlxi"]
 [ext_resource type="Resource" uid="uid://co8mjc8mf2wdt" path="res://scenes/level/items/rolling_cage.tres" id="5_0cfgq"]
+[ext_resource type="Resource" uid="uid://chev00ra80yce" path="res://scenes/level/items/cabinet.tres" id="6_70eck"]
 
 [resource]
 script = ExtResource("4_70eck")
 parts = Dictionary[String, Resource]({
+"cabinet": ExtResource("6_70eck"),
 "forklift": ExtResource("4_ewlxi"),
 "mailbox": ExtResource("1_kvvoh"),
 "paper": ExtResource("2_ewlxi"),

@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://cf6p40ex4b0fr"]
+
+[ext_resource type="PackedScene" uid="uid://b5j3fw6p1qo80" path="res://scenes/towers/base_tower.tscn" id="1_u8bp1"]
+[ext_resource type="Script" uid="uid://fqslq78n1b64" path="res://scenes/towers/huh/cabinet.gd" id="2_taprt"]
+[ext_resource type="PackedScene" uid="uid://c0ufyyp0yfay8" path="res://scenes/towers/mail.tscn" id="3_eapql"]
+[ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="4_jxpa4"]
+[ext_resource type="Texture2D" uid="uid://c14qjqgyciuxd" path="res://scenes/towers/huh/spritesheet.png" id="4_wmq7v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mgtj1"]
+resource_local_to_scene = true
+shader = ExtResource("4_jxpa4")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_taprt"]
+atlas = ExtResource("4_wmq7v")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ccj1"]
+atlas = ExtResource("4_wmq7v")
+region = Rect2(0, 32, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ta3pg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_taprt")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ccj1")
+}],
+"loop": true,
+"name": &"1shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ipbwf"]
+resource_local_to_scene = true
+shader = ExtResource("4_jxpa4")
+shader_parameter/intensity = 0.0
+
+[node name="Cabinet" instance=ExtResource("1_u8bp1")]
+script = ExtResource("2_taprt")
+variant_num = 1
+damage = 4.0
+attack_speed = 5
+mail = ExtResource("3_eapql")
+
+[node name="Animator" parent="." index="0"]
+material = SubResource("ShaderMaterial_mgtj1")
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_ta3pg")
+animation = &"1shoot"
+
+[node name="Spawner" parent="." index="1"]
+position = Vector2(1, -22)
+
+[node name="DebrisSprite" parent="." index="5"]
+material = SubResource("ShaderMaterial_ipbwf")
