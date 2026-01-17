@@ -150,7 +150,7 @@ func _physics_process(delta) -> void:
 			else:
 				timer = time_between_waves
 				wave_number += 1
-				wave_counter.text = "Wave: " + str(wave_number + 1)
+				wave_counter.text = str(wave_number + 1)
 				MusicManager.play_jingle('darius_wave_start')
 				run_wave = true
 				await MusicManager.jingle_stream_player.finished
