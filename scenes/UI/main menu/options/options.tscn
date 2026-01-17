@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://chlm3iry8g2sv" path="res://scenes/UI/main menu/options/audiovisual.gd" id="2_7toq6"]
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="3_i6pal"]
 [ext_resource type="Script" uid="uid://dhsyvev6hbsod" path="res://scenes/UI/main menu/options/control.gd" id="4_7toq6"]
-[ext_resource type="Script" uid="uid://bilq3m1mpqkuh" path="res://scenes/UI/main menu/options/tab_sound.gd" id="5_g7b26"]
+[ext_resource type="Script" path="res://scenes/UI/main menu/options/tab_sound.gd" id="5_g7b26"]
 [ext_resource type="Script" uid="uid://drerhw7vrrjw" path="res://scenes/UI/main menu/options/achievements.gd" id="5_i6pal"]
 [ext_resource type="PackedScene" uid="uid://bfmpe5508ukf5" path="res://scenes/UI/main menu/options/achievement_button.tscn" id="6_shko1"]
 [ext_resource type="Script" path="res://scenes/UI/option_sound.gd" id="7_lhrrj"]

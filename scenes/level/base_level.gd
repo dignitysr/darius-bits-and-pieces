@@ -105,7 +105,7 @@ func _physics_process(delta) -> void:
 				MusicManager.play_jingle("darius_wave_start")
 				run_wave = true
 			
-	if Input.is_action_just_pressed("back"):
+	if Input.is_action_just_pressed("pause"):
 		var options = options_screen.instantiate()
 		options.owner = self
 		UI.add_child(options)
