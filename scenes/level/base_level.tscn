@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://bpn3k8st5fbbl" path="res://assets/UI/sprites/breaking_news_white.png" id="15_41h08"]
 [ext_resource type="Texture2D" uid="uid://c2dj8h476f7ps" path="res://scenes/UI/assets/slider plus money.png" id="15_852lj"]
 [ext_resource type="Texture2D" uid="uid://cn323qcyjay3l" path="res://scenes/UI/assets/subs.png" id="17_wk8xf"]
-[ext_resource type="Script" path="res://scenes/UI/button_sound.gd" id="21_lqmad"]
+[ext_resource type="Script" uid="uid://dkhkefsalmq5b" path="res://scenes/UI/button_sound.gd" id="21_lqmad"]
 [ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="22_ortha"]
 [ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="23_lqmad"]
 
@@ -516,7 +516,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.827451, 0.93333334, 1, 1)
 theme_override_colors/font_outline_color = Color(0.25490198, 0.11764706, 0.16470589, 1)
-text = "Narius the Gailman"
+text = "Narius the Failman"
 
 [node name="CenterContainer2" type="CenterContainer" parent="UI/UIContainer/VBoxContainer"]
 layout_mode = 2
@@ -645,7 +645,6 @@ mouse_filter = 2
 custom_minimum_size = Vector2(9.46, 195.675)
 layout_mode = 2
 size_flags_vertical = 3
-mouse_filter = 2
 
 [node name="CraftableContainer" type="VBoxContainer" parent="UI/CraftContainer/CraftMenu/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
