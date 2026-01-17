@@ -21,3 +21,8 @@ func play_jingle(jingle_name: String):
 	tween.kill()
 	tween = get_tree().create_tween()
 	tween.tween_property(music_stream_player, "volume_db", 0, 1)
+
+func is_song_playing(song_name: String) -> bool:
+	if music_stream_player.stream.resource_path == (FILEPATH + song_name + ".ogg") and music_stream_player.playing:
+		return true
+	return false

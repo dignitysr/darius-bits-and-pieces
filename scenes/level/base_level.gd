@@ -1,6 +1,8 @@
 class_name BaseLevel
 extends Node2D
 
+signal enemy_died(enemy: BaseEnemy)
+
 enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 
 @export_category("Exports")
@@ -91,9 +93,11 @@ var darius_name: String = "Darius the Mailman"
 func _ready() -> void:
 	update_stats()
 	#news_timer = randf_range(news_random_time/2.0, news_random_time)
+	net_worth.value_changed.connect(on_net_worth_changed)
 	darius_name_label.text = darius_name
 	ability_label.text = "Featuring: " + buffs[active_buff]
 	timer = time_between_waves
+	enemy_died.connect(on_enemy_died)
 	MusicManager.play_song("darius_wave_intermission")
 	StatsManager.stats["current_level"] = wave_resource.scene
 	var tiles_array_sorted: Array = tileset.get_used_cells()
@@ -114,6 +118,8 @@ func _physics_process(delta) -> void:
 				enemy_instance.position = enemy_spawner.position
 				enemy_instance.rank = wave_resource.waves[wave_number][enemy]["rank"]
 				enemy_instance.inventory_manager = inventory_manager
+				if number == wave_resource.waves[wave_number][enemy]["number"] - 1:
+					enemy_instance.last_in_line = true
 				enemy_container.add_child(enemy_instance)
 				await get_tree().create_timer(time_between_enemies, false).timeout
 		run_wave = false
@@ -134,6 +140,11 @@ func _physics_process(delta) -> void:
 						AchievementManager.unlock("Man of Mail")
 				MusicManager.play_jingle("darius_wave_start")
 				run_wave = true
+				await MusicManager.jingle_stream_player.finished
+				if net_worth.value / net_worth.max_value > 0.7:
+					MusicManager.play_song("darius_defense_danger")
+				else:
+					MusicManager.play_song("darius_defense")
 			
 	if Input.is_action_just_pressed("pause"):
 		var options = options_screen.instantiate()
@@ -212,3 +223,20 @@ func on_darius_death() -> void:
 	new_player.camera.make_current()
 	player.queue_free()
 	player = new_player
+
+func end_wave():
+	MusicManager.play_jingle("victory")
+	await MusicManager.jingle_stream_player.finished
+	MusicManager.play_song("darius_wave_intermission")
+
+func on_enemy_died(enemy: BaseEnemy) -> void:
+	if enemy.last_in_line:
+		call_deferred("end_wave")
+
+func on_net_worth_changed(_value) -> void:
+	if net_worth.value / net_worth.max_value > 0.7:
+		if not MusicManager.is_song_playing("darius_defense_danger"):
+			MusicManager.play_song("darius_defense_danger")
+		var anim_player: AnimationPlayer = net_worth_label.get_node("AnimationPlayer")
+		if not anim_player.current_animation == "warning_flash":
+			anim_player.play("warning_flash")

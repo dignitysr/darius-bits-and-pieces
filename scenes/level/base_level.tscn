@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c0nclxadp8xws"]
+[gd_scene load_steps=40 format=3 uid="uid://c0nclxadp8xws"]
 
 [ext_resource type="Script" uid="uid://c8kx2jgqnthg4" path="res://scenes/level/base_level.gd" id="1_2qxot"]
 [ext_resource type="Script" uid="uid://c3d6hdxo3ibrw" path="res://scenes/level/parts_manager.gd" id="1_ebx1s"]
@@ -26,6 +26,45 @@
 [ext_resource type="Script" uid="uid://dkhkefsalmq5b" path="res://scenes/UI/button_sound.gd" id="21_lqmad"]
 [ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="22_ortha"]
 [ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="23_lqmad"]
+
+[sub_resource type="Animation" id="Animation_jom2h"]
+resource_name = "warning_flash"
+length = 0.445
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.225),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0.63, 0.052499987, 0, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ollns"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iqd4w"]
+_data = {
+&"RESET": SubResource("Animation_ollns"),
+&"warning_flash": SubResource("Animation_jom2h")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_co8g8"]
 atlas = ExtResource("15_852lj")
@@ -492,6 +531,11 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.59607846, 0, 0, 1)
 text = "Rick's Net Worth"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/UIContainer/NumbersContainer/HBoxContainer/VBoxContainer/NetWorthLabel"]
+libraries = {
+&"": SubResource("AnimationLibrary_iqd4w")
+}
 
 [node name="NetWorth" type="ProgressBar" parent="UI/UIContainer/NumbersContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

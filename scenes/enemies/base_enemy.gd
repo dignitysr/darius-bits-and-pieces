@@ -31,6 +31,7 @@ var inventory_manager: InventoryManager
 @export var parts_dropped: Dictionary[String, int]
 
 var init_speed: float
+var last_in_line: bool = false
 
 func _ready() -> void:
 	if !palettes.is_empty():
@@ -105,6 +106,7 @@ func damage(damage_points: float) -> void:
 		if not dead:
 			cheer.play()
 		dead = true
+		inventory_manager.level.enemy_died.emit(self)
 		inventory_manager.add_parts(parts_dropped, rank)
 		StatsManager.stats["recruited_customers_total"] += 1
 		inventory_manager.session_customers += 1
@@ -122,8 +124,6 @@ func damage(damage_points: float) -> void:
 				AchievementManager.unlock("A Continent Under Control")
 			99999:
 				AchievementManager.unlock("A World Under Control")
-		if get_parent().get_children()[-1] == self:
-			MusicManager.play_jingle("victory")
 	animator.modulate = Color.DARK_RED
 	var tween := get_tree().create_tween()
 	animator.modulate = Color.ROYAL_BLUE
