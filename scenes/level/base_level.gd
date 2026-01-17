@@ -39,6 +39,7 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @onready var options: Control = %Options
 @onready var wave_counter = %WaveCounter
 @onready var time_counter = %TimeCounter
+@onready var time_container = %TimeContainer
 
 var run_wave: bool = false
 var wave_number: int = -1
@@ -48,6 +49,7 @@ var x_range: int = 0
 var rickmech_spawn_timer: float = 0
 var news_timer: float = 0
 var run_time: float = 0
+
 @onready var old_net_worth_max_value: float = net_worth.max_value
 
 var buffs: Array = [
@@ -144,7 +146,7 @@ func _physics_process(delta) -> void:
 		if enemy_container.get_children().is_empty():
 			if timer > 0:
 				timer -= delta
-				time_counter.text = "Time: " + str(int(timer))
+				time_counter.text = str(int(timer)) + "s"
 			else:
 				timer = time_between_waves
 				wave_number += 1
@@ -185,7 +187,7 @@ func _physics_process(delta) -> void:
 func dither(from: int, to: int) -> void:
 	var dither_intensity: float = from
 	while abs(dither_intensity - to) > 0.03:
-		time_counter.material.set_shader_parameter("intensity", dither_intensity)
+		time_container.material.set_shader_parameter("intensity", dither_intensity)
 		dither_intensity += 0.03 * (to-from)
 		await get_tree().process_frame
 

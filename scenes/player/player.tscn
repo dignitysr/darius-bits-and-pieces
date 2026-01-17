@@ -187,7 +187,6 @@ script = ExtResource("1_gmlin")
 [node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 limit_left = 0
-limit_top = 0
 limit_bottom = 270
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0

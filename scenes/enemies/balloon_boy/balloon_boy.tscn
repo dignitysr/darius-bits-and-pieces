@@ -1,0 +1,75 @@
+[gd_scene load_steps=15 format=3 uid="uid://dm13ljgyi33hk"]
+
+[ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_jog54"]
+[ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="2_6w33j"]
+[ext_resource type="Texture2D" uid="uid://bwoooau5eu75h" path="res://scenes/enemies/balloon_boy/regular_palette.png" id="3_0vabs"]
+[ext_resource type="Texture2D" uid="uid://dj48rsrkchsv7" path="res://scenes/enemies/balloon_boy/spritesheet.png" id="3_6w33j"]
+[ext_resource type="Texture2D" uid="uid://dg1uao2yp4f0h" path="res://scenes/enemies/balloon_boy/green_palette.png" id="3_j15y2"]
+[ext_resource type="Texture2D" uid="uid://cwd6fk5nx1nwg" path="res://scenes/enemies/balloon_boy/blue_palette.png" id="4_cwd2w"]
+[ext_resource type="Texture2D" uid="uid://bftdxbbme762q" path="res://scenes/enemies/balloon_boy/white_palette.png" id="5_tqqnr"]
+[ext_resource type="Texture2D" uid="uid://c26d7r1ce4wlv" path="res://scenes/enemies/balloon_boy/yellow_palette.png" id="6_heaom"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pin7q"]
+resource_local_to_scene = true
+shader = ExtResource("2_6w33j")
+shader_parameter/screen_mode = true
+shader_parameter/num_colors = 15
+shader_parameter/precision = 0.1
+shader_parameter/palette_in = ExtResource("3_0vabs")
+shader_parameter/palette_out = ExtResource("3_0vabs")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pin7q"]
+atlas = ExtResource("3_6w33j")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vabs"]
+atlas = ExtResource("3_6w33j")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwd2w"]
+atlas = ExtResource("3_6w33j")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqvr5"]
+atlas = ExtResource("3_6w33j")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j15y2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pin7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vabs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwd2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqvr5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="BalloonBoy" instance=ExtResource("1_jog54")]
+airborne = true
+palettes = Array[Texture2D]([ExtResource("4_cwd2w"), ExtResource("3_j15y2"), ExtResource("3_0vabs"), ExtResource("5_tqqnr"), ExtResource("6_heaom")])
+health = 400.0
+flier_spawn_pos = 30.0
+
+[node name="Animator" parent="." index="0"]
+material = SubResource("ShaderMaterial_pin7q")
+sprite_frames = SubResource("SpriteFrames_j15y2")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.88745916
+
+[node name="WallFinder" parent="." index="3"]
+enabled = false
+
+[node name="Collider" parent="." index="4"]
+visible = false

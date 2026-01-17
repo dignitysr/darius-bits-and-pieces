@@ -30,20 +30,34 @@ var inventory_manager: InventoryManager
 @export var speed: float = 50
 @export var parts_dropped: Dictionary[String, int]
 
+@export_category("Flier Enemy Info")
+@export var flier_spawn_pos: float
+@export var freq: int = 8
+@export var amp: int = 6
+
 var init_speed: float
 var last_in_line: bool = false
 
 func _ready() -> void:
+	randomize()
+	amp = randi_range(amp/2, amp)
+	freq = randi_range(freq/2, freq)
 	if !palettes.is_empty():
-		randomize()
 		animator.material.set_shader_parameter("palette_out", palettes[randi_range(0, palettes.size()-1)])
 	health = health * (health_mult * (rank + 1))
 	init_speed = speed
 	enemy_area.connect("body_entered", on_mail_entered)
 	
 func _physics_process(delta):
+	velocity.x = speed
 	if !airborne:
-		velocity.x = speed
+		if !is_on_floor():
+			velocity.y += GRAVITY
+			animator.animation = "jump"
+		else:
+			animator.animation = "walk"
+	else:
+		position.y = amp*sin(position.x/freq) + flier_spawn_pos
 	if dead:
 		animator.get_material().set_shader_parameter("intensity", dithering_intensity)
 		dithering_intensity += delta*death_speed
@@ -61,13 +75,6 @@ func _physics_process(delta):
 		if !airborne:
 			animator.animation = "jump"
 	move_and_slide()
-	if !is_on_floor():
-		velocity.y += GRAVITY
-		if !airborne:
-			animator.animation = "jump"
-	else:
-		if !airborne:
-			animator.animation = "walk"
 	if !dead && inventory_manager.level.player in enemy_area.get_overlapping_bodies() && inventory_manager.level.active_buff == BaseLevel.Buffs.SLOW:
 		speed = init_speed*0.75
 	else:

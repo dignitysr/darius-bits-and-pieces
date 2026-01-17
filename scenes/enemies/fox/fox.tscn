@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://clfwifsf2yefo"]
+
+[ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_jhjju"]
+[ext_resource type="Script" uid="uid://tdo8vjl4ayvh" path="res://scenes/enemies/fox/fox.gd" id="2_gndcq"]
+[ext_resource type="Texture2D" uid="uid://d2hevioacpbls" path="res://scenes/enemies/fox/orange_palette_1.png" id="2_yx6kf"]
+[ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="7_77o8r"]
+[ext_resource type="Texture2D" uid="uid://dlrm3ii1qso6y" path="res://scenes/enemies/fox/regular_palette.png" id="8_geq00"]
+[ext_resource type="Texture2D" uid="uid://dm2s2c2p4v0i4" path="res://scenes/enemies/fox/spritesheet.png" id="9_21po8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2mgq1"]
+resource_local_to_scene = true
+shader = ExtResource("7_77o8r")
+shader_parameter/screen_mode = true
+shader_parameter/num_colors = 10
+shader_parameter/precision = 0.1
+shader_parameter/palette_in = ExtResource("8_geq00")
+shader_parameter/palette_out = ExtResource("2_yx6kf")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx6kf"]
+atlas = ExtResource("9_21po8")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geq00"]
+atlas = ExtResource("9_21po8")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f106"]
+atlas = ExtResource("9_21po8")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mgq1"]
+atlas = ExtResource("9_21po8")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_egucb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx6kf")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geq00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3f106")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mgq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3f106")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Fox" instance=ExtResource("1_jhjju")]
+script = ExtResource("2_gndcq")
+char_jump_pow = 260.0
+health = 20.0
+
+[node name="Animator" parent="." index="0"]
+material = SubResource("ShaderMaterial_2mgq1")
+sprite_frames = SubResource("SpriteFrames_egucb")
+animation = &"jump"
+autoplay = "walk"
+
+[node name="EnemyArea" parent="." index="1"]
+visible = false
+
+[node name="Collider" parent="." index="4"]
+visible = false

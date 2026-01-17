@@ -12,7 +12,7 @@
 [node name="GrassBG" type="Node2D"]
 
 [node name="BGSection3" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.002, 1)
+scroll_scale = Vector2(0.002, 0)
 repeat_size = Vector2(480, 270)
 repeat_times = 99
 limit_begin = Vector2(0, 0)
@@ -23,7 +23,7 @@ position = Vector2(240, 135)
 texture = ExtResource("6_o7bdm")
 
 [node name="BGSection2" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.005, 1)
+scroll_scale = Vector2(0.005, 0)
 repeat_size = Vector2(480, 270)
 repeat_times = 99
 follow_viewport = false
@@ -33,7 +33,7 @@ position = Vector2(240, 135)
 texture = ExtResource("7_0tic2")
 
 [node name="BGSection1" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.02, 1)
+scroll_scale = Vector2(0.02, 0)
 repeat_size = Vector2(480, 270)
 repeat_times = 99
 follow_viewport = false
@@ -43,7 +43,7 @@ position = Vector2(240, 135)
 texture = ExtResource("8_c5aur")
 
 [node name="Sea5" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.25, 1)
+scroll_scale = Vector2(0.25, 0)
 repeat_size = Vector2(480, 270)
 repeat_times = 99
 follow_viewport = false
@@ -53,7 +53,7 @@ position = Vector2(240, 135)
 texture = ExtResource("1_xw1rk")
 
 [node name="Sea4" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.2, 1)
+scroll_scale = Vector2(0.2, 0)
 repeat_size = Vector2(480, 270)
 repeat_times = 99
 follow_viewport = false
@@ -63,7 +63,7 @@ position = Vector2(240, 135)
 texture = ExtResource("2_xhxer")
 
 [node name="Sea3" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.15, 1)
+scroll_scale = Vector2(0.15, 0)
 repeat_size = Vector2(480, 270)
 repeat_times = 99
 follow_viewport = false
@@ -73,7 +73,7 @@ position = Vector2(240, 135)
 texture = ExtResource("3_hnrro")
 
 [node name="Sea1" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.1, 1)
+scroll_scale = Vector2(0.1, 0)
 repeat_size = Vector2(480, 270)
 repeat_times = 99
 follow_viewport = false
@@ -83,7 +83,7 @@ position = Vector2(240, 135)
 texture = ExtResource("4_jac0w")
 
 [node name="Sea6" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.05, 1)
+scroll_scale = Vector2(0.05, 0)
 repeat_size = Vector2(480, 270)
 repeat_times = 99
 follow_viewport = false

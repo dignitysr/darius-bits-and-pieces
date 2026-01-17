@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemiesResource" load_steps=7 format=3 uid="uid://bcvclfg6r1av0"]
+[gd_resource type="Resource" script_class="EnemiesResource" load_steps=10 format=3 uid="uid://bcvclfg6r1av0"]
 
 [ext_resource type="PackedScene" uid="uid://cmvevnsrw0wrc" path="res://scenes/enemies/customer/customer.tscn" id="1_mw3w8"]
 [ext_resource type="PackedScene" uid="uid://cmqqsm2mjnc2f" path="res://scenes/enemies/nan/nan.tscn" id="2_cqmw8"]
@@ -6,14 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://crhp7wyqmbyxf" path="res://scenes/enemies/luci/luci.tscn" id="3_cqmw8"]
 [ext_resource type="PackedScene" uid="uid://bvdl6bch40dgo" path="res://scenes/enemies/suit/suit.tscn" id="4_u0k74"]
 [ext_resource type="PackedScene" uid="uid://houen7tbqut5" path="res://scenes/enemies/fedora/fedora.tscn" id="5_mq4wy"]
+[ext_resource type="PackedScene" uid="uid://clfwifsf2yefo" path="res://scenes/enemies/fox/fox.tscn" id="6_5oqks"]
+[ext_resource type="PackedScene" uid="uid://dm13ljgyi33hk" path="res://scenes/enemies/balloon_boy/balloon_boy.tscn" id="7_msfja"]
+[ext_resource type="PackedScene" uid="uid://dhwe3cxbwn8pc" path="res://scenes/enemies/UFO/ufo.tscn" id="8_dngjm"]
 
 [resource]
 script = ExtResource("2_q076a")
 enemies = Dictionary[String, PackedScene]({
+"balloon_boy": ExtResource("7_msfja"),
 "customer": ExtResource("1_mw3w8"),
 "fedora": ExtResource("5_mq4wy"),
+"fox": ExtResource("6_5oqks"),
 "luci": ExtResource("3_cqmw8"),
 "nan": ExtResource("2_cqmw8"),
-"suit": ExtResource("4_u0k74")
+"suit": ExtResource("4_u0k74"),
+"ufo": ExtResource("8_dngjm")
 })
 metadata/_custom_type_script = "uid://bv0frty0chg8k"
