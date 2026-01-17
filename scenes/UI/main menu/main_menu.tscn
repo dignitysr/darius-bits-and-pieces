@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://2kkb7t6sib01" path="res://assets/UI/sprites/logo.png" id="2_7df32"]
 [ext_resource type="Texture2D" uid="uid://ofxbeh156yjg" path="res://assets/UI/sprites/title_bg.png" id="2_dc3gt"]
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="2_lok01"]
-[ext_resource type="Script" path="res://scenes/UI/button_sound.gd" id="4_agl0q"]
+[ext_resource type="Script" uid="uid://dkhkefsalmq5b" path="res://scenes/UI/button_sound.gd" id="4_agl0q"]
 [ext_resource type="Texture2D" uid="uid://bwxlbkxy0k1x7" path="res://assets/UI/sprites/dither1.png" id="4_kuwhr"]
 [ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="5_7df32"]
-[ext_resource type="Script" path="res://scenes/UI/dither_mask.gd" id="5_23lm2"]
+[ext_resource type="Script" uid="uid://cw0hsnuwkb5mk" path="res://scenes/UI/dither_mask.gd" id="5_23lm2"]
 [ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="6_7df32"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_15gym"]
