@@ -13,6 +13,8 @@ func _ready() -> void:
 func show_news(news: String) -> void:
 	if is_broadcasting:
 		return
+	if MusicManager.jingle_stream_player.playing:
+		await MusicManager.jingle_stream_player.finished
 	MusicManager.play_jingle("dariusnews")
 	show()
 	is_broadcasting = true

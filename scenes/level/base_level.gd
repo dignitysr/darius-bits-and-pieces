@@ -37,6 +37,8 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @onready var net_worth_label = %NetWorthLabel
 @onready var tileset = %Tileset
 @onready var options: Control = %Options
+@onready var wave_counter = %WaveCounter
+@onready var time_counter = %TimeCounter
 
 var run_wave: bool = false
 var wave_number: int = -1
@@ -46,6 +48,7 @@ var x_range: int = 0
 var rickmech_spawn_timer: float = 0
 var news_timer: float = 0
 var run_time: float = 0
+@onready var old_net_worth_max_value: float = net_worth.max_value
 
 var buffs: Array = [
 	'Slow Down Customers',
@@ -121,7 +124,11 @@ func sort_by_ascending_x(a: Vector2, b: Vector2):
 
 func _physics_process(delta) -> void:
 	run_time += delta
+	if old_net_worth_max_value != net_worth.max_value:
+		on_net_worth_changed(0) #value doesn't matter
+	old_net_worth_max_value = net_worth.max_value
 	if run_wave && enemy_container.get_children().is_empty():
+		dither(0, 1)
 		for enemy: String in wave_resource.waves[wave_number]:
 			for number: int in wave_resource.waves[wave_number][enemy]['number']:
 				var enemy_instance: BaseEnemy = enemies_resource.enemies[enemy].instantiate()
@@ -137,17 +144,11 @@ func _physics_process(delta) -> void:
 		if enemy_container.get_children().is_empty():
 			if timer > 0:
 				timer -= delta
+				time_counter.text = "Time: " + str(int(timer))
 			else:
 				timer = time_between_waves
 				wave_number += 1
-				if wave_number == 21:
-					AchievementManager.unlock('A Tough Battle')
-				if wave_number == 61:
-					AchievementManager.unlock('A War Victorious')
-					if !StatsManager.stats['wave_60_maps'].has(wave_resource.name):
-						StatsManager.stats['wave_60_maps'].append(wave_resource.name)
-					if StatsManager.stats['wave_60_maps'].size() == 4:
-						AchievementManager.unlock('Man of Mail')
+				wave_counter.text = "Wave: " + str(wave_number + 1)
 				MusicManager.play_jingle('darius_wave_start')
 				run_wave = true
 				await MusicManager.jingle_stream_player.finished
@@ -155,6 +156,9 @@ func _physics_process(delta) -> void:
 					MusicManager.play_song('darius_defense_danger')
 				else:
 					MusicManager.play_song('darius_defense')
+				if (wave_number + 1) % 20 == 0 && wave_number > 0:
+					MusicManager.play_song("darius_boss")
+					time_between_enemies = time_between_enemies/2
 			
 	if Input.is_action_just_pressed('pause'):
 		options.show()
@@ -172,11 +176,18 @@ func _physics_process(delta) -> void:
 		rickmech_spawn_timer -= delta
 		
 	if news_timer <= 0:
-		breaking_news.show_news(news_snippets[randi_range(0, news_snippets.size()-1)])
+		breaking_news.show_news(news_snippets.pick_random())
 		news_timer = randf_range(news_random_time/2.0, news_random_time)
 	else:
 		randomize()
 		news_timer -= delta
+		
+func dither(from: int, to: int) -> void:
+	var dither_intensity: float = from
+	while abs(dither_intensity - to) > 0.03:
+		time_counter.material.set_shader_parameter("intensity", dither_intensity)
+		dither_intensity += 0.03 * (to-from)
+		await get_tree().process_frame
 
 func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Rank, add_subs: bool = true):
 	var total_parts: int = 0
@@ -236,13 +247,24 @@ func on_darius_death() -> void:
 	player = new_player
 
 func end_wave():
+	if (wave_number + 1) % 20 == 0 && wave_number > 0:
+		time_between_enemies *= 2
+		AchievementManager.unlock('A Tough Battle')
+	if wave_number == 59:
+		AchievementManager.unlock('A War Victorious')
+		if !StatsManager.stats['wave_60_maps'].has(wave_resource.name):
+			StatsManager.stats['wave_60_maps'].append(wave_resource.name)
+		if StatsManager.stats['wave_60_maps'].size() == 4:
+			AchievementManager.unlock('Man of Mail')
+		StatsManager.save_stats()
 	MusicManager.play_jingle('victory')
+	dither(1, 0)
 	await MusicManager.jingle_stream_player.finished
 	MusicManager.play_song('darius_wave_intermission')
 
-func on_enemy_died(enemy: BaseEnemy) -> void:
-	if enemy.last_in_line:
-		call_deferred('end_wave')
+func on_enemy_died() -> void:
+	if enemy_container.get_children().is_empty():
+		end_wave()
 
 func on_net_worth_changed(_value) -> void:
 	if net_worth.value / net_worth.max_value > 0.7:
@@ -256,6 +278,6 @@ func on_net_worth_changed(_value) -> void:
 			MusicManager.play_song('darius_defense')
 		var anim_player: AnimationPlayer = net_worth_label.get_node('AnimationPlayer')
 		if anim_player.current_animation == 'warning_flash':
-			anim_player.stop()
+			anim_player.play("RESET")
 			var red_amount: float = net_worth.value / net_worth.max_value
 			net_worth_label.add_theme_color_override('font_color', lerp(Color.WHITE, Color("e35100"), red_amount))

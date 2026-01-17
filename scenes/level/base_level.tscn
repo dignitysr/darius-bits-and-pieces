@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c0nclxadp8xws"]
+[gd_scene load_steps=42 format=3 uid="uid://c0nclxadp8xws"]
 
 [ext_resource type="Script" uid="uid://c8kx2jgqnthg4" path="res://scenes/level/base_level.gd" id="1_2qxot"]
 [ext_resource type="Script" uid="uid://c3d6hdxo3ibrw" path="res://scenes/level/parts_manager.gd" id="1_ebx1s"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://scenes/UI/button_sound.gd" id="21_lqmad"]
 [ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="22_ortha"]
 [ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="23_lqmad"]
+[ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="23_ollns"]
 
 [sub_resource type="Animation" id="Animation_ollns"]
 length = 0.001
@@ -92,6 +93,10 @@ texture_margin_bottom = 6.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iqd4w"]
+shader = ExtResource("23_ollns")
+shader_parameter/intensity = 0.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_se6ax"]
 texture = ExtResource("9_466n5")
@@ -293,7 +298,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../UI/CraftContainer/CraftTransButton/ClickBlocker:visible")
+tracks/0/path = NodePath("../UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton/ClickBlocker:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -305,7 +310,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../UI/CraftContainer/CraftTransButton:button_pressed")
+tracks/1/path = NodePath("../UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton:button_pressed")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -344,7 +349,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../UI/CraftContainer/CraftTransButton/ClickBlocker:visible")
+tracks/2/path = NodePath("../UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton/ClickBlocker:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -356,7 +361,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../UI/CraftContainer/CraftTransButton:button_pressed")
+tracks/3/path = NodePath("../UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton:button_pressed")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -598,7 +603,14 @@ grow_vertical = 2
 theme = ExtResource("4_e1fnv")
 alignment = 2
 
-[node name="CraftTransButton" type="Button" parent="UI/CraftContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CraftContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CraftContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="CraftTransButton" type="Button" parent="UI/CraftContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -611,13 +623,13 @@ icon_alignment = 1
 script = ExtResource("21_lqmad")
 press_name = ""
 
-[node name="CenterContainer" type="CenterContainer" parent="UI/CraftContainer/CraftTransButton"]
+[node name="CenterContainer" type="CenterContainer" parent="UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="Icon" type="TextureRect" parent="UI/CraftContainer/CraftTransButton/CenterContainer"]
+[node name="Icon" type="TextureRect" parent="UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton/CenterContainer"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 mouse_filter = 2
@@ -625,7 +637,7 @@ texture = ExtResource("7_8xnqg")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Shadow" type="TextureRect" parent="UI/CraftContainer/CraftTransButton/CenterContainer/Icon"]
+[node name="Shadow" type="TextureRect" parent="UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton/CenterContainer/Icon"]
 modulate = Color(0.1254902, 0, 0.69803923, 0.5019608)
 show_behind_parent = true
 custom_minimum_size = Vector2(24, 24)
@@ -644,11 +656,24 @@ texture = ExtResource("7_8xnqg")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ClickBlocker" type="Control" parent="UI/CraftContainer/CraftTransButton"]
+[node name="ClickBlocker" type="Control" parent="UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton"]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="WaveCounter" type="Label" parent="UI/CraftContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Wave: 30"
+horizontal_alignment = 2
+
+[node name="TimeCounter" type="Label" parent="UI/CraftContainer/VBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_iqd4w")
+layout_mode = 2
+text = "Time: 30"
+horizontal_alignment = 2
 
 [node name="CraftMenu" type="Panel" parent="UI/CraftContainer"]
 custom_minimum_size = Vector2(113.205, 0)

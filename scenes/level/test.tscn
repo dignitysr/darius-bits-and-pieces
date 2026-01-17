@@ -22,6 +22,9 @@ position = Vector2(35, 170)
 [node name="BreakingNews" parent="UI" index="0"]
 z_index = 4096
 
+[node name="WaveCounter" parent="UI/CraftContainer/VBoxContainer" index="1"]
+text = "Wave: 0"
+
 [node name="CraftPanel" parent="UI/CraftContainer/CraftMenu/VBoxContainer/ScrollContainer/CraftableContainer" index="0"]
 theme = ExtResource("5_fhgba")
 

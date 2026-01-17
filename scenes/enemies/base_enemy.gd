@@ -51,7 +51,8 @@ func _physics_process(delta):
 		enemy_area.monitoring = false
 	if dithering_intensity >= 1:
 		set_physics_process(false)
-		inventory_manager.level.enemy_died.emit(self)
+		reparent(inventory_manager.level)
+		inventory_manager.level.enemy_died.emit()
 		if cheer.playing:
 			await cheer.finished
 		queue_free()
@@ -90,6 +91,7 @@ func lose_subscriber() -> void:
 			if inventory_manager.level.subscribers > StatsManager.stats["subscribers_unsaved"]:
 				Save.change_setting("stats", "subscribers_unsaved", inventory_manager.level.subscribers)
 			StatsManager.stats["subscribers_total"] = StatsManager.stats["subscribers_total"] + inventory_manager.level.subscribers
+			StatsManager.save_stats()
 			Save.change_setting("stats", "subscribers_total", + StatsManager.stats["subscribers_total"])
 			TransitionManager.trans_to("res://scenes/UI/game over/game_over_screen.tscn")
 			get_tree().paused = true
