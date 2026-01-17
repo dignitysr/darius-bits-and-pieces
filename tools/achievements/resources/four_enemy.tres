@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://btiieamj7g0a4"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_8bqky"]
+
+[resource]
+script = ExtResource("1_8bqky")
+achievement_name = "BIG SHOT"
+description = "Satisfy nine-hundred-and-ninety-nine customers!"
+achievement_index = 8
+metadata/_custom_type_script = "uid://clsfgafsghq51"

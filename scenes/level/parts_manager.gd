@@ -93,8 +93,19 @@ func buy(tower: String, rank: Rank) -> void:
 	StatsManager.stats["towers_placed_total"] += 1
 	session_towers += 1
 	StatsManager.save_stats()
-	if StatsManager.stats["towers_placed_total"] == 1:
-		AchievementManager.unlock("First Steps")
+	match StatsManager.stats["towers_placed_total"]:
+		1:
+			AchievementManager.unlock("First Steps")
+		5:
+			AchievementManager.unlock("Constructor")
+		15:
+			AchievementManager.unlock("Well-Oiled Machine")
+		50:
+			AchievementManager.unlock("Factorio")
+		99:
+			AchievementManager.unlock("A Continent of Mail")
+		999:
+			AchievementManager.unlock("A World of Mail")
 	preview.global_position = Vector2.ZERO
 	place_validator.global_position = Vector2.ZERO
 		

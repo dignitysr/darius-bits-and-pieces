@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://bswrdw3ircwer"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_w2eoh"]
+
+[resource]
+script = ExtResource("1_w2eoh")
+achievement_name = "Successful Businessman"
+description = "Satisfy two-hundred customers!"
+achievement_index = 7
+metadata/_custom_type_script = "uid://clsfgafsghq51"

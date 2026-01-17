@@ -9,11 +9,12 @@ var stats: Dictionary = {
 	"recruited_customers_total": 0,
 	"subscribers_total": 0,
 	"defeated_rickmechs_total": 0,
-	"towers_placed": 0,
-	"recruited_customers": 0,
-	"subscribers": 0,
-	"defeated_rickmechs": 0,
+	"towers_placed_unsaved": 0,
+	"recruited_customers_unsaved": 0,
+	"subscribers_unsaved": 0,
+	"defeated_rickmechs_unsaved": 0,
 	"current_level": "",
+	"wave_60_maps": [],
 }
 
 var save_timer = SAVE_TIME
@@ -43,6 +44,5 @@ func load_stats() -> void:
 
 func save_stats() -> void:
 	for stat: String in stats:
-		if "total" in stat || "playtime" in stat:
+		if !"unsaved" in stat:
 			Save.change_setting("stats", stat, stats[stat])
-			print("t")

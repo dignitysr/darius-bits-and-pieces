@@ -17,6 +17,7 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @export var time_between_waves: float = 60 ## In seconds
 @export var time_between_enemies: float = 0.5 ## In seconds
 @export var rickmech_spawn_time = 300
+@export var news_random_time: int = 360
 
 @onready var enemy_spawner = %EnemySpawner
 @onready var enemy_container = %Enemies
@@ -40,6 +41,7 @@ var timer: float
 var subscribers: int = 1
 var x_range: int = 0
 var rickmech_spawn_timer: float = 0
+var news_timer: float = 0
 var run_time: float = 0
 
 var buffs: Array = [
@@ -61,6 +63,25 @@ var milestones: Dictionary = {
 	1e5: ["DPS becoming the second-most-used postal service behind Rick Aschez's OOPS. Is it on track to dethrone it?", false],
 	1e6: ["DPS subscribership surpassing the population of a small country. OOPS in grave danger.", false]
 }
+
+var news_snippets: Array = [
+	"'BEING OBSESSIVE IS NEVER A GOOD THING' SAYS PROGRAMMER.",
+	"'DPS doesn't stand for damage per second?' asks OOPS representative.",
+	"'Why choose OOPS over DPS?' CEO Rick Aschez says: 'You wouldn't get this from any other guy.'",
+	"Hold on, what did you say this game was about again?' asks confused composer.",
+	"When asked about the lack of janitorial workers at DPS, COO Dmitri refused to comment.",
+	"'C'mon, it's Aschez, not Sanchez!': OOPS CEO Blasts Misinformation",
+	"DPS Seeks Millions in Damages from 'Rovert' for Unlicensed Fan Character 'Mario'",
+	"AD: Get 30% off all Nuggie-Wuggies at McDesu's! For kids, meet the real McDonald-Chan in the newly built Isekai Place!",
+	"Local citizen's cat found dead from heart attack. Autopsy reveals heavy lasagna consumption.",
+	"It Could Happen to You - Invest in Tile Clipping Insurance Today!",
+	"'Hello, I'm Dwayne the John Rockson', says local rock. Researchers currently conducting further investigation.",
+	"Ready to 'Give Up' Biased News Sources? Subscribe to the Darius News Network, the World's Only Unbiased News Source. This slot was brought to you by the DPS.",
+	"PSA From DPS: 'Being called 'Super' on the Job Doesn't Protect From Strain. Lift With Your Legs.'",
+	"LIFESTYLE: How You Can Save the Environment in 5 Minutes a Day by Being Gentle With Mailboxes",
+	"'Tragedy Strikes Local Orphanage — Hundreds Lost in Devastating Inferno.' ​I hope this headline meets your requirements! Is there anything else I can assist you with today?",
+	"The Sad Truth: 90% of Mail Based Casualties Come From Customer Dissatisfaction. Other leading causes include: 6% Transportation Accidents, 3% Unattended Enemies, Hazards and Dogs, and 1% Giant Pits.",
+]
 	
 var active_buff := Buffs.SLOW
 
@@ -69,6 +90,7 @@ var darius_name: String = "Darius the Mailman"
 
 func _ready() -> void:
 	update_stats()
+	#news_timer = randf_range(news_random_time/2.0, news_random_time)
 	darius_name_label.text = darius_name
 	ability_label.text = "Featuring: " + buffs[active_buff]
 	timer = time_between_waves
@@ -102,6 +124,14 @@ func _physics_process(delta) -> void:
 			else:
 				timer = time_between_waves
 				wave_number += 1
+				if wave_number == 21:
+					AchievementManager.unlock("A Tough Battle")
+				if wave_number == 61:
+					AchievementManager.unlock("A War Victorious")
+					if !StatsManager.stats["wave_60_maps"].has(wave_resource.name):
+						StatsManager.stats["wave_60_maps"].append(wave_resource.name)
+					if StatsManager.stats["wave_60_maps"].size() == 4:
+						AchievementManager.unlock("Man of Mail")
 				MusicManager.play_jingle("darius_wave_start")
 				run_wave = true
 			
@@ -120,17 +150,21 @@ func _physics_process(delta) -> void:
 		add_child(rickmech_scene)
 	else:
 		rickmech_spawn_timer -= delta
+		
+	if news_timer <= 0:
+		breaking_news.show_news(news_snippets[randi_range(0, news_snippets.size()-1)])
+		news_timer = randf_range(news_random_time/2.0, news_random_time)
+	else:
+		randomize()
+		news_timer -= delta
 
 func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Rank, add_subs: bool = true):
 	var total_parts: int = 0
-	if active_buff == Buffs.PARTS:
-		for part: String in parts_dropped:
-			@warning_ignore("narrowing_conversion")
-			total_parts += parts_dropped[part]
+	for part: String in parts_dropped:
+		@warning_ignore("narrowing_conversion")
+		total_parts += parts_dropped[part]
+		if active_buff == Buffs.PARTS:
 			parts_dropped[part] = roundi(parts_dropped[part] + parts_dropped[part]*0.25)
-	else:
-		for part: String in parts_dropped:
-			total_parts += parts_dropped[part]
 	var quantity_container_scene = quantity_container.instantiate()
 	quantity_container_scene.parts = parts_dropped
 	quantity_container_scene.rank = good_util.direct_image(small_ranks_resource.ranks[rank])

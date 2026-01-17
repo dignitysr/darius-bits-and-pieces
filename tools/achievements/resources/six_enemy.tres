@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://bjxohj67isegw"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_ttom8"]
+
+[resource]
+script = ExtResource("1_ttom8")
+achievement_name = "A World Under Control"
+description = "Satisfy ninety-nine-thousand-nine-hundred-and-ninety-nine (99999) customers!"
+achievement_index = 10
+metadata/_custom_type_script = "uid://clsfgafsghq51"

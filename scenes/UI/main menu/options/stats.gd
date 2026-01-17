@@ -12,10 +12,10 @@ func _physics_process(_delta):
 	Defeated Rickmechs: {defeated_rickmechs_total}
 
 	Highest Per Run
-	Placed Towers: {towers_placed}
-	Recruited Customers: {recruited_customers}
-	Subscribers: {subscribers}
-	Defeated Rickmechs: {defeated_rickmechs}"""
+	Placed Towers: {towers_placed_unsaved}
+	Recruited Customers: {recruited_customers_unsaved}
+	Subscribers: {subscribers_unsaved}
+	Defeated Rickmechs: {defeated_rickmechs_unsaved}"""
 	
 	@warning_ignore("integer_division")
 	text.text = template.format(StatsManager.stats.merged({"ach_unlocked": AchievementManager.unlocked_achievements, "ach_total": AchievementManager.total_achievements, "ach_percent": (100*AchievementManager.unlocked_achievements)/(AchievementManager.total_achievements)}))

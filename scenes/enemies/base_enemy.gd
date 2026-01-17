@@ -78,15 +78,15 @@ func lose_subscriber() -> void:
 		var tween := get_tree().create_tween()
 		tween.tween_property(inventory_manager.level.net_worth, "value", inventory_manager.level.net_worth.value + inventory_manager.level.net_worth.max_value*0.1, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		inventory_manager.level.update_stats()
-		if inventory_manager.level.net_worth.value == inventory_manager.level.net_worth.max_value && inventory_manager.level.net_worth.max_value > 0:
-			if inventory_manager.session_customers > StatsManager.stats["recruited_customers"]:
-				Save.change_setting("stats", "recruited_customers", inventory_manager.session_customers)
-			if inventory_manager.session_towers > StatsManager.stats["towers_placed"]:
-				Save.change_setting("stats", "towers_placed", inventory_manager.session_towers)
-			if inventory_manager.session_rickmechs > StatsManager.stats["defeated_rickmechs"]:
-				Save.change_setting("stats", "defeated_rickmechs", inventory_manager.session_rickmechs)
-			if inventory_manager.level.subscribers > StatsManager.stats["subscribers"]:
-				Save.change_setting("stats", "subscribers", inventory_manager.level.subscribers)
+		if is_equal_approx(inventory_manager.level.net_worth.value, inventory_manager.level.net_worth.max_value) && inventory_manager.level.net_worth.max_value > 0:
+			if inventory_manager.session_customers > StatsManager.stats["recruited_customers_unsaved"]:
+				Save.change_setting("stats", "recruited_customers_unsaved", inventory_manager.session_customers)
+			if inventory_manager.session_towers > StatsManager.stats["towers_placed_unsaved"]:
+				Save.change_setting("stats", "towers_placed_unsaved", inventory_manager.session_towers)
+			if inventory_manager.session_rickmechs > StatsManager.stats["defeated_rickmechs_unsaved"]:
+				Save.change_setting("stats", "defeated_rickmechs_unsaved", inventory_manager.session_rickmechs)
+			if inventory_manager.level.subscribers > StatsManager.stats["subscribers_unsaved"]:
+				Save.change_setting("stats", "subscribers_unsaved", inventory_manager.level.subscribers)
 			StatsManager.stats["subscribers_total"] = StatsManager.stats["subscribers_total"] + inventory_manager.level.subscribers
 			Save.change_setting("stats", "subscribers_total", + StatsManager.stats["subscribers_total"])
 			TransitionManager.trans_to("res://scenes/UI/game over/game_over_screen.tscn")
@@ -109,8 +109,19 @@ func damage(damage_points: float) -> void:
 		StatsManager.stats["recruited_customers_total"] += 1
 		inventory_manager.session_customers += 1
 		StatsManager.save_stats()
-		if StatsManager.stats["recruited_customers_total"] == 1:
-			AchievementManager.unlock("Encounter with the Enemy")
+		match StatsManager.stats["recruited_customers_total"]:
+			1:
+				AchievementManager.unlock("Encounter with the Enemy")
+			50:
+				AchievementManager.unlock("Gaining Traction")
+			200:
+				AchievementManager.unlock("Successful Businessman")
+			999:
+				AchievementManager.unlock("BIG SHOT")
+			5000:
+				AchievementManager.unlock("A Continent Under Control")
+			99999:
+				AchievementManager.unlock("A World Under Control")
 		if get_parent().get_children()[-1] == self:
 			MusicManager.play_jingle("victory")
 	animator.modulate = Color.DARK_RED

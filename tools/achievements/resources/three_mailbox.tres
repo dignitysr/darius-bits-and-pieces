@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://w1hy3q74xduk"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_vj51j"]
+
+[resource]
+script = ExtResource("1_vj51j")
+achievement_name = "Well-Oiled Machine"
+description = "Craft fifteen towers!"
+achievement_index = 2
+metadata/_custom_type_script = "uid://clsfgafsghq51"

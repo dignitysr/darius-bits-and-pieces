@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://bjx4fjtiehd00"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_qyvgi"]
+
+[resource]
+script = ExtResource("1_qyvgi")
+achievement_name = "A Continent of Mail"
+description = "Craft ninety-nine towers!"
+achievement_index = 4
+metadata/_custom_type_script = "uid://clsfgafsghq51"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://t8v2rfbs7vyb"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_83v6o"]
+
+[resource]
+script = ExtResource("1_83v6o")
+achievement_name = "Constructor"
+description = "Craft five towers!"
+achievement_index = 1
+metadata/_custom_type_script = "uid://clsfgafsghq51"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://ca3j6sn4k7ru6"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_ssfxy"]
+
+[resource]
+script = ExtResource("1_ssfxy")
+achievement_name = "A Continent Under Control"
+description = "Satisfy five-thousand customers!"
+achievement_index = 9
+metadata/_custom_type_script = "uid://clsfgafsghq51"

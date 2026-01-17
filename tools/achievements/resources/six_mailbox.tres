@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://ciethe0k3jiyv"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_nmb8t"]
+
+[resource]
+script = ExtResource("1_nmb8t")
+achievement_name = "A World of Mail"
+description = "Craft nine-hundred-and-ninety-nine towers!"
+achievement_index = 5
+metadata/_custom_type_script = "uid://clsfgafsghq51"

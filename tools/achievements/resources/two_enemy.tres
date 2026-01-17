@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://d1g8qj3if8o18"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_uw8r6"]
+
+[resource]
+script = ExtResource("1_uw8r6")
+achievement_name = "Gaining Traction"
+description = "Satisfy fifty customers!"
+achievement_index = 7
+metadata/_custom_type_script = "uid://clsfgafsghq51"
