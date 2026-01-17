@@ -1,25 +1,36 @@
-[gd_scene load_steps=36 format=4 uid="uid://bv2xa0wek7j8t"]
+[gd_scene load_steps=39 format=4 uid="uid://bv2xa0wek7j8t"]
 
 [ext_resource type="Script" uid="uid://dmn0k2k2vlxq3" path="res://scenes/UI/main menu/options/options.gd" id="1_2pwr6"]
 [ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="1_157xu"]
 [ext_resource type="Theme" uid="uid://csbmn3ra74l3n" path="res://assets/UI/base_theme.tres" id="2_2pwr6"]
 [ext_resource type="Script" uid="uid://chlm3iry8g2sv" path="res://scenes/UI/main menu/options/audiovisual.gd" id="2_7toq6"]
+[ext_resource type="Shader" uid="uid://xxu3e5oo7j2r" path="res://tools/shaders/scroll_texture.gdshader" id="3_fus0m"]
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="3_i6pal"]
 [ext_resource type="Script" uid="uid://dhsyvev6hbsod" path="res://scenes/UI/main menu/options/control.gd" id="4_7toq6"]
-[ext_resource type="Script" path="res://scenes/UI/main menu/options/tab_sound.gd" id="5_g7b26"]
+[ext_resource type="Texture2D" uid="uid://ofxbeh156yjg" path="res://assets/UI/sprites/title_bg.png" id="4_087pr"]
+[ext_resource type="Script" uid="uid://bilq3m1mpqkuh" path="res://scenes/UI/main menu/options/tab_sound.gd" id="5_g7b26"]
 [ext_resource type="Script" uid="uid://drerhw7vrrjw" path="res://scenes/UI/main menu/options/achievements.gd" id="5_i6pal"]
 [ext_resource type="PackedScene" uid="uid://bfmpe5508ukf5" path="res://scenes/UI/main menu/options/achievement_button.tscn" id="6_shko1"]
-[ext_resource type="Script" path="res://scenes/UI/option_sound.gd" id="7_lhrrj"]
+[ext_resource type="Script" uid="uid://d4lr3pduxhqer" path="res://scenes/UI/option_sound.gd" id="7_lhrrj"]
 [ext_resource type="Script" uid="uid://cm1taalfwjv03" path="res://scenes/UI/main menu/options/stats.gd" id="7_shko1"]
-[ext_resource type="Script" path="res://scenes/UI/slider_sound.gd" id="7_voccj"]
+[ext_resource type="Script" uid="uid://boqqkki6t66yl" path="res://scenes/UI/slider_sound.gd" id="7_voccj"]
 [ext_resource type="Texture2D" uid="uid://cy8xsvim3t8mb" path="res://assets/UI/sprites/back.png" id="9_wsbjl"]
-[ext_resource type="Script" path="res://scenes/UI/button_sound.gd" id="11_nsjvu"]
+[ext_resource type="Script" uid="uid://dkhkefsalmq5b" path="res://scenes/UI/button_sound.gd" id="11_nsjvu"]
 [ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="12_g7b26"]
 [ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="13_lhrrj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jnhg8"]
 shader = ExtResource("1_157xu")
 shader_parameter/intensity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fdpe7"]
+shader = ExtResource("3_fus0m")
+shader_parameter/scroll_speed = 0.08
+shader_parameter/angle_degrees = 135.0000064125
+shader_parameter/repeat_x = 1.0
+shader_parameter/repeat_y = 1.0
+shader_parameter/row_offset = 0.0
+shader_parameter/texture_to_scroll = ExtResource("4_087pr")
 
 [sub_resource type="Theme" id="Theme_w2wxb"]
 default_font = ExtResource("3_i6pal")
@@ -1807,6 +1818,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2pwr6")
+
+[node name="BG" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_fdpe7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_087pr")
+stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 use_parent_material = true

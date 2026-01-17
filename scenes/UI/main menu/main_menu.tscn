@@ -1,11 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://diff5064kusnd"]
+[gd_scene load_steps=10 format=3 uid="uid://diff5064kusnd"]
 
 [ext_resource type="Script" uid="uid://dqqglubeo8eob" path="res://scenes/UI/main menu/main_menu.gd" id="1_lok01"]
+[ext_resource type="Shader" uid="uid://xxu3e5oo7j2r" path="res://tools/shaders/scroll_texture.gdshader" id="2_6xdia"]
 [ext_resource type="Texture2D" uid="uid://2kkb7t6sib01" path="res://assets/UI/sprites/logo.png" id="2_7df32"]
+[ext_resource type="Texture2D" uid="uid://ofxbeh156yjg" path="res://assets/UI/sprites/title_bg.png" id="2_dc3gt"]
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="2_lok01"]
-[ext_resource type="Script" path="res://scenes/UI/button_sound.gd" id="4_agl0q"]
+[ext_resource type="Script" uid="uid://dkhkefsalmq5b" path="res://scenes/UI/button_sound.gd" id="4_agl0q"]
 [ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="5_7df32"]
 [ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="6_7df32"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_15gym"]
+shader = ExtResource("2_6xdia")
+shader_parameter/scroll_speed = 0.08
+shader_parameter/angle_degrees = 135.0000064125
+shader_parameter/repeat_x = 1.0
+shader_parameter/repeat_y = 1.0
+shader_parameter/row_offset = 0.0
+shader_parameter/texture_to_scroll = ExtResource("2_dc3gt")
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -16,6 +27,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_lok01")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_15gym")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dc3gt")
+stretch_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
