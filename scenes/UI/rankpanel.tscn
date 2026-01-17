@@ -43,7 +43,7 @@ stretch_mode = 5
 
 [node name="TowerShadow" type="TextureRect" parent="MarginContainer/VBoxContainer/TowerTexture"]
 unique_name_in_owner = true
-modulate = Color(0, 0, 0, 0.2509804)
+modulate = Color(0.1254902, 0, 0, 0.5019608)
 show_behind_parent = true
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 1
@@ -72,7 +72,7 @@ stretch_mode = 5
 
 [node name="RankShadow" type="TextureRect" parent="MarginContainer/VBoxContainer/RankTexture"]
 unique_name_in_owner = true
-modulate = Color(0, 0, 0, 0.2509804)
+modulate = Color(0.1254902, 0, 0, 0.5019608)
 show_behind_parent = true
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 1

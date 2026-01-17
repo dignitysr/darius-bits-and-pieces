@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5k6bsbagrg4b"]
+[gd_scene load_steps=8 format=3 uid="uid://b5k6bsbagrg4b"]
 
 [ext_resource type="Script" uid="uid://bfpb340jttsme" path="res://scenes/UI/quantitylabel.gd" id="1_3p21j"]
 [ext_resource type="Theme" uid="uid://csbmn3ra74l3n" path="res://assets/UI/base_theme.tres" id="2_3p21j"]
 [ext_resource type="Texture2D" uid="uid://3rapfa1hagkb" path="res://assets/UI/sprites/icons.png" id="2_40w5k"]
 [ext_resource type="FontFile" uid="uid://cve6xpuuckgvx" path="res://assets/UI/fonts/pixelFJ8pt1__.TTF" id="4_3p21j"]
+[ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="5_c8txe"]
+[ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="6_4ppwl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8txe"]
 atlas = ExtResource("2_40w5k")
@@ -39,7 +41,7 @@ stretch_mode = 5
 
 [node name="IconShadow" type="TextureRect" parent="HBoxContainer/Icon"]
 unique_name_in_owner = true
-modulate = Color(0, 0, 0, 0.2509804)
+modulate = Color(0.1254902, 0, 0, 0.5019608)
 show_behind_parent = true
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 1
@@ -77,7 +79,7 @@ stretch_mode = 4
 
 [node name="RankShadow" type="TextureRect" parent="HBoxContainer/Icon/Rank"]
 unique_name_in_owner = true
-modulate = Color(0, 0, 0, 0.2509804)
+modulate = Color(0.1254902, 0, 0.69803923, 0.5019608)
 show_behind_parent = true
 custom_minimum_size = Vector2(2, 0)
 layout_mode = 1
@@ -100,3 +102,15 @@ theme = ExtResource("2_3p21j")
 theme_override_fonts/font = ExtResource("4_3p21j")
 theme_override_font_sizes/font_size = 8
 text = "x999"
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_c8txe")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="PressSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_4ppwl")
+volume_db = -6.0
+bus = &"SFX"

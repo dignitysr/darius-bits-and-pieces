@@ -31,7 +31,7 @@ window/size/resizable=false
 window/size/maximize_disabled=true
 window/size/window_width_override=960
 window/size/window_height_override=540
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
@@ -39,6 +39,8 @@ window/vsync/vsync_mode=0
 
 theme/default_font_multichannel_signed_distance_field=true
 theme/custom="uid://csbmn3ra74l3n"
+theme/snap/snap_2d_transforms_to_pixel=false
+theme/snap/snap_2d_vertices_to_pixel=true
 
 [input]
 
@@ -100,3 +102,4 @@ common/physics_interpolation=true
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_vertices_to_pixel=true

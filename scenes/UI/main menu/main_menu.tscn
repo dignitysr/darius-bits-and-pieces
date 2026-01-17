@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://diff5064kusnd"]
 
 [ext_resource type="Script" uid="uid://dqqglubeo8eob" path="res://scenes/UI/main menu/main_menu.gd" id="1_lok01"]
-[ext_resource type="Shader" uid="uid://xxu3e5oo7j2r" path="res://tools/shaders/scroll_texture.gdshader" id="2_6xdia"]
+[ext_resource type="Shader" path="res://tools/shaders/scroll_texture.gdshader" id="2_6xdia"]
 [ext_resource type="Texture2D" uid="uid://2kkb7t6sib01" path="res://assets/UI/sprites/logo.png" id="2_7df32"]
 [ext_resource type="Texture2D" uid="uid://ofxbeh156yjg" path="res://assets/UI/sprites/title_bg.png" id="2_dc3gt"]
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="2_lok01"]
@@ -52,8 +52,8 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Filler" type="Control" parent="HBoxContainer"]
-custom_minimum_size = Vector2(78, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="Logo" type="TextureRect" parent="HBoxContainer"]
@@ -62,12 +62,11 @@ custom_minimum_size = Vector2(163, 0)
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("2_7df32")
-expand_mode = 1
 stretch_mode = 5
 
 [node name="Filler2" type="Control" parent="HBoxContainer"]
-custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
@@ -101,8 +100,8 @@ text = "Quit"
 script = ExtResource("4_agl0q")
 
 [node name="Filler3" type="Control" parent="HBoxContainer"]
-custom_minimum_size = Vector2(58, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="HoverSound" type="AudioStreamPlayer" parent="."]

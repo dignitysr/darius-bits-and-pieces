@@ -40,6 +40,7 @@ func _ready() -> void:
 func _physics_process(delta) -> void:
 	laser_arm.look_at(player.position)
 	laser_arm.rotation = clamp(laser_arm.rotation, -PI/2, PI/2)
+	laser_arm.rotation = snapped(laser_arm.rotation, PI/12)
 	animator.scale.x = sign(player.position.x - position.x)
 	
 	if move_sinusoidal:

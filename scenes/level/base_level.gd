@@ -67,30 +67,30 @@ var milestones: Dictionary = {
 }
 
 var rock_news: Array = [
-	'"Hello, I"m Dwayne the John Rockson", says local rock. Researchers currently conducting further investigation.',
-	'"Hello, I"m Rock the John Dwayneson", says local rock. Researchers currently conducting further investigation.',
-	'"Hello, I"m John the Dwayne Rockson", says local rock. Researchers currently conducting further investigation.',
-	'"Hello, I"m Dwayne the Jock Ronson", says local rock. Researchers currently conducting further investigation.',
-	'"Howdy, I"m John the Rock Wayneson", says local rock. Researchers currently wranglin" an investigation.'
+	'"Hello, I\'m Dwayne the John Rockson", says local rock. Researchers currently conducting further investigation.',
+	'"Hello, I\'m Rock the John Dwayneson", says local rock. Researchers currently conducting further investigation.',
+	'"Hello, I\'m John the Dwayne Rockson", says local rock. Researchers currently conducting further investigation.',
+	'"Hello, I\'m Dwayne the Jock Ronson", says local rock. Researchers currently conducting further investigation.',
+	'"Howdy, I\'m John the Rock Wayneson", says local rock. Researchers currently wranglin\' an investigation.'
 	
 ]
 
 @onready var news_snippets: Array = [
 	'"BEING OBSESSIVE IS NEVER A GOOD THING" says programmer.',
-	'"DPS doesn"t stand for damage per second?" asks OOPS representative.',
-	'"Why choose OOPS over DPS?" CEO Rick Aschez says: "You wouldn"t get this from any other guy."',
+	'"DPS doesn\'t stand for damage per second?" asks OOPS representative.',
+	'"Why choose OOPS over DPS?" CEO Rick Aschez says: "You wouldn\'t get this from any other guy."',
 	'"Hold on, what did you say this game was about again?" asks confused composer.',
 	'When asked about the lack of janitorial workers at DPS, COO Dmitri refused to comment.',
-	'"C"mon, it"s Aschez, not Sanchez!": OOPS CEO Blasts Misinformation',
+	'"C\'mon, it\'s Aschez, not Sanchez!": OOPS CEO Blasts Misinformation',
 	'DPS Seeks Millions in Damages from "Rovert" for Unlicensed Fan Character "Mario"',
 	'AD: Get 30% off all Nuggie-Wuggies at McDesu"s! For kids, meet the real McDonald-Chan in the newly built Isekai Place!',
 	'Local citizen"s cat found dead from heart attack. Autopsy reveals heavy lasagna consumption.',
 	'It Could Happen to You - Invest in Tile Clipping Insurance Today!',
 	rock_news.pick_random(),
-	'Ready to "Give Up" Biased News Sources? Subscribe to the Darius News Network, the World"s Only Unbiased News Source. This slot was brought to you by the DPS.',
+	'Ready to "Give Up" Biased News Sources? Subscribe to the Darius News Network, the World\'s Only Unbiased News Source. This slot was brought to you by the DPS.',
 	'PSA From DPS: "Being called "Super" on the Job Doesn"t Protect From Strain. Lift With Your Legs."',
 	'LIFESTYLE: How You Can Save the Environment in 5 Minutes a Day by Being Gentle With Mailboxes',
-	'"Tragedy Strikes Local Orphanage — Hundreds Lost in Devastating Inferno." ​I hope this headline meets your requirements! Is there anything else I can assist you with today?',
+	'"Tragedy Strikes Local Orphanage - Hundreds Lost in Devastating Inferno." ​I hope this headline meets your requirements! Is there anything else I can assist you with today?',
 	'The Sad Truth: 90% of Mail Based Casualties Come From Customer Dissatisfaction. Other leading causes include: 6% Transportation Accidents, 3% Unattended Enemies, Hazards and Dogs, and 1% Giant Pits.',
 ]
 	
@@ -210,7 +210,9 @@ func update_stats() -> void:
 	if net_worth.max_value < subscribers*10:
 		var tween := get_tree().create_tween()
 		tween.tween_property(net_worth, 'max_value', subscribers*10, 0.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	net_worth_label.add_theme_color_override('font_color', Color(1, (1-net_worth.value/net_worth.max_value), (1-net_worth.value/net_worth.max_value), 1))
+	
+	var red_amount: float = net_worth.value / net_worth.max_value
+	net_worth_label.add_theme_color_override('font_color', lerp(Color.WHITE, Color("e35100"), red_amount))
 
 func on_darius_death() -> void:
 	var intensity = 0

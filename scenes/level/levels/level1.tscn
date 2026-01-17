@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://c0nclxadp8xws" path="res://scenes/level/base_level.tscn" id="1_k6m5b"]
 
 [node name="BaseLevel" instance=ExtResource("1_k6m5b")]
+
+[node name="Shadow" parent="UI/CraftContainer/CraftTransButton/CenterContainer/Icon" index="0"]
+modulate = Color(0.1254902, 0, 0, 0.5019608)
