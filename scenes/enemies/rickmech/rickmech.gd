@@ -16,6 +16,7 @@ const SHOOT_FREQ = 120
 @export var laser_scene: PackedScene
 @export var parts_dropped: Dictionary[String, int]
 @export var time_threshold: float = 300
+@export var bounce_power: float = 4.5
 
 var shoot_timer: float = 120
 var move_sinusoidal: bool = false
@@ -62,12 +63,12 @@ func tween_finished() -> void:
 	
 func on_stomped(body) -> void:
 	if body is Character:
+		body.vel.y = -bounce_power
 		die()
 	
 func die(killed: bool = true) -> void:
 	var dither: float = 0
 	move_sinusoidal = false
-	die_sfx.play()
 	while dither < 1:
 		animator.material.set_shader_parameter("intensity", dither)
 		dither += 0.02
@@ -77,4 +78,6 @@ func die(killed: bool = true) -> void:
 		level.inventory_manager.session_rickmechs += 1
 		StatsManager.save_stats()
 		level.add_parts(parts_dropped, int(run_time/time_threshold), false)
+	else:
+		die_sfx.play()
 	queue_free()
