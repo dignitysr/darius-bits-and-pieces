@@ -9,7 +9,9 @@ func _ready():
 	MusicManager.play_song("darius_gameover")
 	return_button.connect("button_down", on_return_pressed)
 	retry_button.connect("button_down", on_retry_pressed)
+	button_container.hide()
 	await get_tree().create_timer(5).timeout
+	button_container.show()
 	var dither = 1
 	while dither > 0:
 		button_container.material.set_shader_parameter("intensity", dither)

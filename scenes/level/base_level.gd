@@ -79,7 +79,7 @@ var rock_news: Array = [
 	'"BEING OBSESSIVE IS NEVER A GOOD THING" says programmer.',
 	'"DPS doesn"t stand for damage per second?" asks OOPS representative.',
 	'"Why choose OOPS over DPS?" CEO Rick Aschez says: "You wouldn"t get this from any other guy."',
-	'Hold on, what did you say this game was about again?" asks confused composer.',
+	'"Hold on, what did you say this game was about again?" asks confused composer.',
 	'When asked about the lack of janitorial workers at DPS, COO Dmitri refused to comment.',
 	'"C"mon, it"s Aschez, not Sanchez!": OOPS CEO Blasts Misinformation',
 	'DPS Seeks Millions in Damages from "Rovert" for Unlicensed Fan Character "Mario"',
