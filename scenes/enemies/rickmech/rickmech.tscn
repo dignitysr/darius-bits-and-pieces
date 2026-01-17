@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjgaqr45hpelt"]
+[gd_scene load_steps=17 format=3 uid="uid://bjgaqr45hpelt"]
 
 [ext_resource type="Texture2D" uid="uid://dt8m2ogkwcvfn" path="res://scenes/enemies/rickmech/rickmech_body.png" id="1_1vly8"]
 [ext_resource type="Script" uid="uid://0qtjdogcuev1" path="res://scenes/enemies/rickmech/rickmech.gd" id="1_fj825"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bc3xngso2webl" path="res://scenes/enemies/rickmech/laser_arm.png" id="2_okqrq"]
 [ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="3_0innh"]
 [ext_resource type="AudioStream" uid="uid://d0xqkjolirh3f" path="res://assets/music/rickmech.ogg" id="5_mj3mc"]
+[ext_resource type="AudioStream" uid="uid://nao5homtxklx" path="res://assets/music/rickmechs killed/0.wav" id="7_ocn01"]
+[ext_resource type="AudioStream" uid="uid://b2m8pi24ed1ng" path="res://assets/music/rickmechs killed/1.wav" id="8_822nb"]
+[ext_resource type="AudioStream" uid="uid://c6t521jerhqmf" path="res://assets/music/rickmechs killed/2.wav" id="9_t7rje"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dmi4h"]
 shader = ExtResource("3_0innh")
@@ -43,12 +46,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_okqrq"]
 size = Vector2(20, 5)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t6cjd"]
+playback_mode = 1
+streams_count = 3
+stream_0/stream = ExtResource("7_ocn01")
+stream_1/stream = ExtResource("8_822nb")
+stream_2/stream = ExtResource("9_t7rje")
+
 [node name="Rickmech" type="StaticBody2D"]
 position = Vector2(0, -18)
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("1_fj825")
 laser_scene = ExtResource("2_obglo")
+parts_dropped = Dictionary[String, int]({
+"paper": 30,
+"scrap": 30
+})
+time_threshold = null
 
 [node name="Animator" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -56,7 +71,7 @@ material = SubResource("ShaderMaterial_dmi4h")
 sprite_frames = SubResource("SpriteFrames_mj3mc")
 animation = &"float"
 autoplay = "float"
-frame_progress = 0.83864164
+frame_progress = 0.41798893
 
 [node name="LaserArm" type="Sprite2D" parent="Animator"]
 unique_name_in_owner = true
@@ -73,6 +88,8 @@ position = Vector2(10, 0)
 
 [node name="StompCollision" type="Area2D" parent="."]
 unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompCollision"]
 position = Vector2(0, -0.5)
@@ -83,7 +100,12 @@ unique_name_in_owner = true
 target_position = Vector2(0, 270)
 collision_mask = 24
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+[node name="EnterSFX" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("5_mj3mc")
+bus = &"SFX"
+
+[node name="DieSFX" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_t6cjd")
 bus = &"SFX"

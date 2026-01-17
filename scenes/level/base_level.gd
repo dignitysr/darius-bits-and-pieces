@@ -40,6 +40,7 @@ var timer: float
 var subscribers: int = 1
 var x_range: int = 0
 var rickmech_spawn_timer: float = 0
+var run_time: float = 0
 
 var buffs: Array = [
 	"Slow Down Customers",
@@ -83,6 +84,7 @@ func sort_by_ascending_x(a: Vector2, b: Vector2):
 	return false
 
 func _physics_process(delta) -> void:
+	run_time += delta
 	if run_wave && enemy_container.get_children().is_empty():
 		for enemy: String in wave_resource.waves[wave_number]:
 			for number: int in wave_resource.waves[wave_number][enemy]["number"]:
@@ -113,12 +115,13 @@ func _physics_process(delta) -> void:
 		var rickmech_scene: Rickmech = rickmech.instantiate()
 		rickmech_scene.level = self
 		rickmech_scene.player = player
+		rickmech_scene.run_time = run_time
 		rickmech_spawn_timer = rickmech_spawn_time
 		add_child(rickmech_scene)
 	else:
 		rickmech_spawn_timer -= delta
 
-func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Rank):
+func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Rank, add_subs: bool = true):
 	var total_parts: int = 0
 	if active_buff == Buffs.PARTS:
 		for part: String in parts_dropped:
@@ -136,7 +139,8 @@ func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Ra
 			inventory_manager.parts[part][rank] = 0
 
 		inventory_manager.parts[part][rank] += parts_dropped[part]
-	subscribers += roundi(pow((total_parts)*(rank+1)*2, 2))
+	if add_subs:
+		subscribers += roundi(pow((total_parts)*(rank+1)*2, 2))
 	update_stats()
 		
 func update_stats() -> void:

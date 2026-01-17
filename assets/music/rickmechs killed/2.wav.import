@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c6t521jerhqmf"
+path="res://.godot/imported/2.wav-1ffffd37b60fb4ec533ef9736261de2a.sample"
+
+[deps]
+
+source_file="res://assets/music/rickmechs killed/2.wav"
+dest_files=["res://.godot/imported/2.wav-1ffffd37b60fb4ec533ef9736261de2a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -8,23 +8,27 @@ const SHOOT_FREQ = 120
 @onready var laser_spawner = %LaserSpawner
 @onready var stomp_collision = %StompCollision
 @onready var ground_finder = %GroundFinder
-@onready var sfx = %SFX
+@onready var enter_sfx = %EnterSFX
+@onready var die_sfx = %DieSFX
 
 @export var player: Character
 @export var level: BaseLevel
 @export var laser_scene: PackedScene
+@export var parts_dropped: Dictionary[String, int]
+@export var time_threshold: float = 300
 
 var shoot_timer: float = 120
 var move_sinusoidal: bool = false
 var rest_position_y: float = 0
-
+var run_time: float = 0
 var time: float = 0
 
 func _ready() -> void:
 	animator.material.set_shader_parameter("intensity", 0)
+	stomp_collision.connect("body_entered", on_stomped)
 	var x_value: int = randi_range(0, level.x_range)
 	position.x = x_value
-	sfx.play()
+	enter_sfx.play()
 	ground_finder.force_raycast_update()
 	await get_tree().create_timer(0.1).timeout
 	if ground_finder.is_colliding():
@@ -55,8 +59,14 @@ func _physics_process(delta) -> void:
 func tween_finished() -> void:
 	move_sinusoidal = true
 	
+func on_stomped(body) -> void:
+	if body is Character:
+		die()
+	
 func die(killed: bool = true) -> void:
 	var dither: float = 0
+	move_sinusoidal = false
+	die_sfx.play()
 	while dither < 1:
 		animator.material.set_shader_parameter("intensity", dither)
 		dither += 0.02
@@ -64,4 +74,6 @@ func die(killed: bool = true) -> void:
 	if killed:
 		StatsManager.stats["defeated_rickmechs_total"] += 1
 		StatsManager.stats["defeated_rickmechs"] += 1
+		StatsManager.save_stats()
+		level.add_parts(parts_dropped, int(run_time/time_threshold), false)
 	queue_free()
