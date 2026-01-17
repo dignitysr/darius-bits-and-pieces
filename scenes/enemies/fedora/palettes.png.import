@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2w7aoxurujd6"
-path="res://.godot/imported/green_palette.png-53b7693bfef6cbafd382120e1783dbb4.ctex"
+uid="uid://bts03u48xm7m7"
+path="res://.godot/imported/palettes.png-a122885ca5c3ea8337705677cdde9610.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/enemies/nan/green_palette.png"
-dest_files=["res://.godot/imported/green_palette.png-53b7693bfef6cbafd382120e1783dbb4.ctex"]
+source_file="res://scenes/enemies/fedora/palettes.png"
+dest_files=["res://.godot/imported/palettes.png-a122885ca5c3ea8337705677cdde9610.ctex"]
 
 [params]
 

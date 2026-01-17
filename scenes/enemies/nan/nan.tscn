@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmqqsm2mjnc2f"]
+[gd_scene load_steps=15 format=3 uid="uid://cmqqsm2mjnc2f"]
 
 [ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_yxajv"]
+[ext_resource type="Texture2D" uid="uid://uoxmv8kpncd2" path="res://scenes/enemies/nan/blue_palette.png" id="2_cktmi"]
 [ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="2_euii2"]
 [ext_resource type="Texture2D" uid="uid://bmgtwajfypg1t" path="res://scenes/enemies/nan/regular_palette.png" id="2_lk4ow"]
+[ext_resource type="Texture2D" uid="uid://ccgp1ves23lgn" path="res://scenes/enemies/nan/im_also_not_sure_palette.png" id="3_eru5y"]
 [ext_resource type="Texture2D" uid="uid://kohkxvo41gfn" path="res://scenes/enemies/nan/spritesheet.png" id="3_euii2"]
-[ext_resource type="Texture2D" uid="uid://c2w7aoxurujd6" path="res://scenes/enemies/nan/green_palette.png" id="3_u4ius"]
+[ext_resource type="Texture2D" uid="uid://c0cmtnegl0tmb" path="res://scenes/enemies/nan/im_not_sure_palette.png" id="4_vuhoy"]
+[ext_resource type="Texture2D" uid="uid://b8lvg7d6ryn61" path="res://scenes/enemies/nan/yellow_palette.png" id="6_04n66"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c5v1a"]
 resource_local_to_scene = true
@@ -62,7 +65,7 @@ animations = [{
 
 [node name="Nan" instance=ExtResource("1_yxajv")]
 enemy_name = "Nan"
-palettes = Array[Texture2D]([ExtResource("2_lk4ow"), ExtResource("3_u4ius")])
+palettes = Array[Texture2D]([ExtResource("2_cktmi"), ExtResource("3_eru5y"), ExtResource("4_vuhoy"), ExtResource("2_lk4ow"), ExtResource("6_04n66")])
 health = 120.0
 parts_dropped = Dictionary[String, int]({
 "paper": 35,

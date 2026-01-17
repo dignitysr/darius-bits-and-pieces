@@ -51,6 +51,7 @@ func _physics_process(delta):
 		enemy_area.monitoring = false
 	if dithering_intensity >= 1:
 		set_physics_process(false)
+		inventory_manager.level.enemy_died.emit(self)
 		if cheer.playing:
 			await cheer.finished
 		queue_free()
@@ -106,7 +107,6 @@ func damage(damage_points: float) -> void:
 		if not dead:
 			cheer.play()
 		dead = true
-		inventory_manager.level.enemy_died.emit(self)
 		inventory_manager.add_parts(parts_dropped, rank)
 		StatsManager.stats["recruited_customers_total"] += 1
 		inventory_manager.session_customers += 1

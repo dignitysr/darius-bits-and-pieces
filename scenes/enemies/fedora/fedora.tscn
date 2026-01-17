@@ -1,0 +1,85 @@
+[gd_scene load_steps=15 format=3 uid="uid://houen7tbqut5"]
+
+[ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_ndcry"]
+[ext_resource type="Texture2D" uid="uid://pbty7jgxg8q0" path="res://scenes/enemies/fedora/bee_palette.png" id="2_ly4w6"]
+[ext_resource type="Texture2D" uid="uid://byuxc1r3og4yh" path="res://scenes/enemies/fedora/blue_palette.png" id="3_vshp0"]
+[ext_resource type="Texture2D" uid="uid://bgrj5ofuqdm0u" path="res://scenes/enemies/fedora/red_palette.png" id="4_gk1rt"]
+[ext_resource type="Texture2D" uid="uid://r61fiob637vp" path="res://scenes/enemies/fedora/white_palette.png" id="6_j7a1s"]
+[ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="7_gevd7"]
+[ext_resource type="Texture2D" uid="uid://cbuyapdaij63g" path="res://scenes/enemies/fedora/regular_palette.png" id="8_gk1rt"]
+[ext_resource type="Texture2D" uid="uid://bbxsv1d80x01" path="res://scenes/enemies/fedora/spritesheet.png" id="8_vshp0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7a1s"]
+resource_local_to_scene = true
+shader = ExtResource("7_gevd7")
+shader_parameter/screen_mode = true
+shader_parameter/num_colors = 11
+shader_parameter/precision = 0.1
+shader_parameter/palette_in = ExtResource("8_gk1rt")
+shader_parameter/palette_out = ExtResource("8_gk1rt")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk1rt"]
+atlas = ExtResource("8_vshp0")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly4w6"]
+atlas = ExtResource("8_vshp0")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vshp0"]
+atlas = ExtResource("8_vshp0")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7a1s"]
+atlas = ExtResource("8_vshp0")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_egucb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk1rt")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly4w6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vshp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7a1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vshp0")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Fedora" instance=ExtResource("1_ndcry")]
+enemy_name = "Luci"
+palettes = Array[Texture2D]([ExtResource("2_ly4w6"), ExtResource("3_vshp0"), ExtResource("4_gk1rt"), ExtResource("8_gk1rt"), ExtResource("6_j7a1s")])
+health = 250.0
+parts_dropped = Dictionary[String, int]({
+"paper": 100,
+"scrap": 85
+})
+
+[node name="Animator" parent="." index="0"]
+material = SubResource("ShaderMaterial_j7a1s")
+sprite_frames = SubResource("SpriteFrames_egucb")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="EnemyArea" parent="." index="1"]
+visible = false
+
+[node name="Collider" parent="." index="4"]
+visible = false

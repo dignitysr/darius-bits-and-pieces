@@ -19,6 +19,16 @@ waves = Array[Dictionary]([{
 "number": 10,
 "rank": 0
 }
+}, {
+"suit": {
+"number": 10,
+"rank": 0
+}
+}, {
+"fedora": {
+"number": 10,
+"rank": 0
+}
 }])
 name = "Grassy Grassland"
 scene = "res://scenes/level/test.tscn"

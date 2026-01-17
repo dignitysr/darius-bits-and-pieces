@@ -28,7 +28,7 @@ theme = ExtResource("5_fhgba")
 [node name="CraftPanel2" parent="UI/CraftContainer/CraftMenu/VBoxContainer/ScrollContainer/CraftableContainer" index="1"]
 theme = ExtResource("5_fhgba")
 
-[node name="BGLayer" parent="." index="6"]
+[node name="BGLayer" parent="." index="7"]
 layer = -1
 
 [node name="Background" parent="BGLayer" index="0" instance=ExtResource("7_fhgba")]
@@ -37,11 +37,13 @@ z_index = -2
 [node name="PlaceValidator" parent="Preview" index="0"]
 collision_mask = 72
 
-[node name="EnemySpawner" parent="." index="9"]
+[node name="EnemySpawner" parent="." index="10"]
 position = Vector2(0, 163)
 
-[node name="PlayerSpawner" parent="." index="10"]
+[node name="PlayerSpawner" parent="." index="11"]
 position = Vector2(32, 177)
 
-[node name="LoseAxis" parent="." index="11"]
+[node name="LoseAxis" parent="." index="12"]
 position = Vector2(578, 126)
+
+[editable path="Pause/Options"]

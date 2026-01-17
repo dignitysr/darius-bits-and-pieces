@@ -1,0 +1,86 @@
+[gd_scene load_steps=15 format=3 uid="uid://bvdl6bch40dgo"]
+
+[ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_4r2si"]
+[ext_resource type="Texture2D" uid="uid://c4hrpkr7yd8ww" path="res://scenes/enemies/suit/green_palette.png" id="3_2htg6"]
+[ext_resource type="Texture2D" uid="uid://dxf244pbog5b1" path="res://scenes/enemies/suit/other_palette.png" id="4_peskk"]
+[ext_resource type="Texture2D" uid="uid://ccupmkv7myluu" path="res://scenes/enemies/suit/red_palette.png" id="5_0yjta"]
+[ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="7_j8w0b"]
+[ext_resource type="Texture2D" uid="uid://du7bgkpdnl86t" path="res://scenes/enemies/suit/regular_palette.png" id="8_peskk"]
+[ext_resource type="Texture2D" uid="uid://b2mvpegh76y8d" path="res://scenes/enemies/suit/blue_palette.png" id="9_0yjta"]
+[ext_resource type="Texture2D" uid="uid://cjrpqlux43i6n" path="res://scenes/enemies/suit/spritesheet.png" id="9_peskk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2htg6"]
+resource_local_to_scene = true
+shader = ExtResource("7_j8w0b")
+shader_parameter/screen_mode = true
+shader_parameter/num_colors = 13
+shader_parameter/precision = 0.1
+shader_parameter/palette_in = ExtResource("8_peskk")
+shader_parameter/palette_out = ExtResource("8_peskk")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2htg6"]
+atlas = ExtResource("9_peskk")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yjta"]
+atlas = ExtResource("9_peskk")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq3hf"]
+atlas = ExtResource("9_peskk")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sffac"]
+atlas = ExtResource("9_peskk")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_egucb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2htg6")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yjta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq3hf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sffac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq3hf")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Suit" instance=ExtResource("1_4r2si")]
+enemy_name = "Luci"
+palettes = Array[Texture2D]([ExtResource("9_0yjta"), ExtResource("3_2htg6"), ExtResource("4_peskk"), ExtResource("5_0yjta"), ExtResource("8_peskk")])
+health = 250.0
+speed = 20.0
+parts_dropped = Dictionary[String, int]({
+"paper": 60,
+"scrap": 40
+})
+
+[node name="Animator" parent="." index="0"]
+material = SubResource("ShaderMaterial_2htg6")
+sprite_frames = SubResource("SpriteFrames_egucb")
+animation = &"jump"
+autoplay = "walk"
+
+[node name="EnemyArea" parent="." index="1"]
+visible = false
+
+[node name="Collider" parent="." index="4"]
+visible = false
