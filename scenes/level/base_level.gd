@@ -157,6 +157,7 @@ func _physics_process(delta) -> void:
 			
 	if Input.is_action_just_pressed('pause'):
 		var options = options_screen.instantiate()
+		options.get_node("BG").queue_free()
 		options.owner = self
 		UI.add_child(options)
 		get_tree().paused = true
