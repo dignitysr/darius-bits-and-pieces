@@ -94,7 +94,9 @@ var rock_news: Array = [
 	'"Tragedy Strikes Local Orphanage - Hundreds Lost in Devastating Inferno." ​I hope this headline meets your requirements! Is there anything else I can assist you with today?',
 	'The Sad Truth: 90% of Mail Based Casualties Come From Customer Dissatisfaction. Other leading causes include: 6% Transportation Accidents, 3% Unattended Enemies, Hazards and Dogs, and 1% Giant Pits.',
 ]
-	
+
+@onready var old_net_worth_max_value: float = net_worth.max_value
+
 var active_buff := Buffs.SLOW
 
 var darius_name: String = 'Darius the Mailman'
@@ -121,6 +123,9 @@ func sort_by_ascending_x(a: Vector2, b: Vector2):
 
 func _physics_process(delta) -> void:
 	run_time += delta
+	if old_net_worth_max_value != net_worth.max_value:
+		on_net_worth_changed(0) #value doesn't matter
+	old_net_worth_max_value = net_worth.max_value
 	if run_wave && enemy_container.get_children().is_empty():
 		for enemy: String in wave_resource.waves[wave_number]:
 			for number: int in wave_resource.waves[wave_number][enemy]['number']:
@@ -252,10 +257,11 @@ func on_net_worth_changed(_value) -> void:
 		if not anim_player.current_animation == 'warning_flash':
 			anim_player.play('warning_flash')
 	else:
+		print(not MusicManager.is_song_playing('darius_defense'))
 		if not MusicManager.is_song_playing('darius_defense'):
 			MusicManager.play_song('darius_defense')
 		var anim_player: AnimationPlayer = net_worth_label.get_node('AnimationPlayer')
 		if anim_player.current_animation == 'warning_flash':
-			anim_player.stop()
+			anim_player.play("RESET")
 			var red_amount: float = net_worth.value / net_worth.max_value
 			net_worth_label.add_theme_color_override('font_color', lerp(Color.WHITE, Color("e35100"), red_amount))
