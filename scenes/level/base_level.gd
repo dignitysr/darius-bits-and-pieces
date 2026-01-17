@@ -62,7 +62,7 @@ var buff_prefixes: Array = [
 var milestones: Dictionary = {
 	1e3: ['New OOPS competitor? All you need to know about DPS.', false],
 	1e4: ['OOPS competitor gaining steam in recent push to reach ten thousand subscribers.', false],
-	1e5: ['DPS becoming the second-most-used postal service behind Rick Aschez"s OOPS. Is it on track to dethrone it?', false],
+	1e5: ['DPS becoming the second-most-used postal service behind Rick Aschez\'s OOPS. Is it on track to dethrone it?', false],
 	1e6: ['DPS subscribership surpassing the population of a small country. OOPS in grave danger.', false]
 }
 
@@ -83,12 +83,12 @@ var rock_news: Array = [
 	'When asked about the lack of janitorial workers at DPS, COO Dmitri refused to comment.',
 	'"C\'mon, it\'s Aschez, not Sanchez!": OOPS CEO Blasts Misinformation',
 	'DPS Seeks Millions in Damages from "Rovert" for Unlicensed Fan Character "Mario"',
-	'AD: Get 30% off all Nuggie-Wuggies at McDesu"s! For kids, meet the real McDonald-Chan in the newly built Isekai Place!',
-	'Local citizen"s cat found dead from heart attack. Autopsy reveals heavy lasagna consumption.',
+	'AD: Get 30% off all Nuggie-Wuggies at McDesu\'s! For kids, meet the real McDonald-Chan in the newly built Isekai Place!',
+	'Local citizen\'s cat found dead from heart attack. Autopsy reveals heavy lasagna consumption.',
 	'It Could Happen to You - Invest in Tile Clipping Insurance Today!',
 	rock_news.pick_random(),
 	'Ready to "Give Up" Biased News Sources? Subscribe to the Darius News Network, the World\'s Only Unbiased News Source. This slot was brought to you by the DPS.',
-	'PSA From DPS: "Being called "Super" on the Job Doesn"t Protect From Strain. Lift With Your Legs."',
+	'PSA From DPS: "Being called "Super" on the Job Doesn\'t Protect From Strain. Lift With Your Legs."',
 	'LIFESTYLE: How You Can Save the Environment in 5 Minutes a Day by Being Gentle With Mailboxes',
 	'"Tragedy Strikes Local Orphanage - Hundreds Lost in Devastating Inferno." ​I hope this headline meets your requirements! Is there anything else I can assist you with today?',
 	'The Sad Truth: 90% of Mail Based Casualties Come From Customer Dissatisfaction. Other leading causes include: 6% Transportation Accidents, 3% Unattended Enemies, Hazards and Dogs, and 1% Giant Pits.',
