@@ -66,8 +66,17 @@ var milestones: Dictionary = {
 	1e6: ["DPS subscribership surpassing the population of a small country. OOPS in grave danger.", false]
 }
 
-var news_snippets: Array = [
-	"'BEING OBSESSIVE IS NEVER A GOOD THING' SAYS PROGRAMMER.",
+var rock_news: Array = [
+	"'Hello, I'm Dwayne the John Rockson', says local rock. Researchers currently conducting further investigation.",
+	"'Hello, I'm Rock the John Dwayneson', says local rock. Researchers currently conducting further investigation.",
+	"'Hello, I'm John the Dwayne Rockson', says local rock. Researchers currently conducting further investigation.",
+	"'Hello, I'm Dwayne the Jock Ronson', says local rock. Researchers currently conducting further investigation.",
+	"'Howdy, I'm John the Rock Wayneson', says local rock. Researchers currently wranglin' an investigation."
+	
+]
+
+@onready var news_snippets: Array = [
+	"'BEING OBSESSIVE IS NEVER A GOOD THING' says programmer.",
 	"'DPS doesn't stand for damage per second?' asks OOPS representative.",
 	"'Why choose OOPS over DPS?' CEO Rick Aschez says: 'You wouldn't get this from any other guy.'",
 	"Hold on, what did you say this game was about again?' asks confused composer.",
@@ -77,7 +86,7 @@ var news_snippets: Array = [
 	"AD: Get 30% off all Nuggie-Wuggies at McDesu's! For kids, meet the real McDonald-Chan in the newly built Isekai Place!",
 	"Local citizen's cat found dead from heart attack. Autopsy reveals heavy lasagna consumption.",
 	"It Could Happen to You - Invest in Tile Clipping Insurance Today!",
-	"'Hello, I'm Dwayne the John Rockson', says local rock. Researchers currently conducting further investigation.",
+	rock_news.pick_random(),
 	"Ready to 'Give Up' Biased News Sources? Subscribe to the Darius News Network, the World's Only Unbiased News Source. This slot was brought to you by the DPS.",
 	"PSA From DPS: 'Being called 'Super' on the Job Doesn't Protect From Strain. Lift With Your Legs.'",
 	"LIFESTYLE: How You Can Save the Environment in 5 Minutes a Day by Being Gentle With Mailboxes",
