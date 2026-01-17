@@ -98,8 +98,6 @@ var rock_news: Array = [
 	'The Sad Truth: 90% of Mail Based Casualties Come From Customer Dissatisfaction. Other leading causes include: 6% Transportation Accidents, 3% Unattended Enemies, Hazards and Dogs, and 1% Giant Pits.',
 ]
 
-@onready var old_net_worth_max_value: float = net_worth.max_value
-
 var active_buff := Buffs.SLOW
 
 var darius_name: String = 'Darius the Mailman'
@@ -276,7 +274,6 @@ func on_net_worth_changed(_value) -> void:
 		if not anim_player.current_animation == 'warning_flash':
 			anim_player.play('warning_flash')
 	else:
-		print(not MusicManager.is_song_playing('darius_defense'))
 		if not MusicManager.is_song_playing('darius_defense'):
 			MusicManager.play_song('darius_defense')
 		var anim_player: AnimationPlayer = net_worth_label.get_node('AnimationPlayer')
