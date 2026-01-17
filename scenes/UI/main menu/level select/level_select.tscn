@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://cc0dqjm7dsbx0" path="res://scenes/level/waves/levels.tres" id="2_5u41o"]
 [ext_resource type="PackedScene" uid="uid://cvwvjx3doyrtr" path="res://scenes/UI/main menu/level select/level_select_button.tscn" id="3_rfe02"]
 [ext_resource type="Texture2D" uid="uid://cy8xsvim3t8mb" path="res://assets/UI/sprites/back.png" id="4_bhbtp"]
-[ext_resource type="Shader" path="res://tools/shaders/scroll_texture.gdshader" id="4_s38df"]
+[ext_resource type="Shader" uid="uid://xxu3e5oo7j2r" path="res://tools/shaders/scroll_texture.gdshader" id="4_s38df"]
 [ext_resource type="Texture2D" uid="uid://ofxbeh156yjg" path="res://assets/UI/sprites/title_bg.png" id="5_ph828"]
 [ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="5_rtcf3"]
 [ext_resource type="Script" uid="uid://dkhkefsalmq5b" path="res://scenes/UI/button_sound.gd" id="5_w4k8q"]
