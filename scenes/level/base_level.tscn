@@ -407,6 +407,16 @@ craftable_panel = ExtResource("5_3ipv6")
 position = Vector2(34, 190)
 inventory_manager = NodePath("../InvManager")
 
+[node name="Pause" type="CanvasLayer" parent="."]
+layer = 64
+
+[node name="Options" parent="Pause" instance=ExtResource("5_co8g8")]
+unique_name_in_owner = true
+visible = false
+
+[node name="BG" parent="Pause/Options" index="0"]
+visible = false
+
 [node name="UI" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
@@ -757,3 +767,5 @@ unique_name_in_owner = true
 
 [node name="LoseAxis" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[editable path="Pause/Options"]

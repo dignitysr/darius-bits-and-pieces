@@ -1,13 +1,58 @@
-[gd_resource type="Theme" load_steps=31 format=3 uid="uid://csbmn3ra74l3n"]
+[gd_resource type="Theme" load_steps=41 format=3 uid="uid://csbmn3ra74l3n"]
 
+[ext_resource type="FontFile" uid="uid://dr00saqh1n260" path="res://assets/UI/fonts/Timetwist-Regular.ttf" id="1_0bjdy"]
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="1_r5wb6"]
 [ext_resource type="Texture2D" uid="uid://4rhvtlghajsj" path="res://scenes/UI/assets/postcard_purple_hover.png" id="2_1ow38"]
 [ext_resource type="Texture2D" uid="uid://dvtll0svxa6ad" path="res://scenes/UI/assets/postcard_new.png" id="2_mdekv"]
+[ext_resource type="Texture2D" uid="uid://5nr70x410aqb" path="res://scenes/UI/assets/red_postcard_hover.png" id="2_xaefs"]
 [ext_resource type="Texture2D" uid="uid://bpuyyxr8cjyex" path="res://scenes/UI/assets/panel_style.png" id="2_xuk4r"]
 [ext_resource type="Texture2D" uid="uid://77e28h1eni7f" path="res://scenes/UI/assets/postcard_purple.png" id="3_qsdim"]
 [ext_resource type="Texture2D" uid="uid://cprh2yxufak3t" path="res://scenes/UI/assets/slider.png" id="3_r82wg"]
+[ext_resource type="Texture2D" uid="uid://cs8q6sb37wp32" path="res://scenes/UI/assets/red_postcard.png" id="3_yytsw"]
 [ext_resource type="Texture2D" uid="uid://cfvb0i5prxkeu" path="res://scenes/UI/assets/sticky_note.png" id="4_xdgv2"]
+[ext_resource type="Texture2D" uid="uid://bdtxu0rj3xe28" path="res://scenes/UI/assets/green_postcard_hover.png" id="4_yytsw"]
+[ext_resource type="Texture2D" uid="uid://cx1x5larts3fg" path="res://scenes/UI/assets/green_postcard.png" id="5_3vbym"]
 [ext_resource type="Texture2D" uid="uid://dwc07xcnex6at" path="res://scenes/UI/assets/slider plus scroll.png" id="6_cluda"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3vbym"]
+texture = ExtResource("2_xaefs")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 17, 17)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4y8wp"]
+texture = ExtResource("3_yytsw")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 17, 17)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u41rr"]
+texture = ExtResource("4_yytsw")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 17, 17)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cjymk"]
+texture = ExtResource("5_3vbym")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 17, 17)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ygo28"]
+texture = ExtResource("5_3vbym")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 17, 17)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cluda"]
 texture = ExtResource("2_1ow38")
@@ -154,6 +199,31 @@ region_rect = Rect2(0, 0, 16, 16)
 [resource]
 default_font = ExtResource("1_r5wb6")
 default_font_size = 16
+AchievementButton/base_type = &"Button"
+AchievementButton/colors/font_color = Color(0, 0, 0, 1)
+AchievementButton/colors/font_disabled_color = Color(0, 0, 0, 1)
+AchievementButton/colors/font_focus_color = Color(0, 0, 0, 1)
+AchievementButton/colors/font_hover_color = Color(0, 0, 0, 1)
+AchievementButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+AchievementButton/constants/h_separation = 0
+AchievementButton/font_sizes/font_size = 8
+AchievementButton/fonts/font = ExtResource("1_0bjdy")
+AchievementButton/styles/hover = SubResource("StyleBoxTexture_3vbym")
+AchievementButton/styles/normal = SubResource("StyleBoxTexture_4y8wp")
+AchievementButton/styles/pressed = SubResource("StyleBoxTexture_4y8wp")
+AchievementButtonUnlocked/base_type = &"Button"
+AchievementButtonUnlocked/colors/font_color = Color(0, 0, 0, 1)
+AchievementButtonUnlocked/colors/font_disabled_color = Color(0, 0, 0, 1)
+AchievementButtonUnlocked/colors/font_focus_color = Color(0, 0, 0, 1)
+AchievementButtonUnlocked/colors/font_hover_color = Color(0, 0, 0, 1)
+AchievementButtonUnlocked/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+AchievementButtonUnlocked/colors/font_outline_color = Color(0, 0, 0, 1)
+AchievementButtonUnlocked/constants/h_separation = 0
+AchievementButtonUnlocked/font_sizes/font_size = 8
+AchievementButtonUnlocked/fonts/font = ExtResource("1_0bjdy")
+AchievementButtonUnlocked/styles/hover = SubResource("StyleBoxTexture_u41rr")
+AchievementButtonUnlocked/styles/normal = SubResource("StyleBoxTexture_cjymk")
+AchievementButtonUnlocked/styles/pressed = SubResource("StyleBoxTexture_ygo28")
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/constants/h_separation = 0
 Button/font_sizes/font_size = 16

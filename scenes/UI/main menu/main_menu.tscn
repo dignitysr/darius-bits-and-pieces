@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://diff5064kusnd"]
+[gd_scene load_steps=12 format=3 uid="uid://diff5064kusnd"]
 
 [ext_resource type="Script" uid="uid://dqqglubeo8eob" path="res://scenes/UI/main menu/main_menu.gd" id="1_lok01"]
 [ext_resource type="Shader" path="res://tools/shaders/scroll_texture.gdshader" id="2_6xdia"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://ofxbeh156yjg" path="res://assets/UI/sprites/title_bg.png" id="2_dc3gt"]
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="2_lok01"]
 [ext_resource type="Script" uid="uid://dkhkefsalmq5b" path="res://scenes/UI/button_sound.gd" id="4_agl0q"]
+[ext_resource type="Texture2D" uid="uid://bwxlbkxy0k1x7" path="res://assets/UI/sprites/dither1.png" id="4_kuwhr"]
 [ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="5_7df32"]
+[ext_resource type="Script" uid="uid://cw0hsnuwkb5mk" path="res://scenes/UI/dither_mask.gd" id="5_23lm2"]
 [ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="6_7df32"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_15gym"]
@@ -28,7 +30,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_lok01")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_15gym")
 layout_mode = 1
 anchors_preset = 15
@@ -39,7 +41,21 @@ grow_vertical = 2
 texture = ExtResource("2_dc3gt")
 stretch_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="DitherMask" type="TextureRect" parent="."]
+unique_name_in_owner = true
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_kuwhr")
+expand_mode = 1
+stretch_mode = 1
+script = ExtResource("5_23lm2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DitherMask"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.025
@@ -51,12 +67,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Filler" type="Control" parent="HBoxContainer"]
+[node name="Filler" type="Control" parent="DitherMask/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Logo" type="TextureRect" parent="HBoxContainer"]
+[node name="Logo" type="TextureRect" parent="DitherMask/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(163, 0)
 layout_mode = 2
@@ -64,18 +80,18 @@ mouse_filter = 2
 texture = ExtResource("2_7df32")
 stretch_mode = 5
 
-[node name="Filler2" type="Control" parent="HBoxContainer"]
+[node name="Filler2" type="Control" parent="DitherMask/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DitherMask/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 alignment = 1
 
-[node name="Play" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="Play" type="Button" parent="DitherMask/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(129, 0)
 layout_mode = 2
@@ -83,7 +99,7 @@ theme_override_fonts/font = ExtResource("2_lok01")
 text = "Play"
 script = ExtResource("4_agl0q")
 
-[node name="Options" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="DitherMask/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(129, 0)
 layout_mode = 2
@@ -91,7 +107,7 @@ theme_override_fonts/font = ExtResource("2_lok01")
 text = "Options"
 script = ExtResource("4_agl0q")
 
-[node name="Quit" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="DitherMask/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(129, 0)
 layout_mode = 2
@@ -99,7 +115,7 @@ theme_override_fonts/font = ExtResource("2_lok01")
 text = "Quit"
 script = ExtResource("4_agl0q")
 
-[node name="Filler3" type="Control" parent="HBoxContainer"]
+[node name="Filler3" type="Control" parent="DitherMask/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2

@@ -36,6 +36,7 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @onready var net_worth = %NetWorth
 @onready var net_worth_label = %NetWorthLabel
 @onready var tileset = %Tileset
+@onready var options: Control = %Options
 
 var run_wave: bool = false
 var wave_number: int = -1
@@ -156,10 +157,8 @@ func _physics_process(delta) -> void:
 					MusicManager.play_song('darius_defense')
 			
 	if Input.is_action_just_pressed('pause'):
-		var options = options_screen.instantiate()
-		options.get_node("BG").queue_free()
-		options.owner = self
-		UI.add_child(options)
+		options.show()
+		options.dither(0, 1)
 		get_tree().paused = true
 		
 	if rickmech_spawn_timer <= 0:

@@ -14,6 +14,6 @@ dest_files=["res://.godot/imported/darius_defense.ogg-98fdff0c68ab97813647f246ca
 
 loop=true
 loop_offset=0.0
-bpm=0.0
+bpm=112.5
 beat_count=0
 bar_beats=4

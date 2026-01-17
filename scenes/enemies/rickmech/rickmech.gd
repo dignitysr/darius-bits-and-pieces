@@ -69,6 +69,8 @@ func on_stomped(body) -> void:
 func die(killed: bool = true) -> void:
 	var dither: float = 0
 	move_sinusoidal = false
+	if not killed:
+		die_sfx.play()
 	while dither < 1:
 		animator.material.set_shader_parameter("intensity", dither)
 		dither += 0.02
@@ -78,6 +80,4 @@ func die(killed: bool = true) -> void:
 		level.inventory_manager.session_rickmechs += 1
 		StatsManager.save_stats()
 		level.add_parts(parts_dropped, int(run_time/time_threshold), false)
-	else:
-		die_sfx.play()
 	queue_free()
