@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://bjgaqr45hpelt"]
+
+[ext_resource type="Texture2D" uid="uid://dt8m2ogkwcvfn" path="res://scenes/enemies/rickmech/rickmech_body.png" id="1_1vly8"]
+[ext_resource type="Script" uid="uid://0qtjdogcuev1" path="res://scenes/enemies/rickmech/rickmech.gd" id="1_fj825"]
+[ext_resource type="PackedScene" uid="uid://jxljbjqtgbyv" path="res://scenes/enemies/rickmech/laser.tscn" id="2_obglo"]
+[ext_resource type="Texture2D" uid="uid://bc3xngso2webl" path="res://scenes/enemies/rickmech/laser_arm.png" id="2_okqrq"]
+[ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="3_0innh"]
+[ext_resource type="AudioStream" uid="uid://d0xqkjolirh3f" path="res://assets/music/rickmech.ogg" id="5_mj3mc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmi4h"]
+shader = ExtResource("3_0innh")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okqrq"]
+atlas = ExtResource("1_1vly8")
+region = Rect2(0, 0, 27, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj825"]
+atlas = ExtResource("1_1vly8")
+region = Rect2(27, 0, 27, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obglo"]
+atlas = ExtResource("1_1vly8")
+region = Rect2(54, 0, 27, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mj3mc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okqrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj825")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obglo")
+}],
+"loop": true,
+"name": &"float",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okqrq"]
+size = Vector2(20, 5)
+
+[node name="Rickmech" type="StaticBody2D"]
+position = Vector2(0, -18)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_fj825")
+laser_scene = ExtResource("2_obglo")
+
+[node name="Animator" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_dmi4h")
+sprite_frames = SubResource("SpriteFrames_mj3mc")
+animation = &"float"
+autoplay = "float"
+frame_progress = 0.83864164
+
+[node name="LaserArm" type="Sprite2D" parent="Animator"]
+unique_name_in_owner = true
+z_index = -1
+use_parent_material = true
+position = Vector2(7, 10)
+texture = ExtResource("2_okqrq")
+offset = Vector2(6, 0)
+
+[node name="LaserSpawner" type="Node2D" parent="Animator/LaserArm"]
+unique_name_in_owner = true
+use_parent_material = true
+position = Vector2(10, 0)
+
+[node name="StompCollision" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompCollision"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_okqrq")
+
+[node name="GroundFinder" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(0, 270)
+collision_mask = 24
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_mj3mc")
+bus = &"SFX"

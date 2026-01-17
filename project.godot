@@ -82,6 +82,7 @@ back={
 2d_physics/layer_6="Darius + Toewrs"
 2d_physics/layer_7="Ground + Forklift"
 2d_physics/layer_8="Ground + Rolling Cage"
+2d_physics/layer_9="Darius + Bullets"
 
 [physics]
 

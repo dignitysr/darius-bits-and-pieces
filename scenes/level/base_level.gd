@@ -11,10 +11,12 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @export var quantity_container: PackedScene
 @export var player_scene: PackedScene
 @export var options_screen: PackedScene
+@export var rickmech: PackedScene
 
 @export_category("Wave Information")
 @export var time_between_waves: float = 60 ## In seconds
 @export var time_between_enemies: float = 0.5 ## In seconds
+@export var rickmech_spawn_time = 300
 
 @onready var enemy_spawner = %EnemySpawner
 @onready var enemy_container = %Enemies
@@ -30,12 +32,14 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @onready var lose_axis = %LoseAxis
 @onready var net_worth = %NetWorth
 @onready var net_worth_label = %NetWorthLabel
+@onready var tileset = %Tileset
 
 var run_wave: bool = false
 var wave_number: int = -1
 var timer: float
-
 var subscribers: int = 1
+var x_range: int = 0
+var rickmech_spawn_timer: float = 0
 
 var buffs: Array = [
 	"Slow Down Customers",
@@ -69,6 +73,14 @@ func _ready() -> void:
 	timer = time_between_waves
 	MusicManager.play_song("darius_wave_intermission")
 	StatsManager.stats["current_level"] = wave_resource.scene
+	var tiles_array_sorted: Array = tileset.get_used_cells()
+	tiles_array_sorted.sort_custom(sort_by_ascending_x)
+	x_range = tiles_array_sorted[0].x*16
+		
+func sort_by_ascending_x(a: Vector2, b: Vector2):
+	if a.x > b.x:
+		return true
+	return false
 
 func _physics_process(delta) -> void:
 	if run_wave && enemy_container.get_children().is_empty():
@@ -96,6 +108,15 @@ func _physics_process(delta) -> void:
 		options.owner = self
 		UI.add_child(options)
 		get_tree().paused = true
+		
+	if rickmech_spawn_timer <= 0:
+		var rickmech_scene: Rickmech = rickmech.instantiate()
+		rickmech_scene.level = self
+		rickmech_scene.player = player
+		rickmech_spawn_timer = rickmech_spawn_time
+		add_child(rickmech_scene)
+	else:
+		rickmech_spawn_timer -= delta
 
 func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Rank):
 	var total_parts: int = 0

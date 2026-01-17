@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c0nclxadp8xws"]
+[gd_scene load_steps=37 format=3 uid="uid://c0nclxadp8xws"]
 
 [ext_resource type="Script" uid="uid://c8kx2jgqnthg4" path="res://scenes/level/base_level.gd" id="1_2qxot"]
 [ext_resource type="Script" uid="uid://c3d6hdxo3ibrw" path="res://scenes/level/parts_manager.gd" id="1_ebx1s"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bb8p24vsdb0d5" path="res://scenes/level/tiles/dirt.tscn" id="5_uhv4h"]
 [ext_resource type="Resource" uid="uid://bb2pamo51cvxh" path="res://scenes/UI/ranks/small_ranks.tres" id="6_8x4to"]
 [ext_resource type="Texture2D" uid="uid://82p0pdd7hmbp" path="res://assets/UI/sprites/craft_open.png" id="7_8xnqg"]
+[ext_resource type="PackedScene" uid="uid://bjgaqr45hpelt" path="res://scenes/enemies/rickmech/rickmech.tscn" id="7_jom2h"]
 [ext_resource type="PackedScene" uid="uid://cqhan3bhxm6h6" path="res://scenes/player/player.tscn" id="7_u35hf"]
 [ext_resource type="Texture2D" uid="uid://bpuyyxr8cjyex" path="res://scenes/UI/assets/panel_style.png" id="9_466n5"]
 [ext_resource type="Texture2D" uid="uid://c8yfpxu12d6w7" path="res://scenes/towers/mailbox/assets.png" id="9_wq2a1"]
@@ -341,7 +342,9 @@ script = ExtResource("1_2qxot")
 small_ranks_resource = ExtResource("6_8x4to")
 objects_list = ExtResource("2_upopr")
 quantity_container = ExtResource("13_qf4k4")
+player_scene = ExtResource("7_u35hf")
 options_screen = ExtResource("5_co8g8")
+rickmech = ExtResource("7_jom2h")
 
 [node name="Towers" type="Node2D" parent="."]
 unique_name_in_owner = true
