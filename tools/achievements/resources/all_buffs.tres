@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://bd4ipj1wddak0"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_ycacs"]
+
+[resource]
+script = ExtResource("1_ycacs")
+achievement_name = "Trick of the Trade"
+description = "Use every Feature at least once."
+achievement_index = 18
+metadata/_custom_type_script = "uid://clsfgafsghq51"

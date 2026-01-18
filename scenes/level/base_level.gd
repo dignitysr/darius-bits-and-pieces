@@ -100,6 +100,15 @@ var rock_news: Array = [
 	'The Sad Truth: 90% of Mail Based Casualties Come From Customer Dissatisfaction. Other leading causes include: 6% Transportation Accidents, 3% Unattended Enemies, Hazards and Dogs, and 1% Giant Pits.',
 ]
 
+var achievement_flags: Dictionary = {
+	"S-Rank tower": false,
+	"Rickmech died": false,
+	"Rickmech killed": false,
+	"Customer lost": false,
+	"Forklift/Cage used": false,
+	"Balloon/UFO defeated": false,
+}
+
 var active_buff := Buffs.SLOW
 
 var darius_name: String = 'Darius the Mailman'
@@ -228,6 +237,7 @@ func update_stats() -> void:
 
 func on_darius_death() -> void:
 	var intensity = 0
+	achievement_flags["Rickmech died"] = true
 	player.set_physics_process(false)
 	while intensity < 1:
 		intensity += 0.01
@@ -241,6 +251,11 @@ func on_darius_death() -> void:
 	active_buff = randi_range(0, int(Buffs.FASTER))
 	darius_name = '%sarius the %sailman' % [char(randi_range(65, 90)), char(randi_range(65, 90))]
 	darius_name_label.text = darius_name
+	if !active_buff in StatsManager.stats["witnessed_buffs"]:
+		StatsManager.stats["witnessed_buffs"].append(active_buff)
+		StatsManager.save_stats()
+		if StatsManager.stats["witnessed_buffs"].size() == 4:
+			AchievementManager.unlock("Trick of the Trade")
 	ability_label.text = buff_prefixes[randi_range(0, buff_prefixes.size()-1)] + buffs[active_buff]
 	add_child(new_player)
 	player.animator.get_material().set_shader_parameter('intensity', 0)
@@ -251,13 +266,29 @@ func on_darius_death() -> void:
 func end_wave():
 	if (wave_number + 1) % 20 == 0 && wave_number > 0:
 		time_between_enemies *= 2
-		AchievementManager.unlock('A Tough Battle')
+		match wave_number:
+			19:
+				AchievementManager.unlock('A Close Scrape')
+			39:
+				AchievementManager.unlock('A Tough Battle')
 	if wave_number == 59:
 		AchievementManager.unlock('A War Victorious')
 		if !StatsManager.stats['wave_60_maps'].has(wave_resource.name):
 			StatsManager.stats['wave_60_maps'].append(wave_resource.name)
 		if StatsManager.stats['wave_60_maps'].size() == 4:
 			AchievementManager.unlock('Man of Mail')
+		if wave_resource.name == "Subscriberton" and !achievement_flags["Forklift/Cage used"]:
+			AchievementManager.unlock('Suburbia')
+		if wave_resource.name == "The Alternate Route" and !achievement_flags["Balloon/UFO defeated"]:
+			AchievementManager.unlock('Silly Guy Watch')
+		if wave_resource.name == "OOPS Overhead" and !achievement_flags["Rickmech killed"]:
+			AchievementManager.unlock('Tenuous Relationship')
+		if !achievement_flags["Customer lost"]:
+			AchievementManager.unlock('Landslide')
+		if darius_name == "Darius the Mailman":
+			AchievementManager.unlock('The Original')
+		if !achievement_flags["S-Rank tower"]:
+			AchievementManager.unlock('NonS-ential')
 		StatsManager.save_stats()
 	MusicManager.play_jingle('victory')
 	dither(1, 0)

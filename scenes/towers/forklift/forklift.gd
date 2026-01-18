@@ -30,3 +30,7 @@ func _attack() -> void:
 		if enemy_area.get_parent() is BaseEnemy:
 			durability -= 1
 			enemy_area.get_parent().damage(damage)
+			if durability <= 0:
+				_break()
+				animator.hide()
+				debris_sprite.show()

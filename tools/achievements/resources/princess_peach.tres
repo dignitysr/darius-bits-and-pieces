@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://bori1yt6e0lpi"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_uh7yf"]
+
+[resource]
+script = ExtResource("1_uh7yf")
+achievement_name = "Knighted"
+description = "Satisfy the queen in Wave 19 on the map Mailopolis"
+achievement_index = 21
+metadata/_custom_type_script = "uid://clsfgafsghq51"

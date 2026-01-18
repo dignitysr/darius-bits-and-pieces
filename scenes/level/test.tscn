@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c0nclxadp8xws" path="res://scenes/level/base_level.tscn" id="1_6nsnc"]
 [ext_resource type="Resource" uid="uid://cvmsn0drl6n0t" path="res://scenes/level/test_level.tres" id="2_3kxy6"]
 [ext_resource type="Resource" uid="uid://bcvclfg6r1av0" path="res://scenes/enemies/enemies.tres" id="3_fhgba"]
+[ext_resource type="PackedScene" uid="uid://cfh3n37cotiyr" path="res://scenes/level/backgrounds/street/street_bg.tscn" id="5_5dfd0"]
 [ext_resource type="Theme" uid="uid://csbmn3ra74l3n" path="res://assets/UI/base_theme.tres" id="5_fhgba"]
-[ext_resource type="PackedScene" uid="uid://xqkugpulmrnq" path="res://scenes/level/backgrounds/grass/grass_bg.tscn" id="7_fhgba"]
 
 [node name="test" instance=ExtResource("1_6nsnc")]
 wave_resource = ExtResource("2_3kxy6")
@@ -31,8 +31,7 @@ theme = ExtResource("5_fhgba")
 [node name="BGLayer" parent="." index="7"]
 layer = -1
 
-[node name="Background" parent="BGLayer" index="0" instance=ExtResource("7_fhgba")]
-z_index = -2
+[node name="StreetBG" parent="BGLayer" index="0" instance=ExtResource("5_5dfd0")]
 
 [node name="PlaceValidator" parent="Preview" index="0"]
 collision_mask = 72

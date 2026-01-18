@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://c4f22hox7rxt8"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_xfr0l"]
+
+[resource]
+script = ExtResource("1_xfr0l")
+achievement_name = "Silly Guy Watch"
+description = "Reach Wave 60 while letting all Balloon Boys and UFOs pass in the map The Alternate Route."
+achievement_index = 20
+metadata/_custom_type_script = "uid://clsfgafsghq51"

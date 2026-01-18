@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://ciy868do40e3"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_ektye"]
+
+[resource]
+script = ExtResource("1_ektye")
+achievement_name = "A Tough Battle"
+description = "Reach Wave 40 on any map."
+achievement_index = 12
+metadata/_custom_type_script = "uid://clsfgafsghq51"

@@ -1,13 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dm13ljgyi33hk"]
+[gd_scene load_steps=12 format=3 uid="uid://dm13ljgyi33hk"]
 
 [ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_jog54"]
+[ext_resource type="Script" uid="uid://dsbgc6lekqdpo" path="res://scenes/enemies/balloon_boy/flier.gd" id="2_0vabs"]
 [ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="2_6w33j"]
 [ext_resource type="Texture2D" uid="uid://bwoooau5eu75h" path="res://scenes/enemies/balloon_boy/regular_palette.png" id="3_0vabs"]
 [ext_resource type="Texture2D" uid="uid://dj48rsrkchsv7" path="res://scenes/enemies/balloon_boy/spritesheet.png" id="3_6w33j"]
-[ext_resource type="Texture2D" uid="uid://dg1uao2yp4f0h" path="res://scenes/enemies/balloon_boy/green_palette.png" id="3_j15y2"]
-[ext_resource type="Texture2D" uid="uid://cwd6fk5nx1nwg" path="res://scenes/enemies/balloon_boy/blue_palette.png" id="4_cwd2w"]
-[ext_resource type="Texture2D" uid="uid://bftdxbbme762q" path="res://scenes/enemies/balloon_boy/white_palette.png" id="5_tqqnr"]
-[ext_resource type="Texture2D" uid="uid://c26d7r1ce4wlv" path="res://scenes/enemies/balloon_boy/yellow_palette.png" id="6_heaom"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pin7q"]
 resource_local_to_scene = true
@@ -56,17 +53,15 @@ animations = [{
 }]
 
 [node name="BalloonBoy" instance=ExtResource("1_jog54")]
-airborne = true
-palettes = Array[Texture2D]([ExtResource("4_cwd2w"), ExtResource("3_j15y2"), ExtResource("3_0vabs"), ExtResource("5_tqqnr"), ExtResource("6_heaom")])
-health = 400.0
-flier_spawn_pos = 30.0
+script = ExtResource("2_0vabs")
+health = 20.0
 
 [node name="Animator" parent="." index="0"]
 material = SubResource("ShaderMaterial_pin7q")
 sprite_frames = SubResource("SpriteFrames_j15y2")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.88745916
+frame_progress = 0.31842935
 
 [node name="WallFinder" parent="." index="3"]
 enabled = false

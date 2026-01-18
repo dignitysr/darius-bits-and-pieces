@@ -56,7 +56,6 @@ func _attack() -> void:
 		debris_sprite.show()
 
 func _physics_process(delta) -> void:
-	print(cooldown)
 	var min_dist = INF
 	if !broken:
 		for enemy_area: Area2D in enemy_detection.get_overlapping_areas():

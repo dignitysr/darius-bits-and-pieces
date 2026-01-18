@@ -30,8 +30,8 @@ var session_customers: int = 0
 ## Rank: Number},
 ## Part name: etc}
 var parts: Dictionary = {
-	"paper": {Rank.S: 0, Rank.A: 0, Rank.B: 0, Rank.C: 0, Rank.F: 100}, 
-	"scrap": {Rank.S: 0, Rank.A: 0, Rank.B: 0, Rank.C: 0, Rank.F: 70}}
+	"paper": {Rank.S: 9e9, Rank.A: 0, Rank.B: 0, Rank.C: 0, Rank.F: 100}, 
+	"scrap": {Rank.S: 9e9, Rank.A: 0, Rank.B: 0, Rank.C: 0, Rank.F: 70}}
 	
 func _ready() -> void:
 	craft_trans_button.connect("button_down", on_craft_trans_pressed)
@@ -117,6 +117,10 @@ func place_tower(tower: String, rank: int):
 	tower_scene.rank = rank
 	for part: String in recipes.recipes[tower]:
 		parts[part][rank] -= recipes.recipes[tower][part]
+	if rank == Rank.S:
+		level.achievement_flags["S-Rank tower"] = true
+	if tower == "forklift" or tower == "rolling_cage":
+		level.achievement_flags["Forklift/Cage used"] = true
 	preview.hide()
 	craft_container.show()
 	tower_placed = true

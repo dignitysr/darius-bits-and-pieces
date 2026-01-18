@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://dbptjmrsq2kpw"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_6cgin"]
+
+[resource]
+script = ExtResource("1_6cgin")
+achievement_name = "A War Victorious"
+description = "Reach Wave 60 on any map."
+achievement_index = 13
+metadata/_custom_type_script = "uid://clsfgafsghq51"

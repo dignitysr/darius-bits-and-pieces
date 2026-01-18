@@ -83,6 +83,7 @@ func _physics_process(delta):
 		lose_subscriber()
 
 func lose_subscriber() -> void:
+	inventory_manager.level.achievement_flags["Customer lost"] = true
 	if !dead:
 		inventory_manager.level.subscribers -= inventory_manager.level.subscribers*0.1
 		var tween := get_tree().create_tween()

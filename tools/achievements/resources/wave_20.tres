@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://bmkch8yl3dlx6"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_old4n"]
+
+[resource]
+script = ExtResource("1_old4n")
+achievement_name = "A Close Scrape"
+description = "Reach Wave 20 on any map."
+achievement_index = 11
+metadata/_custom_type_script = "uid://clsfgafsghq51"

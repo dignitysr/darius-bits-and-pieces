@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_TIME = 30
+const SAVE_TIME = 20
 
 var stats: Dictionary = {
 	"playtime": 0,
@@ -15,6 +15,7 @@ var stats: Dictionary = {
 	"defeated_rickmechs_unsaved": 0,
 	"current_level": "",
 	"wave_60_maps": [],
+	"witnessed_buffs": [],
 }
 
 var save_timer = SAVE_TIME
@@ -40,9 +41,13 @@ func _process(delta) -> void:
 	
 func load_stats() -> void:
 	for stat: String in stats:
-		stats[stat] = Save.load_setting("stats", stat, 0)
+		if Save.has_setting("stats", stat):
+			stats[stat] = Save.load_setting("stats", stat, 0)
+		else:
+			Save.change_setting("stats", stat, stats[stat])
 
 func save_stats() -> void:
 	for stat: String in stats:
 		if !"unsaved" in stat:
+			print(typeof(stats[stat]))
 			Save.change_setting("stats", stat, stats[stat])

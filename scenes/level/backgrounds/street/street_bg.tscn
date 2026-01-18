@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfh3n37cotiyr"]
+
+[ext_resource type="Texture2D" uid="uid://blyqxboocp5vd" path="res://scenes/level/backgrounds/street/clouds_1.png" id="1_3b1dp"]
+[ext_resource type="Texture2D" uid="uid://fl2s0625m0f2" path="res://scenes/level/backgrounds/street/streets_2.png" id="1_hmg54"]
+[ext_resource type="Texture2D" uid="uid://pvl3guxll8gm" path="res://scenes/level/backgrounds/street/clouds_2.png" id="1_m8iy3"]
+[ext_resource type="Texture2D" uid="uid://bx6ulye2bquan" path="res://scenes/level/backgrounds/street/streets_1.png" id="2_yiui0"]
+
+[node name="StreetBG" type="Node2D"]
+
+[node name="BGSection4" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.02, 0)
+repeat_size = Vector2(480, 270)
+repeat_times = 99
+follow_viewport = false
+
+[node name="Sky2" type="Sprite2D" parent="BGSection4"]
+position = Vector2(240, 135)
+texture = ExtResource("1_m8iy3")
+
+[node name="BGSection3" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.02, 0)
+repeat_size = Vector2(480, 270)
+repeat_times = 99
+limit_begin = Vector2(0, 0)
+follow_viewport = false
+
+[node name="Sky1" type="Sprite2D" parent="BGSection3"]
+position = Vector2(240, 135)
+texture = ExtResource("1_3b1dp")
+
+[node name="BGSection2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.04, 0)
+repeat_size = Vector2(480, 270)
+repeat_times = 99
+follow_viewport = false
+
+[node name="Streets2" type="Sprite2D" parent="BGSection2"]
+position = Vector2(240, 135)
+texture = ExtResource("1_hmg54")
+
+[node name="BGSection1" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.08, 0)
+repeat_size = Vector2(480, 270)
+repeat_times = 99
+follow_viewport = false
+
+[node name="Streets1" type="Sprite2D" parent="BGSection1"]
+position = Vector2(240, 135)
+texture = ExtResource("2_yiui0")

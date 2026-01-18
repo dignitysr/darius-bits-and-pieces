@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://m325mr0inhs7"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_tfy1e"]
+
+[resource]
+script = ExtResource("1_tfy1e")
+achievement_name = "Suburbia"
+description = "Reach Wave 60 without using the rolling cage or the forklift on the map Subscriberton."
+achievement_index = 19
+metadata/_custom_type_script = "uid://clsfgafsghq51"

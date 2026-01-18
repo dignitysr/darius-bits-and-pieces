@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_bfxiu")
 achievement_name = "Encounter with the Enemy"
-description = "Repel the first wave of Rick's customers."
+description = "Satisfy your first customer!"
 achievement_index = 6
 metadata/_custom_type_script = "uid://clsfgafsghq51"

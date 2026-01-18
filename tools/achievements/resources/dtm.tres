@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://bbqmkydohgc26"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_fq12p"]
+
+[resource]
+script = ExtResource("1_fq12p")
+achievement_name = "The Original"
+description = "Reach Wave 60 as Darius the Mailman on any map."
+achievement_index = 16
+metadata/_custom_type_script = "uid://clsfgafsghq51"

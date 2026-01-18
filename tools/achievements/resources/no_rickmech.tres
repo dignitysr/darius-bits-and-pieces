@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AchievementData" load_steps=2 format=3 uid="uid://q86cqh2xgu8s"]
+
+[ext_resource type="Script" uid="uid://clsfgafsghq51" path="res://tools/achievements/achievement_data.gd" id="1_yk1t7"]
+
+[resource]
+script = ExtResource("1_yk1t7")
+achievement_name = "Tenuous Relationship"
+description = "Reach Wave 60 while keeping all Rickmechs alive on the map OOPS Overhead. (Dying is optional)"
+achievement_index = 22
+metadata/_custom_type_script = "uid://clsfgafsghq51"

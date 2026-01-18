@@ -1,10 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dhwe3cxbwn8pc"]
+[gd_scene load_steps=11 format=3 uid="uid://dhwe3cxbwn8pc"]
 
 [ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_p247t"]
-[ext_resource type="Texture2D" uid="uid://cbh7pl03x0euk" path="res://scenes/enemies/UFO/aloe_palettte.png" id="2_ianhs"]
-[ext_resource type="Texture2D" uid="uid://beoxdi80kas5q" path="res://scenes/enemies/UFO/green_palette.png" id="3_sbgdo"]
-[ext_resource type="Texture2D" uid="uid://5r0q3hfnxmd" path="res://scenes/enemies/UFO/purple_palette.png" id="4_qee78"]
-[ext_resource type="Texture2D" uid="uid://dw667a6lbrqov" path="res://scenes/enemies/UFO/red_palette.png" id="5_2cyk3"]
+[ext_resource type="Script" uid="uid://dsbgc6lekqdpo" path="res://scenes/enemies/balloon_boy/flier.gd" id="2_ajjna"]
 [ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="7_15vry"]
 [ext_resource type="Texture2D" uid="uid://be7vygw8oy3g3" path="res://scenes/enemies/UFO/spritesheet.png" id="8_ianhs"]
 [ext_resource type="Texture2D" uid="uid://cgjy2ec6khon2" path="res://scenes/enemies/UFO/regular_palette.png" id="8_sbgdo"]
@@ -49,19 +46,15 @@ animations = [{
 }]
 
 [node name="UFO" instance=ExtResource("1_p247t")]
-airborne = true
-palettes = Array[Texture2D]([ExtResource("2_ianhs"), ExtResource("3_sbgdo"), ExtResource("4_qee78"), ExtResource("5_2cyk3"), ExtResource("8_sbgdo")])
-health = 2000.0
-speed = 100.0
-flier_spawn_pos = 30.0
-amp = 8
+script = ExtResource("2_ajjna")
+health = 20.0
 
 [node name="Animator" parent="." index="0"]
 material = SubResource("ShaderMaterial_sbgdo")
 sprite_frames = SubResource("SpriteFrames_j15y2")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.13749006
+frame_progress = 0.58105683
 
 [node name="WallFinder" parent="." index="3"]
 enabled = false

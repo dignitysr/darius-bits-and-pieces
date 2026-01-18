@@ -84,5 +84,6 @@ func die(killed: bool = true) -> void:
 		StatsManager.stats["defeated_rickmechs_total"] += 1
 		level.inventory_manager.session_rickmechs += 1
 		StatsManager.save_stats()
+		level.achievement_flags["Rickmech killed"] = true
 		level.add_parts(parts_dropped, int(run_time/time_threshold), false)
 	queue_free()
