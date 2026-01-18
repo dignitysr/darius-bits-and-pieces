@@ -303,20 +303,21 @@ func on_enemy_died() -> void:
 		end_wave()
 
 func on_net_worth_changed(_value) -> void:
-	if net_worth.value / net_worth.max_value > 0.7:
-		if not MusicManager.is_song_playing('darius_defense_danger'):
-			MusicManager.play_song('darius_defense_danger')
-		var anim_player: AnimationPlayer = net_worth_label.get_node('AnimationPlayer')
-		if not anim_player.current_animation == 'warning_flash':
-			anim_player.play('warning_flash')
-	else:
-		if not MusicManager.is_song_playing('darius_defense'):
-			MusicManager.play_song('darius_defense')
-		var anim_player: AnimationPlayer = net_worth_label.get_node('AnimationPlayer')
-		if anim_player.current_animation == 'warning_flash':
-			anim_player.play("RESET")
-			var red_amount: float = net_worth.value / net_worth.max_value
-			net_worth_label.add_theme_color_override('font_color', lerp(Color.WHITE, Color("e35100"), red_amount))
+	if !MusicManager.is_song_playing("darius_boss"):
+		if net_worth.value / net_worth.max_value > 0.7:
+			if not MusicManager.is_song_playing('darius_defense_danger'):
+				MusicManager.play_song('darius_defense_danger')
+			var anim_player: AnimationPlayer = net_worth_label.get_node('AnimationPlayer')
+			if not anim_player.current_animation == 'warning_flash':
+				anim_player.play('warning_flash')
+		else:
+			if not MusicManager.is_song_playing('darius_defense'):
+				MusicManager.play_song('darius_defense')
+			var anim_player: AnimationPlayer = net_worth_label.get_node('AnimationPlayer')
+			if anim_player.current_animation == 'warning_flash':
+				anim_player.play("RESET")
+				var red_amount: float = net_worth.value / net_worth.max_value
+				net_worth_label.add_theme_color_override('font_color', lerp(Color.WHITE, Color("e35100"), red_amount))
 
 func on_skip_pressed():
 	print("t")

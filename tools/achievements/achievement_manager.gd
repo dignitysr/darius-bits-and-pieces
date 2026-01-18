@@ -10,6 +10,8 @@ var achievement_keys: Array
 var total_achievements: int
 var unlocked_achievements: int
 
+signal unlocked_achievement
+
 class Achievement:
 	var achievement_name: String
 	var description: String
@@ -55,3 +57,4 @@ func unlock(achievement_name: String) -> void:
 	trans_player.play("slide")
 	Save.change_setting("achievements", achievement_name, true)
 	StatsManager.save_stats()
+	unlocked_achievement.emit()

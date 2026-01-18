@@ -11,6 +11,7 @@ extends Control
 var achievements: Dictionary
 
 func _ready():
+	AchievementManager.connect("unlocked_achievement", reload_achievements)
 	reload_achievements()
 
 func achievement_pressed(achievement: String) -> void:
@@ -18,6 +19,8 @@ func achievement_pressed(achievement: String) -> void:
 	unlocked_check.button_pressed = achievements[achievement].unlocked
 	
 func reload_achievements() -> void:
+	for child in achievement_container.get_children():
+		child.queue_free()
 	achievements = AchievementManager.achievements
 	for achievement_name: String in achievements:
 		var achievement_button: Button = achievement_button_scene.instantiate()
