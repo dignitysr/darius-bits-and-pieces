@@ -1,0 +1,503 @@
+[gd_scene load_steps=8 format=3 uid="uid://ch0rpo4cclfn"]
+
+[sub_resource type="Gradient" id="Gradient_nehen"]
+offsets = PackedFloat32Array(0.2, 0.3)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.5019608)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ojr21"]
+gradient = SubResource("Gradient_nehen")
+fill = 1
+fill_from = Vector2(0.1, 0.1)
+fill_to = Vector2(0.1, 0.8)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nehen"]
+gradient = SubResource("Gradient_nehen")
+fill = 1
+fill_from = Vector2(0.6333334, 0)
+fill_to = Vector2(0.3, 0.6)
+metadata/_snap_enabled = true
+metadata/_snap_count = 30
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_u30a0"]
+gradient = SubResource("Gradient_nehen")
+fill = 1
+fill_from = Vector2(0.9666667, 0.06666667)
+fill_to = Vector2(0.6, 0.3)
+metadata/_snap_enabled = true
+metadata/_snap_count = 30
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5675d"]
+gradient = SubResource("Gradient_nehen")
+fill = 1
+fill_from = Vector2(0.90000004, 0.90000004)
+fill_to = Vector2(0.53333336, 0.43333337)
+metadata/_snap_enabled = true
+metadata/_snap_count = 30
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5dmh0"]
+gradient = SubResource("Gradient_nehen")
+fill = 1
+fill_from = Vector2(1, 0.3)
+fill_to = Vector2(0.53333336, 0.6333334)
+metadata/_snap_enabled = true
+metadata/_snap_count = 30
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_umc3q"]
+gradient = SubResource("Gradient_nehen")
+fill = 1
+fill_from = Vector2(0.5, 0.13333334)
+fill_to = Vector2(1, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 30
+
+[node name="Tutorial" type="CanvasLayer"]
+layer = 256
+
+[node name="Page1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="ColorRect" parent="Page1"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Page1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Page1/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/outline_size = 0
+text = "Welcome to Darius TD!
+
+The aim of this game is to place mailboxes and other equipment
+to deliver mail to customers before they reach your rival's shop. 
+
+You'll need to utilize strategy to make sure every potential
+customer is satisfied with your services, so be careful with
+your resources!
+ 
+Reach Wave 60 in order to beat the game :)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Page1/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Skip" type="Button" parent="Page1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Skip"
+
+[node name="Next" type="Button" parent="Page1/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Next"
+
+[node name="Page2" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="TextureRect" parent="Page2"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ojr21")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Page2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Page2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/outline_size = 0
+text = "The top icon shows your current subscribers.
+
+If Rick's Net Worth exceeds 10x your subscribers,
+Darius will give [his business] up and you will game over.
+
+Try not to let customers get to The OOPS Store!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Page2/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Back" type="Button" parent="Page2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Next" type="Button" parent="Page2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Next"
+
+[node name="Page3" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="TextureRect" parent="Page3"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_nehen")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Page3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Page3/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/outline_size = 0
+text = "Rich Aschez will periodically send robots to kill Darius and
+sabotage his efforts. You can jump on them to destroy them.
+
+However, don't despair! If you slip up, you will gain a new
+(100% distinct) character with a randomized ability.
+
+If you're feeling particularly sadist, feel free to let him die
+and try out some other abilities!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Page3/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Back" type="Button" parent="Page3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Next" type="Button" parent="Page3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Next"
+
+[node name="Page4" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="TextureRect" parent="Page4"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_u30a0")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Page4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Page4/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/outline_size = 0
+text = "To satisfy customers, you will need to craft equipment
+to deliver them mail on their way to The OOPS Store.
+
+Different towers have different functions. You can make new
+towers with the parts given to you by customers. Note that
+towers have durability, so be ready to replace them 
+every now and then!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Page4/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Back" type="Button" parent="Page4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Next" type="Button" parent="Page4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Next"
+
+[node name="Page5" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="TextureRect" parent="Page5"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5675d")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Page5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Page5/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/outline_size = 0
+text = "The parts you get from customers come in different qualities. 
+More picky customers give higher quality materials...
+...which you can use to craft even better towers!
+
+The higher the rank of a tower is, the better it
+will be at satisfying customers!
+
+You can see how many parts you have in the bottom right.
+Keep in mind these sum up every quality. Open the craft menu
+and make a tower to see how many you have of each quality!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Page5/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Back" type="Button" parent="Page5/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Next" type="Button" parent="Page5/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Next"
+
+[node name="Page6" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="TextureRect" parent="Page6"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_5dmh0")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Page6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Page6/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/outline_size = 0
+text = "This section of the screen relates to \"waves\" 
+of customers. The elements are as follows:
+- Current wave
+- Time to next wave
+- Skip intermission 
+(but try to place some towers first)
+
+Every 20 waves there will be a boss wave with loads of
+customers. Make sure you have plenty of towers prepared!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Page6/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Back" type="Button" parent="Page6/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Next" type="Button" parent="Page6/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Next"
+
+[node name="Page7" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="TextureRect" parent="Page7"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_umc3q")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Page7"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Page7/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/outline_size = 0
+text = "Some customers will fly to the store instead of walking.
+In these cases, you will need to use a special 
+tower - the Flying Tote Bag, to deliver them mail.
+
+The Flying Tote Bag will always fly left to right at 
+the top of the screen and cannot be positioned manually."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Page7/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Back" type="Button" parent="Page7/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Next" type="Button" parent="Page7/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Next"
+
+[node name="Page8" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="ColorRect" parent="Page8"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Page8"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Page8/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = 4
+theme_override_constants/outline_size = 0
+text = "Great, it looks like you're ready to play!
+Got everything?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Page8/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Close" type="Button" parent="Page8/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Yep"
+
+[node name="Restart" type="Button" parent="Page8/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "What?"
