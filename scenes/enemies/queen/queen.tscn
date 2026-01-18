@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://c65eolw38ospt"]
 
 [ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_gelav"]
-[ext_resource type="Script" uid="uid://65se8vndesco" path="res://scenes/enemies/queen/queen.gd" id="2_lk6eh"]
+[ext_resource type="Script" path="res://scenes/enemies/queen/queen.gd" id="2_lk6eh"]
 [ext_resource type="Texture2D" uid="uid://4h7ds6raqcjj" path="res://scenes/enemies/queen/green_palette.png" id="2_pm8le"]
 [ext_resource type="Texture2D" uid="uid://her4msnll6rm" path="res://scenes/enemies/queen/pink_palette.png" id="3_8r1st"]
 [ext_resource type="Texture2D" uid="uid://b24yi6be3ileh" path="res://scenes/enemies/queen/yellow_palette.png" id="6_n7wja"]
@@ -67,7 +67,7 @@ animations = [{
 [node name="Queen" instance=ExtResource("1_gelav")]
 script = ExtResource("2_lk6eh")
 palettes = Array[Texture2D]([ExtResource("2_pm8le"), ExtResource("3_8r1st"), ExtResource("8_n7wja"), ExtResource("9_2ion4"), ExtResource("6_n7wja")])
-health = 20.0
+health = 600.0
 
 [node name="Animator" parent="." index="0"]
 material = SubResource("ShaderMaterial_gvb23")
