@@ -324,7 +324,7 @@ func on_enemy_died() -> void:
 		end_wave()
 
 func on_net_worth_changed(_value) -> void:
-	if !MusicManager.is_song_playing("darius_boss"):
+	if !MusicManager.is_song_playing("darius_boss") && !enemy_container.get_children().is_empty():
 		if net_worth.value / net_worth.max_value > 0.7:
 			if not MusicManager.is_song_playing('darius_defense_danger'):
 				MusicManager.play_song('darius_defense_danger')
