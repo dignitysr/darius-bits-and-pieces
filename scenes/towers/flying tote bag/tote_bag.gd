@@ -1,13 +1,13 @@
 class_name ToteBag
 extends BaseTower
 
-@export var speed: float = 10
+@export var speed: float = 20
 @export var gravity: float = 10
+@export var amp: int = 8
+@export var freq: int = 6
 
 func _ready():
 	super()
-	var tween := get_tree().create_tween()
-	tween.tween_property(self, "position:y", 0, 1).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
 func _physics_process(delta) -> void:
 	super(delta)
@@ -17,6 +17,8 @@ func _physics_process(delta) -> void:
 	
 	if !is_on_floor():
 		move_and_slide()
+		if !broken:
+			position.y = amp*sin(position.x/freq)
 	
 	if broken:
 		velocity.y += gravity
