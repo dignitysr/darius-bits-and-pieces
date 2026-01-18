@@ -68,7 +68,7 @@ enemy_name = "Nan"
 palettes = Array[Texture2D]([ExtResource("2_cktmi"), ExtResource("3_eru5y"), ExtResource("4_vuhoy"), ExtResource("2_lk4ow"), ExtResource("6_04n66")])
 health = 120.0
 parts_dropped = Dictionary[String, int]({
-"paper": 35,
+"paper": 25,
 "scrap": 25
 })
 

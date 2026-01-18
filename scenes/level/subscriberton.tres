@@ -16,12 +16,12 @@ waves = Array[Dictionary]([{
 }
 }, {
 "nan": {
-"number": 5,
+"number": 3,
 "rank": 0
 }
 }, {
 "customer": {
-"number": 10,
+"number": 12,
 "rank": 0
 },
 "nan": {
@@ -58,11 +58,11 @@ waves = Array[Dictionary]([{
 "rank": 0
 },
 "fedora": {
-"number": 10,
+"number": 5,
 "rank": 0
 },
 "fox": {
-"number": 1,
+"number": 5,
 "rank": 0
 },
 "nan": {
@@ -76,15 +76,190 @@ waves = Array[Dictionary]([{
 }
 }, {
 "customer": {
+"number": 8,
+"rank": 1
+},
+"fox": {
+"number": 8,
+"rank": 0
+}
+}, {
+"suit": {
+"number": 12,
+"rank": 0
+}
+}, {
+"nan": {
 "number": 5,
 "rank": 1
 }
 }, {
-"suit": {
+"balloon_boy": {
+"number": 3,
+"rank": 0
+},
+"fox": {
+"number": 8,
+"rank": 1
+}
+}, {
+"fedora": {
 "number": 10,
+"rank": 1
+},
+"luci": {
+"number": 5,
+"rank": 1
+}
+}, {
+"fox": {
+"number": 12,
+"rank": 0
+},
+"nan": {
+"number": 12,
 "rank": 0
 }
-}, {}, {}, {}, {}, {}, {}, {}, {}])
+}, {
+"balloon_boy": {
+"number": 5,
+"rank": 1
+},
+"customer": {
+"number": 20,
+"rank": 1
+}
+}, {
+"luci": {
+"number": 15,
+"rank": 0
+}
+}, {
+"customer": {
+"number": 20,
+"rank": 1
+},
+"suit": {
+"number": 10,
+"rank": 1
+}
+}, {
+"balloon_boy": {
+"number": 12,
+"rank": 2
+},
+"customer": {
+"number": 20,
+"rank": 2
+},
+"fedora": {
+"number": 18,
+"rank": "2"
+},
+"luci": {
+"number": 6,
+"rank": 2
+},
+"ufo": {
+"number": 1,
+"rank": 3
+}
+}, {
+"customer": {
+"number": 25,
+"rank": 2
+},
+"fox": {
+"number": 10,
+"rank": 2
+}
+}, {
+"fedora": {
+"number": 8,
+"rank": 2
+},
+"suit": {
+"number": 8,
+"rank": 2
+}
+}, {
+"customer": {
+"number": 12,
+"rank": 2
+},
+"nan": {
+"number": 10,
+"rank": 2
+}
+}, {
+"balloon_boy": {
+"number": 15,
+"rank": 2
+}
+}, {
+"customer": {
+"number": 12,
+"rank": 2
+},
+"suit": {
+"number": 8,
+"rank": 2
+}
+}, {
+"fedora": {
+"number": 13,
+"rank": 2
+},
+"fox": {
+"number": 13,
+"rank": 2
+},
+"luci": {
+"number": 4,
+"rank": 2
+}
+}, {
+"nan": {
+"number": 15,
+"rank": 2
+}
+}, {
+"balloon_boy": {
+"number": 10,
+"rank": 2
+},
+"customer": {
+"number": 10,
+"rank": 2
+}
+}, {
+"customer": {
+"number": 18,
+"rank": 3
+},
+"ufo": {
+"number": "3",
+"rank": 3
+}
+}, {
+"customer": {
+"number": 30,
+"rank": 3
+},
+"luci": {
+"number": 5,
+"rank": 3
+}
+}, {
+"queen": {
+"number": 1,
+"rank": 2
+},
+"suit": {
+"number": 8,
+"rank": 3
+}
+}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}])
 name = "Subscriberton"
 scene = "res://scenes/level/subscriberton.tscn"
 metadata/_custom_type_script = "uid://df00pj8834vq1"

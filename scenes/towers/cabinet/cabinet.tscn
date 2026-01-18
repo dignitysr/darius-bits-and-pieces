@@ -46,6 +46,7 @@ shader_parameter/intensity = 0.0
 [node name="Cabinet" instance=ExtResource("1_u8bp1")]
 script = ExtResource("2_taprt")
 variant_num = 1
+init_durability = 150.0
 damage = 4.0
 parts_dropped = Dictionary[String, int]({
 "paper": 60,

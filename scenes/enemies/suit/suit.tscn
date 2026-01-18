@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvdl6bch40dgo"]
+[gd_scene load_steps=15 format=3 uid="uid://ydo1v3gtuanu"]
 
 [ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_4r2si"]
 [ext_resource type="Texture2D" uid="uid://c4hrpkr7yd8ww" path="res://scenes/enemies/suit/green_palette.png" id="3_2htg6"]
@@ -69,8 +69,8 @@ palettes = Array[Texture2D]([ExtResource("9_0yjta"), ExtResource("3_2htg6"), Ext
 health = 250.0
 speed = 20.0
 parts_dropped = Dictionary[String, int]({
-"paper": 60,
-"scrap": 40
+"paper": 50,
+"scrap": 30
 })
 
 [node name="Animator" parent="." index="0"]

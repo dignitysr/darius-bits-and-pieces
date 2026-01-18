@@ -60,6 +60,7 @@ collision_mask = 128
 script = ExtResource("2_axli4")
 speed = 20.0
 variant_num = 1
+init_durability = 80.0
 damage = 20.0
 damage_mult = 3.0
 parts_dropped = Dictionary[String, int]({
