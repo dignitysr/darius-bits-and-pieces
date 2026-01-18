@@ -12,7 +12,7 @@
 [ext_resource type="Theme" uid="uid://csbmn3ra74l3n" path="res://assets/UI/base_theme.tres" id="10_cbsno"]
 [ext_resource type="PackedScene" uid="uid://xqkugpulmrnq" path="res://scenes/level/backgrounds/grass/grass_bg.tscn" id="11_lt3mr"]
 
-[node name="Subscriberton" instance=ExtResource("1_gqt81")]
+[node name="OopsOverhead" instance=ExtResource("1_gqt81")]
 wave_resource = ExtResource("2_gqt81")
 enemies_resource = ExtResource("3_kuir6")
 small_ranks_resource = ExtResource("4_lgb6q")
@@ -58,6 +58,6 @@ position = Vector2(0, 163)
 position = Vector2(32, 177)
 
 [node name="LoseAxis" parent="." index="13"]
-position = Vector2(578, 126)
+position = Vector2(655, 126)
 
 [editable path="Pause/Options"]

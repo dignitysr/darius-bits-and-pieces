@@ -58,6 +58,6 @@ position = Vector2(0, 163)
 position = Vector2(32, 177)
 
 [node name="LoseAxis" parent="." index="13"]
-position = Vector2(578, 126)
+position = Vector2(610, 126)
 
 [editable path="Pause/Options"]
