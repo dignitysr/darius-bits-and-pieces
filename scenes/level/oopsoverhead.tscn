@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=4 uid="uid://c5vixrqpyejel"]
+
+[ext_resource type="PackedScene" uid="uid://c0nclxadp8xws" path="res://scenes/level/base_level.tscn" id="1_gqt81"]
+[ext_resource type="Resource" uid="uid://4kqn4v6nfd86" path="res://scenes/level/oopsoverhead.tres" id="2_gqt81"]
+[ext_resource type="Resource" uid="uid://bcvclfg6r1av0" path="res://scenes/enemies/enemies.tres" id="3_kuir6"]
+[ext_resource type="Resource" uid="uid://bb2pamo51cvxh" path="res://scenes/UI/ranks/small_ranks.tres" id="4_lgb6q"]
+[ext_resource type="Resource" uid="uid://b3hvljlpew5e4" path="res://scenes/level/object_list.tres" id="5_tvcr2"]
+[ext_resource type="PackedScene" uid="uid://c7fkici0dc1ma" path="res://scenes/UI/parts_container.tscn" id="6_ja1ty"]
+[ext_resource type="PackedScene" uid="uid://cqhan3bhxm6h6" path="res://scenes/player/player.tscn" id="7_e64xy"]
+[ext_resource type="PackedScene" uid="uid://bv2xa0wek7j8t" path="res://scenes/UI/main menu/options/options.tscn" id="8_p7cab"]
+[ext_resource type="PackedScene" uid="uid://bjgaqr45hpelt" path="res://scenes/enemies/rickmech/rickmech.tscn" id="9_2dayt"]
+[ext_resource type="Theme" uid="uid://csbmn3ra74l3n" path="res://assets/UI/base_theme.tres" id="10_cbsno"]
+[ext_resource type="PackedScene" uid="uid://xqkugpulmrnq" path="res://scenes/level/backgrounds/grass/grass_bg.tscn" id="11_lt3mr"]
+
+[node name="Subscriberton" instance=ExtResource("1_gqt81")]
+wave_resource = ExtResource("2_gqt81")
+enemies_resource = ExtResource("3_kuir6")
+small_ranks_resource = ExtResource("4_lgb6q")
+objects_list = ExtResource("5_tvcr2")
+quantity_container = ExtResource("6_ja1ty")
+player_scene = ExtResource("7_e64xy")
+options_screen = ExtResource("8_p7cab")
+rickmech = ExtResource("9_2dayt")
+time_between_waves = 5.0
+rickmech_spawn_time = 10
+news_random_time = 100
+
+[node name="Tileset" parent="." index="2"]
+unique_name_in_owner = true
+z_index = -4096
+tile_map_data = PackedByteArray("AAD5/wEAAgACAAEAAAD4/wEAAgABAAEAAAD5/wIAAgACAAEAAAD5/wMAAgACAAEAAAD5/wQAAgACAAEAAAD4/wMAAgABAAEAAAD4/wQAAgABAAEAAAD4/wUAAgABAAIAAAD5/wUAAgACAAIAAAD4/wIAAgABAAEAAAD4/wAAAgABAAEAAAD4////AgABAAEAAAD4//7/AgABAAEAAAD4//3/AgABAAEAAAD4//z/AgABAAEAAAD4//v/AgABAAEAAAD5//v/AgADAAEAAAD5//r/AgADAAAAAAD5//z/AgADAAEAAAD5////AgADAAEAAAD5/wAAAgACAAEAAAD5//7/AgADAAEAAAD5//3/AgADAAEAAAD4//r/AgABAAAAAAAmAPz/AgABAAEAAAAmAPv/AgABAAEAAAAmAPr/AgABAAEAAAAmAPn/AgABAAAAAAAnAPn/AgADAAAAAAAnAPr/AgADAAEAAAAnAPv/AgADAAEAAAAnAPz/AgADAAEAAAAQAAAABgAGAAMAAAAPAAAABgAGAAMAAAAOAAAABgAGAAMAAAANAAAABgAGAAMAAAAMAAAABgAGAAMAAAALAAAABgAGAAMAAAAKAAAABgAGAAMAAAAJAAAABgAGAAMAAAAIAAAABgAGAAMAAAAHAAAABgAGAAMAAAAGAAAABgAGAAMAAAAFAAAABgAGAAMAAAAEAAAABgAGAAMAAAADAAAABgAGAAMAAAACAAAABgAGAAMAAAABAAAABgAGAAMAAAAAAAAABgAGAAAAAAD//wAABgAGAAAAAAD+/wAABgAGAAMAAAD9/wAABgAGAAMAAAD8/wAABgAGAAMAAAD7/wAABgAFAAMAAAD6/wAAAgADAAAAAAAnAAAAAgADAAEAAAAmAAAAAgACAAEAAAAlAAAAAgABAAAAAAAkAAAABgAHAAMAAAAjAAAABgAGAAMAAAAiAAAABgAGAAMAAAAhAAAABgAGAAMAAAAgAAAABgAGAAMAAAAfAAAABgAGAAMAAAAeAAAABgAGAAMAAAAdAAAABgAGAAAAAAAcAAAABgAGAAAAAAAbAAAABgAGAAMAAAAaAAAABgAGAAMAAAAZAAAABgAGAAMAAAAYAAAABgAGAAMAAAAXAAAABgAGAAMAAAAWAAAABgAGAAMAAAAVAAAABgAGAAMAAAAUAAAABgAGAAMAAAATAAAABgAGAAMAAAASAAAABgAGAAMAAAARAAAABgAGAAMAAAAdAAQABgAHAAEAAAAdAAMABgAHAAEAAAAdAAIABgAHAAEAAAAdAAEABgAHAAEAAAAcAAQABgAFAAEAAAAcAAMABgAFAAEAAAAcAAIABgAFAAEAAAAcAAEABgAFAAEAAAAAAAUABgAHAAIAAAAAAAQABgAHAAEAAAAAAAMABgAHAAEAAAAAAAIABgAHAAEAAAAAAAEABgAHAAEAAAD//wUABgAFAAIAAAD//wQABgAFAAEAAAD//wMABgAFAAEAAAD//wIABgAFAAEAAAD//wEABgAFAAEAAAAdAAUABgAHAAIAAAAcAAUABgAFAAIAAAAEAAUAAgACAAIAAAAEAAQAAgACAAEAAAADAAUAAgACAAIAAAADAAQAAgACAAEAAAACAAUAAgACAAIAAAACAAQAAgACAAEAAAABAAUAAgABAAIAAAABAAQAAgABAAEAAAAHAAUAAgACAAIAAAAGAAUAAgACAAIAAAAFAAUAAgACAAIAAAAIAAUAAgADAAMAAAAHAAQAAgADAAAAAAAGAAQAAgACAAAAAAAFAAQAAgACAAAAAAAEAAMAAgADAAAAAAADAAMAAgACAAAAAAACAAMAAgACAAAAAAABAAMAAgABAAAAAAD+/wUAAgADAAIAAAD+/wQAAgADAAEAAAD+/wMAAgADAAEAAAD+/wIAAgAAAAAAAAD9/wUAAgACAAIAAAD9/wQAAgACAAEAAAD9/wMAAgACAAAAAAD8/wUAAgACAAIAAAD8/wQAAgACAAEAAAD8/wMAAgACAAAAAAD7/wUAAgACAAIAAAD7/wQAAgACAAEAAAD7/wMAAgACAAAAAAD6/wUAAgACAAIAAAD6/wQAAgACAAEAAAD6/wMAAgACAAEAAAAkAAUAAgACAAIAAAAjAAUAAgACAAIAAAAiAAUAAgACAAIAAAAhAAUAAgACAAMAAAAgAAUAAgACAAMAAAAfAAUAAgACAAMAAAAeAAUAAgABAAMAAAAnAAUAAgADAAIAAAAnAAQAAgADAAEAAAAnAAMAAgADAAEAAAAnAAIAAgADAAEAAAAnAAEAAgADAAEAAAAmAAUAAgACAAIAAAAmAAQAAgACAAEAAAAmAAMAAgACAAEAAAAmAAIAAgACAAEAAAAmAAEAAgACAAEAAAAlAAUAAgACAAIAAAAlAAQAAgACAAEAAAAlAAMAAgACAAEAAAAkAAQAAgACAAEAAAAkAAMAAgABAAAAAAAjAAQAAgACAAAAAAAiAAQAAgABAAAAAAAlAAIAAgABAAEAAAAlAAEAAgABAAEAAAD6/wIAAgADAAEAAAD6/wEAAgADAAEAAAAnAP//AgADAAEAAAAnAP7/AgADAAEAAAAnAP3/AgADAAEAAAAmAP//AgABAAEAAAAmAP7/AgABAAEAAAAmAP3/AgABAAEAAAA=")
+
+[node name="Player" parent="." index="4"]
+position = Vector2(35, 170)
+
+[node name="BreakingNews" parent="UI" index="0"]
+z_index = 4096
+
+[node name="CraftPanel" parent="UI/CraftContainer/CraftMenu/VBoxContainer/ScrollContainer/CraftableContainer" index="0"]
+theme = ExtResource("10_cbsno")
+
+[node name="CraftPanel2" parent="UI/CraftContainer/CraftMenu/VBoxContainer/ScrollContainer/CraftableContainer" index="1"]
+theme = ExtResource("10_cbsno")
+
+[node name="BGLayer" parent="." index="7"]
+layer = -1
+
+[node name="Background" parent="BGLayer" index="0" instance=ExtResource("11_lt3mr")]
+z_index = -2
+
+[node name="PlaceValidator" parent="Preview" index="0"]
+collision_mask = 72
+
+[node name="EnemySpawner" parent="." index="11"]
+position = Vector2(0, 163)
+
+[node name="PlayerSpawner" parent="." index="12"]
+position = Vector2(32, 177)
+
+[node name="LoseAxis" parent="." index="13"]
+position = Vector2(578, 126)
+
+[editable path="Pause/Options"]
