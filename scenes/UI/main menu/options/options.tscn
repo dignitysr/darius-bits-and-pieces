@@ -8,15 +8,15 @@
 [ext_resource type="Script" uid="uid://dhsyvev6hbsod" path="res://scenes/UI/main menu/options/control.gd" id="4_7toq6"]
 [ext_resource type="Texture2D" uid="uid://ofxbeh156yjg" path="res://assets/UI/sprites/title_bg.png" id="4_087pr"]
 [ext_resource type="Texture2D" uid="uid://bwxlbkxy0k1x7" path="res://assets/UI/sprites/dither1.png" id="4_fus0m"]
-[ext_resource type="Script" uid="uid://cw0hsnuwkb5mk" path="res://scenes/UI/dither_mask.gd" id="5_087pr"]
+[ext_resource type="Script" path="res://scenes/UI/dither_mask.gd" id="5_087pr"]
 [ext_resource type="Script" uid="uid://bilq3m1mpqkuh" path="res://scenes/UI/main menu/options/tab_sound.gd" id="5_g7b26"]
 [ext_resource type="Script" uid="uid://drerhw7vrrjw" path="res://scenes/UI/main menu/options/achievements.gd" id="5_i6pal"]
 [ext_resource type="PackedScene" uid="uid://bfmpe5508ukf5" path="res://scenes/UI/main menu/options/achievement_button.tscn" id="6_shko1"]
-[ext_resource type="Script" uid="uid://d4lr3pduxhqer" path="res://scenes/UI/option_sound.gd" id="7_lhrrj"]
+[ext_resource type="Script" path="res://scenes/UI/option_sound.gd" id="7_lhrrj"]
 [ext_resource type="Script" uid="uid://cm1taalfwjv03" path="res://scenes/UI/main menu/options/stats.gd" id="7_shko1"]
-[ext_resource type="Script" uid="uid://boqqkki6t66yl" path="res://scenes/UI/slider_sound.gd" id="7_voccj"]
+[ext_resource type="Script" path="res://scenes/UI/slider_sound.gd" id="7_voccj"]
 [ext_resource type="Texture2D" uid="uid://cy8xsvim3t8mb" path="res://assets/UI/sprites/back.png" id="9_wsbjl"]
-[ext_resource type="Script" uid="uid://dkhkefsalmq5b" path="res://scenes/UI/button_sound.gd" id="11_nsjvu"]
+[ext_resource type="Script" path="res://scenes/UI/button_sound.gd" id="11_nsjvu"]
 [ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="12_g7b26"]
 [ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="13_lhrrj"]
 
@@ -1859,7 +1859,7 @@ theme_override_constants/tab_separation = 4
 theme_override_fonts/font = ExtResource("3_i6pal")
 theme_override_font_sizes/font_size = 16
 tab_alignment = 1
-current_tab = 1
+current_tab = 3
 tab_focus_mode = 0
 script = ExtResource("5_g7b26")
 
@@ -2000,6 +2000,7 @@ popup/item_3/id = 0
 script = ExtResource("7_lhrrj")
 
 [node name="Controls" type="Control" parent="DitherMask/MarginContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -2226,7 +2227,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Stats" type="Control" parent="DitherMask/MarginContainer/TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("7_shko1")
 metadata/_tab_index = 3
@@ -2261,6 +2261,28 @@ Defeated Rickmechs: 0"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="StatButtons" type="VBoxContainer" parent="DitherMask/MarginContainer/TabContainer/Stats"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -33.0
+offset_right = 89.0
+offset_bottom = 33.0
+grow_vertical = 2
+
+[node name="EndRun" type="Button" parent="DitherMask/MarginContainer/TabContainer/Stats/StatButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "End Run"
+script = ExtResource("11_nsjvu")
+
+[node name="ResetSave" type="Button" parent="DitherMask/MarginContainer/TabContainer/Stats/StatButtons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Reset Save"
+script = ExtResource("11_nsjvu")
 
 [node name="Return" type="Button" parent="DitherMask"]
 unique_name_in_owner = true
