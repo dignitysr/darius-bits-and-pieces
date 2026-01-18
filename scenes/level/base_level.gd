@@ -44,7 +44,7 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @onready var skip = %Skip
 
 var run_wave: bool = false
-var wave_number: int = -1
+var wave_number: int = 58
 var timer: float
 var subscribers: int = 1
 var x_range: int = 0
@@ -204,6 +204,7 @@ func _physics_process(delta) -> void:
 		news_timer -= delta
 		
 func run_infinite_wave():
+	time_between_enemies = 0.1
 	while true:
 		for enemy: String in enemies_resource.enemies:
 			for time in infinite_wave_enemy_repeat:

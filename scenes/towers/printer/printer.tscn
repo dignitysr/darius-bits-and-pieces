@@ -119,8 +119,8 @@ script = ExtResource("2_an1hb")
 variant_num = 1
 init_durability = 150.0
 parts_dropped = Dictionary[String, int]({
-"paper": 80,
-"scrap": 40
+"paper": 120,
+"scrap": 60
 })
 
 [node name="Animator" parent="." index="0"]

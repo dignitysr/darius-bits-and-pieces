@@ -6,6 +6,9 @@ const TRANS_TIME: float = 0.4
 @onready var active = %Active
 @onready var inactive = %Inactive
 
+func _ready():
+	MusicManager.play_song("dariusmenu")
+
 func trans(from: String, to: String):
 	var from_node: BaseMenu = get_node("%"+from)
 	var to_node: BaseMenu = get_node("%"+to)

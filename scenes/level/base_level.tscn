@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c0nclxadp8xws"]
+[gd_scene load_steps=55 format=3 uid="uid://c0nclxadp8xws"]
 
 [ext_resource type="Script" uid="uid://c8kx2jgqnthg4" path="res://scenes/level/base_level.gd" id="1_5675d"]
 [ext_resource type="Script" uid="uid://c3d6hdxo3ibrw" path="res://scenes/level/parts_manager.gd" id="1_ebx1s"]
@@ -31,9 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://dsjsfh2jh5fbr" path="res://scenes/UI/assets/time_wave_skip_icon.png" id="26_e448n"]
 [ext_resource type="Texture2D" uid="uid://77e28h1eni7f" path="res://scenes/UI/assets/postcard_purple.png" id="26_nehen"]
 [ext_resource type="PackedScene" uid="uid://b5k6bsbagrg4b" path="res://scenes/UI/quantitylabel.tscn" id="28_ojr21"]
-[ext_resource type="Script" path="res://scenes/UI/menuquantity.gd" id="29_u30a0"]
+[ext_resource type="Script" uid="uid://7ffmxg44e1bj" path="res://scenes/UI/menuquantity.gd" id="29_u30a0"]
 [ext_resource type="Texture2D" uid="uid://3rapfa1hagkb" path="res://assets/UI/sprites/icons.png" id="30_5675d"]
-[ext_resource type="PackedScene" uid="uid://hdcirvb0lglh" path="res://scenes/UI/tutorial.tscn" id="33_5dmh0"]
 
 [sub_resource type="Animation" id="Animation_ollns"]
 length = 0.001
@@ -900,8 +899,6 @@ volume_db = -6.0
 bus = &"SFX"
 
 [node name="BGLayer" type="CanvasLayer" parent="."]
-
-[node name="Tutorial" parent="." instance=ExtResource("33_5dmh0")]
 
 [node name="TransitionPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

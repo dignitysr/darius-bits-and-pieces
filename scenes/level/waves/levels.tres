@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="LevelsResource" load_steps=5 format=3 uid="uid://cc0dqjm7dsbx0"]
+[gd_resource type="Resource" script_class="LevelsResource" load_steps=7 format=3 uid="uid://cc0dqjm7dsbx0"]
 
 [ext_resource type="Script" uid="uid://df00pj8834vq1" path="res://scenes/level/waves/level_resource.gd" id="1_mpn80"]
-[ext_resource type="Resource" uid="uid://cvmsn0drl6n0t" path="res://scenes/level/test_level.tres" id="2_3f32d"]
 [ext_resource type="Resource" uid="uid://ctsv84yvufedj" path="res://scenes/level/subscriberton.tres" id="3_3f32d"]
 [ext_resource type="Script" uid="uid://bb67okpdrpdms" path="res://scenes/level/waves/levels_resource.gd" id="3_k60k7"]
+[ext_resource type="Resource" path="res://scenes/level/thealtroute.tres" id="3_nwkvd"]
+[ext_resource type="Resource" path="res://scenes/level/mailopolis.tres" id="4_qyd5i"]
+[ext_resource type="Resource" path="res://scenes/level/oopsoverhead.tres" id="5_sj3wg"]
 
 [resource]
 script = ExtResource("3_k60k7")
-levels = Array[ExtResource("1_mpn80")]([ExtResource("2_3f32d"), ExtResource("3_3f32d")])
+levels = Array[ExtResource("1_mpn80")]([ExtResource("3_3f32d"), ExtResource("3_nwkvd"), ExtResource("4_qyd5i"), ExtResource("5_sj3wg")])

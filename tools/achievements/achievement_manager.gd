@@ -37,6 +37,12 @@ func sort_ascending(a: AchievementData, b: AchievementData):
 		return true
 	return false
 
+func reset_achievements() -> void:
+	for achievement in achievements:
+		if achievements[achievement].unlocked:
+			achievements[achievement].unlocked = false
+			Save.change_setting("achievements", achievements[achievement].achievement_name, false)
+	unlocked_achievements = 0
 
 func store_achievements(achievement_name: String, description: String) -> void:
 	var achievement = Achievement.new(achievement_name, description)
