@@ -1,6 +1,6 @@
 [gd_scene load_steps=56 format=3 uid="uid://c0nclxadp8xws"]
 
-[ext_resource type="Script" uid="uid://c8kx2jgqnthg4" path="res://scenes/level/base_level.gd" id="1_2qxot"]
+[ext_resource type="Script" uid="uid://hh4gxouv6okc" path="res://scenes/level/subscriberton.gd" id="1_5675d"]
 [ext_resource type="Script" uid="uid://c3d6hdxo3ibrw" path="res://scenes/level/parts_manager.gd" id="1_ebx1s"]
 [ext_resource type="Resource" uid="uid://b3hvljlpew5e4" path="res://scenes/level/object_list.tres" id="2_upopr"]
 [ext_resource type="Resource" uid="uid://c57gvffr23thc" path="res://scenes/level/items/recipes.tres" id="3_7xj1c"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://bb8p24vsdb0d5" path="res://scenes/level/tiles/dirt.tscn" id="5_uhv4h"]
 [ext_resource type="Resource" uid="uid://bb2pamo51cvxh" path="res://scenes/UI/ranks/small_ranks.tres" id="6_8x4to"]
 [ext_resource type="Texture2D" uid="uid://82p0pdd7hmbp" path="res://assets/UI/sprites/craft_open.png" id="7_8xnqg"]
-[ext_resource type="PackedScene" uid="uid://bjgaqr45hpelt" path="res://scenes/enemies/rickmech/rickmech.tscn" id="7_jom2h"]
 [ext_resource type="PackedScene" uid="uid://cqhan3bhxm6h6" path="res://scenes/player/player.tscn" id="7_u35hf"]
 [ext_resource type="Texture2D" uid="uid://bpuyyxr8cjyex" path="res://scenes/UI/assets/panel_style.png" id="9_466n5"]
 [ext_resource type="Texture2D" uid="uid://c8yfpxu12d6w7" path="res://scenes/towers/mailbox/assets.png" id="9_wq2a1"]
@@ -23,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bpn3k8st5fbbl" path="res://assets/UI/sprites/breaking_news_white.png" id="15_41h08"]
 [ext_resource type="Texture2D" uid="uid://c2dj8h476f7ps" path="res://scenes/UI/assets/slider plus money.png" id="15_852lj"]
 [ext_resource type="Texture2D" uid="uid://cn323qcyjay3l" path="res://scenes/UI/assets/subs.png" id="17_wk8xf"]
-[ext_resource type="Script" uid="uid://dkhkefsalmq5b" path="res://scenes/UI/button_sound.gd" id="21_lqmad"]
+[ext_resource type="Script" path="res://scenes/UI/button_sound.gd" id="21_lqmad"]
 [ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="22_ortha"]
 [ext_resource type="Texture2D" uid="uid://ceq1nlv10avvn" path="res://scenes/UI/assets/time_wave_icon.png" id="23_iqd4w"]
 [ext_resource type="Texture2D" uid="uid://cy3beebinav3m" path="res://scenes/UI/assets/wave.png" id="23_kjtf7"]
@@ -34,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://b5k6bsbagrg4b" path="res://scenes/UI/quantitylabel.tscn" id="28_ojr21"]
 [ext_resource type="Script" uid="uid://7ffmxg44e1bj" path="res://scenes/UI/menuquantity.gd" id="29_u30a0"]
 [ext_resource type="Texture2D" uid="uid://3rapfa1hagkb" path="res://assets/UI/sprites/icons.png" id="30_5675d"]
+[ext_resource type="PackedScene" uid="uid://hdcirvb0lglh" path="res://scenes/UI/tutorial.tscn" id="33_5dmh0"]
 
 [sub_resource type="Animation" id="Animation_ollns"]
 length = 0.001
@@ -419,13 +419,7 @@ atlas = ExtResource("9_wq2a1")
 region = Rect2(0, 0, 16, 32)
 
 [node name="BaseLevel" type="Node2D"]
-script = ExtResource("1_2qxot")
-small_ranks_resource = ExtResource("6_8x4to")
-objects_list = ExtResource("2_upopr")
-quantity_container = ExtResource("13_qf4k4")
-player_scene = ExtResource("7_u35hf")
-options_screen = ExtResource("5_co8g8")
-rickmech = ExtResource("7_jom2h")
+script = ExtResource("1_5675d")
 
 [node name="Towers" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -477,6 +471,7 @@ mouse_filter = 2
 script = ExtResource("14_41h08")
 
 [node name="Red" type="Sprite2D" parent="UI/BreakingNews"]
+z_index = -4096
 position = Vector2(240, 247)
 texture = ExtResource("14_ufabe")
 
@@ -905,6 +900,8 @@ volume_db = -6.0
 bus = &"SFX"
 
 [node name="BGLayer" type="CanvasLayer" parent="."]
+
+[node name="Tutorial" parent="." instance=ExtResource("33_5dmh0")]
 
 [node name="TransitionPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
