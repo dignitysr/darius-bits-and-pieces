@@ -24,6 +24,10 @@ recipes = Dictionary[String, Dictionary]({
 "rolling_cage": {
 "paper": 150,
 "scrap": 200
+},
+"tote_bag": {
+"paper": 300,
+"scrap": 250
 }
 })
 metadata/_custom_type_script = "uid://b7cxwhqxoa3ua"

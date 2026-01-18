@@ -1,0 +1,116 @@
+[gd_scene load_steps=18 format=3 uid="uid://cjqxe7fo38a4v"]
+
+[ext_resource type="PackedScene" uid="uid://b5j3fw6p1qo80" path="res://scenes/towers/base_tower.tscn" id="1_0whvc"]
+[ext_resource type="Script" uid="uid://va1dd73eei0v" path="res://scenes/towers/flying tote bag/tote_bag.gd" id="2_0whvc"]
+[ext_resource type="PackedScene" uid="uid://c0ufyyp0yfay8" path="res://scenes/towers/mail.tscn" id="2_7twf0"]
+[ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="3_5fto6"]
+[ext_resource type="Texture2D" uid="uid://dgwbgmckbjr1t" path="res://scenes/towers/flying tote bag/spritesheet.png" id="4_ylxae"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mgtj1"]
+resource_local_to_scene = true
+shader = ExtResource("3_5fto6")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0whvc"]
+atlas = ExtResource("4_ylxae")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7twf0"]
+atlas = ExtResource("4_ylxae")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fto6"]
+atlas = ExtResource("4_ylxae")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylxae"]
+atlas = ExtResource("4_ylxae")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq0ey"]
+atlas = ExtResource("4_ylxae")
+region = Rect2(96, 25, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7iccu"]
+atlas = ExtResource("4_ylxae")
+region = Rect2(120, 25, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a6ck"]
+atlas = ExtResource("4_ylxae")
+region = Rect2(144, 25, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mobu"]
+atlas = ExtResource("4_ylxae")
+region = Rect2(168, 25, 24, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ta3pg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0whvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7twf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fto6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylxae")
+}],
+"loop": true,
+"name": &"1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jq0ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7iccu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6a6ck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mobu")
+}],
+"loop": true,
+"name": &"1shoot",
+"speed": 10.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ipbwf"]
+resource_local_to_scene = true
+shader = ExtResource("3_5fto6")
+shader_parameter/intensity = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0whvc"]
+size = Vector2(20, 16)
+
+[node name="ToteBag" instance=ExtResource("1_0whvc")]
+collision_layer = 0
+script = ExtResource("2_0whvc")
+speed = 10.0
+gravity = 10.0
+variant_num = 1
+init_durability = 1.0
+mail = ExtResource("2_7twf0")
+
+[node name="Animator" parent="." index="0"]
+material = SubResource("ShaderMaterial_mgtj1")
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_ta3pg")
+animation = &"1"
+autoplay = "1"
+frame_progress = 0.26593825
+
+[node name="Spawner" parent="." index="1"]
+position = Vector2(0, -3)
+
+[node name="DebrisSprite" parent="." index="5"]
+material = SubResource("ShaderMaterial_ipbwf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="7"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_0whvc")

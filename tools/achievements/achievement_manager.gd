@@ -25,7 +25,7 @@ signal done_loading
 
 func _ready() -> void:
 	for resource: String in DirAccess.get_files_at(resource_dir):
-		var achievement: AchievementData = load(resource_dir + resource)
+		var achievement: AchievementData = load(resource_dir + resource.trim_suffix(".remap"))
 		achievement_keys.append(achievement)
 	achievement_keys.sort_custom(sort_ascending)
 	for achievement: AchievementData in achievement_keys:

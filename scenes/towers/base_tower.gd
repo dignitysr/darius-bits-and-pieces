@@ -65,10 +65,16 @@ func _physics_process(delta) -> void:
 					min_dist = dist
 					selected_enemy = enemy_area.get_parent()
 					if animator.sprite_frames.has_animation(str(random_frame) + "shoot"):
+						var frame = animator.frame
 						animator.animation = str(random_frame) + "shoot"
+						if animator.sprite_frames.get_frame_count(str(random_frame) + "shoot") > 1:
+							animator.frame = frame
 		if !"EnemyArea" in str(enemy_detection.get_overlapping_areas()):
 			selected_enemy = null
+			var frame = animator.frame
 			animator.animation = str(random_frame)
+			if animator.sprite_frames.get_frame_count(str(random_frame)) > 1:
+				animator.frame = frame
 		if cooldown > 0:
 			cooldown -= 1
 		if cooldown <= 0:

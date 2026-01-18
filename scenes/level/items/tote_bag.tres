@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ObjectResource" load_steps=5 format=3 uid="uid://tglmc3xpudbl"]
+
+[ext_resource type="Texture2D" uid="uid://dgwbgmckbjr1t" path="res://scenes/towers/flying tote bag/spritesheet.png" id="1_wpt0e"]
+[ext_resource type="PackedScene" uid="uid://cjqxe7fo38a4v" path="res://scenes/towers/flying tote bag/tote_bag.tscn" id="2_8fg5q"]
+[ext_resource type="Script" uid="uid://dlopniqc5ddwe" path="res://scenes/level/items/objects.gd" id="3_v0m4j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0m4j"]
+atlas = ExtResource("1_wpt0e")
+region = Rect2(0, 0, 24, 24)
+
+[resource]
+script = ExtResource("3_v0m4j")
+object_name = "Flying Tote Bag"
+icon = SubResource("AtlasTexture_v0m4j")
+preview = SubResource("AtlasTexture_v0m4j")
+scene = ExtResource("2_8fg5q")
+metadata/_custom_type_script = "uid://dlopniqc5ddwe"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ObjectList" load_steps=9 format=3 uid="uid://b3hvljlpew5e4"]
+[gd_resource type="Resource" script_class="ObjectList" load_steps=10 format=3 uid="uid://b3hvljlpew5e4"]
 
 [ext_resource type="Resource" uid="uid://daqed0ax142bl" path="res://scenes/level/items/mailbox.tres" id="1_kvvoh"]
 [ext_resource type="Resource" uid="uid://bxxp2orfrjpqe" path="res://scenes/level/parts/paper.tres" id="2_ewlxi"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://co8mjc8mf2wdt" path="res://scenes/level/items/rolling_cage.tres" id="5_0cfgq"]
 [ext_resource type="Resource" uid="uid://chev00ra80yce" path="res://scenes/level/items/cabinet.tres" id="6_70eck"]
 [ext_resource type="Resource" uid="uid://bunlrp2tal7sj" path="res://scenes/level/items/printer.tres" id="7_pk0k0"]
+[ext_resource type="Resource" uid="uid://tglmc3xpudbl" path="res://scenes/level/items/tote_bag.tres" id="8_0ssea"]
 
 [resource]
 script = ExtResource("4_70eck")
@@ -18,6 +19,7 @@ parts = Dictionary[String, Resource]({
 "paper": ExtResource("2_ewlxi"),
 "printer": ExtResource("7_pk0k0"),
 "rolling_cage": ExtResource("5_0cfgq"),
-"scrap": ExtResource("3_0cfgq")
+"scrap": ExtResource("3_0cfgq"),
+"tote_bag": ExtResource("8_0ssea")
 })
 metadata/_custom_type_script = "uid://c3t0unjlym1l0"
