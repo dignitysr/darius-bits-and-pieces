@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dhwe3cxbwn8pc"]
 
 [ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_p247t"]
-[ext_resource type="Script" uid="uid://dsbgc6lekqdpo" path="res://scenes/enemies/balloon_boy/flier.gd" id="2_ajjna"]
+[ext_resource type="Script" path="res://scenes/enemies/balloon_boy/flier.gd" id="2_ajjna"]
 [ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="7_15vry"]
 [ext_resource type="Texture2D" uid="uid://be7vygw8oy3g3" path="res://scenes/enemies/UFO/spritesheet.png" id="8_ianhs"]
 [ext_resource type="Texture2D" uid="uid://cgjy2ec6khon2" path="res://scenes/enemies/UFO/regular_palette.png" id="8_sbgdo"]
@@ -48,6 +48,9 @@ animations = [{
 [node name="UFO" instance=ExtResource("1_p247t")]
 script = ExtResource("2_ajjna")
 health = 20.0
+parts_dropped = Dictionary[String, int]({
+"paper": 40
+})
 
 [node name="Animator" parent="." index="0"]
 material = SubResource("ShaderMaterial_sbgdo")

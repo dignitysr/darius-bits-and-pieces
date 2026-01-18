@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dm13ljgyi33hk"]
 
 [ext_resource type="PackedScene" uid="uid://c4pq0ef4dqlxw" path="res://scenes/enemies/base_enemy.tscn" id="1_jog54"]
-[ext_resource type="Script" uid="uid://dsbgc6lekqdpo" path="res://scenes/enemies/balloon_boy/flier.gd" id="2_0vabs"]
+[ext_resource type="Script" path="res://scenes/enemies/balloon_boy/flier.gd" id="2_0vabs"]
 [ext_resource type="Shader" uid="uid://cit2vi7vacy2k" path="res://tools/shaders/palette_swap.gdshader" id="2_6w33j"]
 [ext_resource type="Texture2D" uid="uid://bwoooau5eu75h" path="res://scenes/enemies/balloon_boy/regular_palette.png" id="3_0vabs"]
 [ext_resource type="Texture2D" uid="uid://dj48rsrkchsv7" path="res://scenes/enemies/balloon_boy/spritesheet.png" id="3_6w33j"]
@@ -55,6 +55,10 @@ animations = [{
 [node name="BalloonBoy" instance=ExtResource("1_jog54")]
 script = ExtResource("2_0vabs")
 health = 20.0
+parts_dropped = Dictionary[String, int]({
+"paper": 10,
+"scrap": 1
+})
 
 [node name="Animator" parent="." index="0"]
 material = SubResource("ShaderMaterial_pin7q")

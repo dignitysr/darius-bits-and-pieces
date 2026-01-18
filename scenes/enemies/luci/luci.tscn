@@ -70,7 +70,7 @@ health = 30.0
 speed = 100.0
 parts_dropped = Dictionary[String, int]({
 "paper": 35,
-"scrap": 25
+"scrap": 15
 })
 
 [node name="Animator" parent="." index="0"]
