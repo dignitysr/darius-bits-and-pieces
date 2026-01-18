@@ -35,8 +35,9 @@ func restart_pressed():
 	
 func update_page():
 	for child in get_children():
-		if str(page) in child.name:
-			child.show()
-		else:
-			child.hide()
-			
+		if not child is AudioStreamPlayer:
+			if str(page) in child.name:
+				child.show()
+			else:
+				child.hide()
+				

@@ -1,6 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://hdcirvb0lglh"]
+[gd_scene load_steps=12 format=3 uid="uid://ch0rpo4cclfn"]
 
-[ext_resource type="Script" uid="uid://deus8ckbsiii4" path="res://scenes/UI/tutorial.gd" id="1_y1uxg"]
+[ext_resource type="Script" path="res://scenes/UI/tutorial.gd" id="1_y1uxg"]
+[ext_resource type="Script" uid="uid://dkhkefsalmq5b" path="res://scenes/UI/button_sound.gd" id="2_blqdf"]
+[ext_resource type="AudioStream" uid="uid://6eguvan68vbs" path="res://assets/UI/sounds/hover.wav" id="3_mteb2"]
+[ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="4_c1gck"]
 
 [sub_resource type="Gradient" id="Gradient_nehen"]
 offsets = PackedFloat32Array(0.2, 0.3)
@@ -112,11 +115,13 @@ alignment = 1
 layout_mode = 2
 focus_mode = 0
 text = "Skip"
+script = ExtResource("2_blqdf")
 
 [node name="Next" type="Button" parent="Page1/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "Next"
+script = ExtResource("2_blqdf")
 
 [node name="Page2" type="Control" parent="."]
 visible = false
@@ -169,11 +174,13 @@ alignment = 1
 layout_mode = 2
 focus_mode = 0
 text = "Back"
+script = ExtResource("2_blqdf")
 
 [node name="Next" type="Button" parent="Page2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "Next"
+script = ExtResource("2_blqdf")
 
 [node name="Page3" type="Control" parent="."]
 visible = false
@@ -228,11 +235,13 @@ alignment = 1
 layout_mode = 2
 focus_mode = 0
 text = "Back"
+script = ExtResource("2_blqdf")
 
 [node name="Next" type="Button" parent="Page3/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "Next"
+script = ExtResource("2_blqdf")
 
 [node name="Page4" type="Control" parent="."]
 visible = false
@@ -286,11 +295,13 @@ alignment = 1
 layout_mode = 2
 focus_mode = 0
 text = "Back"
+script = ExtResource("2_blqdf")
 
 [node name="Next" type="Button" parent="Page4/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "Next"
+script = ExtResource("2_blqdf")
 
 [node name="Page5" type="Control" parent="."]
 visible = false
@@ -347,11 +358,13 @@ alignment = 1
 layout_mode = 2
 focus_mode = 0
 text = "Back"
+script = ExtResource("2_blqdf")
 
 [node name="Next" type="Button" parent="Page5/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "Next"
+script = ExtResource("2_blqdf")
 
 [node name="Page6" type="Control" parent="."]
 visible = false
@@ -407,11 +420,13 @@ alignment = 1
 layout_mode = 2
 focus_mode = 0
 text = "Back"
+script = ExtResource("2_blqdf")
 
 [node name="Next" type="Button" parent="Page6/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "Next"
+script = ExtResource("2_blqdf")
 
 [node name="Page7" type="Control" parent="."]
 visible = false
@@ -464,11 +479,13 @@ alignment = 1
 layout_mode = 2
 focus_mode = 0
 text = "Back"
+script = ExtResource("2_blqdf")
 
 [node name="Next" type="Button" parent="Page7/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "Next"
+script = ExtResource("2_blqdf")
 
 [node name="Page8" type="Control" parent="."]
 visible = false
@@ -516,8 +533,22 @@ alignment = 1
 layout_mode = 2
 focus_mode = 0
 text = "Yep"
+script = ExtResource("2_blqdf")
 
 [node name="Restart" type="Button" parent="Page8/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 text = "What?"
+script = ExtResource("2_blqdf")
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_mteb2")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="PressSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_c1gck")
+volume_db = -6.0
+bus = &"SFX"
