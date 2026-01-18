@@ -40,6 +40,7 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @onready var wave_counter = %WaveCounter
 @onready var time_counter = %TimeCounter
 @onready var time_container = %TimeContainer
+@onready var skip = %Skip
 
 var run_wave: bool = false
 var wave_number: int = -1
@@ -118,6 +119,7 @@ func _ready() -> void:
 	update_stats()
 	news_timer = randf_range(news_random_time/2.0, news_random_time)
 	net_worth.value_changed.connect(on_net_worth_changed)
+	skip.connect("button_down", on_skip_pressed)
 	darius_name_label.text = darius_name
 	ability_label.text = 'Featuring: ' + buffs[active_buff]
 	timer = time_between_waves
@@ -138,6 +140,7 @@ func _physics_process(delta) -> void:
 	if old_net_worth_max_value != net_worth.max_value:
 		on_net_worth_changed(0) #value doesn't matter
 	old_net_worth_max_value = net_worth.max_value
+	skip.disabled = timer == time_between_waves
 	if run_wave && enemy_container.get_children().is_empty():
 		dither(0, 1)
 		for enemy: String in wave_resource.waves[wave_number]:
@@ -314,3 +317,7 @@ func on_net_worth_changed(_value) -> void:
 			anim_player.play("RESET")
 			var red_amount: float = net_worth.value / net_worth.max_value
 			net_worth_label.add_theme_color_override('font_color', lerp(Color.WHITE, Color("e35100"), red_amount))
+
+func on_skip_pressed():
+	print("t")
+	timer = 0

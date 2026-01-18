@@ -49,5 +49,4 @@ func load_stats() -> void:
 func save_stats() -> void:
 	for stat: String in stats:
 		if !"unsaved" in stat:
-			print(typeof(stats[stat]))
 			Save.change_setting("stats", stat, stats[stat])

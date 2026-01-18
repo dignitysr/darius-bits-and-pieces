@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=41 format=3 uid="uid://csbmn3ra74l3n"]
+[gd_resource type="Theme" load_steps=47 format=3 uid="uid://csbmn3ra74l3n"]
 
 [ext_resource type="FontFile" uid="uid://dr00saqh1n260" path="res://assets/UI/fonts/Timetwist-Regular.ttf" id="1_0bjdy"]
 [ext_resource type="FontFile" uid="uid://hhk5nxahpwd" path="res://assets/UI/fonts/BlockBlueprint.ttf" id="1_r5wb6"]
@@ -184,6 +184,38 @@ texture_margin_right = 7.0
 texture_margin_bottom = 7.0
 region_rect = Rect2(0, 0, 16, 16)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yytsw"]
+load_path = "res://.godot/imported/slider plus scroll.png-3004dac77a4614a605983deeec3e7503.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vbym"]
+atlas = SubResource("CompressedTexture2D_yytsw")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pp2ok"]
+texture = SubResource("AtlasTexture_3vbym")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(1, 1, 1, 0.62352943)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ocj7d"]
+load_path = "res://.godot/imported/slider plus scroll.png-3004dac77a4614a605983deeec3e7503.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er86s"]
+atlas = SubResource("CompressedTexture2D_ocj7d")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bdgxi"]
+texture = SubResource("AtlasTexture_er86s")
+texture_margin_left = 7.0
+texture_margin_top = 7.0
+texture_margin_right = 7.0
+texture_margin_bottom = 7.0
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.6542321, 0.6542321, 0.654232, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xaefs"]
 atlas = ExtResource("6_cluda")
 region = Rect2(0, 64, 16, 16)
@@ -271,4 +303,6 @@ TabContainer/styles/panel = SubResource("StyleBoxTexture_xdgv2")
 TabContainer/styles/tab_selected = null
 TabContainer/styles/tab_unselected = null
 VScrollBar/styles/grabber = SubResource("StyleBoxTexture_0bjdy")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_pp2ok")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_bdgxi")
 VScrollBar/styles/scroll = SubResource("StyleBoxTexture_yytsw")

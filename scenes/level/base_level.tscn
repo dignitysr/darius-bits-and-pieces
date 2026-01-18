@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://c0nclxadp8xws"]
+[gd_scene load_steps=50 format=3 uid="uid://c0nclxadp8xws"]
 
 [ext_resource type="Script" uid="uid://c8kx2jgqnthg4" path="res://scenes/level/base_level.gd" id="1_2qxot"]
 [ext_resource type="Script" uid="uid://c3d6hdxo3ibrw" path="res://scenes/level/parts_manager.gd" id="1_ebx1s"]
@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://cy3beebinav3m" path="res://scenes/UI/assets/wave.png" id="23_kjtf7"]
 [ext_resource type="AudioStream" uid="uid://dt1pvawkjkn2b" path="res://assets/UI/sounds/press.wav" id="23_lqmad"]
 [ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="23_ollns"]
+[ext_resource type="Texture2D" uid="uid://dsjsfh2jh5fbr" path="res://scenes/UI/assets/time_wave_skip_icon.png" id="26_e448n"]
+[ext_resource type="Texture2D" uid="uid://77e28h1eni7f" path="res://scenes/UI/assets/postcard_purple.png" id="26_nehen"]
 
 [sub_resource type="Animation" id="Animation_ollns"]
 length = 0.001
@@ -110,6 +112,14 @@ region = Rect2(0, 16, 16, 16)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kjtf7"]
 shader = ExtResource("23_ollns")
 shader_parameter/intensity = 0.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r82wg"]
+texture = ExtResource("26_nehen")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 17, 17)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_se6ax"]
 texture = ExtResource("9_466n5")
@@ -613,6 +623,7 @@ offset_left = -200.0
 offset_right = 115.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("4_e1fnv")
 alignment = 2
 
@@ -725,6 +736,49 @@ use_parent_material = true
 layout_mode = 2
 text = "30"
 horizontal_alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/CraftContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Skip" type="Button" parent="UI/CraftContainer/VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_kjtf7")
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/disabled = SubResource("StyleBoxTexture_r82wg")
+icon = ExtResource("26_e448n")
+icon_alignment = 1
+script = ExtResource("21_lqmad")
+
+[node name="Icon" type="TextureRect" parent="UI/CraftContainer/VBoxContainer/CenterContainer/Skip"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 24.0
+offset_bottom = 24.0
+mouse_filter = 2
+texture = ExtResource("26_e448n")
+stretch_mode = 5
+
+[node name="Shadow" type="TextureRect" parent="UI/CraftContainer/VBoxContainer/CenterContainer/Skip/Icon"]
+modulate = Color(0.1254902, 0, 0.69803923, 0.5019608)
+show_behind_parent = true
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("26_e448n")
+stretch_mode = 5
 
 [node name="CraftMenu" type="Panel" parent="UI/CraftContainer"]
 custom_minimum_size = Vector2(113.205, 0)

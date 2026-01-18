@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_8ofaf")
 waves = Array[Dictionary]([{
-"queen": {
+"balloon_boy": {
 "number": 10,
 "rank": 0
 }
@@ -15,7 +15,7 @@ waves = Array[Dictionary]([{
 "rank": 0
 }
 }, {
-"balloon_boy": {
+"queen": {
 "number": 10,
 "rank": 0
 }
