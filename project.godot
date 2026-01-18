@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="darius bits and pieces"
+config/name="Darius TD: Total Distribution"
 run/main_scene="uid://dh30ifxl6br0p"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -27,7 +27,6 @@ MusicManager="*res://tools/music_manager.tscn"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
-window/size/resizable=false
 window/size/maximize_disabled=true
 window/size/window_width_override=960
 window/size/window_height_override=540

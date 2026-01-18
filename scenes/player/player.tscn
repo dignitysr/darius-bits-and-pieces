@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://yag527r55u83" path="res://scenes/player/classes/rotationmanager.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://cf38apg2cgbbb" path="res://scenes/player/states/jump.gd" id="5_qek5x"]
 [ext_resource type="Script" uid="uid://cgvo2naoyxku4" path="res://scenes/player/states/none.gd" id="6_0owmy"]
-[ext_resource type="Script" path="res://scenes/player/overlay_sync.gd" id="6_fcs02"]
+[ext_resource type="Script" uid="uid://426eqnrthfrl" path="res://scenes/player/overlay_sync.gd" id="6_fcs02"]
 [ext_resource type="AudioStream" uid="uid://ddb02k8r8tscn" path="res://scenes/player/assets/sounds/footstep2.wav" id="6_ugbui"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fcs02"]

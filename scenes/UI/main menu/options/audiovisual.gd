@@ -20,7 +20,15 @@ func _ready():
 			editable_options[child.name] = child
 			child.connect("item_selected", option_selected.bind(child.name))
 			child._select_int(Save.load_setting("options", child.name, 0))
-			option_selected(Save.load_setting("options", child.name, 0), child.name)
+			if OS.get_name() == "Web":
+				if child.name != "WindowScale":
+					option_selected(Save.load_setting("options", child.name, 0), child.name)
+				else:
+					child.remove_item(1)
+					child.remove_item(1)
+			else:
+				if child.name != "WindowScale" or owner.get_parent().owner.name == "MenuController":
+					option_selected(Save.load_setting("options", child.name, 0), child.name)
 
 
 func slider_changed(value: float, slider: String) -> void:
@@ -49,15 +57,23 @@ func option_selected(index: int, option: String) -> void:
 			FPS.DISABLE:
 				get_tree().quit()
 	elif option == "WindowScale":
-		match index:
-			SCALE.ONE:
-				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-				get_window().size = default_window_scale
-			SCALE.TWO:
-				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-				get_window().size = default_window_scale*1.5
-			SCALE.THREE:
-				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-				get_window().size = default_window_scale*2
-			SCALE.FULL:
-				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		if OS.get_name() == "Web":
+			match index:
+				SCALE.ONE:
+					DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+					get_window().size = default_window_scale*2
+				SCALE.TWO:
+					DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		else:
+			match index:
+				SCALE.ONE:
+					DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+					get_window().size = default_window_scale
+				SCALE.TWO:
+					DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+					get_window().size = default_window_scale*1.5
+				SCALE.THREE:
+					DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+					get_window().size = default_window_scale*2
+				SCALE.FULL:
+					DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
