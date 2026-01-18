@@ -91,8 +91,10 @@ size = Vector2(20, 16)
 [node name="ToteBag" instance=ExtResource("1_0whvc")]
 collision_layer = 0
 script = ExtResource("2_0whvc")
-speed = 10.0
+speed = 20.0
 gravity = 10.0
+amp = 8
+freq = 6
 variant_num = 1
 init_durability = 1.0
 mail = ExtResource("2_7twf0")
@@ -101,9 +103,9 @@ mail = ExtResource("2_7twf0")
 material = SubResource("ShaderMaterial_mgtj1")
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_ta3pg")
-animation = &"1"
+animation = &"1shoot"
 autoplay = "1"
-frame_progress = 0.26593825
+frame_progress = 0.30648613
 
 [node name="Spawner" parent="." index="1"]
 position = Vector2(0, -3)

@@ -20,6 +20,7 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @export var time_between_enemies: float = 0.5 ## In seconds
 @export var rickmech_spawn_time = 300
 @export var news_random_time: int = 360
+@export var infinite_wave_enemy_repeat: int = 10
 
 @onready var enemy_spawner = %EnemySpawner
 @onready var enemy_container = %Enemies
@@ -143,17 +144,21 @@ func _physics_process(delta) -> void:
 	skip.disabled = timer == time_between_waves
 	if run_wave && enemy_container.get_children().is_empty():
 		dither(0, 1)
-		for enemy: String in wave_resource.waves[wave_number]:
-			for number: int in wave_resource.waves[wave_number][enemy]['number']:
-				var enemy_instance: BaseEnemy = enemies_resource.enemies[enemy].instantiate()
-				enemy_instance.position = enemy_spawner.position
-				enemy_instance.rank = wave_resource.waves[wave_number][enemy]['rank']
-				enemy_instance.inventory_manager = inventory_manager
-				if number == wave_resource.waves[wave_number][enemy]['number'] - 1:
-					enemy_instance.last_in_line = true
-				enemy_container.add_child(enemy_instance)
-				await get_tree().create_timer(time_between_enemies, false).timeout
-		run_wave = false
+		if wave_number != 60:
+			for enemy: String in wave_resource.waves[wave_number]:
+				for number: int in wave_resource.waves[wave_number][enemy]['number']:
+					var enemy_instance: BaseEnemy = enemies_resource.enemies[enemy].instantiate()
+					enemy_instance.position = enemy_spawner.position
+					enemy_instance.rank = wave_resource.waves[wave_number][enemy]['rank']
+					enemy_instance.inventory_manager = inventory_manager
+					if number == wave_resource.waves[wave_number][enemy]['number'] - 1:
+						enemy_instance.last_in_line = true
+					enemy_container.add_child(enemy_instance)
+					await get_tree().create_timer(time_between_enemies, false).timeout
+			run_wave = false
+		else:
+			run_infinite_wave()
+			run_wave = false
 	else:
 		if enemy_container.get_children().is_empty():
 			if timer > 0:
@@ -196,6 +201,17 @@ func _physics_process(delta) -> void:
 		randomize()
 		news_timer -= delta
 		
+func run_infinite_wave():
+	while true:
+		for enemy: String in enemies_resource.enemies:
+			for time in infinite_wave_enemy_repeat:
+				var enemy_instance: BaseEnemy = enemies_resource.enemies[enemy].instantiate()
+				enemy_instance.position = enemy_spawner.position
+				enemy_instance.rank = InventoryManager.Rank.S
+				enemy_instance.inventory_manager = inventory_manager
+				enemy_container.add_child(enemy_instance)
+				await get_tree().create_timer(time_between_enemies, false).timeout
+			
 func dither(from: int, to: int) -> void:
 	var dither_intensity: float = from
 	while abs(dither_intensity - to) > 0.03:
@@ -224,6 +240,7 @@ func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Ra
 	if add_subs:
 		subscribers += roundi(pow((total_parts)*(rank+1)*2, 2))
 	update_stats()
+	inventory_manager.changed_parts.emit()
 		
 func update_stats() -> void:
 	sub_count.text = math_util.convert_num(subscribers)
@@ -267,6 +284,7 @@ func on_darius_death() -> void:
 	player = new_player
 
 func end_wave():
+	print(wave_number)
 	if (wave_number + 1) % 20 == 0 && wave_number > 0:
 		time_between_enemies *= 2
 		match wave_number:

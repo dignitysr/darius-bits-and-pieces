@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://c0nclxadp8xws"]
+[gd_scene load_steps=56 format=3 uid="uid://c0nclxadp8xws"]
 
 [ext_resource type="Script" uid="uid://c8kx2jgqnthg4" path="res://scenes/level/base_level.gd" id="1_2qxot"]
 [ext_resource type="Script" uid="uid://c3d6hdxo3ibrw" path="res://scenes/level/parts_manager.gd" id="1_ebx1s"]
@@ -31,6 +31,9 @@
 [ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="23_ollns"]
 [ext_resource type="Texture2D" uid="uid://dsjsfh2jh5fbr" path="res://scenes/UI/assets/time_wave_skip_icon.png" id="26_e448n"]
 [ext_resource type="Texture2D" uid="uid://77e28h1eni7f" path="res://scenes/UI/assets/postcard_purple.png" id="26_nehen"]
+[ext_resource type="PackedScene" uid="uid://b5k6bsbagrg4b" path="res://scenes/UI/quantitylabel.tscn" id="28_ojr21"]
+[ext_resource type="Script" uid="uid://7ffmxg44e1bj" path="res://scenes/UI/menuquantity.gd" id="29_u30a0"]
+[ext_resource type="Texture2D" uid="uid://3rapfa1hagkb" path="res://assets/UI/sprites/icons.png" id="30_5675d"]
 
 [sub_resource type="Animation" id="Animation_ollns"]
 length = 0.001
@@ -120,6 +123,17 @@ texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 region_rect = Rect2(0, 0, 17, 17)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5675d"]
+load_path = "res://.godot/imported/icons.png-781c3ab5ce291de11a49ec91a1999418.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dmh0"]
+atlas = SubResource("CompressedTexture2D_5675d")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u30a0"]
+atlas = ExtResource("30_5675d")
+region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_se6ax"]
 texture = ExtResource("9_466n5")
@@ -321,7 +335,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton/ClickBlocker:visible")
+tracks/0/path = NodePath("../UI/CraftContainer/VBoxContainer/CraftTransContainer/CraftTransButton/ClickBlocker:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -333,7 +347,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton:button_pressed")
+tracks/1/path = NodePath("../UI/CraftContainer/VBoxContainer/CraftTransContainer/CraftTransButton:button_pressed")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -372,7 +386,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton/ClickBlocker:visible")
+tracks/2/path = NodePath("../UI/CraftContainer/VBoxContainer/CraftTransContainer/CraftTransButton/ClickBlocker:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -384,7 +398,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton:button_pressed")
+tracks/3/path = NodePath("../UI/CraftContainer/VBoxContainer/CraftTransContainer/CraftTransButton:button_pressed")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -630,11 +644,11 @@ alignment = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/CraftContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/CraftContainer/VBoxContainer"]
+[node name="CraftTransContainer" type="HBoxContainer" parent="UI/CraftContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 2
 
-[node name="CraftTransButton" type="Button" parent="UI/CraftContainer/VBoxContainer/HBoxContainer"]
+[node name="CraftTransButton" type="Button" parent="UI/CraftContainer/VBoxContainer/CraftTransContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -647,13 +661,13 @@ icon_alignment = 1
 script = ExtResource("21_lqmad")
 press_name = ""
 
-[node name="CenterContainer" type="CenterContainer" parent="UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton"]
+[node name="CenterContainer" type="CenterContainer" parent="UI/CraftContainer/VBoxContainer/CraftTransContainer/CraftTransButton"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="Icon" type="TextureRect" parent="UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton/CenterContainer"]
+[node name="Icon" type="TextureRect" parent="UI/CraftContainer/VBoxContainer/CraftTransContainer/CraftTransButton/CenterContainer"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 mouse_filter = 2
@@ -661,7 +675,7 @@ texture = ExtResource("7_8xnqg")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Shadow" type="TextureRect" parent="UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton/CenterContainer/Icon"]
+[node name="Shadow" type="TextureRect" parent="UI/CraftContainer/VBoxContainer/CraftTransContainer/CraftTransButton/CenterContainer/Icon"]
 modulate = Color(0.1254902, 0, 0.69803923, 0.5019608)
 show_behind_parent = true
 custom_minimum_size = Vector2(24, 24)
@@ -680,7 +694,7 @@ texture = ExtResource("7_8xnqg")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ClickBlocker" type="Control" parent="UI/CraftContainer/VBoxContainer/HBoxContainer/CraftTransButton"]
+[node name="ClickBlocker" type="Control" parent="UI/CraftContainer/VBoxContainer/CraftTransContainer/CraftTransButton"]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
@@ -779,6 +793,28 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("26_e448n")
 stretch_mode = 5
+
+[node name="Control" type="Control" parent="UI/CraftContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="QuantityContainer" type="VBoxContainer" parent="UI/CraftContainer/VBoxContainer"]
+z_index = 3
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Paper" parent="UI/CraftContainer/VBoxContainer/QuantityContainer" node_paths=PackedStringArray("inventory_manager") instance=ExtResource("28_ojr21")]
+layout_mode = 2
+script = ExtResource("29_u30a0")
+image = SubResource("AtlasTexture_5dmh0")
+inventory_manager = NodePath("../../../../../InvManager")
+
+[node name="Scrap" parent="UI/CraftContainer/VBoxContainer/QuantityContainer" node_paths=PackedStringArray("inventory_manager") instance=ExtResource("28_ojr21")]
+layout_mode = 2
+script = ExtResource("29_u30a0")
+image = SubResource("AtlasTexture_u30a0")
+inventory_manager = NodePath("../../../../../InvManager")
 
 [node name="CraftMenu" type="Panel" parent="UI/CraftContainer"]
 custom_minimum_size = Vector2(113.205, 0)

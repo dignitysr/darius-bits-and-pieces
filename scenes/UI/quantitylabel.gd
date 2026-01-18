@@ -1,4 +1,5 @@
-extends Control
+class_name QuantityLabel
+extends BoxContainer
 
 @onready var icon: TextureRect = %Icon
 @onready var icon_shadow: TextureRect = %IconShadow
@@ -6,7 +7,7 @@ extends Control
 @onready var rank_texture = %Rank
 @onready var rank_shadow: TextureRect = %RankShadow
 
-var icon_texture: ImageTexture
+@export var icon_texture: ImageTexture
 var amount: int
 var rank
 

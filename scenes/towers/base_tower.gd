@@ -42,7 +42,7 @@ func _ready():
 	max_durability = (init_durability * (durability_mult * (rank + 1)))
 	debris_sprite.hide()
 	random_frame = str(randi_range(1, variant_num))
-	animator.animation = random_frame
+	animator.play(random_frame)
 	durability = max_durability
 	damage = damage * (damage_mult * (rank + 1))
 	broken_bar.position.y -= animator.sprite_frames.get_frame_texture(animator.animation, 0).get_size().y + 10
@@ -66,15 +66,11 @@ func _physics_process(delta) -> void:
 					selected_enemy = enemy_area.get_parent()
 					if animator.sprite_frames.has_animation(str(random_frame) + "shoot"):
 						var frame = animator.frame
-						animator.animation = str(random_frame) + "shoot"
-						if animator.sprite_frames.get_frame_count(str(random_frame) + "shoot") > 1:
-							animator.frame = frame
+						animator.play(random_frame + "shoot")
 		if !"EnemyArea" in str(enemy_detection.get_overlapping_areas()):
 			selected_enemy = null
 			var frame = animator.frame
-			animator.animation = str(random_frame)
-			if animator.sprite_frames.get_frame_count(str(random_frame)) > 1:
-				animator.frame = frame
+			animator.play(random_frame)
 		if cooldown > 0:
 			cooldown -= 1
 		if cooldown <= 0:
