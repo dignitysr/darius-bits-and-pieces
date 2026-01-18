@@ -1,8 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://d7pmjweuyb7x"]
+[gd_scene load_steps=12 format=3 uid="uid://d7pmjweuyb7x"]
 
 [ext_resource type="PackedScene" uid="uid://b5j3fw6p1qo80" path="res://scenes/towers/base_tower.tscn" id="1_iyu6l"]
 [ext_resource type="Script" uid="uid://cybrbqtuaexim" path="res://scenes/towers/rolling cage/rolling_cage.gd" id="2_axli4"]
 [ext_resource type="Texture2D" uid="uid://bcfbujfonckds" path="res://scenes/towers/rolling cage/assets.png" id="2_ukadc"]
+[ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="3_22uuv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lyyip"]
+resource_local_to_scene = true
+shader = ExtResource("3_22uuv")
+shader_parameter/intensity = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_axli4"]
 atlas = ExtResource("2_ukadc")
@@ -43,6 +49,11 @@ radius = 22.022715
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axli4"]
 size = Vector2(24, 15)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1s0g"]
+resource_local_to_scene = true
+shader = ExtResource("3_22uuv")
+shader_parameter/intensity = 0.0
+
 [node name="RollingCage" instance=ExtResource("1_iyu6l")]
 collision_layer = 128
 collision_mask = 128
@@ -51,9 +62,14 @@ speed = 20.0
 variant_num = 1
 damage = 20.0
 damage_mult = 3.0
+parts_dropped = Dictionary[String, int]({
+"paper": 30,
+"scrap": 15
+})
 attack_speed = 10
 
 [node name="Animator" parent="." index="0"]
+material = SubResource("ShaderMaterial_lyyip")
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_lyyip")
 animation = &"1"
@@ -65,3 +81,6 @@ shape = SubResource("CircleShape2D_axli4")
 [node name="Collider" type="CollisionShape2D" parent="." index="5"]
 position = Vector2(0, -8.5)
 shape = SubResource("RectangleShape2D_axli4")
+
+[node name="DebrisSprite" parent="." index="6"]
+material = SubResource("ShaderMaterial_s1s0g")

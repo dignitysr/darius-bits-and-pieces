@@ -1,0 +1,90 @@
+[gd_resource type="Resource" script_class="LevelResource" load_steps=2 format=3 uid="uid://ctsv84yvufedj"]
+
+[ext_resource type="Script" uid="uid://df00pj8834vq1" path="res://scenes/level/waves/level_resource.gd" id="1_anw16"]
+
+[resource]
+script = ExtResource("1_anw16")
+waves = Array[Dictionary]([{
+"customer": {
+"number": 5,
+"rank": 0
+}
+}, {
+"customer": {
+"number": 10,
+"rank": 0
+}
+}, {
+"nan": {
+"number": 5,
+"rank": 0
+}
+}, {
+"customer": {
+"number": 10,
+"rank": 0
+},
+"nan": {
+"number": 3,
+"rank": 0
+}
+}, {
+"customer": {
+"number": 20,
+"rank": 0
+}
+}, {
+"nan": {
+"number": 8,
+"rank": 0
+}
+}, {
+"luci": {
+"number": 5,
+"rank": 0
+}
+}, {
+"customer": {
+"number": 10,
+"rank": 0
+},
+"luci": {
+"number": 3,
+"rank": 0
+}
+}, {
+"customer": {
+"number": 10,
+"rank": 0
+},
+"fedora": {
+"number": 10,
+"rank": 0
+},
+"fox": {
+"number": 1,
+"rank": 0
+},
+"nan": {
+"number": 10,
+"rank": 0
+}
+}, {
+"customer": {
+"number": 30,
+"rank": 0
+}
+}, {
+"customer": {
+"number": 5,
+"rank": 1
+}
+}, {
+"suit": {
+"number": 10,
+"rank": 0
+}
+}, {}, {}, {}, {}, {}, {}, {}, {}])
+name = "Subscriberton"
+scene = "res://scenes/level/subscriberton.tscn"
+metadata/_custom_type_script = "uid://df00pj8834vq1"

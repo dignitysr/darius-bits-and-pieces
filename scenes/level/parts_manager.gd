@@ -30,8 +30,8 @@ var session_customers: int = 0
 ## Rank: Number},
 ## Part name: etc}
 var parts: Dictionary = {
-	"paper": {Rank.S: 5e5, Rank.A: 4, Rank.B: 4, Rank.C: 63454213454, Rank.F: 50}, 
-	"scrap": {Rank.S: 5e5, Rank.A: 5, Rank.B: 5, Rank.C: 30, Rank.F: 50}}
+	"paper": {Rank.S: 0, Rank.A: 0, Rank.B: 0, Rank.C: 0, Rank.F: 100}, 
+	"scrap": {Rank.S: 0, Rank.A: 0, Rank.B: 0, Rank.C: 0, Rank.F: 70}}
 	
 func _ready() -> void:
 	craft_trans_button.connect("button_down", on_craft_trans_pressed)

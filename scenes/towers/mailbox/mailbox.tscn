@@ -193,8 +193,8 @@ script = ExtResource("2_8n61u")
 variant_num = 7
 init_durability = 20.0
 parts_dropped = Dictionary[String, int]({
-"paper": 1,
-"scrap": 2
+"paper": 10,
+"scrap": 20
 })
 mail = ExtResource("3_kp23f")
 

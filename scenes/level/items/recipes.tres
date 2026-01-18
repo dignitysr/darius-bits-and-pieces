@@ -6,20 +6,20 @@
 script = ExtResource("1_nlpro")
 recipes = Dictionary[String, Dictionary]({
 "cabinet": {
-"paper": 60,
-"scrap": 40
+"paper": 600,
+"scrap": 400
 },
 "forklift": {
+"paper": 200,
+"scrap": 300
+},
+"mailbox": {
 "paper": 30,
 "scrap": 20
 },
-"mailbox": {
-"paper": 3,
-"scrap": 2
-},
 "rolling_cage": {
-"paper": 20,
-"scrap": 15
+"paper": 150,
+"scrap": 200
 }
 })
 metadata/_custom_type_script = "uid://b7cxwhqxoa3ua"
