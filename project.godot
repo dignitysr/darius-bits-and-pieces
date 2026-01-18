@@ -15,6 +15,10 @@ run/main_scene="uid://dh30ifxl6br0p"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+general/default_playback_type.web=0
+
 [autoload]
 
 AchievementManager="*res://tools/achievements/achievement_manager.tscn"
