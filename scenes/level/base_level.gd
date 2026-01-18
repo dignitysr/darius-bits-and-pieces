@@ -124,6 +124,7 @@ func _ready() -> void:
 	darius_name_label.text = darius_name
 	ability_label.text = 'Featuring: ' + buffs[active_buff]
 	timer = time_between_waves
+	rickmech_spawn_timer = rickmech_spawn_time
 	enemy_died.connect(on_enemy_died)
 	MusicManager.play_song('darius_wave_intermission')
 	StatsManager.stats['current_level'] = wave_resource.scene
@@ -158,6 +159,7 @@ func _physics_process(delta) -> void:
 			run_wave = false
 		else:
 			run_infinite_wave()
+			wave_counter.text = "inf"
 			run_wave = false
 	else:
 		if enemy_container.get_children().is_empty():

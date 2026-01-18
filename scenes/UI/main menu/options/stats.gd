@@ -1,6 +1,14 @@
 extends Control
 
 @onready var text = %Text
+@onready var end_run = %EndRun
+@onready var reset_save = %ResetSave
+
+func _ready() -> void:
+	if !owner is MenuController:
+		end_run.show()
+	else:
+		end_run.hide()
 
 func _physics_process(_delta):
 	var template = """Total

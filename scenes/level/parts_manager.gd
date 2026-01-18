@@ -87,14 +87,12 @@ func buy(tower: String, rank: Rank) -> void:
 			preview.global_position = Vector2(get_snapped_mouse_position().x, place_validator.get_collision_point().y)
 			if Input.is_action_just_pressed("click"):
 				place_tower(tower, rank)
-		if tower == "tote_bag":
-			preview.self_modulate = Color.GREEN
-			preview.global_position = get_snapped_mouse_position()
-			if Input.is_action_just_pressed("click"):
-				place_tower(tower, rank)
 		else:
 			preview.self_modulate = Color.RED
 			preview.global_position = get_snapped_mouse_position()
+		if tower == "tote_bag":
+			if Input.is_action_just_pressed("click"):
+				place_tower(tower, rank)
 		await get_tree().physics_frame
 	tower_placed = false
 	StatsManager.stats["towers_placed_total"] += 1

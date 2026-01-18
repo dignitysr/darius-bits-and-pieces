@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch0rpo4cclfn"]
+[gd_scene load_steps=9 format=3 uid="uid://hdcirvb0lglh"]
+
+[ext_resource type="Script" uid="uid://deus8ckbsiii4" path="res://scenes/UI/tutorial.gd" id="1_y1uxg"]
 
 [sub_resource type="Gradient" id="Gradient_nehen"]
 offsets = PackedFloat32Array(0.2, 0.3)
@@ -53,7 +55,9 @@ metadata/_snap_enabled = true
 metadata/_snap_count = 30
 
 [node name="Tutorial" type="CanvasLayer"]
+process_mode = 3
 layer = 256
+script = ExtResource("1_y1uxg")
 
 [node name="Page1" type="Control" parent="."]
 layout_mode = 3
@@ -106,10 +110,12 @@ alignment = 1
 
 [node name="Skip" type="Button" parent="Page1/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Skip"
 
 [node name="Next" type="Button" parent="Page1/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Next"
 
 [node name="Page2" type="Control" parent="."]
@@ -161,10 +167,12 @@ alignment = 1
 
 [node name="Back" type="Button" parent="Page2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Back"
 
 [node name="Next" type="Button" parent="Page2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Next"
 
 [node name="Page3" type="Control" parent="."]
@@ -218,10 +226,12 @@ alignment = 1
 
 [node name="Back" type="Button" parent="Page3/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Back"
 
 [node name="Next" type="Button" parent="Page3/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Next"
 
 [node name="Page4" type="Control" parent="."]
@@ -274,10 +284,12 @@ alignment = 1
 
 [node name="Back" type="Button" parent="Page4/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Back"
 
 [node name="Next" type="Button" parent="Page4/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Next"
 
 [node name="Page5" type="Control" parent="."]
@@ -333,10 +345,12 @@ alignment = 1
 
 [node name="Back" type="Button" parent="Page5/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Back"
 
 [node name="Next" type="Button" parent="Page5/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Next"
 
 [node name="Page6" type="Control" parent="."]
@@ -391,10 +405,12 @@ alignment = 1
 
 [node name="Back" type="Button" parent="Page6/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Back"
 
 [node name="Next" type="Button" parent="Page6/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Next"
 
 [node name="Page7" type="Control" parent="."]
@@ -446,10 +462,12 @@ alignment = 1
 
 [node name="Back" type="Button" parent="Page7/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Back"
 
 [node name="Next" type="Button" parent="Page7/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Next"
 
 [node name="Page8" type="Control" parent="."]
@@ -496,8 +514,10 @@ alignment = 1
 
 [node name="Close" type="Button" parent="Page8/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Yep"
 
 [node name="Restart" type="Button" parent="Page8/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "What?"
