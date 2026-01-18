@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EnemiesResource" load_steps=10 format=3 uid="uid://bcvclfg6r1av0"]
+[gd_resource type="Resource" script_class="EnemiesResource" load_steps=11 format=3 uid="uid://bcvclfg6r1av0"]
 
 [ext_resource type="PackedScene" uid="uid://cmvevnsrw0wrc" path="res://scenes/enemies/customer/customer.tscn" id="1_mw3w8"]
 [ext_resource type="PackedScene" uid="uid://cmqqsm2mjnc2f" path="res://scenes/enemies/nan/nan.tscn" id="2_cqmw8"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://clfwifsf2yefo" path="res://scenes/enemies/fox/fox.tscn" id="6_5oqks"]
 [ext_resource type="PackedScene" uid="uid://dm13ljgyi33hk" path="res://scenes/enemies/balloon_boy/balloon_boy.tscn" id="7_msfja"]
 [ext_resource type="PackedScene" uid="uid://dhwe3cxbwn8pc" path="res://scenes/enemies/UFO/ufo.tscn" id="8_dngjm"]
+[ext_resource type="PackedScene" uid="uid://c65eolw38ospt" path="res://scenes/enemies/queen/queen.tscn" id="9_1w4y8"]
 
 [resource]
 script = ExtResource("2_q076a")
@@ -19,6 +20,7 @@ enemies = Dictionary[String, PackedScene]({
 "fox": ExtResource("6_5oqks"),
 "luci": ExtResource("3_cqmw8"),
 "nan": ExtResource("2_cqmw8"),
+"queen": ExtResource("9_1w4y8"),
 "suit": ExtResource("4_u0k74"),
 "ufo": ExtResource("8_dngjm")
 })
