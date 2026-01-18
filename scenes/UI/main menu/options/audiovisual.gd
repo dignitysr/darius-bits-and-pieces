@@ -21,6 +21,8 @@ func _ready():
 			child.connect("item_selected", option_selected.bind(child.name))
 			child._select_int(Save.load_setting("options", child.name, 0))
 			if OS.get_name() == "Web":
+				if child.name == "FPS":
+					child.remove_item(5)
 				if child.name != "WindowScale":
 					option_selected(Save.load_setting("options", child.name, 0), child.name)
 				else:
@@ -36,7 +38,7 @@ func slider_changed(value: float, slider: String) -> void:
 	Save.change_setting("options", slider, value)
 
 func option_selected(index: int, option: String) -> void:
-	if index != FPS.DISABLE:
+	if not (option == "FPS" and index == FPS.DISABLE):
 		Save.change_setting("options", option, index)
 	if option == "FPS":
 		match index:

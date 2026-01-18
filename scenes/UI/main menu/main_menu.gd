@@ -7,7 +7,10 @@ extends BaseMenu
 func _ready():
 	play.connect("button_down", play_pressed)
 	options.connect("button_down", options_pressed)
-	quit.connect("button_down", quit_pressed)
+	if OS.get_name() == "Web":
+		quit.queue_free()
+	else:
+		quit.connect("button_down", quit_pressed)
 	
 func play_pressed() -> void:
 	trans_to("LevelSelect")
