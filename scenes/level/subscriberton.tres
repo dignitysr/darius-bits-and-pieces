@@ -363,6 +363,20 @@ waves = Array[Dictionary]([{
 }
 }, {
 "customer": {
+"number": 25,
+"rank": 4
+},
+"nan": {
+"number": 10,
+"rank": 4
+}
+}, {
+"luci": {
+"number": 25,
+"rank": 4
+}
+}, {
+"customer": {
 "number": 30,
 "rank": 4
 },
@@ -374,7 +388,16 @@ waves = Array[Dictionary]([{
 "number": 6,
 "rank": 4
 }
-}, {}, {}, {}, {
+}, {
+"suit": {
+"number": 15,
+"rank": 4
+},
+"ufo": {
+"number": 5,
+"rank": 4
+}
+}, {
 "customer": {
 "number": 15,
 "rank": 4

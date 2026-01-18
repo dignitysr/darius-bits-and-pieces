@@ -96,7 +96,7 @@ gravity = 10.0
 amp = 8
 freq = 6
 variant_num = 1
-init_durability = 1.0
+init_durability = 50.0
 mail = ExtResource("2_7twf0")
 
 [node name="Animator" parent="." index="0"]
