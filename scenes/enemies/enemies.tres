@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cmqqsm2mjnc2f" path="res://scenes/enemies/nan/nan.tscn" id="2_cqmw8"]
 [ext_resource type="Script" uid="uid://bv0frty0chg8k" path="res://scenes/enemies/enemy_resource.gd" id="2_q076a"]
 [ext_resource type="PackedScene" uid="uid://crhp7wyqmbyxf" path="res://scenes/enemies/luci/luci.tscn" id="3_cqmw8"]
-[ext_resource type="PackedScene" uid="uid://bvdl6bch40dgo" path="res://scenes/enemies/suit/suit.tscn" id="4_u0k74"]
+[ext_resource type="PackedScene" uid="uid://ydo1v3gtuanu" path="res://scenes/enemies/suit/suit.tscn" id="4_u0k74"]
 [ext_resource type="PackedScene" uid="uid://houen7tbqut5" path="res://scenes/enemies/fedora/fedora.tscn" id="5_mq4wy"]
 [ext_resource type="PackedScene" uid="uid://clfwifsf2yefo" path="res://scenes/enemies/fox/fox.tscn" id="6_5oqks"]
 [ext_resource type="PackedScene" uid="uid://dm13ljgyi33hk" path="res://scenes/enemies/balloon_boy/balloon_boy.tscn" id="7_msfja"]

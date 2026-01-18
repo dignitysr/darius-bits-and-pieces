@@ -118,6 +118,10 @@ shader_parameter/intensity = 0.0
 script = ExtResource("2_an1hb")
 variant_num = 1
 init_durability = 150.0
+parts_dropped = Dictionary[String, int]({
+"paper": 80,
+"scrap": 40
+})
 
 [node name="Animator" parent="." index="0"]
 material = SubResource("ShaderMaterial_mgtj1")
