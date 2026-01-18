@@ -44,7 +44,7 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @onready var skip = %Skip
 
 var run_wave: bool = false
-var wave_number: int = 58
+var wave_number: int = -1
 var timer: float
 var subscribers: int = 1
 var x_range: int = 0
@@ -240,6 +240,7 @@ func add_parts(parts_dropped: Dictionary[String, int], rank: InventoryManager.Ra
 	if add_subs:
 		subscribers += roundi(pow((total_parts)*(rank+1)*2, 2))
 	update_stats()
+	inventory_manager.changed_parts.emit()
 		
 func update_stats() -> void:
 	sub_count.text = math_util.convert_num(subscribers)
@@ -283,6 +284,7 @@ func on_darius_death() -> void:
 	player = new_player
 
 func end_wave():
+	print(wave_number)
 	if (wave_number + 1) % 20 == 0 && wave_number > 0:
 		time_between_enemies *= 2
 		match wave_number:
