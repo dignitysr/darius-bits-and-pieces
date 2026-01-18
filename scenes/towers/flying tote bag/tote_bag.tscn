@@ -105,7 +105,7 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_ta3pg")
 animation = &"1shoot"
 autoplay = "1"
-frame_progress = 0.31257915
+frame_progress = 0.30648613
 
 [node name="Spawner" parent="." index="1"]
 position = Vector2(0, -3)
