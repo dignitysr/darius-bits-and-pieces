@@ -67,7 +67,7 @@ char_jump_pow = 260.0
 health = 20.0
 parts_dropped = Dictionary[String, int]({
 "paper": 15,
-"scrap": 40
+"scrap": 15
 })
 
 [node name="Animator" parent="." index="0"]

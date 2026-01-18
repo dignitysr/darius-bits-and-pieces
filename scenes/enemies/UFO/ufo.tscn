@@ -47,6 +47,7 @@ animations = [{
 
 [node name="UFO" instance=ExtResource("1_p247t")]
 script = ExtResource("2_ajjna")
+airborne = true
 health = 20.0
 parts_dropped = Dictionary[String, int]({
 "paper": 40

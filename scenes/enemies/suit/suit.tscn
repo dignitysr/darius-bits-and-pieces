@@ -69,8 +69,8 @@ palettes = Array[Texture2D]([ExtResource("9_0yjta"), ExtResource("3_2htg6"), Ext
 health = 250.0
 speed = 20.0
 parts_dropped = Dictionary[String, int]({
-"paper": 60,
-"scrap": 40
+"paper": 50,
+"scrap": 30
 })
 
 [node name="Animator" parent="." index="0"]

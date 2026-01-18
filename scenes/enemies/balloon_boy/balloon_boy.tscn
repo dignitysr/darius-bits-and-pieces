@@ -54,6 +54,7 @@ animations = [{
 
 [node name="BalloonBoy" instance=ExtResource("1_jog54")]
 script = ExtResource("2_0vabs")
+airborne = true
 health = 20.0
 parts_dropped = Dictionary[String, int]({
 "paper": 10,

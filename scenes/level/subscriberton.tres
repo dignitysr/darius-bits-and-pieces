@@ -164,7 +164,102 @@ waves = Array[Dictionary]([{
 "number": 1,
 "rank": 3
 }
-}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}])
+}, {
+"customer": {
+"number": 25,
+"rank": 2
+},
+"fox": {
+"number": 10,
+"rank": 2
+}
+}, {
+"fedora": {
+"number": 8,
+"rank": 2
+},
+"suit": {
+"number": 8,
+"rank": 2
+}
+}, {
+"customer": {
+"number": 12,
+"rank": 2
+},
+"nan": {
+"number": 10,
+"rank": 2
+}
+}, {
+"balloon_boy": {
+"number": 15,
+"rank": 2
+}
+}, {
+"customer": {
+"number": 12,
+"rank": 2
+},
+"suit": {
+"number": 8,
+"rank": 2
+}
+}, {
+"fedora": {
+"number": 13,
+"rank": 2
+},
+"fox": {
+"number": 13,
+"rank": 2
+},
+"luci": {
+"number": 4,
+"rank": 2
+}
+}, {
+"nan": {
+"number": 15,
+"rank": 2
+}
+}, {
+"balloon_boy": {
+"number": 10,
+"rank": 2
+},
+"customer": {
+"number": 10,
+"rank": 2
+}
+}, {
+"customer": {
+"number": 18,
+"rank": 3
+},
+"ufo": {
+"number": "3",
+"rank": 3
+}
+}, {
+"customer": {
+"number": 30,
+"rank": 3
+},
+"luci": {
+"number": 5,
+"rank": 3
+}
+}, {
+"queen": {
+"number": 1,
+"rank": 2
+},
+"suit": {
+"number": 8,
+"rank": 3
+}
+}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}])
 name = "Subscriberton"
 scene = "res://scenes/level/subscriberton.tscn"
 metadata/_custom_type_script = "uid://df00pj8834vq1"

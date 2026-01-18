@@ -68,8 +68,8 @@ enemy_name = "Luci"
 palettes = Array[Texture2D]([ExtResource("2_ly4w6"), ExtResource("3_vshp0"), ExtResource("4_gk1rt"), ExtResource("8_gk1rt"), ExtResource("6_j7a1s")])
 health = 250.0
 parts_dropped = Dictionary[String, int]({
-"paper": 100,
-"scrap": 85
+"paper": 25,
+"scrap": 35
 })
 
 [node name="Animator" parent="." index="0"]
