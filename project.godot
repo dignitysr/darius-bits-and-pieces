@@ -22,6 +22,7 @@ Save="*res://tools/save.gd"
 StatsManager="*res://tools/stats_manager.gd"
 TransitionManager="*res://tools/transition_manager/transition_manager.tscn"
 MusicManager="*res://tools/music_manager.tscn"
+Splash="*res://scenes/splash/splash.tscn"
 
 [display]
 
