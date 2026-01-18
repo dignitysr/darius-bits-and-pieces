@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://c6t521jerhqmf" path="res://assets/music/rickmechs killed/2.wav" id="9_t7rje"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dmi4h"]
+resource_local_to_scene = true
 shader = ExtResource("3_0innh")
 shader_parameter/intensity = 0.0
 
@@ -63,7 +64,6 @@ parts_dropped = Dictionary[String, int]({
 "paper": 30,
 "scrap": 30
 })
-time_threshold = null
 
 [node name="Animator" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true

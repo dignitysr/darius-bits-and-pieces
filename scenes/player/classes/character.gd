@@ -19,6 +19,7 @@ var input: Dictionary
 @onready var physics_states: Node = $PhysicsStates
 @onready var sprite_overlay = %SpriteOverlay
 @onready var camera = %Camera2D
+@onready var collider = %Collider
 
 ### States
 @onready var physics: PhysicsState

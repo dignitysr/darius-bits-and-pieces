@@ -40,6 +40,7 @@ func _ready() -> void:
 		tween.connect("finished", tween_finished)
 
 func _physics_process(delta) -> void:
+	player = level.player
 	laser_arm.look_at(player.position)
 	laser_arm.rotation = clamp(laser_arm.rotation, -PI/2, PI/2)
 	laser_arm.rotation = snapped(laser_arm.rotation, PI/12)

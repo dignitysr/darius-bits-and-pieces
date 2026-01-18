@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://cf6p40ex4b0fr"]
 
 [ext_resource type="PackedScene" uid="uid://b5j3fw6p1qo80" path="res://scenes/towers/base_tower.tscn" id="1_u8bp1"]
-[ext_resource type="Script" uid="uid://fqslq78n1b64" path="res://scenes/towers/huh/cabinet.gd" id="2_taprt"]
+[ext_resource type="Script" uid="uid://fqslq78n1b64" path="res://scenes/towers/cabinet/cabinet.gd" id="2_taprt"]
 [ext_resource type="PackedScene" uid="uid://c0ufyyp0yfay8" path="res://scenes/towers/mail.tscn" id="3_eapql"]
 [ext_resource type="Shader" uid="uid://bu1bubqeutqwb" path="res://tools/shaders/dithering.gdshader" id="4_jxpa4"]
-[ext_resource type="Texture2D" uid="uid://c14qjqgyciuxd" path="res://scenes/towers/huh/spritesheet.png" id="4_wmq7v"]
+[ext_resource type="Texture2D" uid="uid://c14qjqgyciuxd" path="res://scenes/towers/cabinet/spritesheet.png" id="4_wmq7v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mgtj1"]
 resource_local_to_scene = true

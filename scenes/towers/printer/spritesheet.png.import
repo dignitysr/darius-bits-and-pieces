@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c14qjqgyciuxd"
-path="res://.godot/imported/spritesheet.png-9d8f0fecaec34a055e64dbaf45c77359.ctex"
+uid="uid://cce5y44mdlf4w"
+path="res://.godot/imported/spritesheet.png-57c2ffb4fc5c7ecf54c63404753a7d2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/towers/huh/spritesheet.png"
-dest_files=["res://.godot/imported/spritesheet.png-9d8f0fecaec34a055e64dbaf45c77359.ctex"]
+source_file="res://scenes/towers/printer/spritesheet.png"
+dest_files=["res://.godot/imported/spritesheet.png-57c2ffb4fc5c7ecf54c63404753a7d2e.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://dne73wf0qkq5s"]
+[gd_scene load_steps=6 format=4 uid="uid://dlxi7e0ynrltj"]
 
 [ext_resource type="PackedScene" uid="uid://c0nclxadp8xws" path="res://scenes/level/base_level.tscn" id="1_152tr"]
 [ext_resource type="Resource" uid="uid://ctsv84yvufedj" path="res://scenes/level/subscriberton.tres" id="2_hbsg2"]
@@ -10,6 +10,7 @@
 wave_resource = ExtResource("2_hbsg2")
 enemies_resource = ExtResource("3_0ji3t")
 time_between_waves = 5.0
+rickmech_spawn_time = 50
 
 [node name="Tileset" parent="." index="2"]
 unique_name_in_owner = true

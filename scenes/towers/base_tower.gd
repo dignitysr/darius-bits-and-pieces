@@ -56,6 +56,7 @@ func _attack() -> void:
 		debris_sprite.show()
 
 func _physics_process(delta) -> void:
+	print(cooldown)
 	var min_dist = INF
 	if !broken:
 		for enemy_area: Area2D in enemy_detection.get_overlapping_areas():
@@ -64,14 +65,15 @@ func _physics_process(delta) -> void:
 				if dist < min_dist:
 					min_dist = dist
 					selected_enemy = enemy_area.get_parent()
-					animator.animation = str(random_frame) + "shoot"
+					if animator.sprite_frames.has_animation(str(random_frame) + "shoot"):
+						animator.animation = str(random_frame) + "shoot"
 		if !"EnemyArea" in str(enemy_detection.get_overlapping_areas()):
 			selected_enemy = null
 			animator.animation = str(random_frame)
 		if cooldown > 0:
 			cooldown -= 1
 		if cooldown <= 0:
-			if is_instance_valid(selected_enemy):
+			if is_instance_valid(selected_enemy) || self is Printer:
 				_attack()
 			if !pickup_detection.get_overlapping_bodies().is_empty() && inventory_manager.level.active_buff == BaseLevel.Buffs.REPAIR:
 				if durability != max_durability:

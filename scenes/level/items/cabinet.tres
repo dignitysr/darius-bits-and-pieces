@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ObjectResource" load_steps=5 format=3 uid="uid://chev00ra80yce"]
 
-[ext_resource type="Texture2D" uid="uid://c14qjqgyciuxd" path="res://scenes/towers/huh/spritesheet.png" id="1_ao8f3"]
-[ext_resource type="PackedScene" uid="uid://cf6p40ex4b0fr" path="res://scenes/towers/huh/cabinet.tscn" id="2_ao8f3"]
+[ext_resource type="Texture2D" uid="uid://c14qjqgyciuxd" path="res://scenes/towers/cabinet/spritesheet.png" id="1_ao8f3"]
+[ext_resource type="PackedScene" uid="uid://cf6p40ex4b0fr" path="res://scenes/towers/cabinet/cabinet.tscn" id="2_ao8f3"]
 [ext_resource type="Script" uid="uid://dlopniqc5ddwe" path="res://scenes/level/items/objects.gd" id="3_ifm1p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ao8f3"]

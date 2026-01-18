@@ -17,6 +17,10 @@ recipes = Dictionary[String, Dictionary]({
 "paper": 30,
 "scrap": 20
 },
+"printer": {
+"paper": 20,
+"scrap": 10
+},
 "rolling_cage": {
 "paper": 150,
 "scrap": 200

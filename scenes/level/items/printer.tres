@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ObjectResource" load_steps=5 format=3 uid="uid://bunlrp2tal7sj"]
+
+[ext_resource type="Texture2D" uid="uid://cce5y44mdlf4w" path="res://scenes/towers/printer/spritesheet.png" id="1_pl3cw"]
+[ext_resource type="PackedScene" uid="uid://cs6ukiaq4va3c" path="res://scenes/towers/printer/printer.tscn" id="2_nunf6"]
+[ext_resource type="Script" uid="uid://dlopniqc5ddwe" path="res://scenes/level/items/objects.gd" id="3_uyjxa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyjxa"]
+atlas = ExtResource("1_pl3cw")
+region = Rect2(0, 0, 24, 24)
+
+[resource]
+script = ExtResource("3_uyjxa")
+object_name = "Printer"
+icon = SubResource("AtlasTexture_uyjxa")
+preview = SubResource("AtlasTexture_uyjxa")
+scene = ExtResource("2_nunf6")
+metadata/_custom_type_script = "uid://dlopniqc5ddwe"

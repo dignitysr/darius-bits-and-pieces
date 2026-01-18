@@ -22,5 +22,6 @@ func _physics_process(_delta):
 
 func on_darius_entered(body) -> void:
 	if body is Character:
-		level.on_darius_death()
-		get_parent().die(false)
+		if body.animator.material.get_shader_parameter("intensity") == 0:
+			level.on_darius_death()
+			get_parent().die(false)
