@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://dsjsfh2jh5fbr" path="res://scenes/UI/assets/time_wave_skip_icon.png" id="26_e448n"]
 [ext_resource type="Texture2D" uid="uid://77e28h1eni7f" path="res://scenes/UI/assets/postcard_purple.png" id="26_nehen"]
 [ext_resource type="PackedScene" uid="uid://b5k6bsbagrg4b" path="res://scenes/UI/quantitylabel.tscn" id="28_ojr21"]
-[ext_resource type="Script" uid="uid://7ffmxg44e1bj" path="res://scenes/UI/menuquantity.gd" id="29_u30a0"]
+[ext_resource type="Script" path="res://scenes/UI/menuquantity.gd" id="29_u30a0"]
 [ext_resource type="Texture2D" uid="uid://3rapfa1hagkb" path="res://assets/UI/sprites/icons.png" id="30_5675d"]
 
 [sub_resource type="Animation" id="Animation_ollns"]
