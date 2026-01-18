@@ -44,7 +44,7 @@ enum Buffs {SLOW, REPAIR, PARTS, FASTER}
 @onready var skip = %Skip
 
 var run_wave: bool = false
-var wave_number: int = 58
+var wave_number: int = -1
 var timer: float
 var subscribers: int = 1
 var x_range: int = 0

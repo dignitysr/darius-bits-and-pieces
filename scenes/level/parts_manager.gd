@@ -32,8 +32,8 @@ signal changed_parts
 ## Rank: Number},
 ## Part name: etc}
 var parts: Dictionary = {
-	"paper": {Rank.S: 9e9, Rank.A: 0, Rank.B: 0, Rank.C: 0, Rank.F: 100}, 
-	"scrap": {Rank.S: 9e9, Rank.A: 0, Rank.B: 0, Rank.C: 0, Rank.F: 70}}
+	"paper": {Rank.S: 0, Rank.A: 0, Rank.B: 0, Rank.C: 0, Rank.F: 100}, 
+	"scrap": {Rank.S: 0, Rank.A: 0, Rank.B: 0, Rank.C: 0, Rank.F: 70}}
 	
 func _ready() -> void:
 	craft_trans_button.connect("button_down", on_craft_trans_pressed)
@@ -117,7 +117,8 @@ func buy(tower: String, rank: Rank) -> void:
 func place_tower(tower: String, rank: int):
 	var tower_scene: BaseTower = object_list.parts[tower].scene.instantiate()
 	tower_scene.inventory_manager = self
-	tower_scene.global_position = place_validator.get_collision_point() + Vector2(0, 0)
+	if tower != "tote_bag":
+		tower_scene.global_position = place_validator.get_collision_point() + Vector2(0, 0)
 	@warning_ignore("int_as_enum_without_cast")
 	tower_scene.rank = rank
 	for part: String in recipes.recipes[tower]:

@@ -91,12 +91,16 @@ func lose_subscriber() -> void:
 		inventory_manager.level.update_stats()
 		if is_equal_approx(inventory_manager.level.net_worth.value, inventory_manager.level.net_worth.max_value) && inventory_manager.level.net_worth.max_value > 0:
 			if inventory_manager.session_customers > StatsManager.stats["recruited_customers_unsaved"]:
+				StatsManager.stats["recruited_customers_unsaved"] = inventory_manager.session_customers
 				Save.change_setting("stats", "recruited_customers_unsaved", inventory_manager.session_customers)
 			if inventory_manager.session_towers > StatsManager.stats["towers_placed_unsaved"]:
+				StatsManager.stats["towers_placed_unsaved"] = inventory_manager.session_towers
 				Save.change_setting("stats", "towers_placed_unsaved", inventory_manager.session_towers)
 			if inventory_manager.session_rickmechs > StatsManager.stats["defeated_rickmechs_unsaved"]:
+				StatsManager.stats["defeated_rickmechs_unsaved"] = inventory_manager.session_rickmechs
 				Save.change_setting("stats", "defeated_rickmechs_unsaved", inventory_manager.session_rickmechs)
 			if inventory_manager.level.subscribers > StatsManager.stats["subscribers_unsaved"]:
+				StatsManager.stats["subscribers_unsaved"] = inventory_manager.level.subscribers
 				Save.change_setting("stats", "subscribers_unsaved", inventory_manager.level.subscribers)
 			StatsManager.stats["subscribers_total"] = StatsManager.stats["subscribers_total"] + inventory_manager.level.subscribers
 			StatsManager.save_stats()
